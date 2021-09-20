@@ -1,49 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&display=swap");
 @import url("bootstrap/dist/css/bootstrap.min.css");
 body {
-  --main-block-shadow:#00000029;
-  --main-text-colored:#4364F7;
-  --main-text-default:#001218;
-  --main-default-tab-color:#F1F3F5;
-  --main-default-btn-grd1:#6984FF;
-  --main-default-btn-grd2:#224AFF;
-  --main-default-block-shadow:#ACB7C270;
-  --main-default-underline:#707070;
-  --main-default-link-color:#0000005C;
-  --main-default-wrapper-border:#C9C9C9;
-  --main-default-bg:#ffffff;
-  --main-sidebar-transition-bg:#EBEAE9;
-  --main-wallet-width:233px;
+  --main-block-shadow: #00000029;
+  --main-text-colored: #4364f7;
+  --main-text-default: #001218;
+  --main-default-tab-color: #f1f3f5;
+  --main-default-btn-grd1: #6984ff;
+  --main-default-btn-grd2: #224aff;
+  --main-default-block-shadow: #acb7c270;
+  --main-default-underline: #707070;
+  --main-default-link-color: #0000005c;
+  --main-default-wrapper-border: #c9c9c9;
+  --main-default-bg: #ffffff;
+  --main-sidebar-transition-bg: #ebeae9;
+  --main-wallet-width: 233px;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --main-top-padding: 120px;
   // --sidebar-initial-width: 245px;
-  --sidebar-initial-width:304px;
-   @media screen and (max-width:768px) {
-    --sidebar-initial-width:100%;
+  --sidebar-initial-width: 304px;
+  @media screen and (max-width: 768px) {
+    --sidebar-initial-width: 100%;
     --main-top-padding: 84px;
-
-   }
-
+  }
 }
-#root{
+#root {
   min-height: 100vh;
-  width: 100%;    
+  width: 100%;
   display: flex;
-  padding-top:var(--main-top-padding);
+  padding-top: var(--main-top-padding);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-*{
+* {
   box-sizing: border-box;
-  margin:0;
+  margin: 0;
   padding: 0;
 }
 a {
@@ -51,22 +49,21 @@ a {
   color: inherit;
 }
 
-
 .my-node-enter {
   opacity: 0;
-  z-index:0;
+  z-index: 0;
 }
 .my-node-enter-active {
   opacity: 1;
-  transition: opacity 300ms;  z-index:0;
-
+  transition: opacity 300ms;
+  z-index: 0;
 }
 .my-node-exit {
-  opacity: 1;  z-index:0;
-
+  opacity: 1;
+  z-index: 0;
 }
 .my-node-exit-active {
   opacity: 0;
-  transition: opacity 300ms;  z-index:0;
-
+  transition: opacity 300ms;
+  z-index: 0;
 }
