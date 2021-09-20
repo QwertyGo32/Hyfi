@@ -80,4 +80,5 @@ export const StyledTitle = styled.div`
   letter-spacing: 0px;
   color: #001218;
   opacity: 1;
+  user-select: none;
 `;
