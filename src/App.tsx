@@ -3,6 +3,8 @@ import LoggedRouter from '@layouts/Auth/LoggedRouter';
 import Counter from '@pages/counter';
 import Login from '@pages/login';
 import Main from '@pages/main';
+import Ilo from '@pages/ilo';
+
 import Sidebar from '@components/Sidebar';
 import { Report } from '@pages/Report/styled';
 import HomePage from "@pages/HomePage/HomePage";
@@ -78,7 +80,7 @@ export default function App() {
         path: '/initialofferings',
         link: true,
         icon: () => <Chain />,
-        main: () => <h2>Initial Offerings</h2>,
+        main: () => <Ilo/>,
       },
       {
         name: 'Overview',

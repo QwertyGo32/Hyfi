@@ -80,17 +80,21 @@ const StyledAsideListElement = styled(Link)`
   &:hover,
   &.active {
     color: var(--main-text-colored);
-    background: transparent linear-gradient(62deg,
-    var(--main-default-bg) 0%,
-    var(--main-sidebar-transition-bg) 100%) 0% 0% no-repeat padding-box;
+    background: transparent
+      linear-gradient(
+        62deg,
+        var(--main-default-bg) 0%,
+        var(--main-sidebar-transition-bg) 100%
+      )
+      0% 0% no-repeat padding-box;
 
     span {
       color: var(--main-text-colored);
-
       &:hover,
       &.active {
         color: #4364f7;
-        background: transparent linear-gradient(62deg, #ffffff 0%, #ebeae9 100%) 0% 0% no-repeat padding-box;
+        background: transparent linear-gradient(62deg, #ffffff 0%, #ebeae9 100%)
+          0% 0% no-repeat padding-box;
 
         p {
           color: #4364f7;
@@ -107,7 +111,10 @@ const StyledAsideListElement = styled(Link)`
       & p {
         margin: 0;
       }
+    }
+  }
 `;
+
 const StyledList = styled.ul`
   list-style: none;
   padding-left: 0;
@@ -117,25 +124,25 @@ type AsideProps = {
   routes: IRoute[],
 };
 
-export const AsideComponent = function({ routes }: AsideProps) {
+export const AsideComponent = function ({ routes }: AsideProps) {
   return (
-    <StyledAside id='sidebar'>
+    <StyledAside id="sidebar">
       <StyledAsideMain>
         <StyledList>
           {routes.map(({ link, name, path, exact, ...props }, index) =>
             link ? (
               <li key={index}>
                 <StyledAsideListElement
-                  activeClassName='active'
+                  activeClassName="active"
                   to={path}
                   exact={exact}
-                  className='nav-item'
+                  className="nav-item"
                 >
                   <props.icon />
                   {name}
                 </StyledAsideListElement>
               </li>
-            ) : null,
+            ) : null
           )}
         </StyledList>
         <SidebarContainer />
@@ -148,15 +155,14 @@ type StyledContainerProps = {
   children?: JSX.Element,
 };
 
-const StyledMain = styled.main`;
+const StyledMain = styled.main`
   width: 100%;
   //max-width: 1300px;
   margin: 0;
   @media screen and ${breakpoints.Device.tablet} {
-
   }
 `;
 
-export const StyledContainer = function({ children }: StyledContainerProps) {
-  return <StyledMain id='main-content'>{children}</StyledMain>;
+export const StyledContainer = function ({ children }: StyledContainerProps) {
+  return <StyledMain id="main-content">{children}</StyledMain>;
 };

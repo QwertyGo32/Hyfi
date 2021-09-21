@@ -16,9 +16,10 @@ const StyledReport = styled.div`
   height: 100%;
   background: url(${ReportBgr}) no-repeat center/cover;
   padding: 75px 0 calc(6% + 50px) calc(var(--sidebar-initial-width) + 10%);
-  
+
   @media screen and ${breakpoints.Device.desktop} {
     padding: 75px 20px calc(6% + 50px) calc(var(--sidebar-initial-width) + 20px);
-    display: flex;justify-content: center;
+    display: flex;
+    justify-content: center;
   }
 `;
