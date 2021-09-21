@@ -84,10 +84,10 @@ export const StyledCheckbox = styled.input`
   @media screen and ${breakpoints.Device.desktop} {
     &:checked ~ #main-content > div {
       padding-left: 40px;
-      transition-delay: .2s;
+      transition-delay: 0.2s;
     }
   }
-  
+
   &:checked ~ #sidebar .nav-item {
     -webkit-transform: translateX(-200px);
     transform: translateX(-200px);
@@ -110,14 +110,14 @@ export const StyledOrverlay = styled.div`
   display: none;
   &.active {
     background: #21252954;
-  }
-  @media screen and ${breakpoints.Device.tablet} {
-    display: block;
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 2;
+    @media screen and ${breakpoints.Device.tablet} {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
   }
 `;
