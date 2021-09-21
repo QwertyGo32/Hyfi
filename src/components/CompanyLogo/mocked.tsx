@@ -10,7 +10,7 @@ export const CompanyLogoData = [
   },
   {
     title: 'Hyfi Corporation',
-    status: 'Participating',
+    status: 'Owned',
   },
   {
     title: 'Hyfi Corporation',

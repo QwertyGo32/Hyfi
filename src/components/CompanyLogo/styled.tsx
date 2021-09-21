@@ -72,27 +72,27 @@ export const StyledButton = styled(Button)`
     &:focus {
       background-color: #3a8e611c;
       border-color: #3a8e61;
-      box-shadow: 0 0 0 0.25rem rgb(58 142 97 / 50%);
+      box-shadow: 0 0 0 0.1rem rgb(58 142 97 / 50%);
       &:not(::focus-visible) {
         outline: 0;
       }
     }
   }
   &[data-style='Owned'] {
-    background: #f2faf5 0% 0% no-repeat padding-box;
-    border: 1.5px solid #3a8e61;
+    background: #f2f3fa 0% 0% no-repeat padding-box;
+    border: 1.5px solid var(--main-text-colored);
     border-radius: 3px;
     opacity: 1;
-    color: #3a8e61;
+    color: var(--main-text-colored);
     &:hover {
-      color: #3a8e61;
-      background-color: #3a8e611c;
-      border-color: #3a8e61;
+      color: var(--main-text-colored);
+      background-color: #e7e9f3;
+      border-color: var(--main-default-btn-grd1);
     }
     &:focus {
-      background-color: #3a8e611c;
-      border-color: #3a8e61;
-      box-shadow: 0 0 0 0.25rem rgb(58 142 97 / 50%);
+      background-color: #e7e9f3;
+      border-color: var(--main-default-btn-grd2);
+      box-shadow: 0 0 0 0.1rem var(--main-default-btn-grd1);
       &:not(::focus-visible) {
         outline: 0;
       }
