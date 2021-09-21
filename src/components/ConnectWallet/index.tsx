@@ -1,12 +1,17 @@
-import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import { StyledBody, StyledHeader, StyledModal, StyledTitle } from "./styled";
-import { ReactComponent as Metamask } from "@icons/fox.svg";
-import { ReactComponent as WalletConnect } from "@icons/wallet_connect.svg";
+import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import {
+  StyledTitle,
+  StyledBody,
+  StyledHeader,
+  StyledModal,
+} from '@styles/modal.styled';
+import { ReactComponent as Metamask } from '@icons/fox.svg';
+import { ReactComponent as WalletConnect } from '@icons/wallet_connect.svg';
 
 export default function ConnectWallet({ ...props }) {
   const [show, setShow] = useState(false);
@@ -34,8 +39,8 @@ export default function ConnectWallet({ ...props }) {
         </StyledHeader>
         <StyledBody className="show-grid p-4">
           <Container>
-            <Row>
-              <Col xs={6} className="ps-0 pe-3">
+            <Row className="d-flex justify-content-around">
+              <Col xs={12} md={6} className="ps-xs-0 pe-md-3 mb-3">
                 <Button
                   className="d-grid gap-1 justify-items-center w-100 m-0 py-4"
                   variant="custom"
@@ -46,7 +51,7 @@ export default function ConnectWallet({ ...props }) {
                   Metamask
                 </Button>
               </Col>
-              <Col xs={6} className="ps-3 pe-0">
+              <Col xs={12} md={6} className="ps-md-3 pe-xs-0 ">
                 <Button
                   className="d-grid gap-1 justify-items-center w-100 m-0 py-4"
                   variant="custom"

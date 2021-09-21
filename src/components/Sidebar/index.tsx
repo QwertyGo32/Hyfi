@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { AsideComponent, StyledContainer } from './styled';
 import Navbar from '@components/Navbar';
 import { IRoute } from '@interfaces/IRoutes';
+import { StyledFooter } from '@components/Footer/styled';
 
 type SidebarProps = {
   routes: IRoute[],
@@ -15,6 +16,7 @@ export default function Sidebar({ routes, children }: SidebarProps) {
       <Navbar route={routes[0]} />
       <AsideComponent routes={routes} />
       <StyledContainer>{children}</StyledContainer>
+      <StyledFooter/>
     </>
   );
 }

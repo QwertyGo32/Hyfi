@@ -10,6 +10,7 @@ import {
 } from '@redux/counter';
 
 import { StyledSection } from './styled';
+import GradientBtn from '@components/Btn';
 
 export default function Counter() {
   const dispatch = useAppDispatch();
@@ -17,6 +18,7 @@ export default function Counter() {
   const [incrementAmount, setIncrementAmount] = useState<number>(0);
 
   return (
+    <>
     <StyledSection>
       <h1>Welcome to the greatest app in the world!</h1>
       <h2>
@@ -54,5 +56,6 @@ export default function Counter() {
         <button onClick={() => dispatch(increment())}>Increment by 1</button>
       </div>
     </StyledSection>
+    </>
   );
 }

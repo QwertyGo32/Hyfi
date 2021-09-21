@@ -23,7 +23,7 @@ const sidebarAnim = keyframes`
     opacity: 0;
     transform: translateX(--var( --sidebar-initial-width));
     visibility: hidden;
-    
+    overflow: hidden;
   }
 `;
 export const StyledHeader = styled.header`
@@ -35,7 +35,7 @@ export const StyledHeader = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 3;
+  z-index: 10;
   background: var(--main-default-bg) 0% 0% no-repeat padding-box;
   border: 1px solid var(--main-default-wrapper-border);
   max-height: var(--main-top-padding);
@@ -76,8 +76,18 @@ export const StyledCheckbox = styled.input`
     width: 0;
     min-width: 0;
     animation: ${sidebarAnim} 500ms;
+    & .sidebar__container {
+      transform: translateX(-300px);
+      padding: 0 33px;
+    }
   }
-
+  @media screen and ${breakpoints.Device.desktop} {
+    &:checked ~ #main-content > div {
+      padding-left: 40px;
+      transition-delay: .2s;
+    }
+  }
+  
   &:checked ~ #sidebar .nav-item {
     -webkit-transform: translateX(-200px);
     transform: translateX(-200px);
