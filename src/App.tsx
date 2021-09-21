@@ -6,7 +6,7 @@ import Main from '@pages/main';
 import Ilo from '@pages/ilo';
 
 import Sidebar from '@components/Sidebar';
-import { Report } from '@pages/Report/styled';
+import Report from "@pages/Report"
 import HomePage from "@pages/HomePage/HomePage";
 import { IRoute } from '@interfaces/IRoutes';
 import 'bootstrap/dist/css/bootstrap.min.css';

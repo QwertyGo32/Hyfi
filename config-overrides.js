@@ -14,6 +14,7 @@ module.exports = function override(config) {
       '@redux': path.resolve(__dirname, 'src/redux'),
       '@styles': path.resolve(__dirname, 'src/styles'),
       '@icons': path.resolve(__dirname, 'src/icons'),
+      '@img': path.resolve(__dirname, 'src/img'),
     },
   };
   return config;

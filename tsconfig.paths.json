@@ -12,6 +12,7 @@
         "@redux/*": ["./src/redux/*"],
         "@styles/*":["./src/styles/*"],
         "@icons/*":["./src/icons/*"],
+        "@img/*":["./src/img/*"],
       }
     }
   }

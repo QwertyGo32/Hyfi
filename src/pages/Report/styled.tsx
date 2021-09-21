@@ -1,17 +1,62 @@
 import styled from 'styled-components';
-import { StyledFormContainer } from '@components/ReportForm/styled';
-import ReportBgr from '../../img/report_bgr.jpg';
+import ReportBgr from '@img/report_bgr.jpg';
 import breakpoints from '@styles/constants.styled';
+import Form from 'react-bootstrap/Form';
 
-export const Report = () => {
-  return (
-    <StyledReport>
-      <StyledFormContainer />
-    </StyledReport>
-  );
-};
+export const StyledForm = styled(Form)`
+  width: 100%;
+  max-width: 709px;
+  max-height: 839px;
+  padding: 65px 179px 65px 75px;
+  background: #ffffff 0 0 no-repeat padding-box;
+  box-shadow: 0 3px 5px #acb7c270;
+  border-radius: 10px;
 
-const StyledReport = styled.div`
+  @media screen and ${breakpoints.Device.desktop} {
+    padding: 65px 75px;
+  }
+`;
+
+export const StyledTitle = styled.h1`
+  font: normal normal bold 40px/50px Montserrat;
+  color: #001218;
+  margin-bottom: 30px;
+`;
+
+export const StyledInputText = styled.p`
+  font: normal normal medium 15px/70px Montserrat;
+  color: #224aff;
+  margin: 0;
+`;
+
+export const StyledInputLabel = styled.label`
+  height: 50px;
+  width: 184px;
+  padding: 16px 27px;
+  border: 2px solid #224aff;
+  border-radius: 5px;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  margin-bottom: 30px;
+`;
+
+export const StyledFormLabel = styled(Form.Label)`
+  font: normal normal medium 15px/19px Montserrat;
+  position: relative;
+
+  &:after {
+    content: '*';
+    position: absolute;
+    top: -2px;
+    right: -7px;
+    color: #f5044e;
+  }
+`;
+
+export const StyledReport = styled.div`
   width: 100%;
   height: 100%;
   background: url(${ReportBgr}) no-repeat center/cover;
