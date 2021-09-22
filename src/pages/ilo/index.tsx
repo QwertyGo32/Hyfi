@@ -6,11 +6,13 @@ import { DataContainerData } from '@components/DataContainer/mocked';
 
 import AccountDetails from '@/components/AccountDetails';
 import ConnectWallet from '@/components/ConnectWallet';
-
+import InputBlock from '@/components/Input';
 export default function Ilo() {
   return (
     <div>
       <p>TEST</p>
+      <InputBlock placeholder="Test 1" badge="TEXT" />
+      <InputBlock placeholder="Test 2" gradient />
       <AccountDetails />
       <ConnectWallet />
       {CompanyLogoData.map(({ title, img, status }) => {
