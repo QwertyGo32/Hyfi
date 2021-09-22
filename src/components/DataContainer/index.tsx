@@ -6,6 +6,7 @@ import {
 } from './styled';
 import Link from '@components/Link';
 import { ReactComponent as ShareLink } from '@icons/link.svg';
+import { ReactComponent as Badge } from '@icons/question-mark.svg';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import Button from 'react-bootstrap/Button';
@@ -13,56 +14,55 @@ import Image from 'react-bootstrap/Image';
 
 export interface IDataContainerProps {
   inTitle: JSX.Element;
+  listData: IDataContainerListData[];
+  customTitleBadge?: JSX.Element;
+  linksTo?: string;
 }
 
-const data = [
-  { title: 'Soft Cap', value: 20000000 },
-  { title: 'Total Commited', value: 2000000 },
-  { title: 'Participants', value: 200000 },
-];
+interface IDataContainerListData {
+  title: string | JSX.Element;
+  value: number | string | JSX.Element;
+  badge?: string | number;
+}
 
-export default function DataContainer({ inTitle }: IDataContainerProps) {
+export default function DataContainer({
+  inTitle,
+  listData,
+  customTitleBadge,
+  linksTo,
+}: IDataContainerProps) {
   return (
     <StyledSection>
-      {/* <OverlayTrigger
-        placement="bottom"
-        overlay={<Tooltip id="button-tooltip-2">Check out this avatar</Tooltip>}
-      >
-        {({ ref, ...triggerHandler }) => (
-          <Image
-            {...triggerHandler}
-            ref={ref}
-            roundedCircle
-            src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-social-logo.png"
-          />
-        )}
-      </OverlayTrigger>
-      <span className="ms-1">Hover to see</span> */}
-
       <StyledListHeader>
         {inTitle}
-        <Link to="#test">
-          <ShareLink />
-        </Link>
+        {typeof customTitleBadge !== 'undefined' ? (
+          customTitleBadge
+        ) : (
+          <Link to={linksTo ?? '#'}>
+            <ShareLink />
+          </Link>
+        )}
       </StyledListHeader>
       <StyledList>
-        {data.map(({ title, value }) => {
+        {listData.map(({ title, value, badge }) => {
           return (
             <StyledListElemet>
-              <OverlayTrigger
-                placement="right"
-                overlay={<Tooltip id="button-tooltip-2">{title}</Tooltip>}
-              >
-                {({ ref, ...triggerHandler }) => (
-                  <div ref={ref} {...triggerHandler} className="title">
-                    {title ?? ''}
-                  </div>
-                )}
-              </OverlayTrigger>
-
-              <span className="value">
-                ${value?.toLocaleString('en-GB') ?? ''}
-              </span>
+              {typeof badge !== 'undefined' ? (
+                <OverlayTrigger
+                  placement="right"
+                  overlay={<Tooltip id="button-tooltip-2">{title}</Tooltip>}
+                >
+                  {({ ref, ...triggerHandler }) => (
+                    <span ref={ref} {...triggerHandler} className="title badge">
+                      {title ?? ''}
+                      <Badge />
+                    </span>
+                  )}
+                </OverlayTrigger>
+              ) : (
+                <span className="title">{title ?? ''}</span>
+              )}
+              <span className="value">{value}</span>
             </StyledListElemet>
           );
         })}

@@ -2,6 +2,7 @@ import React from 'react';
 import CompanyLogo from '@components/CompanyLogo';
 import DataContainer from '@components/DataContainer';
 import { CompanyLogoData } from '@components/CompanyLogo/mocked';
+import { DataContainerData } from '@components/DataContainer/mocked';
 
 export default function Ilo() {
   return (
@@ -18,6 +19,7 @@ export default function Ilo() {
             status={CompanyLogoData[0].status}
           />
         }
+        listData={DataContainerData}
       />
     </div>
   );

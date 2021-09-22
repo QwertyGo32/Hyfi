@@ -7,7 +7,7 @@ export const StyledSection = styled.section``;
 
 export const StyledListHeader = styled.h3`
   display: grid;
-  grid-template-columns: 1fr 12px;
+  grid-template-columns: 1fr max-content;
   gap: 10px;
   border-bottom: 1px solid #7070701c;
   padding: 13.5px 0;
@@ -28,6 +28,10 @@ export const StyledListElemet = styled.li`
     margin: 0;
   }
   .title {
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: 4.5px;
     font-family: 'Montserrat', sans-serif;
     font-size: 12px;
     line-height: 15px;
@@ -35,6 +39,9 @@ export const StyledListElemet = styled.li`
     letter-spacing: 0px;
     color: var(--main-text-default);
     opacity: 1;
+    &.badge {
+      cursor: pointer;
+    }
   }
   .value {
     align-self: flex-end;
