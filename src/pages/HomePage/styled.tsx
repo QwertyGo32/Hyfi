@@ -1,19 +1,6 @@
 import styled from 'styled-components';
-import HomeBgr from '@img/infographic9.jpg';
 import breakpoints from '@styles/constants.styled';
 
-export const Home = styled.div`
-  background: url(${HomeBgr}) no-repeat center/cover;
-  width: 100%;
-  height: 100%;
-  padding-left: calc(var(--sidebar-initial-width) + 120px);
-  padding-top: 212px;
-
-  @media screen and ${breakpoints.Device.desktop} {
-    padding-left: calc(var(--sidebar-initial-width) + 40px);
-    padding-right: 40px;
-  }
-`;
 
 export const HomeWrapper = styled.div`
   width: 100%;

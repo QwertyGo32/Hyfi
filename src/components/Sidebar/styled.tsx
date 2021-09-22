@@ -1,8 +1,9 @@
-import styled from 'styled-components';
+import styled,{css} from 'styled-components';
 import breakpoints from '@styles/constants.styled';
 import { IRoute } from '@interfaces/IRoutes';
 import Link from '@components/Link';
 import { SidebarContainer } from '@components/Sidebar/components/SidebarContainer/SidebarContainer';
+
 
 const StyledNavbarHeader = styled.header`
   display: flex;
@@ -44,6 +45,12 @@ const StyledAsideMain = styled.main`
   flex-direction: column;
   justify-content: space-between;
   border: none;
+  background: url() no-repeat center/cover;
+  
+  @media screen and ${breakpoints.Device.desktop} {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 `;
 
 const StyledAsideListElement = styled(Link)`
@@ -151,18 +158,27 @@ export const AsideComponent = function ({ routes }: AsideProps) {
   );
 };
 
-type StyledContainerProps = {
-  children?: JSX.Element,
+interface StyledContainerProps  {
+  bgrImg?:string;
+  children?: JSX.Element;
 };
 
 const StyledMain = styled.main`
   width: 100%;
   //max-width: 1300px;
-  margin: 0;
-  @media screen and ${breakpoints.Device.tablet} {
-  }
+  padding-left: calc(var(--sidebar-initial-width) + 8.5%);
+  padding-right: 40px;
+  padding-bottom: 6%;
+  transition-duration: .5s;
+  display: flex;
+  align-items: center;
+  ${(props:StyledContainerProps)=>{
+    return css`
+    background: url(${props.bgrImg ?? ""}) no-repeat center/cover;
+    `
+  }}
 `;
 
-export const StyledContainer = function ({ children }: StyledContainerProps) {
-  return <StyledMain id="main-content">{children}</StyledMain>;
+export const StyledContainer = function ({ children,...props }: StyledContainerProps) {
+  return <StyledMain id="main-content" {...props}>{children}</StyledMain>;
 };

@@ -1,9 +1,8 @@
-import { Home, Title, Text, HomeWrapper } from '@pages/HomePage/styled';
+import { Title, Text, HomeWrapper } from '@pages/HomePage/styled';
 import Btn, { gradientBtnTypes } from '@components/Btn';
 
 const HomePage = () => {
   return (
-    <Home className='home-page'>
       <HomeWrapper>
         <Title>
           Lorem ipsum is placeholder text commonly used in the graphic
@@ -15,7 +14,6 @@ const HomePage = () => {
         <Btn className='home-page_btn' theme={gradientBtnTypes.gradient} title='Connect Wallet' />
         <Btn theme={gradientBtnTypes.outline} title='Trade Now' />
       </HomeWrapper>
-    </Home>
   );
 };
 export default HomePage;
