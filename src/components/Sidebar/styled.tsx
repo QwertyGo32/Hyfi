@@ -45,7 +45,6 @@ const StyledAsideMain = styled.main`
   flex-direction: column;
   justify-content: space-between;
   border: none;
-  background: url() no-repeat center/cover;
   
   @media screen and ${breakpoints.Device.desktop} {
     padding-left: 40px;
