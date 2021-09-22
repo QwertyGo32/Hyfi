@@ -34,7 +34,6 @@ export const StyledInputGroup = styled(InputGroup)`
       background: transparent linear-gradient(90deg, #ffffff00 0%, #f1f3f5 100%)
         0% 0% no-repeat padding-box;
       border-radius: 5px;
-      z-index: 1;
     }
   }
   &[data-gradient='true'] {
@@ -51,12 +50,12 @@ export const StyledInputGroup = styled(InputGroup)`
       width: 100%;
       height: 100%;
       box-shadow: inset 0px 3px 6px var(--main-block-shadow);
-      z-index: 1;
       border-radius: 5px;
+      z-index: 1;
     }
     input {
+      box-shadow: none;
       background: rgb(241 243 245 / 60%) 0% 0% no-repeat padding-box;
-      box-shadow: inset 0px 3px 6px #00000029;
       font-family: 'Montserrat', sans-serif;
       font-size: 12px;
       line-height: 15px;
@@ -73,7 +72,6 @@ export const StyledInputGroup = styled(InputGroup)`
       }
       opacity: 1;
       border-right: none;
-      box-shadow: none;
     }
   }
 
