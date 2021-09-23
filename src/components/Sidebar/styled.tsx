@@ -87,7 +87,12 @@ const StyledAsideListElement = styled(Link)`
         var(--main-sidebar-transition-bg) 100%
       )
       0% 0% no-repeat padding-box;
-
+    svg {
+      * {
+        transition: 200ms all ease-in-out;
+        fill: var(--main-text-colored);
+      }
+    }
     span {
       color: var(--main-text-colored);
       &:hover,
@@ -98,13 +103,6 @@ const StyledAsideListElement = styled(Link)`
 
         p {
           color: #4364f7;
-        }
-
-        svg {
-          * {
-            transition: 200ms all ease-in-out;
-            fill: var(--main-text-colored);
-          }
         }
       }
 
