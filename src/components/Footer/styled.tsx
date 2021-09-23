@@ -1,19 +1,20 @@
 import styled from 'styled-components';
+import { NavLink as RouterLink } from 'react-router-dom';
+import { LinksEnum } from '@/interfaces/LinksEnum';
 
 export const StyledFooter = () => {
   return (
     <StyledFooterWrapper>
-      <StyledReportLink>
-        Report an issue
-      </StyledReportLink>
+      <StyledReportLink to={LinksEnum.REPORT}>Report an issue</StyledReportLink>
     </StyledFooterWrapper>
-  )
-}
+  );
+};
 
-const StyledReportLink = styled.p`
+const StyledReportLink = styled(RouterLink)`
   font: normal normal medium 15px/70px Montserrat;
   color: #001218;
   margin: 0;
+  text-decoration: none;
   cursor: pointer;
 `;
 
@@ -26,6 +27,6 @@ const StyledFooterWrapper = styled.footer`
   justify-content: flex-end;
   align-items: center;
   height: 8.1%;
-  background: #FFFFFF 0 0 no-repeat padding-box;
-  border: 1px solid #C9C9C9;
+  background: #ffffff 0 0 no-repeat padding-box;
+  border: 1px solid #c9c9c9;
 `;
