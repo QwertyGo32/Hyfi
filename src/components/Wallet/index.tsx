@@ -9,6 +9,8 @@ import {
   StyledMenu,
 } from './styled';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { useAppSelector } from '@/utils/hooks';
+import { authWalletAddress } from '@/redux/auth';
 
 interface IForwardedRef {
   children?: React.ReactNode;
@@ -58,6 +60,7 @@ export default function Wallet({
   changeOpenState=()=>{},
 }: IWalletProps) {
   const [active, setActive] = useState('');
+  const walletAddress = useAppSelector(authWalletAddress);
 
   const onSelectFunction = function (eventKey: unknown) {
     const newKey=eventKey as string;
@@ -76,7 +79,7 @@ export default function Wallet({
         as={CustomToggle}
         id="dropdown-custom-components"
       >
-        0xaEe767422937b9a662eAA2178710D3f10c5B01cD
+        {walletAddress}
       </Dropdown.Toggle>
       <Dropdown.Menu renderOnMount align="end" as={StyledMenu}>
         {walletTabs.map(({ children, key, href, text, disabled, icon,toDo }) => {

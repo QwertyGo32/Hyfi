@@ -7,3 +7,7 @@ export const selectConnectWalletModalState = createSelector(
   selectModal,
   (state) => state.connectWallet
 );
+export const selectChangeWalletModalState = createSelector(
+  selectModal,
+  (state) => state.changeWallet
+);

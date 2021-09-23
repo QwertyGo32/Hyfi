@@ -17,8 +17,16 @@ import Form from 'react-bootstrap/Form';
 import { ReactComponent as Copy } from '@icons/copy.svg';
 import { ReactComponent as Link } from '@icons/link.svg';
 
+import { selectChangeWalletModalState, openChangeWallet } from '@redux/modal';
+import { authWalletAddress } from '@redux/auth';
+import { WalletType } from '@/interfaces/IUser';
+import { useAppDispatch, useAppSelector } from '@utils/hooks';
+
 export default function AccountDetails({ ...props }) {
-  const [show, setShow] = useState(false);
+  const show = useAppSelector(selectChangeWalletModalState);
+  const walletAdress = useAppSelector(authWalletAddress);
+  const dispatch = useAppDispatch();
+
   const [walletValue, setWalletValue] = useState('');
   const [isCopied, setIsCopied] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -38,8 +46,8 @@ export default function AccountDetails({ ...props }) {
       console.log('Oops, unable to copy');
     }
   };
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => dispatch(openChangeWallet(false));
+  // const handleShow = () => setShow(true);
   useEffect(() => {
     if (isEditing) {
       inputRef?.current?.focus();
@@ -47,14 +55,6 @@ export default function AccountDetails({ ...props }) {
   }, [isEditing]);
   return (
     <>
-      <Button
-        theme={gradientBtnTypes.gradient}
-        variant="primary"
-        onClick={handleShow}
-      >
-        Launch your wallet
-      </Button>
-
       <StyledModal
         {...props}
         size="md"
@@ -103,7 +103,7 @@ export default function AccountDetails({ ...props }) {
                     placeholder="Your wallet"
                     aria-label="Your wallet"
                     aria-describedby="basic-addon1"
-                    value={walletValue}
+                    value={walletAdress}
                   />
                 </StyledInputGroup>
               </Col>

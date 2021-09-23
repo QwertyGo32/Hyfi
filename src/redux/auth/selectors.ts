@@ -9,3 +9,7 @@ export const userLoggedStatus = createSelector(
   selectAuth,
   (state) => state.data.status
 );
+export const authWalletAddress = createSelector(
+  selectAuth,
+  (state) => state.data.accountName
+);

@@ -17,8 +17,9 @@ import { useAppDispatch, useAppSelector } from '@utils/hooks';
 import { userLoggedStatus } from '@redux/auth';
 import { UserStatusType } from '@/interfaces/IUser';
 import Btn, { gradientBtnTypes } from '@components/Btn';
-import { openConnectWallet } from '@redux/modal';
+import { openChangeWallet, openConnectWallet } from '@redux/modal';
 import { logoutUserFromWebSite } from '@redux/auth';
+import AccountDetails from '@components/AccountDetails';
 
 type NavbarProps = {
   route: IRoute,
@@ -31,12 +32,15 @@ export default function Navbar({ route }: NavbarProps) {
   const dataArray: IWalletDropdownBtn[] = [
     {
       text: 'Wallet',
-      href: '#/action-1',
+      key: '#/action-1',
       icon: <WalletIcon />,
+      toDo: () => {
+        dispatch(openChangeWallet(true));
+      },
     },
     {
       text: 'Disconnect',
-      href: '#/action-2',
+      key: '#/action-2',
       icon: <LogOut />,
       toDo: () => {
         dispatch(logoutUserFromWebSite());
@@ -85,6 +89,7 @@ export default function Navbar({ route }: NavbarProps) {
         }}
         className={isShown ? 'active' : ''}
       />
+      <AccountDetails />
     </>
   );
 }
