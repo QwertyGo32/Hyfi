@@ -23,7 +23,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-/src/icons
+
 .idea*
 id_rsa_hyfi
 id_rsa_hyfi.pub

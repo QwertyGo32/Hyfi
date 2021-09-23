@@ -75,9 +75,8 @@ export default function App() {
         name: 'Pools',
         path: '/pools',
         link: true,
-        bgrImg: reportBgrImg,
         icon: () => <Pools />,
-        main: () => <Report/>,
+        main: () => <h2>Pools</h2>,
       },
       {
         name: 'Initial Offerings',

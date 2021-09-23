@@ -13,7 +13,7 @@ import {
 } from './styled';
 import { StyledTitle, StyledHeader, StyledModal } from '@styles/modal.styled';
 import Button, { gradientBtnTypes } from '@components/Btn';
-import FormControl from 'react-bootstrap/FormControl';
+import Form from 'react-bootstrap/Form';
 import { ReactComponent as Copy } from '@icons/copy.svg';
 import { ReactComponent as Link } from '@icons/link.svg';
 
@@ -22,7 +22,6 @@ export default function AccountDetails({ ...props }) {
   const [walletValue, setWalletValue] = useState('');
   const [isCopied, setIsCopied] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  const setTimeoutRef = useRef<typeof setTimeout>(null);
   const [isEditing, setEditing] = useState(false);
   const toggleEditing = () => {
     setEditing(!isEditing);
@@ -35,7 +34,6 @@ export default function AccountDetails({ ...props }) {
       const msg = successful ? 'successful' : 'unsuccessful';
       console.log('Copying text command was ' + msg);
       setIsCopied(true);
-      // setTimeoutRef.current = setTimeout(() => {}, 2000);
     } catch (err) {
       console.log('Oops, unable to copy');
     }
@@ -97,7 +95,7 @@ export default function AccountDetails({ ...props }) {
                   }}
                   className="mb-0 mb-md-3"
                 >
-                  <FormControl
+                  <Form.Control
                     ref={inputRef}
                     onChange={(event) => {
                       setWalletValue(event.target.value);

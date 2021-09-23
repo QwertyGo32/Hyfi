@@ -24,7 +24,7 @@ const StyledAside = styled.aside`
   width: var(--sidebar-initial-width);
   background: #ffffff 0 0 no-repeat padding-box;
   height: calc(100vh - var(--main-top-padding));
-  z-index: 2;
+  z-index: 9;
   visibility: visible;
   opacity: 1;
   transform: translateX(0);

@@ -85,7 +85,7 @@ export const StyledCheckbox = styled.input`
   @media screen and ${breakpoints.Device.desktop} {
     &:checked ~ #main-content > div {
       padding-left: 40px;
-      transition-delay: .2s;
+      transition-delay: 0.2s;
     }
   }
   
