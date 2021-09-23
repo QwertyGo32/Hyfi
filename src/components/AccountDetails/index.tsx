@@ -27,7 +27,7 @@ export default function AccountDetails({ ...props }) {
   const walletAdress = useAppSelector(authWalletAddress);
   const dispatch = useAppDispatch();
 
-  const [walletValue, setWalletValue] = useState('');
+  const [walletValue, setWalletValue] = useState(walletAdress);
   const [isCopied, setIsCopied] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const [isEditing, setEditing] = useState(false);
@@ -103,7 +103,7 @@ export default function AccountDetails({ ...props }) {
                     placeholder="Your wallet"
                     aria-label="Your wallet"
                     aria-describedby="basic-addon1"
-                    value={walletAdress}
+                    value={walletValue}
                   />
                 </StyledInputGroup>
               </Col>
