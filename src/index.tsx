@@ -6,21 +6,16 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from '@redux/index';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-  useLocation,
-  useParams,
-} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import AuthLayoutBlock from '@layouts/Auth/AuthLayout';
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Router>
-          <App />
+          <AuthLayoutBlock>
+            <App />
+          </AuthLayoutBlock>
         </Router>
       </PersistGate>
     </Provider>

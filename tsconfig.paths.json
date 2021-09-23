@@ -13,6 +13,7 @@
         "@styles/*":["./src/styles/*"],
         "@icons/*":["./src/icons/*"],
         "@img/*":["./src/img/*"],
+        "@mock/*":["./src/mock/*"],
       }
     }
   }

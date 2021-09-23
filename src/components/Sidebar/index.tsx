@@ -1,5 +1,4 @@
-import React, { useMemo } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { useMemo } from 'react';
 import { AsideComponent, StyledContainer } from './styled';
 import Navbar from '@components/Navbar';
 import { IRoute } from '@interfaces/IRoutes';

@@ -6,12 +6,17 @@ import {
   StyledHeader,
   StyledSidebarBtn,
   StyledOrverlay,
+  StyledBtnContainer,
 } from './styled';
 import { Link } from 'react-router-dom';
 import Wallet, { IWalletDropdownBtn } from '@components/Wallet';
 import { ReactComponent as WalletIcon } from '@icons/wallet.svg';
 import { ReactComponent as LogOut } from '@icons/log-out.svg';
 import { useState } from 'react';
+import { useAppSelector } from '@utils/hooks';
+import { userLoggedStatus } from '@redux/auth';
+import { UserStatusType } from '@/interfaces/IUser';
+import Btn, { gradientBtnTypes } from '@components/Btn';
 
 type NavbarProps = {
   route: IRoute,
@@ -30,6 +35,7 @@ const dataArray: IWalletDropdownBtn[] = [
 ];
 
 export default function Navbar({ route }: NavbarProps) {
+  const status = useAppSelector(userLoggedStatus);
   const [isShown, setIsShown] = useState(false);
   return (
     <>
@@ -43,11 +49,29 @@ export default function Navbar({ route }: NavbarProps) {
         <label htmlFor="checkbox" className="check-box">
           <StyledSidebarBtn id="sidebar-logo" />
         </label>
-        <Wallet
-          open={isShown}
-          changeOpenState={setIsShown}
-          walletTabs={dataArray}
-        />
+        {
+          {
+            [UserStatusType.AUTHED]: (
+              <Wallet
+                open={isShown}
+                changeOpenState={setIsShown}
+                walletTabs={dataArray}
+              />
+            ),
+            [UserStatusType.VISITOR]: (
+              <StyledBtnContainer>
+                <Btn
+                  className="home-page_btn"
+                  theme={gradientBtnTypes.gradient}
+                  title="Connect Wallet"
+                  onClick={() => {
+                    console.log('CLICK');
+                  }}
+                />
+              </StyledBtnContainer>
+            ),
+          }[status]
+        }
       </StyledHeader>
       <StyledOrverlay
         onClick={() => {

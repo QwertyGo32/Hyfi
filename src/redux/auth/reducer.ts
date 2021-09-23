@@ -1,10 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { loginUserToWebSite, logoutUserFromWebSite } from './action';
 import { PURGE } from 'redux-persist';
+import { IUser } from '@interfaces/IUser';
 
-export interface AuthStateData {
-  isAuth: boolean;
-}
+export interface AuthStateData extends IUser {}
 
 export interface AuthState {
   data: AuthStateData;
@@ -13,7 +12,7 @@ export interface AuthState {
 }
 
 const initialState: AuthState = {
-  data: { isAuth: false },
+  data: { accountName: '', status: 'visitor' },
   pending: false,
   error: false,
 };
@@ -30,12 +29,12 @@ export const counterSlice = createSlice({
       })
       .addCase(loginUserToWebSite.fulfilled, (state, { payload }) => {
         state.pending = false;
-        state.data.isAuth = payload.logged;
+        state.data.accountName = payload.accountName;
+        state.data.status = payload.status;
       })
       .addCase(loginUserToWebSite.rejected, (state) => {
         state.pending = false;
         state.error = true;
-        state.data.isAuth = false;
       });
 
     builder
@@ -44,7 +43,7 @@ export const counterSlice = createSlice({
       })
       .addCase(logoutUserFromWebSite.fulfilled, (state, { payload }) => {
         state.pending = false;
-        state.data.isAuth = payload.logged;
+        state.data = initialState.data;
       })
       .addCase(logoutUserFromWebSite.rejected, (state) => {
         return initialState;

@@ -18,35 +18,31 @@ import { ReactComponent as Overview } from '@icons/overview.svg';
 import { ReactComponent as Swap } from '@icons/vice-verse_arrows.svg';
 import { ReactComponent as Tractor } from '@icons/tractor.svg';
 import homeBgrImg from '@img/infographic9.jpg';
-import reportBgrImg from '@img/report_bgr.jpg';
-import React from "react";
+
 import { LinksEnum } from './interfaces/LinksEnum';
+import { userLoggedStatus} from '@redux/auth';
+import { useAppSelector } from '@utils/hooks';
+import { UserStatusType } from './interfaces/IUser';
+  
 export default function App() {
-  const [type,setType]=React.useState<"public"|"private">("private")
+  const type = useAppSelector(userLoggedStatus)
   const location = useLocation();
   const routes = {
-    public: [
+    [UserStatusType.VISITOR]: [
       {
         name: 'Home',
         path: LinksEnum.MAIN,
         exact: true,
         link: true,
+        bgrImg: homeBgrImg,
         icon: () => <Home />,
-        main: () => <Main/>,
+        main:()=><HomePage />,
       },
-      // {
-      //   name: 'Counter',
-      //   path: '/counter',
-      //   link: true,
-      //   icon: () => <Home />,
-      //   main: () => <LoggedRouter component={Counter} />,
-      // },
       {
-        name: 'Login',
-        path: '/login',
-        link: true,
-        icon: () => <Overview />,
-        main: () => <Login />,
+        name: 'Report',
+        path: LinksEnum.REPORT,
+        exact: true,
+        main: () => <Report />,
       },
       {
         name: 'Not Match',
@@ -56,7 +52,7 @@ export default function App() {
         main: () => <h2>Not Match</h2>,
       },
     ] as IRoute[],
-    private: [
+    [UserStatusType.AUTHED]: [
       {
         name: 'Home',
         path: LinksEnum.MAIN,

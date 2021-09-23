@@ -5,7 +5,7 @@ export const selectAuth = (state: RootState) => state.auth;
 
 export const authSelectorState = createSelector(selectAuth, (state) => state);
 
-export const isLoggedState = createSelector(
+export const userLoggedStatus = createSelector(
   selectAuth,
-  (state) => state.data.isAuth
+  (state) => state.data.status
 );

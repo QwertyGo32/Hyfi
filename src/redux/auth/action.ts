@@ -1,3 +1,5 @@
+import { IUser, UserStatusType } from '@/interfaces/IUser';
+import {authedUser} from "@mock/user"
 import { createAsyncThunk } from '@reduxjs/toolkit';
 // import { persistor } from '@redux/index';
 
@@ -5,17 +7,14 @@ function timeout(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-interface Returned{
-  logged:boolean;
+interface Returned extends IUser {
 }
 
 export const loginUserToWebSite = createAsyncThunk(
   'auth/loginUserToWebSite',
   async () => {
     await timeout(3000);
-    return {
-      logged: true,
-    } as Returned;
+    return authedUser as Returned;
   }
 );
 
@@ -24,7 +23,8 @@ export const logoutUserFromWebSite = createAsyncThunk(
   async () => {
     await timeout(3000);
     return {
-      logged: false,
+      accountName:"",
+      status:UserStatusType.VISITOR,
     } as Returned;
   }
 );

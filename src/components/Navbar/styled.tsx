@@ -76,7 +76,7 @@ export const StyledCheckbox = styled.input`
     //width: 0;
     //min-width: 0;
     //animation: ${sidebarAnim} 3s;
-    transform: translateX(calc(var( --sidebar-initial-width) * -1));
+    transform: translateX(calc(var(--sidebar-initial-width) * -1));
     //& .sidebar__container {
     //  transform: translateX(-300px);
     //  padding: 0 33px;
@@ -88,19 +88,19 @@ export const StyledCheckbox = styled.input`
       transition-delay: 0.2s;
     }
   }
-  
+
   &:checked ~ #main-content {
     padding-left: 8.5%;
-    transition-delay: .2s;
+    transition-delay: 0.2s;
   }
-  
+
   @media screen and ${breakpoints.Device.desktop} {
     &:checked ~ #main-content {
       padding-left: 40px;
-      transition-delay: .2s;
+      transition-delay: 0.2s;
     }
   }
-  
+
   &:checked ~ #sidebar .nav-item {
     -webkit-transform: translateX(-200px);
     transform: translateX(-200px);
@@ -133,4 +133,9 @@ export const StyledOrverlay = styled.div`
     left: 0;
     z-index: 2;
   }
+`;
+
+export const StyledBtnContainer = styled.div`
+  justify-self: flex-end;
+  grid-area: dropdown;
 `;

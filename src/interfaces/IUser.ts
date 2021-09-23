@@ -1,4 +1,9 @@
+export enum UserStatusType{
+  AUTHED="auth",
+  VISITOR="visitor"
+}
+
 export interface IUser {
-  username: string;
-  password: string;
+  accountName: string;
+  status:`${UserStatusType}`
 }

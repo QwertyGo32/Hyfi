@@ -15,6 +15,7 @@ module.exports = function override(config) {
       '@styles': path.resolve(__dirname, 'src/styles'),
       '@icons': path.resolve(__dirname, 'src/icons'),
       '@img': path.resolve(__dirname, 'src/img'),
+      '@mock': path.resolve(__dirname, 'src/mock'),
     },
   };
   return config;
