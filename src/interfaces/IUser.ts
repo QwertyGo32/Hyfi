@@ -3,7 +3,13 @@ export enum UserStatusType{
   VISITOR="visitor"
 }
 
+export enum WalletType{
+  METAMASK="metamask",
+  WALLETCONNECT="walletconnect"
+}
+
 export interface IUser {
   accountName: string;
   status:`${UserStatusType}`
+  walletType:`${WalletType}` | "",
 }

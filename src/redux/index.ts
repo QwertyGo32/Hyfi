@@ -17,6 +17,7 @@ import {
 import storage from 'redux-persist/lib/storage'
 import {counterReducer} from "./counter";
 import {authReducer} from "./auth"
+import {modalSlice} from "./modal";
 const persistConfig = {
   key: "root",
   storage,
@@ -25,6 +26,7 @@ const persistConfig = {
 const reducers = combineReducers({
   counter: counterReducer,
   auth:authReducer,
+  modal:modalSlice,
   // This is where we add reducers.
   // Since we don't have any yet, leave this empty
 });

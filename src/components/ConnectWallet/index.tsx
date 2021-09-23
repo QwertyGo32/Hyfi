@@ -12,60 +12,69 @@ import {
 } from '@styles/modal.styled';
 import { ReactComponent as Metamask } from '@icons/fox.svg';
 import { ReactComponent as WalletConnect } from '@icons/wallet_connect.svg';
+import { useAppDispatch, useAppSelector } from '@utils/hooks';
+import {setWalletType,loginUserToWebSite} from "@redux/auth"
+import { selectConnectWalletModalState, openConnectWallet } from '@redux/modal';
+import { WalletType } from '@/interfaces/IUser';
+
 
 export default function ConnectWallet({ ...props }) {
-  const [show, setShow] = useState(false);
+  const show = useAppSelector(selectConnectWalletModalState);
+  const dispatch = useAppDispatch();
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => dispatch(openConnectWallet(false));
+
+  const selectWalletType = function (event: React.MouseEvent<HTMLElement>) {
+    const target=event.target as HTMLButtonElement;
+    const name = target.name as `${WalletType}`
+    dispatch(setWalletType(name))
+    dispatch(loginUserToWebSite())
+    dispatch(openConnectWallet(false));
+  };
 
   return (
-    <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
-
-      <StyledModal
-        {...props}
-        show={show}
-        onHide={handleClose}
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <StyledHeader className="p-4" closeButton>
-          <Modal.Title id="contained-modal-title-vcenter" as={StyledTitle}>
-            Connect Wallet
-          </Modal.Title>
-        </StyledHeader>
-        <StyledBody className="show-grid p-4">
-          <Container>
-            <Row className="d-flex justify-content-around">
-              <Col xs={12} md={6} className="ps-xs-0 pe-md-3 mb-3 mb-sm-0">
-                <Button
-                  className="d-grid gap-1 justify-items-center w-100 m-0 py-4 h-100"
-                  variant="custom"
-                  size="lg"
-                  onClick={handleClose}
-                >
-                  <Metamask className="mx-auto" />
-                  Metamask
-                </Button>
-              </Col>
-              <Col xs={12} md={6} className="ps-md-3 pe-xs-0 ">
-                <Button
-                  className="d-grid gap-1 justify-items-center w-100 m-0 py-4 h-100"
-                  variant="custom"
-                  size="lg"
-                  onClick={handleClose}
-                >
-                  <WalletConnect className="mx-auto" />
-                  WalletConnect
-                </Button>
-              </Col>
-            </Row>
-          </Container>
-        </StyledBody>
-      </StyledModal>
-    </>
+    <StyledModal
+      {...props}
+      show={show}
+      onHide={handleClose}
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <StyledHeader className="p-4" closeButton>
+        <Modal.Title id="contained-modal-title-vcenter" as={StyledTitle}>
+          Connect Wallet
+        </Modal.Title>
+      </StyledHeader>
+      <StyledBody className="show-grid p-4">
+        <Container>
+          <Row className="d-flex justify-content-around">
+            <Col xs={12} md={6} className="ps-xs-0 pe-md-3 mb-3 mb-sm-0">
+              <Button
+                name={WalletType.METAMASK}
+                className="d-grid gap-1 justify-items-center w-100 m-0 py-4 h-100"
+                variant="custom"
+                size="lg"
+                onClick={selectWalletType}
+              >
+                <Metamask className="mx-auto" />
+                Metamask
+              </Button>
+            </Col>
+            <Col xs={12} md={6} className="ps-md-3 pe-xs-0 ">
+              <Button
+                name={WalletType.WALLETCONNECT}
+                className="d-grid gap-1 justify-items-center w-100 m-0 py-4 h-100"
+                variant="custom"
+                size="lg"
+                onClick={selectWalletType}
+              >
+                <WalletConnect className="mx-auto" />
+                WalletConnect
+              </Button>
+            </Col>
+          </Row>
+        </Container>
+      </StyledBody>
+    </StyledModal>
   );
 }

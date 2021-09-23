@@ -13,7 +13,7 @@ interface Returned extends IUser {
 export const loginUserToWebSite = createAsyncThunk(
   'auth/loginUserToWebSite',
   async () => {
-    await timeout(3000);
+    await timeout(2000);
     return authedUser as Returned;
   }
 );

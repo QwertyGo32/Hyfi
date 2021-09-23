@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { loginUserToWebSite, logoutUserFromWebSite } from './action';
 import { PURGE } from 'redux-persist';
-import { IUser } from '@interfaces/IUser';
+import { IUser, WalletType } from '@interfaces/IUser';
 
 export interface AuthStateData extends IUser {}
 
@@ -12,7 +12,7 @@ export interface AuthState {
 }
 
 const initialState: AuthState = {
-  data: { accountName: '', status: 'visitor' },
+  data: { accountName: '', status: 'visitor', walletType: '' },
   pending: false,
   error: false,
 };
@@ -21,7 +21,11 @@ export const counterSlice = createSlice({
   name: 'auth',
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
-  reducers: {},
+  reducers: {
+    setWalletType: (state, action: PayloadAction<`${WalletType}`>) => {
+      state.data.walletType=action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loginUserToWebSite.pending, (state) => {
@@ -54,5 +58,6 @@ export const counterSlice = createSlice({
     });
   },
 });
+export const { setWalletType } = counterSlice.actions;
 
 export default counterSlice.reducer;
