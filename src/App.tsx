@@ -20,6 +20,7 @@ import { ReactComponent as Tractor } from '@icons/tractor.svg';
 import homeBgrImg from '@img/infographic9.jpg';
 import reportBgrImg from '@img/report_bgr.jpg';
 import React from "react";
+import { LinksEnum } from './interfaces/LinksEnum';
 export default function App() {
   const [type,setType]=React.useState<"public"|"private">("private")
   const location = useLocation();
@@ -27,19 +28,19 @@ export default function App() {
     public: [
       {
         name: 'Home',
-        path: '/',
+        path: LinksEnum.MAIN,
         exact: true,
         link: true,
         icon: () => <Home />,
         main: () => <Main/>,
       },
-      {
-        name: 'Counter',
-        path: '/counter',
-        link: true,
-        icon: () => <Home />,
-        main: () => <LoggedRouter component={Counter} />,
-      },
+      // {
+      //   name: 'Counter',
+      //   path: '/counter',
+      //   link: true,
+      //   icon: () => <Home />,
+      //   main: () => <LoggedRouter component={Counter} />,
+      // },
       {
         name: 'Login',
         path: '/login',
@@ -49,7 +50,7 @@ export default function App() {
       },
       {
         name: 'Not Match',
-        path: '*',
+        path: LinksEnum.NOTFOUND,
         link: false,
         icon: () => <Overview />,
         main: () => <h2>Not Match</h2>,
@@ -58,12 +59,18 @@ export default function App() {
     private: [
       {
         name: 'Home',
-        path: '/',
+        path: LinksEnum.MAIN,
         exact: true,
         link: true,
         bgrImg: homeBgrImg,
         icon: () => <Home />,
         main: () => <HomePage />,
+      },
+      {
+        name: 'Report',
+        path: LinksEnum.REPORT,
+        exact: true,
+        main: () => <Report />,
       },
       // {
       //   name: 'Counter',
@@ -73,28 +80,28 @@ export default function App() {
       // },
       {
         name: 'Pools',
-        path: '/pools',
+        path: LinksEnum.POOLS,
         link: true,
         icon: () => <Pools />,
         main: () => <h2>Pools</h2>,
       },
       {
         name: 'Initial Offerings',
-        path: '/initialofferings',
+        path: LinksEnum.ILO,
         link: true,
         icon: () => <Chain />,
         main: () => <Ilo/>,
       },
       {
         name: 'Overview',
-        path: '/overview',
+        path: LinksEnum.OVERVIEW,
         link: true,
         icon: () => <Overview />,
         main: () => <h2>Overview</h2>,
       },
       {
         name: 'Swap',
-        path: '/swap',
+        path:  LinksEnum.SWAP,
         link: true,
         icon: () => <Swap />,
         main: () => <h2>Swap</h2>,
@@ -102,7 +109,7 @@ export default function App() {
 
       {
         name: 'Farms',
-        path: '/farms',
+        path:LinksEnum.FARMS,
         link: true,
         icon: () => <Tractor />,
         main: () => <h2>Farms</h2>,
@@ -116,7 +123,7 @@ export default function App() {
       // },
       {
         name: 'Not Match',
-        path: '*',
+        path: LinksEnum.NOTFOUND,
         link: false,
         icon: () => <Overview />,
         main: () => <h2>Not Match</h2>,
