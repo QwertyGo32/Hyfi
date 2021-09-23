@@ -17,6 +17,8 @@ import { ReactComponent as Chain } from '@icons/chain.svg';
 import { ReactComponent as Overview } from '@icons/overview.svg';
 import { ReactComponent as Swap } from '@icons/vice-verse_arrows.svg';
 import { ReactComponent as Tractor } from '@icons/tractor.svg';
+import homeBgrImg from '@img/infographic9.jpg';
+import reportBgrImg from '@img/report_bgr.jpg';
 import React from "react";
 export default function App() {
   const [type,setType]=React.useState<"public"|"private">("private")
@@ -59,6 +61,7 @@ export default function App() {
         path: '/',
         exact: true,
         link: true,
+        bgrImg: homeBgrImg,
         icon: () => <Home />,
         main: () => <HomePage />,
       },
@@ -73,7 +76,7 @@ export default function App() {
         path: '/pools',
         link: true,
         icon: () => <Pools />,
-        main: () => <Report/>,
+        main: () => <h2>Pools</h2>,
       },
       {
         name: 'Initial Offerings',
@@ -131,7 +134,7 @@ export default function App() {
               key={index}
               path={route.path}
               exact={route.exact}
-              children={<route.main />}
+              children={<route.main  />}
             />
           ))}
         </Switch>
