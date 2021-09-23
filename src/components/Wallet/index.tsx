@@ -43,6 +43,7 @@ export interface IWalletDropdownBtn {
   text?: string;
   disabled?: boolean;
   icon?: JSX.Element;
+  toDo?:()=>void;
 }
 
 export interface IWalletProps {
@@ -78,16 +79,17 @@ export default function Wallet({
         0xaEe767422937b9a662eAA2178710D3f10c5B01cD
       </Dropdown.Toggle>
       <Dropdown.Menu renderOnMount align="end" as={StyledMenu}>
-        {walletTabs.map(({ children, key, href, text, disabled, icon }) => {
+        {walletTabs.map(({ children, key, href, text, disabled, icon,toDo }) => {
           return (
-            <>
+            <div                   key={key}            >
               {href && (
                 <Dropdown.Item
-                  key={key}
+
                   as={StyledMenuBtn}
                   active={active === href}
                   href={href}
                   disabled={disabled ?? false}
+                  onClick={toDo}
                 >
                   <span>{text ?? children ?? ''}</span>
                   {icon && React.cloneElement(icon)}
@@ -95,17 +97,18 @@ export default function Wallet({
               )}
               {key && (
                 <Dropdown.Item
-                  key={key}
+
                   as={StyledMenuBtn}
                   active={active === key}
                   eventKey={key}
                   disabled={disabled ?? false}
+                  onClick={toDo}
                 >
                   <span>{text ?? children ?? ''}</span>
                   {icon && React.cloneElement(icon)}
                 </Dropdown.Item>
               )}
-            </>
+            </div>
           );
         })}
       </Dropdown.Menu>

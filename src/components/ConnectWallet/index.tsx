@@ -25,7 +25,7 @@ export default function ConnectWallet({ ...props }) {
   const handleClose = () => dispatch(openConnectWallet(false));
 
   const selectWalletType = function (event: React.MouseEvent<HTMLElement>) {
-    const target=event.target as HTMLButtonElement;
+    const target = event.target as HTMLButtonElement;
     const name = target.name as `${WalletType}`
     dispatch(setWalletType(name))
     dispatch(loginUserToWebSite())

@@ -21,7 +21,7 @@ export const loginUserToWebSite = createAsyncThunk(
 export const logoutUserFromWebSite = createAsyncThunk(
   'auth/logoutUserFromWebSite',
   async () => {
-    await timeout(3000);
+    await timeout(2000);
     return {
       accountName:"",
       status:UserStatusType.VISITOR,

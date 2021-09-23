@@ -18,27 +18,31 @@ import { userLoggedStatus } from '@redux/auth';
 import { UserStatusType } from '@/interfaces/IUser';
 import Btn, { gradientBtnTypes } from '@components/Btn';
 import { openConnectWallet } from '@redux/modal';
+import { logoutUserFromWebSite } from '@redux/auth';
 
 type NavbarProps = {
   route: IRoute,
 };
-const dataArray: IWalletDropdownBtn[] = [
-  {
-    text: 'Wallet',
-    href: '#/action-1',
-    icon: <WalletIcon />,
-  },
-  {
-    text: 'Disconnect',
-    href: '#/action-2',
-    icon: <LogOut />,
-  },
-];
 
 export default function Navbar({ route }: NavbarProps) {
   const dispatch = useAppDispatch();
   const status = useAppSelector(userLoggedStatus);
   const [isShown, setIsShown] = useState(false);
+  const dataArray: IWalletDropdownBtn[] = [
+    {
+      text: 'Wallet',
+      href: '#/action-1',
+      icon: <WalletIcon />,
+    },
+    {
+      text: 'Disconnect',
+      href: '#/action-2',
+      icon: <LogOut />,
+      toDo: () => {
+        dispatch(logoutUserFromWebSite());
+      },
+    },
+  ];
   return (
     <>
       <StyledCheckbox type="checkbox" name="checkbox" id="checkbox" />

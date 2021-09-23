@@ -58,9 +58,10 @@ export default function App() {
         path: LinksEnum.MAIN,
         exact: true,
         link: true,
-        bgrImg: homeBgrImg,
+        // bgrImg: homeBgrImg,
         icon: () => <Home />,
-        main: () => <HomePage />,
+        main:()=><div><h1>Dashboard Page</h1></div>
+        // main: () => <HomePage />,
       },
       {
         name: 'Report',
