@@ -40,9 +40,9 @@ export default function ConnectWallet({ ...props }) {
         <StyledBody className="show-grid p-4">
           <Container>
             <Row className="d-flex justify-content-around">
-              <Col xs={12} md={6} className="ps-xs-0 pe-md-3 mb-3">
+              <Col xs={12} md={6} className="ps-xs-0 pe-md-3 mb-3 mb-sm-0">
                 <Button
-                  className="d-grid gap-1 justify-items-center w-100 m-0 py-4"
+                  className="d-grid gap-1 justify-items-center w-100 m-0 py-4 h-100"
                   variant="custom"
                   size="lg"
                   onClick={handleClose}
@@ -53,7 +53,7 @@ export default function ConnectWallet({ ...props }) {
               </Col>
               <Col xs={12} md={6} className="ps-md-3 pe-xs-0 ">
                 <Button
-                  className="d-grid gap-1 justify-items-center w-100 m-0 py-4"
+                  className="d-grid gap-1 justify-items-center w-100 m-0 py-4 h-100"
                   variant="custom"
                   size="lg"
                   onClick={handleClose}
