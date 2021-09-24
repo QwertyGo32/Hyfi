@@ -1,6 +1,5 @@
 import { Title, Text, HomeWrapper } from './styled';
 import Btn, { gradientBtnTypes } from '@components/Btn';
-import ConnectWallet from '@components/ConnectWallet';
 import { useAppDispatch } from '@utils/hooks';
 import { openConnectWallet } from '@redux/modal';
 
@@ -25,7 +24,6 @@ const HomePage = () => {
         }}
       />
       {/* <Btn theme={gradientBtnTypes.outline} title="Trade Now" /> */}
-      <ConnectWallet />
     </HomeWrapper>
   );
 };

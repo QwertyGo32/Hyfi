@@ -17,19 +17,30 @@ import Form from 'react-bootstrap/Form';
 import { ReactComponent as Copy } from '@icons/copy.svg';
 import { ReactComponent as Link } from '@icons/link.svg';
 
-import { selectChangeWalletModalState, openChangeWallet } from '@redux/modal';
-import { authWalletAddress } from '@redux/auth';
+import {
+  selectChangeWalletModalState,
+  openChangeWallet,
+  openConnectWallet,
+} from '@redux/modal';
+import { authWalletAddress, authWalletType } from '@redux/auth';
 import { WalletType } from '@/interfaces/IUser';
 import { useAppDispatch, useAppSelector } from '@utils/hooks';
+import { useValidation } from 'react-class-validator';
+import { HashValidationDto } from './accountdetails.dto';
 
 export default function AccountDetails({ ...props }) {
   const show = useAppSelector(selectChangeWalletModalState);
+  const type = useAppSelector(authWalletType);
+
   const walletAdress = useAppSelector(authWalletAddress);
   const dispatch = useAppDispatch();
+
+  const intervalRef: { current: NodeJS.Timeout | null } = useRef(null);
 
   const [walletValue, setWalletValue] = useState(walletAdress);
   const [isCopied, setIsCopied] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+
   const [isEditing, setEditing] = useState(false);
   const toggleEditing = () => {
     setEditing(!isEditing);
@@ -40,14 +51,26 @@ export default function AccountDetails({ ...props }) {
       inputRef?.current?.select();
       const successful = document.execCommand('copy');
       const msg = successful ? 'successful' : 'unsuccessful';
-      console.log('Copying text command was ' + msg);
       setIsCopied(true);
+      const id = setTimeout(() => {
+        console.log('Copying text command was ' + msg);
+        setIsCopied(false);
+      }, 5000);
+      intervalRef.current = id;
     } catch (err) {
       console.log('Oops, unable to copy');
     }
   };
+  const changeData = () => {
+    dispatch(openConnectWallet(true));
+  };
   const handleClose = () => dispatch(openChangeWallet(false));
-  // const handleShow = () => setShow(true);
+  useEffect(() => {
+    if (!show) {
+      clearTimeout(intervalRef.current || setTimeout(() => {}, 0));
+      setIsCopied(false);
+    }
+  }, [show]);
   useEffect(() => {
     if (isEditing) {
       inputRef?.current?.focus();
@@ -76,13 +99,14 @@ export default function AccountDetails({ ...props }) {
                 className="d-flex justify-content-between align-items-center mb-4"
               >
                 <StyledText className="p-12">
-                  Connected with MetaMask
+                  Connected with{' '}
+                  {`${type[0]?.toUpperCase() + type?.slice(1) ?? ''}`}
                 </StyledText>
                 <StyledButton
                   theme={gradientBtnTypes.outline}
                   className="d-grid gap-1 justify-items-center p-1 px-3"
                   size="lg"
-                  onClick={handleClose}
+                  onClick={changeData}
                 >
                   Change
                 </StyledButton>
@@ -100,6 +124,7 @@ export default function AccountDetails({ ...props }) {
                     onChange={(event) => {
                       setWalletValue(event.target.value);
                     }}
+                    disabled={isCopied}
                     placeholder="Your wallet"
                     aria-label="Your wallet"
                     aria-describedby="basic-addon1"

@@ -20,6 +20,7 @@ import Btn, { gradientBtnTypes } from '@components/Btn';
 import { openChangeWallet, openConnectWallet } from '@redux/modal';
 import { logoutUserFromWebSite } from '@redux/auth';
 import AccountDetails from '@components/AccountDetails';
+import ConnectWallet from '@components/ConnectWallet';
 
 type NavbarProps = {
   route: IRoute,
@@ -90,6 +91,7 @@ export default function Navbar({ route }: NavbarProps) {
         className={isShown ? 'active' : ''}
       />
       <AccountDetails />
+      <ConnectWallet />
     </>
   );
 }

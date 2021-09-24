@@ -13,3 +13,7 @@ export const authWalletAddress = createSelector(
   selectAuth,
   (state) => state.data.accountName
 );
+export const authWalletType = createSelector(
+  selectAuth,
+  (state) => state.data.walletType
+);

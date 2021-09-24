@@ -13,12 +13,18 @@ import {
 import { ReactComponent as Metamask } from '@icons/fox.svg';
 import { ReactComponent as WalletConnect } from '@icons/wallet_connect.svg';
 import { useAppDispatch, useAppSelector } from '@utils/hooks';
-import { setWalletType, loginUserToWebSite } from '@redux/auth';
-import { selectConnectWalletModalState, openConnectWallet } from '@redux/modal';
+import { setWalletType, loginUserToWebSite, authWalletType } from '@redux/auth';
+import {
+  selectConnectWalletModalState,
+  openConnectWallet,
+  openChangeWallet,
+} from '@redux/modal';
 import { WalletType } from '@/interfaces/IUser';
 
 export default function ConnectWallet({ ...props }) {
   const show = useAppSelector(selectConnectWalletModalState);
+  const type = useAppSelector(authWalletType);
+
   const dispatch = useAppDispatch();
 
   const handleClose = () => dispatch(openConnectWallet(false));
@@ -33,7 +39,11 @@ export default function ConnectWallet({ ...props }) {
     const value = target.value;
     if (Object.values(WalletType).includes(value)) {
       dispatch(setWalletType(value));
-      dispatch(loginUserToWebSite());
+      if (!type) {
+        dispatch(loginUserToWebSite());
+      } else {
+        dispatch(openChangeWallet(true));
+      }
     }
     dispatch(openConnectWallet(false));
   };

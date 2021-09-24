@@ -8,17 +8,20 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from '@redux/index';
 import { BrowserRouter as Router } from 'react-router-dom';
 import AuthLayoutBlock from '@layouts/Auth/AuthLayout';
+import { ValidatorProvider } from 'react-class-validator';
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <Router>
-          <AuthLayoutBlock>
-            <App />
-          </AuthLayoutBlock>
-        </Router>
-      </PersistGate>
-    </Provider>
+    <ValidatorProvider>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <Router>
+            <AuthLayoutBlock>
+              <App />
+            </AuthLayoutBlock>
+          </Router>
+        </PersistGate>
+      </Provider>
+    </ValidatorProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
