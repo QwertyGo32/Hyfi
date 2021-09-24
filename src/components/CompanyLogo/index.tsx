@@ -21,19 +21,19 @@ export default function CompanyLogo({ title, img, status }: ICompanyLogoProps) {
       <StyledLogoContainer>
         <StyledImage
           src={img}
-          data-hasImage={!!img?.length ?? false}
+          data-hasimage={!!img?.length ?? false}
           rounded
           fluid
         />
       </StyledLogoContainer>
       <StyledDataContainer>
-        <StyledTitle data-hasTitle={!!title?.length ?? false}>
+        <StyledTitle data-hastitle={!!title?.length ?? false}>
           {!!title?.length ? title : 'Missing data'}
         </StyledTitle>
         <StyledStatus>Status</StyledStatus>
         <StyledButton
           data-style={status}
-          data-hasStatus={!!status?.length ?? false}
+          data-hasstatus={!!status?.length ?? false}
         >
           {status}
         </StyledButton>

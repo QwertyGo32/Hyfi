@@ -44,9 +44,9 @@ export default function DataContainer({
         )}
       </StyledListHeader>
       <StyledList>
-        {listData.map(({ title, value, badge }) => {
+        {listData.map(({ title, value, badge }, index) => {
           return (
-            <StyledListElemet>
+            <StyledListElemet key={index}>
               {typeof badge !== 'undefined' ? (
                 <OverlayTrigger
                   placement="right"

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Container from 'react-bootstrap/Container';
@@ -13,10 +13,9 @@ import {
 import { ReactComponent as Metamask } from '@icons/fox.svg';
 import { ReactComponent as WalletConnect } from '@icons/wallet_connect.svg';
 import { useAppDispatch, useAppSelector } from '@utils/hooks';
-import {setWalletType,loginUserToWebSite} from "@redux/auth"
+import { setWalletType, loginUserToWebSite } from '@redux/auth';
 import { selectConnectWalletModalState, openConnectWallet } from '@redux/modal';
 import { WalletType } from '@/interfaces/IUser';
-
 
 export default function ConnectWallet({ ...props }) {
   const show = useAppSelector(selectConnectWalletModalState);
@@ -24,11 +23,18 @@ export default function ConnectWallet({ ...props }) {
 
   const handleClose = () => dispatch(openConnectWallet(false));
 
-  const selectWalletType = function (event: React.MouseEvent<HTMLElement>) {
-    const target = event.target as HTMLButtonElement;
-    const name = target.name as `${WalletType}`
-    dispatch(setWalletType(name))
-    dispatch(loginUserToWebSite())
+  const selectWalletType = function ({
+    target,
+  }: React.MouseEvent<HTMLButtonElement> & {
+    target: {
+      value: WalletType,
+    },
+  }) {
+    const value = target.value;
+    if (Object.values(WalletType).includes(value)) {
+      dispatch(setWalletType(value));
+      dispatch(loginUserToWebSite());
+    }
     dispatch(openConnectWallet(false));
   };
 
@@ -50,7 +56,7 @@ export default function ConnectWallet({ ...props }) {
           <Row className="d-flex justify-content-around">
             <Col xs={12} md={6} className="ps-xs-0 pe-md-3 mb-3 mb-sm-0">
               <Button
-                name={WalletType.METAMASK}
+                value={WalletType.METAMASK}
                 className="d-grid gap-1 justify-items-center w-100 m-0 py-4 h-100"
                 variant="custom"
                 size="lg"
@@ -62,7 +68,7 @@ export default function ConnectWallet({ ...props }) {
             </Col>
             <Col xs={12} md={6} className="ps-md-3 pe-xs-0 ">
               <Button
-                name={WalletType.WALLETCONNECT}
+                value={WalletType.WALLETCONNECT}
                 className="d-grid gap-1 justify-items-center w-100 m-0 py-4 h-100"
                 variant="custom"
                 size="lg"

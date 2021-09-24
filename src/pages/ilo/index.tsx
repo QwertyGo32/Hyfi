@@ -15,8 +15,10 @@ export default function Ilo() {
       <InputBlock placeholder="Test 2" gradient />
       <AccountDetails />
       <ConnectWallet />
-      {CompanyLogoData.map(({ title, img, status }) => {
-        return <CompanyLogo title={title} img={img} status={status} />;
+      {CompanyLogoData.map(({ title, img, status }, index) => {
+        return (
+          <CompanyLogo key={index} title={title} img={img} status={status} />
+        );
       })}
       <DataContainer
         inTitle={

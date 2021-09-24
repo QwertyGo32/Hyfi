@@ -55,7 +55,7 @@ export const StyledButton = styled(Button)`
   line-height: 10px;
   font-weight: 500;
   color: #3a8e61;
-  &[data-hasStatus='false'] {
+  &[data-hasstatus='false'] {
     display: none;
   }
   &[data-style='Participating'] {
