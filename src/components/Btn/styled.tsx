@@ -6,7 +6,6 @@ export enum gradientBtnTypes {
 }
 export const BtnStyled = styled(Button)`
   padding: 14px 22px;
-  min-width: 160px;
   font: normal normal medium 15px/70px Montserrat;
   
   &.home-page_btn {
