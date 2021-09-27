@@ -95,22 +95,16 @@ const StyledAsideListElement = styled(Link)`
         var(--main-sidebar-transition-bg) 100%
       )
       0 0 no-repeat padding-box;
-
-    span {
+    &:hover,
+    &.active {
       color: var(--main-text-colored);
-      &:hover,
-      &.active {
-        color: #4364f7;
-        background: transparent linear-gradient(62deg, #ffffff 0%, #ebeae9 100%)
-          0 0 no-repeat padding-box;
-
-        p {
-          color: var(--main-text-colored);
+      svg {
+        * {
+          fill: var(--main-text-colored);
         }
       }
-
-      & p {
-        margin: 0;
+      span {
+        color: var(--main-text-colored);
       }
     }
   }
@@ -140,7 +134,7 @@ export const AsideComponent = function ({ routes }: AsideProps) {
                   className="nav-item"
                 >
                   <props.icon />
-                  {name}
+                  <span>{name}</span>
                 </StyledAsideListElement>
               </li>
             ) : null
