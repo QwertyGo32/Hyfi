@@ -122,7 +122,7 @@ export const StyledCheckbox = styled.input`
 export const StyledOrverlay = styled.div`
   display: none;
   &.active {
-    background: #21252954;
+    background: var(--main-default-link-color);
   }
   @media screen and ${breakpoints.Device.tablet} {
     display: block;

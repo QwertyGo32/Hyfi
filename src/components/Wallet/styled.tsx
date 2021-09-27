@@ -39,7 +39,12 @@ export const StyledWalletContainer = styled.div`
   &:before {
     content: '';
     position: absolute;
-    background: transparent linear-gradient(90deg, #6984ff00 0%, #4364f7 100%)
+    background: transparent
+      linear-gradient(
+        90deg,
+        var(-main-defaukt-bg1) 0%,
+        var(--main-text-colored) 100%
+      )
       0% 0% no-repeat padding-box;
     z-index: 1;
     width: calc(100% - var(--logo-width));
@@ -59,7 +64,7 @@ export const StyledWalletData = styled.div`
   font-size: 15px;
   font-weight: 500;
   letter-spacing: 0px;
-  color: #ffffff;
+  color: var(--main-default-bg);
   user-select: none;
   @media screen and ${breakpoints.Device.tablet} {
     display: none;

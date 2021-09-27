@@ -31,7 +31,12 @@ export const StyledInputGroup = styled(InputGroup)`
       left: 0;
       width: 100%;
       height: 100%;
-      background: transparent linear-gradient(90deg, #ffffff00 0%, #f1f3f5 100%)
+      background: transparent
+        linear-gradient(
+          90deg,
+          var(--main-default-bg-opacity) 0%,
+          var(--main-default-tab-color) 100%
+        )
         0% 0% no-repeat padding-box;
       border-radius: 5px;
     }
@@ -76,8 +81,8 @@ export const StyledInputGroup = styled(InputGroup)`
   }
 
   input {
-    background: #ffffff 0% 0% no-repeat padding-box;
-    box-shadow: inset 4px 5px 6px #d1d9e1;
+    background: var(--main-default-bg) 0% 0% no-repeat padding-box;
+    box-shadow: inset 4px 5px 6px var(--main-block-shadow);
     border-radius: 5px;
   }
 `;

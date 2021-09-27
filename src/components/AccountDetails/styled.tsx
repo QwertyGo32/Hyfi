@@ -14,14 +14,19 @@ export const StyledInputGroup = styled(InputGroup)`
     left: 0;
     width: 100%;
     height: 100%;
-    background: transparent linear-gradient(90deg, #ffffff00 0%, #f1f3f5 100%)
+    background: transparent
+      linear-gradient(
+        90deg,
+        var(--main-default-bg-opacity) 0%,
+        var(--main-default-tab-color) 100%
+      )
       0% 0% no-repeat padding-box;
     border-radius: 5px;
     z-index: 1;
   }
   input {
-    background: #ffffff 0% 0% no-repeat padding-box;
-    box-shadow: inset 4px 5px 6px #d1d9e1;
+    background: var(--main-default-bg) 0% 0% no-repeat padding-box;
+    box-shadow: inset 4px 5px 6px var(--main-block-shadow);
     border-radius: 5px;
   }
 `;
@@ -36,9 +41,9 @@ export const StyledButtonWithIcon = styled(BootstrapButton)`
   border: 2px solid transparent;
   &:hover,
   &:focus {
-    border: 2px solid #4364f7;
+    border: 2px solid var(--main-text-colored);
     background: transparent;
-    color: #4364f7;
+    color: var(--main-text-colored);
   }
 `;
 
@@ -51,7 +56,7 @@ export const StyledText = styled.p`
 `;
 
 export const StyledBody = styled(SBody)`
-  background: #f1f3f5 0% 0% no-repeat padding-box;
+  background: var(--main-default-tab-color) 0% 0% no-repeat padding-box;
   border-radius: 0px 0px 10px 10px;
-  box-shadow: inset 0px 3px 5px #acb7c270;
+  box-shadow: inset 0px 3px 5px var(--main-default-block-shadow);
 `;

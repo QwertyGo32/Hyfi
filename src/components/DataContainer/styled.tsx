@@ -9,7 +9,7 @@ export const StyledListHeader = styled.h3`
   display: grid;
   grid-template-columns: 1fr max-content;
   gap: 10px;
-  border-bottom: 1px solid #7070701c;
+  border-bottom: 1px solid var(--main-default-link-color);
   padding: 13.5px 0;
   align-items: flex-end;
 `;
@@ -23,7 +23,7 @@ export const StyledListElemet = styled.li`
   display: grid;
   grid-template-columns: minmax(100px, max-content) minmax(100px, 1fr);
   gap: 50px;
-  border-bottom: 1px solid #7070701c;
+  border-bottom: 1px solid var(--main-default-link-color);
   p {
     margin: 0;
   }

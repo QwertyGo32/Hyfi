@@ -13,22 +13,22 @@ export const BtnStyled = styled(Button)`
   }
   
   &.${gradientBtnTypes.gradient} {
-    background: transparent linear-gradient(180deg, #6984FF 0%, #224AFF 100%) 0% 0% no-repeat padding-box;
-    box-shadow: 0px 5px 6px #00000029;
+    background: transparent linear-gradient(180deg, var( --main-default-btn-grd1) 0%, var(--main-default-btn-grd2) 100%) 0% 0% no-repeat padding-box;
+    box-shadow: 0px 5px 6px var( --main-block-shadow);
     border-radius: 5px;
     border: none;
-    color: #FFFFFF;
+    color: var(--main-default-bg);
   }
   &.${gradientBtnTypes.gradient}:focus,
   &.${gradientBtnTypes.outline}:active {
-    box-shadow: 0px 5px 6px #00000029;
+    box-shadow: 0px 5px 6px var( --main-block-shadow);
   }
   &.${gradientBtnTypes.outline} {
-    border: 2px solid #224AFF;
+    border: 2px solid var(--main-default-btn-grd2);
     background: transparent;
     border-radius: 5px;
     opacity: 0.8;
-    color: #224AFF;
+    color: var(--main-default-btn-grd2);
   }
   &.${gradientBtnTypes.outline}:focus,
   &.${gradientBtnTypes.outline}:active {

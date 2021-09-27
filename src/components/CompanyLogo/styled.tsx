@@ -54,43 +54,43 @@ export const StyledButton = styled(Button)`
   font-size: 8px;
   line-height: 10px;
   font-weight: 500;
-  color: #3a8e61;
+  color: var(--main-greend-bg);
   &[data-hasstatus='false'] {
     display: none;
   }
   &[data-style='Participating'] {
-    background: #f2faf5 0% 0% no-repeat padding-box;
-    border: 1.5px solid #3a8e61;
+    background: var(--main-greend-bg-opacity) 0% 0% no-repeat padding-box;
+    border: 1.5px solid var(--main-greend-bg);
     border-radius: 3px;
     opacity: 1;
-    color: #3a8e61;
+    color: var(--main-greend-bg);
     &:hover {
-      color: #3a8e61;
-      background-color: #3a8e611c;
-      border-color: #3a8e61;
+      color: var(--main-greend-bg);
+      background-color: var(--main-greend-bg-opacity);
+      border-color: var(--main-greend-bg);
     }
     &:focus {
-      background-color: #3a8e611c;
-      border-color: #3a8e61;
-      box-shadow: 0 0 0 0.1rem rgb(58 142 97 / 50%);
+      background-color: var(--main-greend-bg-opacity);
+      border-color: var(--main-greend-bg);
+      box-shadow: 0 0 0 0.1rem var(--main-greend-bg-opacity1);
       &:not(::focus-visible) {
         outline: 0;
       }
     }
   }
   &[data-style='Owned'] {
-    background: #f2f3fa 0% 0% no-repeat padding-box;
+    background: var(--main-default-tab-color) 0% 0% no-repeat padding-box;
     border: 1.5px solid var(--main-text-colored);
     border-radius: 3px;
     opacity: 1;
     color: var(--main-text-colored);
     &:hover {
       color: var(--main-text-colored);
-      background-color: #e7e9f3;
+      background-color: var(--main-sidebar-transition-bg);
       border-color: var(--main-default-btn-grd1);
     }
     &:focus {
-      background-color: #e7e9f3;
+      background-color: var(--main-sidebar-transition-bg);
       border-color: var(--main-default-btn-grd2);
       box-shadow: 0 0 0 0.1rem var(--main-default-btn-grd1);
       &:not(::focus-visible) {

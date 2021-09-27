@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import {ReactComponent as Sun} from '@icons/sun_blue.svg';
-import {ReactComponent as Moon} from '@icons/moon_black.svg';
+import { ReactComponent as Sun } from '@icons/sun_blue.svg';
+import { ReactComponent as Moon } from '@icons/moon_black.svg';
 
 export const StyledSidebarContainer = styled.div`
   width: var(--sidebar-initial-width);
@@ -12,14 +12,14 @@ export const StyledSidebarContainer = styled.div`
 `;
 export const StyledMoon = styled(Moon)`
   &.night path {
-    fill: #4364F7;
+    fill: var(--main-text-colored);
   }
 `;
 
 export const StyledSun = styled(Sun)`
   justify-self: flex-end;
   &.night path {
-    fill: #001218;
+    fill: var(--main-text-default);
   }
 `;
 
@@ -33,8 +33,8 @@ export const StyledNetworkLink = styled.a`
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
-  background: #FFFFFF 0 0 no-repeat padding-box;
-  box-shadow: 0 3px 5px #ACB7C270;
+  background: var(--main-default-bg) 0 0 no-repeat padding-box;
+  box-shadow: 0 3px 5px var(--main-default-block-shadow);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,12 +47,12 @@ export const StyledToggleContainer = styled.div`
   display: grid;
   grid-template-rows: 23px 23px;
   cursor: pointer;
-`
+`;
 
 export const StyledThemeToggle = styled.div`
   width: 60px;
   height: 23px;
-  background: rgba(67, 100, 247, 0.2) 0 0 no-repeat padding-box;
+  background: var(--main-text-colored-opacity) 0 0 no-repeat padding-box;
   border-radius: 50px;
   padding: 5px 7px;
   display: flex;
@@ -66,7 +66,6 @@ export const StyledThemeToggle = styled.div`
 export const StyledThemeToggleCircle = styled.div`
   width: 13px;
   height: 13px;
-  background: #4364F7 0 0 no-repeat padding-box;
+  background: var(--main-text-colored) 0 0 no-repeat padding-box;
   border-radius: 20px;
 `;
-

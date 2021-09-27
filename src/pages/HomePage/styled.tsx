@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import breakpoints from '@styles/constants.styled';
 
-
 export const HomeWrapper = styled.div`
   width: 100%;
   max-width: 780px;
@@ -12,12 +11,12 @@ export const HomeWrapper = styled.div`
 
 export const Title = styled.h1`
   font: normal normal bold 40px/50px Montserrat;
-  color: #001218;
+  color: var(--main-text-default);
   grid-area: 1/1 / auto/span 4;
 `;
 
 export const Text = styled.p`
   font: normal normal medium 24px/34px Montserrat;
-  color: #001218;
+  color: var(--main-text-default);
   grid-area: 2/1 / auto/span 4;
 `;

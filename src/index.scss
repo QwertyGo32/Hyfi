@@ -4,8 +4,10 @@
 body {
   --main-block-shadow:rgba(0,0,0,0.16);
   --main-text-colored:#4364F7;
+  --main-text-colored-opacity:rgba(67, 100, 247, 0.2);
   --main-text-default:#001218;
   --main-default-tab-color:#F1F3F5;
+  --main-default-tab-color-opacity:#f1f3f5cc;
   --main-default-btn-grd1:#6984FF;
   --main-default-btn-grd2:#224AFF;
   --main-default-block-shadow:#ACB7C270;
@@ -13,7 +15,12 @@ body {
   --main-default-link-color:rgba(0,0,0,0.36);
   --main-default-wrapper-border:#C9C9C9;
   --main-default-bg:#ffffff;
+  --main-defaukt-bg1:#e1e6eb;
+  --main-default-bg-opacity:gba(255,255,255,0);
   --main-sidebar-transition-bg:#EBEAE9;
+  --main-greend-bg:#3a8e61;
+  --main-greend-bg-opacity:#3a8e611c;
+  --main-greend-bg-opacity1:#3a8e6180;
   --main-wallet-width:233px;
   --main-top-padding: 120px;
   --sidebar-initial-width:304px;

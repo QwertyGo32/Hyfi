@@ -21,7 +21,7 @@ const StyledAside = styled.aside`
   padding: 0 0 20px;
   min-width: var(--sidebar-initial-width);
   width: var(--sidebar-initial-width);
-  background: #ffffff 0 0 no-repeat padding-box;
+  background: var(--main-default-bg) 0 0 no-repeat padding-box;
   height: calc(100vh - var(--main-top-padding));
   z-index: 9;
   visibility: visible;
@@ -97,12 +97,17 @@ const StyledAsideListElement = styled(Link)`
       color: var(--main-text-colored);
       &:hover,
       &.active {
-        color: #4364f7;
-        background: transparent linear-gradient(62deg, #ffffff 0%, #ebeae9 100%)
+        color: var(--main-text-colored);
+        background: transparent
+          linear-gradient(
+            62deg,
+            var(--main-default-bg) 0%,
+            var(--main-sidebar-transition-bg) 100%
+          )
           0% 0% no-repeat padding-box;
 
         p {
-          color: #4364f7;
+          color: var(--main-text-colored);
         }
       }
 

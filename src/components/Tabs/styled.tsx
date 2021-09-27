@@ -25,7 +25,7 @@ export const StyledNavLink = styled(Nav.Link)`
         var(--main-default-btn-grd2) 100%
       )
       0% 0% no-repeat padding-box !important;
-    box-shadow: 0px 5px 6px #00000029;
+    box-shadow: 0px 5px 6px var(--main-block-shadow);
     border-radius: 5px;
     color: var(--main-default-bg) !important;
   }

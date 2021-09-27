@@ -8,8 +8,8 @@ export const StyledForm = styled(Form)`
   max-width: 709px;
   max-height: 839px;
   padding: 65px 179px 65px 75px;
-  background: #ffffff 0 0 no-repeat padding-box;
-  box-shadow: 0 3px 5px #acb7c270;
+  background: var(--main-default-bg) 0 0 no-repeat padding-box;
+  box-shadow: 0 3px 5px var(--main-default-block-shadow);
   border-radius: 10px;
 
   @media screen and ${breakpoints.Device.desktop} {
@@ -19,13 +19,13 @@ export const StyledForm = styled(Form)`
 
 export const StyledTitle = styled.h1`
   font: normal normal bold 40px/50px Montserrat;
-  color: #001218;
+  color: var(--main-text-default);
   margin-bottom: 30px;
 `;
 
 export const StyledInputText = styled.p`
   font: normal normal medium 15px/70px Montserrat;
-  color: #224aff;
+  color: var(--main-default-btn-grd2);
   margin: 0;
 `;
 
@@ -33,7 +33,7 @@ export const StyledInputLabel = styled.label`
   height: 50px;
   width: 184px;
   padding: 16px 27px;
-  border: 2px solid #224aff;
+  border: 2px solid var(--main-default-btn-grd2);
   border-radius: 5px;
   opacity: 0.8;
   display: flex;

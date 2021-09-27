@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import Modal from "react-bootstrap/Modal";
+import styled from 'styled-components';
+import Modal from 'react-bootstrap/Modal';
 
 export const StyledModal = styled(Modal)`
-  background: #f1f3f5cc 0% 0% no-repeat padding-box;
+  background: var(--main-default-tab-color-opacity) 0% 0% no-repeat padding-box;
   .modal-content {
     border-radius: 10px;
     box-shadow: 0px 3px 5px var(--main-default-block-shadow);
@@ -26,16 +26,16 @@ export const StyledHeader = styled(Modal.Header)`
         var(--main-default-btn-grd2) 100%
       )
       0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 5px #4364f747;
+    box-shadow: 0px 3px 5px var(--main-text-colored-opacity);
     &::before,
     &::after {
       position: absolute;
       top: 50%;
       left: 50%;
-      content: "";
+      content: '';
       width: 14px;
       height: 1px;
-      background: white;
+      background: var(--main-default-bg);
       transform: scale(2);
       border-radius: 15%;
     }
@@ -53,18 +53,18 @@ export const StyledBody = styled(Modal.Body)`
     &-custom {
       border-radius: 10px;
       color: black;
-      background-color: #f1f3f5;
-      border-color: #f1f3f5;
+      background-color: var(--main-default-tab-color);
+      border-color: var(--main-default-tab-color);
       &:hover {
-        color: black;
-        background-color: #e1e6eb;
-        border-color: #e1e6eb;
+        color: var(--main-text-default);
+        background-color: var(--main-defaukt-bg1);
+        border-color: var(--main-defaukt-bg1);
       }
       &:focus {
-        color: black;
-        background-color: #e1e6eb;
-        border-color: #e1e6eb;
-        box-shadow: 0 0 0 0.25rem rgb(130 138 145 / 50%);
+        color: var(--main-text-default);
+        background-color: var(--main-defaukt-bg1);
+        border-color: var(--main-defaukt-bg1);
+        box-shadow: 0 0 0 0.25rem var(--main-block-shadow);
         &:not(::focus-visible) {
           outline: 0;
         }
@@ -74,11 +74,11 @@ export const StyledBody = styled(Modal.Body)`
 `;
 
 export const StyledTitle = styled.div`
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 20px;
   font-weight: 900;
   letter-spacing: 0px;
-  color: #001218;
+  color: var(--main-text-default);
   opacity: 1;
   user-select: none;
 `;

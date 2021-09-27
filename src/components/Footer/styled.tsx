@@ -12,7 +12,7 @@ export const StyledFooter = () => {
 
 const StyledReportLink = styled(RouterLink)`
   font: normal normal medium 15px/70px Montserrat;
-  color: #001218;
+  color: var(--main-text-default);
   margin: 0;
   text-decoration: none;
   cursor: pointer;
@@ -27,6 +27,6 @@ const StyledFooterWrapper = styled.footer`
   justify-content: flex-end;
   align-items: center;
   height: 8.1%;
-  background: #ffffff 0 0 no-repeat padding-box;
-  border: 1px solid #c9c9c9;
+  background: var(--main-default-bg) 0 0 no-repeat padding-box;
+  border: 1px solid var(--main-default-wrapper-border);
 `;
