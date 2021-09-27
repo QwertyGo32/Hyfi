@@ -4,30 +4,12 @@ import Modal from 'react-bootstrap/Modal';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {
-  StyledBody,
-  StyledButton,
-  StyledText,
-  StyledButtonWithIcon,
-  StyledInputGroup,
-} from './styled';
+import { StyledBody, StyledText } from './styled';
 import { StyledTitle, StyledHeader, StyledModal } from '@styles/modal.styled';
-import Button, { gradientBtnTypes } from '@components/Btn';
-import Form from 'react-bootstrap/Form';
-import { ReactComponent as Copy } from '@icons/copy.svg';
-import { ReactComponent as Link } from '@icons/link.svg';
-import Spinner from 'react-bootstrap/Spinner';
 import { selectIloDisclaimerModalState, openIloDisclaimer } from '@redux/modal';
-import {
-  authWalletAddress,
-  authWalletType,
-  changeStateData,
-  changeStateField,
-} from '@redux/auth';
-import { WalletType } from '@/interfaces/IUser';
 import { useAppDispatch, useAppSelector } from '@utils/hooks';
-import { useValidation } from 'react-class-validator';
-import { InputGroup } from 'react-bootstrap';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
 
 export default function DisclaimerModal({ ...props }) {
   //   const [validate, errors] = useValidation(HashValidationDto);
@@ -58,7 +40,7 @@ export default function DisclaimerModal({ ...props }) {
     <>
       <StyledModal
         {...props}
-        size="md"
+        size="xl"
         show={show}
         onHide={handleClose}
         aria-labelledby="contained-modal-title-vcenter"
@@ -72,62 +54,41 @@ export default function DisclaimerModal({ ...props }) {
         <StyledBody className="show-grid p-4">
           <Container className="p-0">
             <Row>
-              <Col
-                xs={12}
-                className="d-flex justify-content-between align-items-center mb-4"
-              >
-                <StyledText className="p-12">Connected with </StyledText>
-                <StyledButton
-                  theme={gradientBtnTypes.outline}
-                  className="d-grid gap-1 justify-items-center p-1 px-3"
-                  size="lg"
-                  onClick={() => {}}
-                >
-                  Change
-                </StyledButton>
-              </Col>
               <Col xs={12} className="mb-3">
-                <Form noValidate onSubmit={handleSubmit}>
-                  <StyledInputGroup onClick={() => {}} className="mb-0 mb-md-3">
-                    <InputGroup>
-                      {/* {fieldLoader.accountName && (
-                        <InputGroup.Text>
-                          <Spinner
-                            as="span"
-                            animation="border"
-                            size="sm"
-                            role="status"
-                            aria-hidden="true"
-                          />
-                        </InputGroup.Text>
-                      )} */}
-                      <Form.Control
-                        ref={inputRef}
-                        onChange={(event) => {}}
-                        placeholder="Your wallet"
-                        aria-label="Your wallet"
-                        aria-describedby="basic-addon1"
-                      />
-                    </InputGroup>
-                  </StyledInputGroup>
-                </Form>
+                <StyledText>FORWARD-LOOKING LOOKING STATEMENTS</StyledText>
+                <StyledText>
+                  Statements made on this Website that are not historical or
+                  current facts are “forward-looking statements”. In some cases,
+                  you can identify forward-looking statements by terminology
+                  such as "may", "should", "intends", "expects", "plans",
+                  "anticipates", "believes", "estimates", "predicts",
+                  "potential", or "continue" or the negative of these terms or
+                  other comparable terminology. We intend that such
+                  forward-looking statements be subject to the safe harbors for
+                  such statements. We wish to caution readers not to place undue
+                  reliance on any such forward-looking statements, which speak
+                  only as of the date made. Any forward-looking statements
+                  represent management’s best judgment as to what may occur in
+                  the future. However, forward-looking statements are subject to
+                  risks, uncertainties and important factors beyond our control
+                  that could cause actual results and events to differ
+                  materially from historical results of operations and events
+                  and those presently anticipated or projected. We disclaim any
+                  obligation subsequently to revise any forward-looking
+                  statements to reflect events or circumstances after the date
+                  of such statement or to reflect the occurrence of anticipated
+                  or unanticipated events.
+                </StyledText>
               </Col>
-              <Col xs={12} className="d-flex mb-3 flex-column flex-md-row">
-                <StyledButtonWithIcon
-                  onClick={() => {}}
-                  className="d-flex m-0 mr-md-3 mb-xs-2 p-0 me-md-3"
-                  variant="outline-primary"
-                >
-                  <Copy className="d-flex mx-2 my-n1 my-auto" />
-                </StyledButtonWithIcon>
-                <StyledButtonWithIcon
-                  href="#test"
-                  className="d-flex m-0 p-0"
-                  variant="outline-primary"
-                >
-                  <Link className="d-flex mx-2 my-auto" />
-                  View on Browser
-                </StyledButtonWithIcon>
+              <Col>
+                <InputGroup className="mb-3">
+                  <InputGroup.Checkbox aria-label="Checkbox for following text input" />
+                  <FormControl aria-label="Text input with checkbox" />
+                </InputGroup>
+                <InputGroup>
+                  <InputGroup.Radio aria-label="Radio button for following text input" />
+                  <FormControl aria-label="Text input with radio button" />
+                </InputGroup>
               </Col>
             </Row>
           </Container>
