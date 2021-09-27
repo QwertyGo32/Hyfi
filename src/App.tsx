@@ -4,9 +4,9 @@ import Counter from '@pages/counter';
 import Login from '@pages/login';
 import Main from '@pages/main';
 import Ilo from '@pages/ilo';
+import Report from "@pages/Report";
 
 import Sidebar from '@components/Sidebar';
-import Report from "@pages/Report"
 import HomePage from "@pages/HomePage/HomePage";
 import { IRoute } from '@interfaces/IRoutes';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,7 +18,6 @@ import { ReactComponent as Overview } from '@icons/overview.svg';
 import { ReactComponent as Swap } from '@icons/vice-verse_arrows.svg';
 import { ReactComponent as Tractor } from '@icons/tractor.svg';
 import homeBgrImg from '@img/infographic9.jpg';
-
 import { LinksEnum } from './interfaces/LinksEnum';
 import { userLoggedStatus} from '@redux/auth';
 import { useAppSelector } from '@utils/hooks';
@@ -87,7 +86,7 @@ export default function App() {
         path: LinksEnum.ILO,
         link: true,
         icon: () => <Chain />,
-        main: () => <Ilo/>,
+        main: () => <Ilo />,
       },
       {
         name: 'Overview',

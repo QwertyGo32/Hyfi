@@ -12,6 +12,12 @@ export const BtnStyled = styled(Button)`
     margin-right: 30px;
   }
   
+  &.ilo-page_btn {
+    padding: 9px 50px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+  
   &.${gradientBtnTypes.gradient} {
     background: transparent linear-gradient(180deg, var( --main-default-btn-grd1) 0%, var(--main-default-btn-grd2) 100%) 0% 0% no-repeat padding-box;
     box-shadow: 0px 5px 6px var( --main-block-shadow);

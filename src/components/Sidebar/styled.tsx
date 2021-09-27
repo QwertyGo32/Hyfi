@@ -3,27 +3,16 @@ import breakpoints from '@styles/constants.styled';
 import { IRoute } from '@interfaces/IRoutes';
 import Link from '@components/Link';
 import { SidebarContainer } from '@components/Sidebar/components/SidebarContainer/SidebarContainer';
-
-const StyledNavbarHeader = styled.header`
-  display: flex;
-  padding: 10px 20px;
-
-  .brand-logo {
-    font-size: 1.5em;
-    transform: translateX(0);
-    transition: 250ms ease-in;
-    visibility: visible;
-  }
-`;
+import { LinksEnum } from '@interfaces/LinksEnum';
 
 const StyledAside = styled.aside`
   position: fixed;
+  z-index: 19;
   padding: 0 0 20px;
   min-width: var(--sidebar-initial-width);
   width: var(--sidebar-initial-width);
   background: var(--main-default-bg) 0 0 no-repeat padding-box;
   height: calc(100vh - var(--main-top-padding));
-  z-index: 9;
   visibility: visible;
   opacity: 1;
   transform: translateX(0);
@@ -37,13 +26,32 @@ const StyledAside = styled.aside`
     height: 100%;
     overflow: auto;
   }
+
+  @media screen and ${breakpoints.Device.tablet} {
+    transform: translateX(calc(var(--sidebar-initial-width) * -1));
+  }
 `;
 const StyledAsideMain = styled.main`
-  height: 80%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border: none;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    /* 1 - скроллбар */
+    width: 4px;
+    height: 4px;
+    background-color: #ffffff;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    /* 5 - ползунок */
+    border-radius: 2px;
+    background-color: var(--main-default-block-shadow);
+  }
+  padding-bottom: 100px;
 `;
 
 const StyledAsideListElement = styled(Link)`
@@ -86,25 +94,15 @@ const StyledAsideListElement = styled(Link)`
         var(--main-default-bg) 0%,
         var(--main-sidebar-transition-bg) 100%
       )
-      0% 0% no-repeat padding-box;
-    svg {
-      * {
-        transition: 200ms all ease-in-out;
-        fill: var(--main-text-colored);
-      }
-    }
+      0 0 no-repeat padding-box;
+
     span {
       color: var(--main-text-colored);
       &:hover,
       &.active {
-        color: var(--main-text-colored);
-        background: transparent
-          linear-gradient(
-            62deg,
-            var(--main-default-bg) 0%,
-            var(--main-sidebar-transition-bg) 100%
-          )
-          0% 0% no-repeat padding-box;
+        color: #4364f7;
+        background: transparent linear-gradient(62deg, #ffffff 0%, #ebeae9 100%)
+          0 0 no-repeat padding-box;
 
         p {
           color: var(--main-text-colored);
@@ -162,15 +160,31 @@ interface StyledContainerProps {
 const StyledMain = styled.main`
   width: 100%;
   //max-width: 1300px;
-  padding-left: calc(var(--sidebar-initial-width) + 8.5%);
-  padding-right: 40px;
-  padding-bottom: 6%;
+  &[data-page='${LinksEnum.ILO}'] {
+    padding-left: var(--sidebar-initial-width);
+  }
+  &:not([data-page='${LinksEnum.ILO}']) {
+    padding-left: calc(var(--sidebar-initial-width) + 8.5%);
+    padding-right: 40px;
+  }
+
+  @media screen and ${breakpoints.Device.tablet} {
+    &:not([data-page='${LinksEnum.ILO}']) {
+      padding: 0 20px;
+    }
+
+    &[data-page='${LinksEnum.ILO}'] {
+      padding-left: 0;
+    }
+  }
+
+  padding-bottom: 96px;
   transition-duration: 0.5s;
   display: flex;
   align-items: center;
   ${(props: StyledContainerProps) => {
     return css`
-      background: url(${props.bgrImg ?? ''}) no-repeat center/cover;
+      background: #fafafc url(${props.bgrImg ?? ''}) no-repeat center/cover;
     `;
   }}
 `;

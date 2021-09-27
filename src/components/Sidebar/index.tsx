@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { AsideComponent, StyledContainer } from './styled';
 import Navbar from '@components/Navbar';
 import { IRoute } from '@interfaces/IRoutes';
@@ -22,7 +22,7 @@ export default function Sidebar({ routes, children }: SidebarProps) {
       <Navbar route={routes[0]} />
       <AsideComponent routes={routes} />
       <StyledContainer
-        data-path={location?.pathname ?? ''}
+        data-page={currentRoute?.path ?? ''}
         bgrImg={currentRoute?.bgrImg ?? ''}
       >
         {children}

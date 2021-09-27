@@ -42,10 +42,17 @@ export const StyledWalletContainer = styled.div`
     background: transparent
       linear-gradient(
         90deg,
-        var(-main-defaukt-bg1) 0%,
+        var(--main-bg-wallet-grd1) 0%,
         var(--main-text-colored) 100%
       )
       0% 0% no-repeat padding-box;
+    /* background: transparent
+      linear-gradient(
+        90deg,
+        var(--main-default-btn-grd1) 0%,
+        var(--main-default-btn-grd2) 100%
+      )
+      0% 0% no-repeat padding-box; */
     z-index: 1;
     width: calc(100% - var(--logo-width));
     height: 100%;
@@ -100,7 +107,7 @@ export const StyledMenuBtn = styled.a`
     height: 16px;
   }
   &.active,
-  &:active {
+  &:hover {
     background: transparent
       linear-gradient(
         65deg,
@@ -116,4 +123,6 @@ export const StyledMenu = styled.ul`
   background: var(--main-default-bg) 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 5px var(--main-default-block-shadow);
   border-radius: 10px;
+  position: relative;
+  overflow: hidden;
 `;
