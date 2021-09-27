@@ -1,13 +1,9 @@
 import { Switch, Route, useLocation } from 'react-router-dom';
 import LoggedRouter from '@layouts/Auth/LoggedRouter';
-import Counter from '@pages/counter';
-import Login from '@pages/login';
-import Main from '@pages/main';
-import Ilo from '@pages/ilo';
-import Report from "@pages/Report";
+
+import React, { Suspense } from 'react';
 
 import Sidebar from '@components/Sidebar';
-import HomePage from "@pages/HomePage/HomePage";
 import { IRoute } from '@interfaces/IRoutes';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
@@ -18,15 +14,27 @@ import { ReactComponent as Overview } from '@icons/overview.svg';
 import { ReactComponent as Swap } from '@icons/vice-verse_arrows.svg';
 import { ReactComponent as Tractor } from '@icons/tractor.svg';
 import homeBgrImg from '@img/infographic9.jpg';
-import { LinksEnum } from './interfaces/LinksEnum';
-import { userLoggedStatus} from '@redux/auth';
+import { LinksEnum } from '@interfaces/LinksEnum';
+import { userLoggedStatus } from '@redux/auth';
 import { useAppSelector } from '@utils/hooks';
-import { UserStatusType } from './interfaces/IUser';
-  
+import { UserStatusType } from '@interfaces/IUser';
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorFallback from '@layouts/Fallback';
+
+const Counter = React.lazy(() => import('@pages/counter'));
+const Login = React.lazy(() => import('@pages/login'));
+const Main = React.lazy(() => import('@pages/main'));
+const Ilo = React.lazy(() => import('@pages/ilo'));
+const Report = React.lazy(() => import('@pages/Report'));
+const HomePage = React.lazy(() => import('@pages/HomePage/HomePage'));
+
 export default function App() {
-  const type = useAppSelector(userLoggedStatus)
+  const type = useAppSelector(userLoggedStatus);
   const location = useLocation();
-  const routes = {
+  const routes: {
+    [UserStatusType.VISITOR]: IRoute[],
+    [UserStatusType.AUTHED]: IRoute[],
+  } = {
     [UserStatusType.VISITOR]: [
       {
         name: 'Home',
@@ -35,12 +43,13 @@ export default function App() {
         link: true,
         bgrImg: homeBgrImg,
         icon: () => <Home />,
-        main:()=><HomePage />,
+        main: () => <HomePage />,
       },
       {
         name: 'Report',
         path: LinksEnum.REPORT,
         exact: true,
+        link: false,
         main: () => <Report />,
       },
       {
@@ -50,7 +59,7 @@ export default function App() {
         icon: () => <Overview />,
         main: () => <h2>Not Match</h2>,
       },
-    ] as IRoute[],
+    ],
     [UserStatusType.AUTHED]: [
       {
         name: 'Home',
@@ -59,13 +68,18 @@ export default function App() {
         link: true,
         // bgrImg: homeBgrImg,
         icon: () => <Home />,
-        main:()=><div><h1>Dashboard Page</h1></div>
+        main: () => (
+          <div>
+            <h1>Dashboard Page</h1>
+          </div>
+        ),
         // main: () => <HomePage />,
       },
       {
         name: 'Report',
         path: LinksEnum.REPORT,
         exact: true,
+        link: false,
         main: () => <Report />,
       },
       // {
@@ -97,7 +111,7 @@ export default function App() {
       },
       {
         name: 'Swap',
-        path:  LinksEnum.SWAP,
+        path: LinksEnum.SWAP,
         link: true,
         icon: () => <Swap />,
         main: () => <h2>Swap</h2>,
@@ -105,7 +119,7 @@ export default function App() {
 
       {
         name: 'Farms',
-        path:LinksEnum.FARMS,
+        path: LinksEnum.FARMS,
         link: true,
         icon: () => <Tractor />,
         main: () => <h2>Farms</h2>,
@@ -124,26 +138,34 @@ export default function App() {
         icon: () => <Overview />,
         main: () => <h2>Not Match</h2>,
       },
-    ] as IRoute[],
+    ],
   };
   return (
     <>
-    <Sidebar routes={routes[type]}>
-    <SwitchTransition mode="out-in">
-      <CSSTransition key={location.pathname} classNames="my-node" timeout={300}>
-        <Switch location={location}>
-          {routes[type].map((route, index) => (
-            <Route
-              key={index}
-              path={route.path}
-              exact={route.exact}
-              children={<route.main  />}
-            />
-          ))}
-        </Switch>
-      </CSSTransition>
-    </SwitchTransition>
-  </Sidebar>
-  </>
+      <Sidebar routes={routes[type]}>
+        <SwitchTransition mode="out-in">
+          <CSSTransition
+            key={location.pathname}
+            classNames="my-node"
+            timeout={300}
+          >
+            <ErrorBoundary FallbackComponent={ErrorFallback}>
+              <Suspense fallback={<div>Загрузка...</div>}>
+                <Switch location={location}>
+                  {routes[type].map((route, index) => (
+                    <Route
+                      key={index}
+                      path={route.path}
+                      exact={route.exact}
+                      children={<route.main />}
+                    />
+                  ))}
+                </Switch>
+              </Suspense>
+            </ErrorBoundary>
+          </CSSTransition>
+        </SwitchTransition>
+      </Sidebar>
+    </>
   );
 }

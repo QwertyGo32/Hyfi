@@ -133,7 +133,7 @@ export const AsideComponent = function ({ routes }: AsideProps) {
                   exact={exact}
                   className="nav-item"
                 >
-                  <props.icon />
+                  {props.icon && <props.icon />}
                   <span>{name}</span>
                 </StyledAsideListElement>
               </li>

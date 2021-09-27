@@ -4,6 +4,6 @@ export interface IRoute {
   exact?: boolean;
   link: boolean;
   bgrImg?: string;
-  icon: () => JSX.Element;
+  icon?: () => JSX.Element;
   main: () => JSX.Element;
 }
