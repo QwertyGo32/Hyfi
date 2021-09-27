@@ -3,13 +3,7 @@ import styled from 'styled-components';
 
 export const StyledButton = styled(Button)``;
 
-export const StyledSection = styled.section`
-  width: 258px;
-
-  &:not(:last-child) {
-    margin-right: 30px;
-  }
-`;
+export const StyledSection = styled.section``;
 
 export const StyledListHeader = styled.h3`
   display: grid;
@@ -18,7 +12,6 @@ export const StyledListHeader = styled.h3`
   border-bottom: 1px solid #7070701c;
   padding: 13.5px 0;
   align-items: flex-end;
-  height: 75px;
 `;
 
 export const StyledList = styled.ul`

@@ -9,8 +9,6 @@ import { ReactComponent as ShareLink } from '@icons/link.svg';
 import { ReactComponent as Badge } from '@icons/question-mark.svg';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import Button from 'react-bootstrap/Button';
-import Image from 'react-bootstrap/Image';
 
 export interface IDataContainerProps {
   inTitle: JSX.Element;
@@ -30,10 +28,11 @@ export default function DataContainer({
   listData,
   customTitleBadge,
   linksTo,
+  ...props
 }: IDataContainerProps) {
   return (
-    <StyledSection>
-      <StyledListHeader>
+    <StyledSection {...props}>
+      <StyledListHeader className="header">
         {inTitle}
         {typeof customTitleBadge !== 'undefined' ? (
           customTitleBadge
@@ -43,10 +42,10 @@ export default function DataContainer({
           </Link>
         )}
       </StyledListHeader>
-      <StyledList>
+      <StyledList className="list">
         {listData.map(({ title, value, badge }) => {
           return (
-            <StyledListElemet>
+            <StyledListElemet className="list-element">
               {typeof badge !== 'undefined' ? (
                 <OverlayTrigger
                   placement="right"
