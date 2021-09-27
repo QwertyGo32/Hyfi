@@ -1,28 +1,33 @@
 import React from 'react';
 import CompanyLogo from '@components/CompanyLogo';
-import DataContainer from '@components/DataContainer';
 import { CompanyLogoData } from '@components/CompanyLogo/mocked';
 import { DataContainerData } from '@components/DataContainer/mocked';
 import bgrImg from '@img/background.jpg';
 
 import InputBlock from '@/components/Input';
 import {
-  IloHead, IloWrapperHead,
-  StyledIloBlock, StyledIloBlockImg, StyledIloBlockTitle,
+  IloHead,
+  IloWrapperHead,
+  StyledIloBlock,
+  StyledIloBlockImg,
+  StyledIloBlockTitle,
   StyledIloContainer,
   StyledIloContainerBlocks,
-  StyledIloContainerInptBtn, StyledIloWrapper,
+  StyledIloContainerInptBtn,
+  StyledIloWrapper,
+  StyledDataContainer,
 } from '@pages/ilo/styled';
 import Btn from '@components/Btn';
+
 export default function Ilo() {
   return (
     <StyledIloWrapper>
-      <IloWrapperHead/>
+      <IloWrapperHead />
       <StyledIloBlock>
-        <StyledIloContainer className={"ilo-container"}>
-          <IloHead/>
+        <StyledIloContainer className={'ilo-container'}>
+          <IloHead />
           <StyledIloContainerBlocks>
-            <DataContainer
+            <StyledDataContainer
               inTitle={
                 <CompanyLogo
                   title={CompanyLogoData[0].title}
@@ -32,29 +37,33 @@ export default function Ilo() {
               }
               listData={DataContainerData}
             />
-            <DataContainer
-              inTitle={
-                <StyledIloBlockTitle>
-                  View Contract
-                </StyledIloBlockTitle>
-              }
-              listData={DataContainerData}
+            <StyledDataContainer
+              inTitle={<StyledIloBlockTitle>View Contract</StyledIloBlockTitle>}
+              listData={[
+                ...DataContainerData,
+                DataContainerData[0],
+                DataContainerData[0],
+              ]}
             />
-            <DataContainer
-              inTitle={
-                <StyledIloBlockTitle>
-                  One Page Info
-                </StyledIloBlockTitle>
-              }
-              listData={DataContainerData}
+            <StyledDataContainer
+              inTitle={<StyledIloBlockTitle>One Page Info</StyledIloBlockTitle>}
+              listData={[...DataContainerData, DataContainerData[0]]}
             />
           </StyledIloContainerBlocks>
           <StyledIloContainerInptBtn>
-            <InputBlock className={"ilo-page_btn"} placeholder="Test 1" badge="TEXT" />
-            <Btn theme={"gradient"} title={"Buy"}  className={"ilo-page_btn"}/>
+            <InputBlock
+              className={'ilo-page_btn'}
+              placeholder="Test 1"
+              badge="TEXT"
+            />
+            <Btn theme={'gradient'} title={'Buy'} className={'ilo-page_btn'} />
           </StyledIloContainerInptBtn>
         </StyledIloContainer>
-        <StyledIloBlockImg className={"ilo-block__img"} alt={"initial_offers_banner"} src={`${bgrImg}`}/>
+        <StyledIloBlockImg
+          className={'ilo-block__img'}
+          alt={'initial_offers_banner'}
+          src={`${bgrImg}`}
+        />
       </StyledIloBlock>
       {/*<InputBlock placeholder="Test 1" badge="TEXT" />*/}
       {/*<InputBlock placeholder="Test 2" gradient />*/}

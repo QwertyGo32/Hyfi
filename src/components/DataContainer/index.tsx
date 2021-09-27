@@ -30,10 +30,11 @@ export default function DataContainer({
   listData,
   customTitleBadge,
   linksTo,
+  ...props
 }: IDataContainerProps) {
   return (
-    <StyledSection>
-      <StyledListHeader>
+    <StyledSection {...props}>
+      <StyledListHeader className="header">
         {inTitle}
         {typeof customTitleBadge !== 'undefined' ? (
           customTitleBadge
@@ -43,10 +44,10 @@ export default function DataContainer({
           </Link>
         )}
       </StyledListHeader>
-      <StyledList>
+      <StyledList className="list">
         {listData.map(({ title, value, badge }) => {
           return (
-            <StyledListElemet>
+            <StyledListElemet className="list-element">
               {typeof badge !== 'undefined' ? (
                 <OverlayTrigger
                   placement="right"
