@@ -5,27 +5,14 @@ import Link from '@components/Link';
 import { SidebarContainer } from '@components/Sidebar/components/SidebarContainer/SidebarContainer';
 import { LinksEnum } from '@interfaces/LinksEnum';
 
-
-const StyledNavbarHeader = styled.header`
-  display: flex;
-  padding: 10px 20px;
-
-  .brand-logo {
-    font-size: 1.5em;
-    transform: translateX(0);
-    transition: 250ms ease-in;
-    visibility: visible;
-  }
-`;
-
 const StyledAside = styled.aside`
   position: fixed;
+  z-index: 19;
   padding: 0 0 20px;
   min-width: var(--sidebar-initial-width);
   width: var(--sidebar-initial-width);
   background: #ffffff 0 0 no-repeat padding-box;
   height: calc(100vh - var(--main-top-padding));
-  z-index: 9;
   visibility: visible;
   opacity: 1;
   transform: translateX(0);
@@ -41,7 +28,7 @@ const StyledAside = styled.aside`
   }
   
   @media screen and ${breakpoints.Device.tablet} {
-    transform: translateX(-200px);
+    transform: translateX(calc(var(--sidebar-initial-width) * -1));
   }
 `;
 const StyledAsideMain = styled.main`
@@ -52,6 +39,16 @@ const StyledAsideMain = styled.main`
   border: none;
   overflow-y: scroll;
   overflow-x: hidden;
+  &::-webkit-scrollbar { /* 1 - скроллбар */
+    width: 4px;
+    height: 4px;
+    background-color: #FFFFFF;
+  }
+
+  &::-webkit-scrollbar-thumb { /* 5 - ползунок */
+    border-radius: 2px;
+    background-color: var(--main-default-block-shadow);
+  }
   padding-bottom: 100px;
 `;
 
@@ -176,6 +173,16 @@ const StyledMain = styled.main`
     padding-right: 40px;
   }
   
+  @media screen and ${breakpoints.Device.tablet} {
+    &:not([data-page="${LinksEnum.ILO}"]) {
+      padding: 0 20px;
+    }
+
+    &[data-page="${LinksEnum.ILO}"] {
+      padding-left: 0;
+    }
+  }
+  
   padding-bottom: 96px;
   transition-duration: .5s;
   display: flex;
@@ -183,7 +190,6 @@ const StyledMain = styled.main`
   ${(props:StyledContainerProps)=>{
     return css`
     background: #FAFAFC url(${props.bgrImg ?? ""}) no-repeat center/cover;
-    
     `
   }}
 `;

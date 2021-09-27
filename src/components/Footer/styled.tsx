@@ -19,8 +19,9 @@ const StyledReportLink = styled.p`
 
 const StyledFooterWrapper = styled.footer`
   position: absolute;
+  z-index: 18;
   bottom: 0;
-  width: 100vw;
+  width: 100%;
   padding: 0 36px;
   display: flex;
   justify-content: flex-end;

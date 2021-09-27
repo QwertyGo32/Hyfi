@@ -36,7 +36,7 @@ export const StyledHeader = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 20;
   background: var(--main-default-bg) 0 0 no-repeat padding-box;
   border: 1px solid var(--main-default-wrapper-border);
   max-height: var(--main-top-padding);
@@ -140,10 +140,6 @@ export const StyledCheckbox = styled.input`
     &:checked ~ #sidebar {
       transform: translateX(0);
     }
-    
-    &:checked ~ #header #sidebar-logo {
-      transform: scale(0);
-    }
 
     &:checked ~ #sidebar .brand-logo {
       -webkit-transform: translateX(0);
@@ -158,7 +154,7 @@ export const StyledOrverlay = styled.div`
     background: #21252954;
   }
   @media screen and ${breakpoints.Device.tablet} {
-    display: block;
+    //display: block;
     width: 100vw;
     height: 100vh;
     position: fixed;
