@@ -11,3 +11,7 @@ export const selectChangeWalletModalState = createSelector(
   selectModal,
   (state) => state.changeWallet
 );
+export const selectIloDisclaimerModalState = createSelector(
+  selectModal,
+  (state) => state.iloDisclaimer
+);

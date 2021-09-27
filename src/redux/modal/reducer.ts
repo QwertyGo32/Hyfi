@@ -3,11 +3,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 interface ModalState {
   connectWallet: boolean;
   changeWallet: boolean;
+  iloDisclaimer: boolean;
 }
 
 const initialState: ModalState = {
   connectWallet: false,
   changeWallet: false,
+  iloDisclaimer: false,
 };
 
 export const modalSlice = createSlice({
@@ -20,8 +22,12 @@ export const modalSlice = createSlice({
     openChangeWallet: (state, action: PayloadAction<boolean>) => {
       state.changeWallet = action.payload;
     },
+    openIloDisclaimer: (state, action: PayloadAction<boolean>) => {
+      state.iloDisclaimer = action.payload;
+    },
   },
 });
-export const { openConnectWallet, openChangeWallet } = modalSlice.actions;
+export const { openConnectWallet, openChangeWallet, openIloDisclaimer } =
+  modalSlice.actions;
 
 export default modalSlice.reducer;

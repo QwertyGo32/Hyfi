@@ -150,7 +150,7 @@ export default function App() {
             timeout={300}
           >
             <ErrorBoundary FallbackComponent={ErrorFallback}>
-              <Suspense fallback={<div>Загрузка...</div>}>
+              <Suspense fallback={<div>Loading...</div>}>
                 <Switch location={location}>
                   {routes[type].map((route, index) => (
                     <Route

@@ -18,8 +18,13 @@ import {
   StyledDataContainer,
 } from '@pages/ilo/styled';
 import Btn from '@components/Btn';
+import DisclaimerModal from '@components/DisclaimerModal';
+import { useAppDispatch } from '@/utils/hooks';
+import { openIloDisclaimer } from '@redux/modal';
 
 export default function Ilo() {
+  const dispatch = useAppDispatch();
+
   return (
     <StyledIloWrapper>
       <IloWrapperHead />
@@ -56,7 +61,16 @@ export default function Ilo() {
               placeholder="Test 1"
               badge="TEXT"
             />
-            <Btn theme={'gradient'} title={'Buy'} className={'ilo-page_btn'} />
+            <Btn
+              theme={'gradient'}
+              title={'Buy'}
+              className={'ilo-page_btn'}
+              onClick={() => {
+                console.log('CLICk');
+                window.scrollTo({ left: 0, top: 0 });
+                dispatch(openIloDisclaimer(true));
+              }}
+            />
           </StyledIloContainerInptBtn>
         </StyledIloContainer>
         <StyledIloBlockImg
@@ -65,23 +79,7 @@ export default function Ilo() {
           src={`${bgrImg}`}
         />
       </StyledIloBlock>
-      {/*<InputBlock placeholder="Test 1" badge="TEXT" />*/}
-      {/*<InputBlock placeholder="Test 2" gradient />*/}
-      {/*<AccountDetails />*/}
-      {/*<ConnectWallet />*/}
-      {/*{CompanyLogoData.map(({ title, img, status }) => {*/}
-      {/*  return <CompanyLogo title={title} img={img} status={status} />;*/}
-      {/*})}*/}
-      {/*<DataContainer*/}
-      {/*  inTitle={*/}
-      {/*    <CompanyLogo*/}
-      {/*      title={CompanyLogoData[0].title}*/}
-      {/*      img={CompanyLogoData[0].img}*/}
-      {/*      status={CompanyLogoData[0].status}*/}
-      {/*    />*/}
-      {/*  }*/}
-      {/*  listData={DataContainerData}*/}
-      {/*/>*/}
+      <DisclaimerModal />
     </StyledIloWrapper>
   );
 }

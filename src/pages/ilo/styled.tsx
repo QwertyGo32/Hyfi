@@ -11,7 +11,7 @@ export const StyledDataContainer = styled(DataContainer)`
 
 export const StyledIloBlockImg = styled.img`
   border-radius: 0 10px 10px 0;
-
+  width: 100%;
   @media screen and ${breakpoints.Device.desktop} {
     display: none;
   }
@@ -76,17 +76,23 @@ const StyledIloWrapperHeadText = styled.p`
 export const StyledIloBlock = styled.div`
   width: 90%;
   max-width: 1266px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 25%;
+  align-items: stretch;
   box-shadow: 0 3px 5px #acb7c270;
   border-radius: 10px;
   background: white;
   margin: 30px auto;
+  @media screen and ${breakpoints.Device.desktop} {
+    grid-template-columns: 1fr;
+  }
+
+  @media screen and ${breakpoints.Device.tablet} {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const StyledIloContainer = styled.div`
-  width: 75%;
-  display: flex;
-  flex-direction: column;
   padding: 59px 30px 63px 60px;
 
   @media screen and ${breakpoints.Device.desktop} {
