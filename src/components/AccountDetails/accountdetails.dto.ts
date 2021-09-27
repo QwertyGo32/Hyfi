@@ -3,11 +3,11 @@ import { IsNotEmpty,IsEthereumAddress } from "class-validator";
 export class HashValidationDto {
 
     @IsNotEmpty({
-        message: 'username cannot be empty'
+        message: 'This field cannot be empty'
     })
     @IsEthereumAddress({
-        message:"Must be etherium"
+        message:"Must be valid etherium hash"
     })
-    public etherium: string | null = null;
+    public walletValue: string | null = null;
 
 }

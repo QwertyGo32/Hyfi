@@ -17,3 +17,7 @@ export const authWalletType = createSelector(
   selectAuth,
   (state) => state.data.walletType
 );
+export const changeStateData = createSelector(
+  selectAuth,
+  (state) => state.changeStateField
+);

@@ -1,20 +1,30 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { loginUserToWebSite, logoutUserFromWebSite } from './action';
+import { loginUserToWebSite, logoutUserFromWebSite, changeStateField } from './action';
 import { PURGE } from 'redux-persist';
-import { IUser, WalletType } from '@interfaces/IUser';
+import { IUser, UserStatusType, WalletType } from '@interfaces/IUser';
 
-export interface AuthStateData extends IUser {}
+export interface AuthStateData extends IUser {
+ 
+}
 
 export interface AuthState {
   data: AuthStateData;
   pending: boolean;
   error: boolean;
+  changeStateField:{
+    [x in keyof AuthStateData]?:AuthStateData[x] | boolean ;
+  };
 }
 
 const initialState: AuthState = {
-  data: { accountName: '', status: 'visitor', walletType: '' },
+  data: { accountName: "", status: 'visitor', walletType: '' },
   pending: false,
   error: false,
+  changeStateField:{
+    accountName:false,
+    status:false,
+    walletType:false,
+  },
 };
 
 export const counterSlice = createSlice({
@@ -27,6 +37,27 @@ export const counterSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder
+      .addCase(changeStateField.pending, (state,{meta:{arg}}) => {
+        Object.entries(arg).forEach(([key])=>{
+          state.changeStateField[key as keyof AuthState["data"]]=true;
+        })
+      })
+      .addCase(changeStateField.fulfilled, (state, { payload }) => {
+        Object.entries(payload).forEach(([key,value])=>{
+          if(key === "accountName" ){
+            state.data[key] = `${value}`;
+          }
+          state.changeStateField[key as keyof AuthState["changeStateField"]]=false;
+        })
+      })
+      .addCase(changeStateField.rejected, (state,{meta:{arg}}) => {
+        Object.entries(arg).forEach(([key])=>{
+          state.changeStateField[key as keyof AuthState["changeStateField"]]=false;
+        })
+      });
+
+
     builder
       .addCase(loginUserToWebSite.pending, (state) => {
         state.pending = true;

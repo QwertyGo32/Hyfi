@@ -16,21 +16,30 @@ import Button, { gradientBtnTypes } from '@components/Btn';
 import Form from 'react-bootstrap/Form';
 import { ReactComponent as Copy } from '@icons/copy.svg';
 import { ReactComponent as Link } from '@icons/link.svg';
-
+import Spinner from 'react-bootstrap/Spinner';
 import {
   selectChangeWalletModalState,
   openChangeWallet,
   openConnectWallet,
 } from '@redux/modal';
-import { authWalletAddress, authWalletType } from '@redux/auth';
+import {
+  authWalletAddress,
+  authWalletType,
+  changeStateData,
+  changeStateField,
+} from '@redux/auth';
 import { WalletType } from '@/interfaces/IUser';
 import { useAppDispatch, useAppSelector } from '@utils/hooks';
 import { useValidation } from 'react-class-validator';
 import { HashValidationDto } from './accountdetails.dto';
+import { InputGroup } from 'react-bootstrap';
 
 export default function AccountDetails({ ...props }) {
+  const [validate, errors] = useValidation(HashValidationDto);
+
   const show = useAppSelector(selectChangeWalletModalState);
   const type = useAppSelector(authWalletType);
+  const fieldLoader = useAppSelector(changeStateData);
 
   const walletAdress = useAppSelector(authWalletAddress);
   const dispatch = useAppDispatch();
@@ -52,6 +61,8 @@ export default function AccountDetails({ ...props }) {
       const successful = document.execCommand('copy');
       const msg = successful ? 'successful' : 'unsuccessful';
       setIsCopied(true);
+      inputRef?.current?.blur();
+      window?.getSelection()?.removeAllRanges();
       const id = setTimeout(() => {
         console.log('Copying text command was ' + msg);
         setIsCopied(false);
@@ -59,6 +70,18 @@ export default function AccountDetails({ ...props }) {
       intervalRef.current = id;
     } catch (err) {
       console.log('Oops, unable to copy');
+    }
+  };
+  const handleSubmit = async function (
+    evt: React.SyntheticEvent<HTMLFormElement>
+  ) {
+    evt.preventDefault();
+
+    // `validate` will return true if the submission is valid
+    if (await validate({ walletValue })) {
+      // ... handle valid submission
+      console.log('Validation');
+      dispatch(changeStateField({ accountName: walletValue }));
     }
   };
   const changeData = () => {
@@ -112,25 +135,51 @@ export default function AccountDetails({ ...props }) {
                 </StyledButton>
               </Col>
               <Col xs={12} className="mb-3">
-                <StyledInputGroup
-                  onClick={toggleEditing}
-                  onBlur={() => {
-                    setEditing(false);
-                  }}
-                  className="mb-0 mb-md-3"
-                >
-                  <Form.Control
-                    ref={inputRef}
-                    onChange={(event) => {
-                      setWalletValue(event.target.value);
+                <Form noValidate onSubmit={handleSubmit}>
+                  <StyledInputGroup
+                    onClick={toggleEditing}
+                    onBlur={() => {
+                      setEditing(false);
                     }}
-                    disabled={isCopied}
-                    placeholder="Your wallet"
-                    aria-label="Your wallet"
-                    aria-describedby="basic-addon1"
-                    value={walletValue}
-                  />
-                </StyledInputGroup>
+                    className="mb-0 mb-md-3"
+                  >
+                    <InputGroup>
+                      {fieldLoader.accountName && (
+                        <InputGroup.Text>
+                          <Spinner
+                            as="span"
+                            animation="border"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                          />
+                        </InputGroup.Text>
+                      )}
+                      <Form.Control
+                        ref={inputRef}
+                        onChange={(event) => {
+                          setWalletValue(event.target.value);
+                        }}
+                        onBlur={() =>
+                          validate({ walletValue }, ['walletValue'])
+                        }
+                        disabled={isCopied || !!fieldLoader.accountName}
+                        readOnly={isCopied || !!fieldLoader.accountName}
+                        placeholder="Your wallet"
+                        aria-label="Your wallet"
+                        aria-describedby="basic-addon1"
+                        value={walletValue}
+                        isInvalid={!!errors.walletValue}
+                      />
+
+                      <Form.Control.Feedback type="invalid">
+                        {errors.walletValue?.map((message, index) => (
+                          <p key={index}>{message}</p>
+                        ))}
+                      </Form.Control.Feedback>
+                    </InputGroup>
+                  </StyledInputGroup>
+                </Form>
               </Col>
               <Col xs={12} className="d-flex mb-3 flex-column flex-md-row">
                 <StyledButtonWithIcon
