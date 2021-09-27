@@ -31,16 +31,18 @@ export const StyledIloWrapper = styled.section`
 export const IloWrapperHead = () => {
   return (
     <StyledIloWrapperHead>
-      <StyledIloWrapperHeadTitle>ILO</StyledIloWrapperHeadTitle>
-      <StyledIloWrapperHeadText>
-        Owners that seek to raise money for their development of New
-        technologies; IP, Patents Licenses, Brands and Projects (“Assets”) can
-        sell up to a 49% interest in their Assets on the HYFI Platform with a
-        right to buy back interests sold. We will introduce your Assets to our
-        Global network of Brokers who will introduce Investors (Institutional,
-        Corporations, Family Offices, Private Wealth and Individuals) who may
-        buy fractional interests in your Assets.
-      </StyledIloWrapperHeadText>
+      <StyledIloWrapperHeadContainer>
+        <StyledIloWrapperHeadTitle>ILO</StyledIloWrapperHeadTitle>
+        <StyledIloWrapperHeadText>
+          Owners that seek to raise money for their development of New
+          technologies; IP, Patents Licenses, Brands and Projects (“Assets”) can
+          sell up to a 49% interest in their Assets on the HYFI Platform with a
+          right to buy back interests sold. We will introduce your Assets to our
+          Global network of Brokers who will introduce Investors (Institutional,
+          Corporations, Family Offices, Private Wealth and Individuals) who may
+          buy fractional interests in your Assets.
+        </StyledIloWrapperHeadText>
+      </StyledIloWrapperHeadContainer>
     </StyledIloWrapperHead>
   );
 };
@@ -49,8 +51,16 @@ const StyledIloWrapperHead = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 68px 16% 40px 11%;
+  padding: 50px 0;
   background: url(${bgrImg}) no-repeat center/cover;
+`;
+
+const StyledIloWrapperHeadContainer = styled.div`
+  width: 90%;
+  max-width: 1266px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 `;
 
 const StyledIloWrapperHeadTitle = styled.h1`
@@ -59,7 +69,7 @@ const StyledIloWrapperHeadTitle = styled.h1`
 `;
 
 const StyledIloWrapperHeadText = styled.p`
-  font: normal normal normal 20px/27px Segoe UI;
+  font: normal normal normal 20px/27px Montserrat;
   color: #001218;
 `;
 
