@@ -25,7 +25,7 @@ const StyledFooterWrapper = styled.footer`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  height: 8.1%;
+  height: 96px;
   background: #FFFFFF 0 0 no-repeat padding-box;
   border: 1px solid #C9C9C9;
 `;

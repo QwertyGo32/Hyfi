@@ -2,6 +2,7 @@ import styled, { keyframes } from 'styled-components';
 import breakpoints from '@styles/constants.styled';
 import { ReactComponent as Logo } from '@icons/logo.svg';
 import { ReactComponent as Sidebar } from '@icons/sidebar.svg';
+import { LinksEnum } from '@interfaces/LinksEnum';
 
 // Create the keyframes
 const sidebarAnim = keyframes`
@@ -36,7 +37,7 @@ export const StyledHeader = styled.header`
   top: 0;
   width: 100%;
   z-index: 10;
-  background: var(--main-default-bg) 0% 0% no-repeat padding-box;
+  background: var(--main-default-bg) 0 0 no-repeat padding-box;
   border: 1px solid var(--main-default-wrapper-border);
   max-height: var(--main-top-padding);
   @media screen and ${breakpoints.Device.tablet} {
@@ -65,7 +66,12 @@ export const StyledHeader = styled.header`
   }
 `;
 
-export const StyledLogo = styled(Logo)``;
+export const StyledLogo = styled(Logo)`
+  @media screen and ${breakpoints.Device.tablet} {
+    transform: translateX(-200px);
+    visibility: hidden;
+  }
+`;
 export const StyledSidebarBtn = styled(Sidebar)`
   transition: all 500ms ease-out;
 `;
@@ -82,23 +88,14 @@ export const StyledCheckbox = styled.input`
     //  padding: 0 33px;
     //}
   }
-  @media screen and ${breakpoints.Device.desktop} {
-    &:checked ~ #main-content > div {
-      padding-left: 40px;
-      transition-delay: 0.2s;
-    }
-  }
   
-  &:checked ~ #main-content {
+  &:checked ~ #main-content:not([data-page="${LinksEnum.ILO}"]) {
     padding-left: 8.5%;
     transition-delay: .2s;
   }
   
-  @media screen and ${breakpoints.Device.desktop} {
-    &:checked ~ #main-content {
-      padding-left: 40px;
-      transition-delay: .2s;
-    }
+  &:checked ~ #main-content[data-page="${LinksEnum.ILO}"] {
+    padding-left: 0;
   }
   
   &:checked ~ #sidebar .nav-item {
@@ -117,6 +114,42 @@ export const StyledCheckbox = styled.input`
 
   &:checked ~ #sidebar .navbar-header {
     visibility: hidden;
+  }
+
+  @media screen and ${breakpoints.Device.desktop} {
+    &:checked ~ #main-content .ilo-block__img {
+      display: block;
+    }
+
+    &:checked ~ #main-content .ilo-container {
+      width: 75%;
+    }
+
+    &:checked ~ #main-content {
+      padding-left: 40px;
+      transition-delay: .2s;
+    }
+  }
+  
+  @media screen and ${breakpoints.Device.tablet} {
+    &:checked ~ #sidebar .nav-item {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
+
+    &:checked ~ #sidebar {
+      transform: translateX(0);
+    }
+    
+    &:checked ~ #header #sidebar-logo {
+      transform: scale(0);
+    }
+
+    &:checked ~ #sidebar .brand-logo {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+      visibility: visible;
+    }
   }
 `;
 export const StyledOrverlay = styled.div`

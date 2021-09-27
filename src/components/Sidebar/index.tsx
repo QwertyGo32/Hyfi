@@ -1,5 +1,4 @@
 import React,{useMemo} from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { AsideComponent, StyledContainer } from './styled';
 import Navbar from '@components/Navbar';
 import { IRoute } from '@interfaces/IRoutes';
@@ -25,7 +24,7 @@ export default function Sidebar({ routes, children }: SidebarProps) {
     <>
       <Navbar route={routes[0]} />
       <AsideComponent routes={routes} />
-      <StyledContainer bgrImg={currentRoute?.bgrImg ?? ""}>{children}</StyledContainer>
+      <StyledContainer data-page={currentRoute?.path ?? ""} bgrImg={currentRoute?.bgrImg ?? ""}>{children}</StyledContainer>
       <StyledFooter/>
     </>
   );

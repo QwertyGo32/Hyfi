@@ -9,12 +9,12 @@ export const StyledInputGroupText = styled(InputGroup.Text)`
   font-size: 12px;
   line-height: 15px;
   font-weight: bold;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   color: var(--main-text-default);
   opacity: 1;
 
   border-left: none;
-  background: rgb(241 243 245 / 60%) 0% 0% no-repeat padding-box;
+  background: rgb(241 243 245 / 60%) 0 0 no-repeat padding-box;
 
   /* &[data-close='true'] {
     display: none;
@@ -23,6 +23,12 @@ export const StyledInputGroupText = styled(InputGroup.Text)`
 
 export const StyledInputGroup = styled(InputGroup)`
   position: relative;
+  max-width: 259px;
+  
+  &.ilo-page_btn {
+    margin-bottom: 0 !important;
+    margin-right: 30px;
+  }
   &[data-gradient='true'] {
     &:before {
       content: '';
@@ -32,13 +38,13 @@ export const StyledInputGroup = styled(InputGroup)`
       width: 100%;
       height: 100%;
       background: transparent linear-gradient(90deg, #ffffff00 0%, #f1f3f5 100%)
-        0% 0% no-repeat padding-box;
+        0 0 no-repeat padding-box;
       border-radius: 5px;
     }
   }
   &[data-gradient='true'] {
     input {
-      box-shadow: inset 0px 3px 6px var(--main-block-shadow);
+      box-shadow: inset 0 3px 6px var(--main-block-shadow);
     }
   }
   &[data-badge='true'] {
@@ -49,25 +55,25 @@ export const StyledInputGroup = styled(InputGroup)`
       position: absolute;
       width: 100%;
       height: 100%;
-      box-shadow: inset 0px 3px 6px var(--main-block-shadow);
+      box-shadow: inset 0 3px 6px var(--main-block-shadow);
       border-radius: 5px;
       z-index: 1;
     }
     input {
       box-shadow: none;
-      background: rgb(241 243 245 / 60%) 0% 0% no-repeat padding-box;
+      background: rgb(241 243 245 / 60%) 0 0 no-repeat padding-box;
       font-family: 'Montserrat', sans-serif;
       font-size: 12px;
       line-height: 15px;
       font-weight: bold;
-      letter-spacing: 0px;
+      letter-spacing: 0;
       color: var(--main-text-default);
       &::placeholder {
         font-family: 'Montserrat', sans-serif;
         font-size: 12px;
         line-height: 15px;
         font-weight: bold;
-        letter-spacing: 0px;
+        letter-spacing: 0;
         color: var(--main-text-default);
       }
       opacity: 1;
@@ -76,7 +82,7 @@ export const StyledInputGroup = styled(InputGroup)`
   }
 
   input {
-    background: #ffffff 0% 0% no-repeat padding-box;
+    background: #ffffff 0 0 no-repeat padding-box;
     box-shadow: inset 4px 5px 6px #d1d9e1;
     border-radius: 5px;
   }

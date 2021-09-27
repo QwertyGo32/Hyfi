@@ -6,7 +6,6 @@ import Main from '@pages/main';
 import Ilo from '@pages/ilo';
 
 import Sidebar from '@components/Sidebar';
-import Report from "@pages/Report"
 import HomePage from "@pages/HomePage/HomePage";
 import { IRoute } from '@interfaces/IRoutes';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,7 +17,6 @@ import { ReactComponent as Overview } from '@icons/overview.svg';
 import { ReactComponent as Swap } from '@icons/vice-verse_arrows.svg';
 import { ReactComponent as Tractor } from '@icons/tractor.svg';
 import homeBgrImg from '@img/infographic9.jpg';
-import reportBgrImg from '@img/report_bgr.jpg';
 import React from "react";
 export default function App() {
   const [type,setType]=React.useState<"public"|"private">("private")
@@ -83,7 +81,7 @@ export default function App() {
         path: '/initialofferings',
         link: true,
         icon: () => <Chain />,
-        main: () => <Ilo/>,
+        main: () => <Ilo />,
       },
       {
         name: 'Overview',

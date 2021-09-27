@@ -3,6 +3,7 @@ import breakpoints from '@styles/constants.styled';
 import { IRoute } from '@interfaces/IRoutes';
 import Link from '@components/Link';
 import { SidebarContainer } from '@components/Sidebar/components/SidebarContainer/SidebarContainer';
+import { LinksEnum } from '@interfaces/LinksEnum';
 
 
 const StyledNavbarHeader = styled.header`
@@ -38,18 +39,20 @@ const StyledAside = styled.aside`
     height: 100%;
     overflow: auto;
   }
+  
+  @media screen and ${breakpoints.Device.tablet} {
+    transform: translateX(-200px);
+  }
 `;
 const StyledAsideMain = styled.main`
-  height: 80%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border: none;
-  
-  @media screen and ${breakpoints.Device.desktop} {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-bottom: 100px;
 `;
 
 const StyledAsideListElement = styled(Link)`
@@ -92,7 +95,7 @@ const StyledAsideListElement = styled(Link)`
         var(--main-default-bg) 0%,
         var(--main-sidebar-transition-bg) 100%
       )
-      0% 0% no-repeat padding-box;
+      0 0 no-repeat padding-box;
 
     span {
       color: var(--main-text-colored);
@@ -100,7 +103,7 @@ const StyledAsideListElement = styled(Link)`
       &.active {
         color: #4364f7;
         background: transparent linear-gradient(62deg, #ffffff 0%, #ebeae9 100%)
-          0% 0% no-repeat padding-box;
+          0 0 no-repeat padding-box;
 
         p {
           color: #4364f7;
@@ -160,20 +163,27 @@ export const AsideComponent = function ({ routes }: AsideProps) {
 interface StyledContainerProps  {
   bgrImg?:string;
   children?: JSX.Element;
-};
+}
 
 const StyledMain = styled.main`
   width: 100%;
   //max-width: 1300px;
-  padding-left: calc(var(--sidebar-initial-width) + 8.5%);
-  padding-right: 40px;
-  padding-bottom: 6%;
+  &[data-page="${LinksEnum.ILO}"] {
+    padding-left: var(--sidebar-initial-width);
+  }
+  &:not([data-page="${LinksEnum.ILO}"]) {
+    padding-left: calc(var(--sidebar-initial-width) + 8.5%);
+    padding-right: 40px;
+  }
+  
+  padding-bottom: 96px;
   transition-duration: .5s;
   display: flex;
   align-items: center;
   ${(props:StyledContainerProps)=>{
     return css`
-    background: url(${props.bgrImg ?? ""}) no-repeat center/cover;
+    background: #FAFAFC url(${props.bgrImg ?? ""}) no-repeat center/cover;
+    
     `
   }}
 `;
