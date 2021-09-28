@@ -14,6 +14,7 @@ import {
   StyledLogo,
   StyledDataRow,
   StyledBtn,
+  StyledFormGroup,
 } from './styled';
 import { StyledTitle, StyledHeader, StyledModal } from '@styles/modal.styled';
 import { selectIloDisclaimerModalState, openIloDisclaimer } from '@redux/modal';
@@ -26,7 +27,6 @@ import { DisclaimerModalDto } from './disclaimerModalDto';
 interface ICheckbox {
   disclaimer: boolean | null;
   rools: boolean | null;
-  [x: string]: boolean | null;
 }
 
 export default function DisclaimerModal({ ...props }) {
@@ -41,8 +41,8 @@ export default function DisclaimerModal({ ...props }) {
   const dispatch = useAppDispatch();
 
   const handleChecbox = function (event: React.ChangeEvent<HTMLInputElement>) {
-    const name = event.target.name;
-    // setChecbox({ [name as  keyof ICheckbox]: event.target.checked });
+    const name = event.target.name as keyof ICheckbox;
+    setChecbox({ ...checkboxes, [name]: event.target.checked });
   };
 
   const handleSubmit = async function (
@@ -112,17 +112,37 @@ export default function DisclaimerModal({ ...props }) {
                 <Form noValidate onSubmit={handleSubmit}>
                   <StyledDataRow>
                     <Col className="checkbox">
-                      <Form.Group className="mb-3" controlId="read-disclaimer">
+                      <StyledFormGroup
+                        className={`mb-3 ${
+                          !!errors.readDisclaimer ? 'error' : ''
+                        }`}
+                        controlId="read-disclaimer"
+                      >
                         <StyledFormCheck
                           className="checkbox"
                           type="checkbox"
                           name="disclaimer"
                           label="I have read the disclaimer"
                           checked={checkboxes.disclaimer}
+                          onChange={handleChecbox}
+                          onBlur={() => {
+                            const readDisclaimer = checkboxes.disclaimer;
+                            validate({ readDisclaimer }, ['readDisclaimer']);
+                          }}
+                          isInvalid={!!errors.readDisclaimer}
                         />
-                      </Form.Group>
-                      <Form.Group
-                        className="mb-3"
+                        {errors.readDisclaimer && (
+                          <Form.Control.Feedback type="invalid">
+                            {errors.readDisclaimer?.map((message, index) => (
+                              <p key={index}>{message}</p>
+                            ))}
+                          </Form.Control.Feedback>
+                        )}
+                      </StyledFormGroup>
+                      <StyledFormGroup
+                        className={`mb-3 ${
+                          !!errors.understandRegulations ? 'error' : ''
+                        }`}
                         controlId="understand-regulations"
                       >
                         <StyledFormCheck
@@ -130,13 +150,25 @@ export default function DisclaimerModal({ ...props }) {
                           name="rools"
                           label="I understand that regulations might differ based on location"
                           checked={checkboxes.rools}
-                          onChange={(
-                            event: React.ChangeEvent<HTMLInputElement>
-                          ) => {
-                            console.log(event.target.checked);
+                          onChange={handleChecbox}
+                          isInvalid={!!errors.understandRegulations}
+                          onBlur={() => {
+                            const understandRegulations = checkboxes.rools;
+                            validate({ understandRegulations }, [
+                              'understandRegulations',
+                            ]);
                           }}
                         />
-                      </Form.Group>
+                        {errors.understandRegulations && (
+                          <Form.Control.Feedback type="invalid">
+                            {errors.understandRegulations?.map(
+                              (message, index) => (
+                                <p key={index}>{message}</p>
+                              )
+                            )}
+                          </Form.Control.Feedback>
+                        )}
+                      </StyledFormGroup>
                     </Col>
                     <Col className="input">
                       <StyledFormLabel htmlFor="sumInput">
@@ -171,7 +203,10 @@ export default function DisclaimerModal({ ...props }) {
                       </StyledFromControlContainer>
                     </Col>
                     <Col className="button">
-                      <StyledBtn theme={gradientBtnTypes.gradient}>
+                      <StyledBtn
+                        disabled={Object.keys(errors).length > 0}
+                        theme={gradientBtnTypes.gradient}
+                      >
                         Buy
                       </StyledBtn>
                     </Col>

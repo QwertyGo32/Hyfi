@@ -24,6 +24,15 @@ export const StyledFormLabel = styled(Form.Label)`
   opacity: 1;
   margin-bottom: 12.5px;
 `;
+
+export const StyledFormGroup = styled(Form.Group)`
+  &.error {
+    .invalid-feedback {
+      display: block;
+    }
+  }
+`;
+
 export const StyledFromControlContainer = styled.div`
   position: relative;
   .text-container {
