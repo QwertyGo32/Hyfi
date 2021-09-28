@@ -7,6 +7,9 @@ export const HomeWrapper = styled.div`
   display: grid;
   grid-template: repeat(3, 1fr) / repeat(4, 1fr);
   align-items: center;
+  @media screen and ${breakpoints.Device.desktop} {
+    grid-template-columns: auto;
+  }
 `;
 
 export const Title = styled.h1`

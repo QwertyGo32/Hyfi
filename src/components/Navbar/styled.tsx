@@ -3,6 +3,13 @@ import breakpoints from '@styles/constants.styled';
 import { ReactComponent as Logo } from '@icons/logo.svg';
 import { ReactComponent as Sidebar } from '@icons/sidebar.svg';
 import { LinksEnum } from '@interfaces/LinksEnum';
+import { UserStatusType } from '@/interfaces/IUser';
+import { ReactComponent as WalletIcon } from '@icons/wallet.svg';
+export const StyledWalletIcon = styled(WalletIcon)`
+  /* position: absolute;
+  left: 0;
+  top: 0; */
+`;
 
 // Create the keyframes
 const sidebarAnim = keyframes`
@@ -47,6 +54,14 @@ export const StyledHeader = styled.header`
     grid-template-areas: 'dropdown logo side';
   }
 
+  &[data-status='${UserStatusType.AUTHED}'] {
+  }
+  &[data-status='${UserStatusType.VISITOR}'] {
+    grid-template-columns: 245px 24px 1fr;
+    @media screen and ${breakpoints.Device.tablet} {
+      grid-template-columns: max-content 50px 24px;
+    }
+  }
   .dropdown {
     justify-self: flex-end;
     grid-area: dropdown;
@@ -160,6 +175,26 @@ export const StyledOrverlay = styled.div`
 `;
 
 export const StyledBtnContainer = styled.div`
+  position: relative;
   justify-self: flex-end;
   grid-area: dropdown;
+  overflow: hidden;
+  .wallet-container {
+    display: none;
+    @media screen and ${breakpoints.Device.tablet} {
+      display: flex;
+      background: var(--main-default-bg);
+      padding: 14px;
+    }
+  }
+  .home-page_btn {
+    @media screen and ${breakpoints.Device.tablet} {
+      padding: 2px;
+    }
+  }
+  span {
+    @media screen and ${breakpoints.Device.tablet} {
+      display: none;
+    }
+  }
 `;

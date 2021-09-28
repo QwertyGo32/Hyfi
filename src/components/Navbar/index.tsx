@@ -7,6 +7,7 @@ import {
   StyledSidebarBtn,
   StyledOrverlay,
   StyledBtnContainer,
+  StyledWalletIcon,
 } from './styled';
 import { Link } from 'react-router-dom';
 import Wallet, { IWalletDropdownBtn } from '@components/Wallet';
@@ -51,7 +52,7 @@ export default function Navbar({ route }: NavbarProps) {
   return (
     <>
       <StyledCheckbox type="checkbox" name="checkbox" id="checkbox" />
-      <StyledHeader id="header">
+      <StyledHeader id="header" data-status={status}>
         <div>
           <Link to={route.path}>
             <StyledLogo />
@@ -74,11 +75,16 @@ export default function Navbar({ route }: NavbarProps) {
                 <Btn
                   className="home-page_btn"
                   theme={gradientBtnTypes.gradient}
-                  title="Connect Wallet"
+                  // title="Connect Wallet"
                   onClick={() => {
                     dispatch(openConnectWallet(true));
                   }}
-                />
+                >
+                  <span>Connect Wallet</span>
+                  <div className="wallet-container">
+                    <StyledWalletIcon />
+                  </div>
+                </Btn>
               </StyledBtnContainer>
             ),
           }[status]
