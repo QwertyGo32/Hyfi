@@ -16,6 +16,7 @@ import {
   StyledIloContainerInptBtn,
   StyledIloWrapper,
   StyledDataContainer,
+  StyledIloContainerInfo,
 } from '@pages/ilo/styled';
 import Btn from '@components/Btn';
 import DisclaimerModal from '@components/DisclaimerModal';
@@ -56,15 +57,21 @@ export default function Ilo() {
             />
           </StyledIloContainerBlocks>
           <StyledIloContainerInptBtn>
-            <InputBlock
-              className={'ilo-page_btn'}
-              placeholder="Test 1"
-              badge="TEXT"
-            />
+            <StyledIloContainerInfo>
+              <InputBlock
+                className={'ilo-page_btn'}
+                placeholder="Test 1"
+                badge="USDT"
+                type="number"
+              />
+              <p className="info">
+                Your Contribution <span>0 USDT</span>
+              </p>
+            </StyledIloContainerInfo>
             <Btn
               theme={'gradient'}
               title={'Buy'}
-              className={'ilo-page_btn'}
+              className={'ilo-page_btn ilo-page_btn-gradient'}
               onClick={() => {
                 console.log('CLICk');
                 window.scrollTo({ left: 0, top: 0 });

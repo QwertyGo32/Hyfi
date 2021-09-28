@@ -23,12 +23,12 @@ export const StyledInputGroupText = styled(InputGroup.Text)`
 
 export const StyledInputGroup = styled(InputGroup)`
   position: relative;
-  max-width: 259px;
+  /* max-width: 259px; */
 
-  &.ilo-page_btn {
+  /* &.ilo-page_btn {
     margin-bottom: 0 !important;
     margin-right: 30px;
-  }
+  } */
   &[data-gradient='true'] {
     &:before {
       content: '';
@@ -90,5 +90,13 @@ export const StyledInputGroup = styled(InputGroup)`
     background: var(--main-default-bg) 0% 0% no-repeat padding-box;
     box-shadow: inset 4px 5px 6px var(--main-block-shadow);
     border-radius: 5px;
+    padding: 9.5px 14px;
+    &[type='number'] {
+      -moz-appearance: textfield;
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+    }
   }
 `;

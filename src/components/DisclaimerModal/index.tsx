@@ -35,7 +35,7 @@ export default function DisclaimerModal({ ...props }) {
   const show = useAppSelector(selectIloDisclaimerModalState);
   const [priceValue, setPriceValue] = useState<number | null>(null);
   const [checkboxes, setChecbox] = useState<ICheckbox>({
-    disclaimer: true,
+    disclaimer: null,
     rools: null,
   });
   const dispatch = useAppDispatch();

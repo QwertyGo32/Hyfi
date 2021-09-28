@@ -148,11 +148,49 @@ export const StyledIloContainerBlocks = styled.div`
   margin-bottom: 30px;
 `;
 
-export const StyledIloContainerInptBtn = styled.div`
-  width: 50%;
-  display: flex;
-  height: 35px;
+export const StyledIloContainerInfo = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  border-bottom: 1px solid var(--main-default-link-color);
 
+  .info {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 500;
+    letter-spacing: 0px;
+    color: var(--main-text-default);
+    opacity: 1;
+    margin: 0;
+    padding-bottom: 9.5px;
+    span {
+      font-weight: bold;
+      color: var(--main-text-colored);
+    }
+  }
+`;
+
+export const StyledIloContainerInptBtn = styled.div`
+  /* width: 50%; */
+  /* display: flex; */
+  display: grid;
+  gap: 5px 30px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 30px;
+  .ilo-page_btn {
+    &-gradient {
+      width: max-content;
+      align-self: flex-start;
+      @media screen and ${breakpoints.Device.tablet} {
+        width: auto;
+      }
+    }
+  }
+  @media screen and ${breakpoints.Device.tablet} {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
   @media screen and ${breakpoints.Device.desktop} {
     width: 100%;
   }
