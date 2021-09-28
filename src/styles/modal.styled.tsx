@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Modal from 'react-bootstrap/Modal';
-
+import breakpoints from '@styles/constants.styled';
 export const StyledTitle = styled.div`
   font-family: 'Montserrat', sans-serif;
   font-size: 20px;
@@ -42,6 +42,13 @@ export const StyledModal = styled(Modal)`
     border-radius: 10px;
     box-shadow: 0px 3px 5px var(--main-default-block-shadow);
     border: none;
+  }
+  &.disclaimer-modal {
+    .modal-dialog {
+      @media screen and (min-width: ${breakpoints.Responsive.desktop}) {
+        max-width: 1376px;
+      }
+    }
   }
 `;
 

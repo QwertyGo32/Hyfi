@@ -1,26 +1,30 @@
-import React, { useState, useRef, useEffect } from 'react';
-// import Button from "react-bootstrap/Button";
+import React, { useState, useRef } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { StyledBody, StyledText } from './styled';
+import {
+  StyledBody,
+  StyledText,
+  StyledFormCheck,
+  StyledFormLabel,
+  StyledFormControl,
+  StyledFromControlContainer,
+  StyledLogo,
+  StyledDataRow,
+  StyledBtn,
+} from './styled';
 import { StyledTitle, StyledHeader, StyledModal } from '@styles/modal.styled';
 import { selectIloDisclaimerModalState, openIloDisclaimer } from '@redux/modal';
 import { useAppDispatch, useAppSelector } from '@utils/hooks';
-import InputGroup from 'react-bootstrap/InputGroup';
-import FormControl from 'react-bootstrap/FormControl';
+import { gradientBtnTypes } from '@components/Btn';
+import { FormControlProps } from 'react-bootstrap';
 
 export default function DisclaimerModal({ ...props }) {
-  //   const [validate, errors] = useValidation(HashValidationDto);
-
   const show = useAppSelector(selectIloDisclaimerModalState);
-
+  const [priceValue, setPriceValue] = useState<number | null>(null);
   const dispatch = useAppDispatch();
-
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const intervalRef: { current: NodeJS.Timeout | null } = useRef(null);
 
   const handleSubmit = async function (
     evt: React.SyntheticEvent<HTMLFormElement>
@@ -40,6 +44,7 @@ export default function DisclaimerModal({ ...props }) {
     <>
       <StyledModal
         {...props}
+        className="disclaimer-modal"
         size="xl"
         show={show}
         onHide={handleClose}
@@ -52,7 +57,7 @@ export default function DisclaimerModal({ ...props }) {
           </Modal.Title>
         </StyledHeader>
         <StyledBody className="show-grid p-4">
-          <Container className="p-0">
+          <Container as={Form} className="p-0">
             <Row>
               <Col xs={12} className="mb-3">
                 <StyledText>FORWARD-LOOKING LOOKING STATEMENTS</StyledText>
@@ -80,11 +85,54 @@ export default function DisclaimerModal({ ...props }) {
                   or unanticipated events.
                 </StyledText>
               </Col>
-              <Col>
-                <InputGroup className="mb-3">
-                  <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-                </InputGroup>
-              </Col>
+              <Container>
+                <StyledDataRow>
+                  <Col className="checkbox">
+                    <Form.Group className="mb-3" controlId="read-disclaimer">
+                      <StyledFormCheck
+                        className="checkbox"
+                        type="checkbox"
+                        label="I have read the disclaimer"
+                      />
+                    </Form.Group>
+                    <Form.Group
+                      className="mb-3"
+                      controlId="understand-regulations"
+                    >
+                      <StyledFormCheck
+                        type="checkbox"
+                        label="I understand that regulations might differ based on location"
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col className="input">
+                    <StyledFormLabel htmlFor="sumInput">
+                      Your Sum:
+                    </StyledFormLabel>
+                    <StyledFromControlContainer>
+                      <StyledFormControl
+                        type="number"
+                        id="sumInput"
+                        aria-describedby="sumInputBlock"
+                        value={priceValue}
+                        onChange={(
+                          event: React.ChangeEvent<HTMLInputElement>
+                        ) => {
+                          if (+event.target.value >= 0)
+                            setPriceValue(+event.target.value);
+                        }}
+                      />
+                      <div className="text-container">
+                        <StyledLogo />
+                        <span>ETH</span>
+                      </div>
+                    </StyledFromControlContainer>
+                  </Col>
+                  <Col className="button">
+                    <StyledBtn theme={gradientBtnTypes.gradient}>Buy</StyledBtn>
+                  </Col>
+                </StyledDataRow>
+              </Container>
             </Row>
           </Container>
         </StyledBody>
