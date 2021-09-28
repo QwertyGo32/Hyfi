@@ -155,6 +155,8 @@ export const StyledIloContainerInfo = styled.div`
   border-bottom: 1px solid var(--main-default-link-color);
 
   .info {
+    display: flex;
+    justify-content: space-between;
     font-family: 'Montserrat', sans-serif;
     font-size: 12px;
     line-height: 15px;

@@ -20,12 +20,17 @@ import {
 } from '@pages/ilo/styled';
 import Btn from '@components/Btn';
 import DisclaimerModal from '@components/DisclaimerModal';
-import { useAppDispatch } from '@/utils/hooks';
+import { useAppDispatch, useAppSelector } from '@/utils/hooks';
 import { openIloDisclaimer } from '@redux/modal';
+import { selectIloBuyPriceState, changeIloBuyPrice } from '@redux/ilo';
 
 export default function Ilo() {
   const dispatch = useAppDispatch();
-
+  const priceState = useAppSelector(selectIloBuyPriceState);
+  const changeValue = function (event: React.ChangeEvent<HTMLInputElement>) {
+    const value: number = +event.target.value as number;
+    dispatch(changeIloBuyPrice(+value ?? 0));
+  };
   return (
     <StyledIloWrapper>
       <IloWrapperHead />
@@ -61,8 +66,10 @@ export default function Ilo() {
               <InputBlock
                 className={'ilo-page_btn'}
                 placeholder="Test 1"
+                value={priceState ?? 0}
                 badge="USDT"
                 type="number"
+                onChange={changeValue}
               />
               <p className="info">
                 Your Contribution <span>0 USDT</span>

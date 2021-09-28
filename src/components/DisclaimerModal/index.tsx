@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -20,9 +20,9 @@ import { StyledTitle, StyledHeader, StyledModal } from '@styles/modal.styled';
 import { selectIloDisclaimerModalState, openIloDisclaimer } from '@redux/modal';
 import { useAppDispatch, useAppSelector } from '@utils/hooks';
 import { gradientBtnTypes } from '@components/Btn';
-import { FormControlProps } from 'react-bootstrap';
 import { useValidation } from 'react-class-validator';
 import { DisclaimerModalDto } from './disclaimerModalDto';
+import { selectIloBuyPriceState, changeIloBuyPrice } from '@redux/ilo';
 
 interface ICheckbox {
   disclaimer: boolean | null;
@@ -30,15 +30,16 @@ interface ICheckbox {
 }
 
 export default function DisclaimerModal({ ...props }) {
+  const dispatch = useAppDispatch();
+  const priceValue = useAppSelector(selectIloBuyPriceState);
+
   const [validate, errors] = useValidation(DisclaimerModalDto);
 
   const show = useAppSelector(selectIloDisclaimerModalState);
-  const [priceValue, setPriceValue] = useState<number | null>(null);
   const [checkboxes, setChecbox] = useState<ICheckbox>({
     disclaimer: null,
     rools: null,
   });
-  const dispatch = useAppDispatch();
 
   const handleChecbox = function (event: React.ChangeEvent<HTMLInputElement>) {
     const name = event.target.name as keyof ICheckbox;
@@ -54,7 +55,6 @@ export default function DisclaimerModal({ ...props }) {
       console.log('Validation');
     }
   };
-
   const handleClose = () => {
     window.scrollTo({
       left: 0,
@@ -184,7 +184,9 @@ export default function DisclaimerModal({ ...props }) {
                             event: React.ChangeEvent<HTMLInputElement>
                           ) => {
                             if (+event.target.value >= 0)
-                              setPriceValue(+event.target.value);
+                              dispatch(
+                                changeIloBuyPrice(+event.target.value ?? 0)
+                              );
                           }}
                           onBlur={() =>
                             validate({ priceValue }, ['priceValue'])
@@ -204,7 +206,11 @@ export default function DisclaimerModal({ ...props }) {
                     </Col>
                     <Col className="button">
                       <StyledBtn
-                        disabled={Object.keys(errors).length > 0}
+                        disabled={
+                          Object.keys(errors).length > 0 ||
+                          !checkboxes.rools ||
+                          !checkboxes.disclaimer
+                        }
                         theme={gradientBtnTypes.gradient}
                       >
                         Buy
