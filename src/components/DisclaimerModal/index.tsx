@@ -20,16 +20,39 @@ import { selectIloDisclaimerModalState, openIloDisclaimer } from '@redux/modal';
 import { useAppDispatch, useAppSelector } from '@utils/hooks';
 import { gradientBtnTypes } from '@components/Btn';
 import { FormControlProps } from 'react-bootstrap';
+import { useValidation } from 'react-class-validator';
+import { DisclaimerModalDto } from './disclaimerModalDto';
+
+interface ICheckbox {
+  disclaimer: boolean | null;
+  rools: boolean | null;
+  [x: string]: boolean | null;
+}
 
 export default function DisclaimerModal({ ...props }) {
+  const [validate, errors] = useValidation(DisclaimerModalDto);
+
   const show = useAppSelector(selectIloDisclaimerModalState);
   const [priceValue, setPriceValue] = useState<number | null>(null);
+  const [checkboxes, setChecbox] = useState<ICheckbox>({
+    disclaimer: true,
+    rools: null,
+  });
   const dispatch = useAppDispatch();
+
+  const handleChecbox = function (event: React.ChangeEvent<HTMLInputElement>) {
+    const name = event.target.name;
+    // setChecbox({ [name as  keyof ICheckbox]: event.target.checked });
+  };
 
   const handleSubmit = async function (
     evt: React.SyntheticEvent<HTMLFormElement>
   ) {
     evt.preventDefault();
+    if (await validate({ priceValue })) {
+      // ... handle valid submission
+      console.log('Validation');
+    }
   };
 
   const handleClose = () => {
@@ -86,52 +109,74 @@ export default function DisclaimerModal({ ...props }) {
                 </StyledText>
               </Col>
               <Container>
-                <StyledDataRow>
-                  <Col className="checkbox">
-                    <Form.Group className="mb-3" controlId="read-disclaimer">
-                      <StyledFormCheck
-                        className="checkbox"
-                        type="checkbox"
-                        label="I have read the disclaimer"
-                      />
-                    </Form.Group>
-                    <Form.Group
-                      className="mb-3"
-                      controlId="understand-regulations"
-                    >
-                      <StyledFormCheck
-                        type="checkbox"
-                        label="I understand that regulations might differ based on location"
-                      />
-                    </Form.Group>
-                  </Col>
-                  <Col className="input">
-                    <StyledFormLabel htmlFor="sumInput">
-                      Your Sum:
-                    </StyledFormLabel>
-                    <StyledFromControlContainer>
-                      <StyledFormControl
-                        type="number"
-                        id="sumInput"
-                        aria-describedby="sumInputBlock"
-                        value={priceValue}
-                        onChange={(
-                          event: React.ChangeEvent<HTMLInputElement>
-                        ) => {
-                          if (+event.target.value >= 0)
-                            setPriceValue(+event.target.value);
-                        }}
-                      />
-                      <div className="text-container">
-                        <StyledLogo />
-                        <span>ETH</span>
-                      </div>
-                    </StyledFromControlContainer>
-                  </Col>
-                  <Col className="button">
-                    <StyledBtn theme={gradientBtnTypes.gradient}>Buy</StyledBtn>
-                  </Col>
-                </StyledDataRow>
+                <Form noValidate onSubmit={handleSubmit}>
+                  <StyledDataRow>
+                    <Col className="checkbox">
+                      <Form.Group className="mb-3" controlId="read-disclaimer">
+                        <StyledFormCheck
+                          className="checkbox"
+                          type="checkbox"
+                          name="disclaimer"
+                          label="I have read the disclaimer"
+                          checked={checkboxes.disclaimer}
+                        />
+                      </Form.Group>
+                      <Form.Group
+                        className="mb-3"
+                        controlId="understand-regulations"
+                      >
+                        <StyledFormCheck
+                          type="checkbox"
+                          name="rools"
+                          label="I understand that regulations might differ based on location"
+                          checked={checkboxes.rools}
+                          onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>
+                          ) => {
+                            console.log(event.target.checked);
+                          }}
+                        />
+                      </Form.Group>
+                    </Col>
+                    <Col className="input">
+                      <StyledFormLabel htmlFor="sumInput">
+                        Your Sum:
+                      </StyledFormLabel>
+                      <StyledFromControlContainer>
+                        <StyledFormControl
+                          type="text"
+                          id="sumInput"
+                          aria-describedby="sumInputBlock"
+                          value={priceValue}
+                          onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>
+                          ) => {
+                            if (+event.target.value >= 0)
+                              setPriceValue(+event.target.value);
+                          }}
+                          onBlur={() =>
+                            validate({ priceValue }, ['priceValue'])
+                          }
+                          isInvalid={!!errors.priceValue}
+                        />
+                        <div className="text-container">
+                          <StyledLogo />
+                          <span>ETH</span>
+                        </div>
+                        <Form.Control.Feedback type="invalid">
+                          {errors.priceValue?.map((message, index) => (
+                            <p key={index}>{message}</p>
+                          ))}
+                        </Form.Control.Feedback>
+                      </StyledFromControlContainer>
+                    </Col>
+                    <Col className="button">
+                      <StyledBtn theme={gradientBtnTypes.gradient}>
+                        Buy
+                      </StyledBtn>
+                    </Col>
+                  </StyledDataRow>
+                </Form>
               </Container>
             </Row>
           </Container>

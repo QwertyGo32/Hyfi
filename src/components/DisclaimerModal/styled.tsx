@@ -32,9 +32,9 @@ export const StyledFromControlContainer = styled.div`
     align-items: center;
     gap: 13px;
     grid-template-columns: 32px 1fr;
-    top: 50%;
+    top: 10px;
     right: 10px;
-    transform: translateY(-50%);
+    /* transform: translateY(-50%); */
   }
 `;
 
