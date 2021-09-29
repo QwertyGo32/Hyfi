@@ -53,8 +53,8 @@ export default function Ilo() {
           <StyledIloContainerInptBtn>
             <InputBlock
               className={'ilo-page_btn'}
-              placeholder="Test 1"
-              badge="TEXT"
+              placeholder='Test 1'
+              badge='TEXT'
             />
             <Btn theme={'gradient'} title={'Buy'} className={'ilo-page_btn'} />
           </StyledIloContainerInptBtn>

@@ -10,13 +10,19 @@ export const HomeWrapper = styled.div`
 `;
 
 export const Title = styled.h1`
-  font: normal normal bold 40px/50px Montserrat;
+  font-family: Montserrat, serif;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 50px;
   color: var(--main-text-default);
   grid-area: 1/1 / auto/span 4;
 `;
 
 export const Text = styled.p`
-  font: normal normal medium 24px/34px Montserrat;
+  font-family: Montserrat, serif;
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: 500;
   color: var(--main-text-default);
   grid-area: 2/1 / auto/span 4;
 `;

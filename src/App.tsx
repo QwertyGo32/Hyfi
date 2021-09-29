@@ -22,6 +22,7 @@ import { LinksEnum } from './interfaces/LinksEnum';
 import { userLoggedStatus} from '@redux/auth';
 import { useAppSelector } from '@utils/hooks';
 import { UserStatusType } from './interfaces/IUser';
+import { Dashboard } from '@pages/Dashboard';
   
 export default function App() {
   const type = useAppSelector(userLoggedStatus)
@@ -59,7 +60,7 @@ export default function App() {
         link: true,
         // bgrImg: homeBgrImg,
         icon: () => <Home />,
-        main:()=><div><h1>Dashboard Page</h1></div>
+        main:()=><Dashboard />
         // main: () => <HomePage />,
       },
       {

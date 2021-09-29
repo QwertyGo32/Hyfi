@@ -41,3 +41,4 @@ export default function CompanyLogo({ title, img, status }: ICompanyLogoProps) {
     </StyledSection>
   );
 }
+

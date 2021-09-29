@@ -18,13 +18,19 @@ export const StyledForm = styled(Form)`
 `;
 
 export const StyledTitle = styled.h1`
-  font: normal normal bold 40px/50px Montserrat;
+  font-family: Montserrat, serif;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 50px;
   color: var(--main-text-default);
   margin-bottom: 30px;
 `;
 
 export const StyledInputText = styled.p`
-  font: normal normal medium 15px/70px Montserrat;
+  font-family: Montserrat, serif;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 70px;
   color: var(--main-default-btn-grd2);
   margin: 0;
 `;
@@ -44,7 +50,10 @@ export const StyledInputLabel = styled.label`
 `;
 
 export const StyledFormLabel = styled(Form.Label)`
-  font: normal normal medium 15px/19px Montserrat;
+  font-family: Montserrat, serif;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 19px;
   position: relative;
 
   &:after {
