@@ -41,19 +41,17 @@ const StyledAsideMain = styled.main`
   overflow-x: hidden;
   padding-bottom: 100px;
 
-  @media screen and ${breakpoints.Device.mobile} {
-    &::-webkit-scrollbar {
-      /* 1 - скроллбар */
-      width: 4px;
-      height: 4px;
-      background-color: #ffffff;
-    }
+  &::-webkit-scrollbar {
+    /* 1 - скроллбар */
+    width: 4px;
+    height: 4px;
+    background-color: #ffffff;
+  }
 
-    &::-webkit-scrollbar-thumb {
-      /* 5 - ползунок */
-      border-radius: 2px;
-      background-color: var(--main-default-block-shadow);
-    }
+  &::-webkit-scrollbar-thumb {
+    /* 5 - ползунок */
+    border-radius: 2px;
+    background-color: var(--main-default-block-shadow);
   }
 `;
 
