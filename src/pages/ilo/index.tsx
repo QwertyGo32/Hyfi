@@ -7,7 +7,7 @@ import bgrImg from '@img/background.jpg';
 import InputBlock from '@/components/Input';
 import {
   IloHead,
-  IloWrapperHead,
+  // IloWrapperHead,
   StyledIloBlock,
   StyledIloBlockImg,
   StyledIloBlockTitle,
@@ -19,6 +19,7 @@ import {
   StyledIloContainerInfo,
 } from '@pages/ilo/styled';
 import Btn from '@components/Btn';
+import PageHead from '@/components/PageHead';
 import DisclaimerModal from '@components/DisclaimerModal';
 import { useAppDispatch, useAppSelector } from '@/utils/hooks';
 import { openIloDisclaimer } from '@redux/modal';
@@ -33,7 +34,16 @@ export default function Ilo() {
   };
   return (
     <StyledIloWrapper>
-      <IloWrapperHead />
+      <PageHead
+        title="ILO"
+        children="Owners that seek to raise money for their development of New
+          technologies; IP, Patents Licenses, Brands and Projects (“Assets”) can
+          sell up to a 49% interest in their Assets on the HYFI Platform with a
+          right to buy back interests sold. We will introduce your Assets to our
+          Global network of Brokers who will introduce Investors (Institutional,
+          Corporations, Family Offices, Private Wealth and Individuals) who may
+          buy fractional interests in your Assets."
+      />
       <StyledIloBlock>
         <StyledIloContainer className={'ilo-container'}>
           <IloHead />

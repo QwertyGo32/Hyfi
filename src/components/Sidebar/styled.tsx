@@ -154,6 +154,8 @@ interface StyledContainerProps {
 
 const StyledMain = styled.main`
   width: 100%;
+  display: flex;
+  flex-direction: column;
   //max-width: 1300px;
   &[data-page='${LinksEnum.ILO}'] {
     padding-left: var(--sidebar-initial-width);
