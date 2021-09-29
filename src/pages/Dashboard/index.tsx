@@ -3,7 +3,6 @@ import {
   StyledDropdownBtnText,
 } from '@components/DataContainer';
 import { CompanyLogoData } from '@components/CompanyLogo/mocked';
-import CompanyLogo from '@components/CompanyLogo';
 import React from 'react';
 import {
   StyledCompanyLogo,
