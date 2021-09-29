@@ -1,59 +1,18 @@
-import {
-  StyledDropdownBtn,
-  StyledDropdownBtnText,
-} from '@components/DataContainer';
-import { CompanyLogoData } from '@components/CompanyLogo/mocked';
-import CompanyLogo from '@components/CompanyLogo';
 import React from 'react';
-import {
-  StyledCompanyLogo,
-  StyledDashboardBlock,
-  StyledDashboardBlockTitle,
-  StyledDropdownArrow,
-} from '@pages/Dashboard/styled';
-import { StyledListHeader } from '@components/DataContainer/styled';
-import Link from '@components/Link';
+import { DashboardLicenseBlock } from '@pages/Dashboard/components/LicenseBlock/LicenseBlock';
+import { TransactionsBlock } from '@pages/Dashboard/components/TransactionsBlock/TransactionsBlock';
+import { DetailsBlock } from '@pages/Dashboard/components/DetailsBlock/DetailsBlock';
+import { CompanyLogoData } from '@components/CompanyLogo/mocked';
 import AccountName from './components/AccountName';
 import { accountNameData } from './components/AccountName/mockedData';
 const Dashboard = () => {
   return (
     <>
       <DashboardLicenseBlock />
+      <TransactionsBlock />
+      <DetailsBlock img={CompanyLogoData[0].img} title={'HyFi'} />
       <AccountName avaliableAsset={accountNameData} />
     </>
-  );
-};
-
-const DashboardLicenseBlock = () => {
-  return (
-    <StyledDashboardBlock>
-      <StyledListHeader className="header dashboard-blocks__head_title">
-        <StyledDashboardBlockTitle>License</StyledDashboardBlockTitle>
-        <Link className="dashboard-blocks__head_link" to={'#'}>
-          View all
-        </Link>
-      </StyledListHeader>
-      <ListHeader />
-      <ListHeader />
-      <ListHeader />
-      <ListHeader />
-    </StyledDashboardBlock>
-  );
-};
-
-const ListHeader = () => {
-  return (
-    <StyledListHeader className="header">
-      <StyledCompanyLogo
-        title={CompanyLogoData[0].title}
-        img={CompanyLogoData[0].img}
-        status={CompanyLogoData[0].status}
-      />
-      <StyledDropdownBtn>
-        <StyledDropdownBtnText>Details</StyledDropdownBtnText>
-        <StyledDropdownArrow />
-      </StyledDropdownBtn>
-    </StyledListHeader>
   );
 };
 
