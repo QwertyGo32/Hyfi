@@ -190,7 +190,7 @@ export const StyledIloContainerInfo = styled.div`
     font-size: 12px;
     line-height: 15px;
     font-weight: 500;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     color: var(--main-text-default);
     opacity: 1;
     margin: 0;
@@ -206,7 +206,6 @@ export const StyledIloContainerInptBtn = styled.div`
   /* width: 50%; */
   /* display: flex; */
   display: grid;
-  gap: 5px 30px;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 30px;
   .ilo-page_btn {
