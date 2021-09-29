@@ -9,7 +9,6 @@ export const BtnStyled = styled(Button)`
   font-family: Montserrat, serif;
   font-weight: 500;
   font-size: 15px;
-  line-height: 70px;
 
   &.home-page_btn {
     margin-right: 30px;
