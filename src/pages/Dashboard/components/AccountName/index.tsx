@@ -77,7 +77,7 @@ export default function AccountName({ avaliableAsset }: IAccountNameProps) {
                   return null;
                 }
                 inputRef.current?.focus();
-                setClicked((prevState) => !prevState);
+                setClicked(true);
               }}
             >
               <StyledFormControl
