@@ -1,7 +1,11 @@
 import { CurrencyEnum } from '@/interfaces/CurrencyEnums';
 import React, { useRef, useState } from 'react';
-import { useCopyText } from '@utils/hooks';
-
+import { useAppDispatch, useAppSelector, useCopyText } from '@utils/hooks';
+import {
+  authWalletAddress,
+  changeStateField,
+  changeStateData,
+} from '@redux/auth';
 import {
   AccountNameContainer,
   AssetsContainer,
@@ -17,6 +21,9 @@ import {
   AccountAssetElemet,
   AccountAssetHeader,
 } from './styled';
+import { AccountNameDto } from './AccountNameDto';
+import { useValidation } from 'react-class-validator';
+import Form from 'react-bootstrap/Form';
 
 export interface IAssetData {
   logo: string;
@@ -31,14 +38,31 @@ interface IAccountNameProps {
 }
 
 export default function AccountName({ avaliableAsset }: IAccountNameProps) {
+  const [validate, errors] = useValidation(AccountNameDto);
+
+  const dispatch = useAppDispatch();
+  const accountName = useAppSelector(authWalletAddress);
+  const [localAccountName, setAccountName] = useState(accountName);
+  const changeDataState = useAppSelector(changeStateData);
   const [clicked, setClicked] = useState(false);
-  const [accountName, setAccountName] = useState('');
   const [isCopy, invokeCopyText] = useCopyText();
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleSubmit = async function (
+    evt: React.SyntheticEvent<HTMLFormElement>
+  ) {
+    evt.preventDefault();
+
+    if (await validate({ localAccountName })) {
+      console.log('Validation go');
+      dispatch(changeStateField({ accountName: localAccountName }));
+    }
+  };
+
   return (
     <StyledContainer>
       <AccountNameContainer>
-        <StyledForm>
+        <StyledForm noValidate onSubmit={handleSubmit}>
           <StyledImage
             src="https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg"
             rounded
@@ -49,24 +73,39 @@ export default function AccountName({ avaliableAsset }: IAccountNameProps) {
             <StyledGradientContainer
               data-clicked={clicked}
               onClick={() => {
+                if (changeDataState.accountName || isCopy) {
+                  return null;
+                }
                 inputRef.current?.focus();
-
                 setClicked((prevState) => !prevState);
               }}
             >
               <StyledFormControl
                 ref={inputRef}
                 type="text"
+                disabled={changeDataState.accountName || isCopy}
                 placeholder="Account name"
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                  // dispatch(
+                  //   changeStateField({ accountName: event.target.value })
+                  // );
                   setAccountName(event.target.value);
                 }}
-                value={accountName}
-                onBlur={() => {
+                isInvalid={!!errors.localAccountName}
+                value={localAccountName}
+                onBlur={async () => {
                   setClicked((prevState) => !prevState);
+                  validate({ localAccountName }, ['localAccountName']);
                 }}
               />
             </StyledGradientContainer>
+            {errors.localAccountName && (
+              <Form.Control.Feedback type="invalid">
+                {errors.localAccountName?.map((message, index) => (
+                  <p key={index}>{message}</p>
+                ))}
+              </Form.Control.Feedback>
+            )}
           </StyledFormGroup>
           <StyledCopyTextBtn
             type="button"

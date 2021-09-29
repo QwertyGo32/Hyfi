@@ -101,7 +101,12 @@ export const StyledFormControl = styled(Form.Control)`
   }
 `;
 
-export const StyledFormGroup = styled(Form.Group)``;
+export const StyledFormGroup = styled(Form.Group)`
+  .invalid-feedback {
+    display: flex;
+    flex-direction: column;
+  }
+`;
 export const StyledFormLabel = styled(Form.Label)`
   font-style: 'Montserrat', sans-serif;
   font-size: 14px;
@@ -191,7 +196,6 @@ const StyledPrice = styled.span`
   letter-spacing: 0px;
   color: var(--main-text-default);
 `;
-type Modify<T, R> = Pick<T, Exclude<keyof T, keyof R>> & R;
 
 export const AccountAssetElemet = (data: IAssetData) => {
   return (
