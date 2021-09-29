@@ -15,12 +15,3 @@ export const StyledDashboardBlockTitle = styled.div`
   font-weight: bold;
   color: var(--main-text-default);
 `;
-
-export const StyledCompanyLogo = styled(CompanyLogo)`
-  margin-right: 100px;
-`;
-
-export const StyledDropdownArrow = styled(DropdownArrow)`
-  width: 10px;
-  height: 10px;
-`;
