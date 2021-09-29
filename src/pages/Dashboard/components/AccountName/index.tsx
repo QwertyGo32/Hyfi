@@ -1,6 +1,6 @@
 import { CurrencyEnum } from '@/interfaces/CurrencyEnums';
-import React from 'react';
-import Form from 'react-bootstrap/Form';
+import React, { useRef, useState } from 'react';
+import { useCopyText } from '@utils/hooks';
 
 import {
   AccountNameContainer,
@@ -8,9 +8,17 @@ import {
   StyledContainer,
   StyledImage,
   StyledForm,
+  StyledFormLabel,
+  StyledFormControl,
+  StyledGradientContainer,
+  StyledCopyTextBtn,
+  StyledCopyLink,
+  StyledFormGroup,
+  AccountAssetElemet,
+  AccountAssetHeader,
 } from './styled';
 
-interface IAssetData {
+export interface IAssetData {
   logo: string;
   name: string;
   ammount: number;
@@ -23,6 +31,10 @@ interface IAccountNameProps {
 }
 
 export default function AccountName({ avaliableAsset }: IAccountNameProps) {
+  const [clicked, setClicked] = useState(false);
+  const [accountName, setAccountName] = useState('');
+  const [isCopy, invokeCopyText] = useCopyText();
+  const inputRef = useRef<HTMLInputElement>(null);
   return (
     <StyledContainer>
       <AccountNameContainer>
@@ -32,15 +44,45 @@ export default function AccountName({ avaliableAsset }: IAccountNameProps) {
             rounded
             fluid
           />
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Account Name</Form.Label>
-            <Form.Control type="email" placeholder="name@example.com" />
-          </Form.Group>
+          <StyledFormGroup controlId="exampleForm.ControlInput1">
+            <StyledFormLabel>Account Name</StyledFormLabel>
+            <StyledGradientContainer
+              data-clicked={clicked}
+              onClick={() => {
+                inputRef.current?.focus();
+
+                setClicked((prevState) => !prevState);
+              }}
+            >
+              <StyledFormControl
+                ref={inputRef}
+                type="text"
+                placeholder="Account name"
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                  setAccountName(event.target.value);
+                }}
+                value={accountName}
+                onBlur={() => {
+                  setClicked((prevState) => !prevState);
+                }}
+              />
+            </StyledGradientContainer>
+          </StyledFormGroup>
+          <StyledCopyTextBtn
+            type="button"
+            onClick={() => {
+              invokeCopyText(accountName);
+            }}
+          >
+            <StyledCopyLink />
+            {!isCopy ? 'Copy text' : 'Copied!'}
+          </StyledCopyTextBtn>
         </StyledForm>
       </AccountNameContainer>
       <AssetsContainer>
-        {[1, 2, 3, 4, 5, 6, 7, 1, 1, 1, 1, 1, 1].map(() => (
-          <p>TEST</p>
+        <AccountAssetHeader ammount={8000} />
+        {avaliableAsset?.map((elm, index) => (
+          <AccountAssetElemet key={index} {...elm} />
         ))}
       </AssetsContainer>
     </StyledContainer>

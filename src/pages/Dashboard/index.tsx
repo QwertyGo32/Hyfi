@@ -14,12 +14,12 @@ import {
 import { StyledListHeader } from '@components/DataContainer/styled';
 import Link from '@components/Link';
 import AccountName from './components/AccountName';
-
+import { accountNameData } from './components/AccountName/mockedData';
 const Dashboard = () => {
   return (
     <>
       <DashboardLicenseBlock />
-      <AccountName />
+      <AccountName avaliableAsset={accountNameData} />
     </>
   );
 };
