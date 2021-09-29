@@ -13,6 +13,16 @@ import {
 } from '@pages/Dashboard/styled';
 import { StyledListHeader } from '@components/DataContainer/styled';
 import Link from '@components/Link';
+import AccountName from './components/AccountName';
+
+const Dashboard = () => {
+  return (
+    <>
+      <DashboardLicenseBlock />
+      <AccountName />
+    </>
+  );
+};
 
 const DashboardLicenseBlock = () => {
   return (
@@ -47,4 +57,4 @@ const ListHeader = () => {
   );
 };
 
-export default DashboardLicenseBlock;
+export default Dashboard;
