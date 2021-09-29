@@ -54,6 +54,42 @@ export default function App() {
         main: () => <Report />,
       },
       {
+        name: 'Pools',
+        path: LinksEnum.POOLS,
+        link: true,
+        icon: () => <Pools />,
+        main: () => <h2>Pools for unauthorized</h2>,
+      },
+      {
+        name: 'Initial Offerings',
+        path: LinksEnum.ILO,
+        link: true,
+        icon: () => <Chain />,
+        main: () => <h2>Initial Offerings for unauthorized</h2>,
+      },
+      {
+        name: 'Overview',
+        path: LinksEnum.OVERVIEW,
+        link: true,
+        icon: () => <Overview />,
+        main: () => <h2>Overview for unauthorized</h2>,
+      },
+      {
+        name: 'Swap',
+        path: LinksEnum.SWAP,
+        link: true,
+        icon: () => <Swap />,
+        main: () => <h2>Swap for unauthorized</h2>,
+      },
+
+      {
+        name: 'Farms',
+        path: LinksEnum.FARMS,
+        link: true,
+        icon: () => <Tractor />,
+        main: () => <h2>Farms for unauthorized</h2>,
+      },
+      {
         name: 'Not Match',
         path: LinksEnum.NOTFOUND,
         link: false,

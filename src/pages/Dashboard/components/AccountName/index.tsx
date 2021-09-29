@@ -86,9 +86,6 @@ export default function AccountName({ avaliableAsset }: IAccountNameProps) {
                 disabled={changeDataState.accountName || isCopy}
                 placeholder="Account name"
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  // dispatch(
-                  //   changeStateField({ accountName: event.target.value })
-                  // );
                   setAccountName(event.target.value);
                 }}
                 isInvalid={!!errors.localAccountName}

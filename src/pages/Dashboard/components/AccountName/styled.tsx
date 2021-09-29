@@ -160,8 +160,10 @@ const StyledAccoutElemContainer = styled.div`
   grid-template-areas: '. . .';
   border-bottom: 1px solid var(--main-default-wrapper-border);
   padding: 5px 0;
+  margin-top: 10px;
   &.header {
     gap: 0px;
+    margin: 0;
     justify-content: space-between;
     grid-template-columns: 1fr 1fr;
   }
