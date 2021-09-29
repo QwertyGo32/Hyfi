@@ -58,6 +58,7 @@ export const StyledThemeToggle = styled.div`
   display: flex;
   justify-content: flex-end;
   grid-area: 2/1/3/3;
+  transition: 0.5s;
   &.night {
     justify-content: flex-start;
   }

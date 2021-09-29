@@ -27,13 +27,14 @@ const Main = React.lazy(() => import('@pages/main'));
 const Ilo = React.lazy(() => import('@pages/ilo'));
 const Report = React.lazy(() => import('@pages/Report'));
 const HomePage = React.lazy(() => import('@pages/HomePage/HomePage'));
+const Dashboard = React.lazy(() => import('@pages/Dashboard'));
 
 export default function App() {
   const type = useAppSelector(userLoggedStatus);
   const location = useLocation();
   const routes: {
-    [UserStatusType.VISITOR]: IRoute[],
-    [UserStatusType.AUTHED]: IRoute[],
+    [UserStatusType.VISITOR]: IRoute[];
+    [UserStatusType.AUTHED]: IRoute[];
   } = {
     [UserStatusType.VISITOR]: [
       {
@@ -68,11 +69,7 @@ export default function App() {
         link: true,
         // bgrImg: homeBgrImg,
         icon: () => <Home />,
-        main: () => (
-          <div>
-            <h1>Dashboard Page</h1>
-          </div>
-        ),
+        main: () => <Dashboard />,
         // main: () => <HomePage />,
       },
       {

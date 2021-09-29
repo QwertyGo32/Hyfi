@@ -39,19 +39,22 @@ const StyledAsideMain = styled.main`
   border: none;
   overflow-y: scroll;
   overflow-x: hidden;
-  &::-webkit-scrollbar {
-    /* 1 - скроллбар */
-    width: 4px;
-    height: 4px;
-    background-color: #ffffff;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    /* 5 - ползунок */
-    border-radius: 2px;
-    background-color: var(--main-default-block-shadow);
-  }
   padding-bottom: 100px;
+
+  @media screen and ${breakpoints.Device.mobile} {
+    &::-webkit-scrollbar {
+      /* 1 - скроллбар */
+      width: 4px;
+      height: 4px;
+      background-color: #ffffff;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      /* 5 - ползунок */
+      border-radius: 2px;
+      background-color: var(--main-default-block-shadow);
+    }
+  }
 `;
 
 const StyledAsideListElement = styled(Link)`
@@ -116,7 +119,7 @@ const StyledList = styled.ul`
 `;
 
 type AsideProps = {
-  routes: IRoute[],
+  routes: IRoute[];
 };
 
 export const AsideComponent = function ({ routes }: AsideProps) {

@@ -86,3 +86,30 @@ a {
     margin: 0;
   }
 }
+
+.tooltip {
+  inset: auto auto -15px 10px !important;
+}
+
+.tooltip.show {
+  opacity: 1 !important;
+}
+
+.tooltip-inner {
+  background-color: var(--main-default-btn-grd1) !important;
+  opacity: 1;
+  font-family: Montserrat, serif;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 500;
+
+  color: var(--main-default-bg);
+}
+
+.tooltip-arrow {
+  transform: translate3d(120px, 0px, 0px) !important;
+}
+
+.tooltip-arrow::before {
+  border-top-color: var(--main-default-btn-grd1) !important;
+}

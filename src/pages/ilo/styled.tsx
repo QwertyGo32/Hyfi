@@ -52,7 +52,22 @@ const StyledIloWrapperHead = styled.div`
   display: flex;
   flex-direction: column;
   padding: 50px 0;
-  background: url(${bgrImg}) no-repeat center/cover;
+  background: url(${bgrImg}) no-repeat bottom/cover;
+  position: relative;
+  z-index: 1;
+
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
 `;
 
 const StyledIloWrapperHeadContainer = styled.div`
@@ -61,15 +76,23 @@ const StyledIloWrapperHeadContainer = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 3;
 `;
 
 const StyledIloWrapperHeadTitle = styled.h1`
-  font: normal normal bold 40px/50px Montserrat;
+  font-family: Montserrat, serif;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 50px;
   color: #001218;
 `;
 
 const StyledIloWrapperHeadText = styled.p`
-  font: normal normal normal 20px/27px Montserrat;
+  font-family: Montserrat, serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
   color: #001218;
 `;
 
@@ -131,12 +154,18 @@ const StyledIloHead = styled.div`
 `;
 
 const StyledIloHeadTitle = styled.h2`
-  font: normal normal 900 20px/24px Montserrat;
+  font-family: Montserrat, serif;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 24px;
   color: #001218;
 `;
 
 const StyledIloHeadText = styled.p`
-  font: normal normal medium 14px/24px Montserrat;
+  font-family: Montserrat, serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
   color: #001218;
 `;
 
