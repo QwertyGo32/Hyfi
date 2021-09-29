@@ -73,7 +73,7 @@ export const StyledButton = styled(Button)`
       background-color: var(--main-greend-bg-opacity);
       border-color: var(--main-greend-bg);
       box-shadow: 0 0 0 0.1rem var(--main-greend-bg-opacity1);
-      &:not(::focus-visible) {
+      &:not(:focus-visible) {
         outline: 0;
       }
     }
@@ -93,7 +93,7 @@ export const StyledButton = styled(Button)`
       background-color: var(--main-sidebar-transition-bg);
       border-color: var(--main-default-btn-grd2);
       box-shadow: 0 0 0 0.1rem var(--main-default-btn-grd1);
-      &:not(::focus-visible) {
+      &:not(:focus-visible) {
         outline: 0;
       }
     }

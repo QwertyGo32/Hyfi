@@ -9,7 +9,7 @@ export const StyledListHeader = styled.h3`
   display: grid;
   grid-template-columns: 1fr max-content;
   gap: 10px;
-  border-bottom: 0.2px solid var(--main-default-underline);
+  border-bottom: 0.2px solid var(--main-default-underline-opacity-20);
   padding: 13.5px 0;
   align-items: flex-end;
 `;
