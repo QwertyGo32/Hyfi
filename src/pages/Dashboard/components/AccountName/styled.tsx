@@ -132,8 +132,7 @@ export const AssetsContainer = styled.div`
   max-height: 243px;
   overflow: auto;
   background: var(--main-default-tab-color) 0% 0% no-repeat padding-box;
-  border-radius: 0px 0px 10px 10px;
-  box-shadow: inset 0px 3px 5px var(--main-default-block-shadow);
+  box-shadow: inset 0 3px 5px var(--main-default-block-shadow);
   &::-webkit-scrollbar {
     width: 5px; /* width of the entire scrollbar */
   }
