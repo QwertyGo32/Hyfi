@@ -20,6 +20,7 @@ import { useAppSelector } from '@utils/hooks';
 import { UserStatusType } from '@interfaces/IUser';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from '@layouts/Fallback';
+import { StyledContainer } from '@styles/containers.styled';
 
 const Counter = React.lazy(() => import('@pages/counter'));
 const Login = React.lazy(() => import('@pages/login'));
@@ -48,6 +49,13 @@ export default function App() {
         main: () => <HomePage />,
       },
       {
+        name: 'NFT Offers',
+        path: LinksEnum.ILO,
+        link: true,
+        icon: () => <Chain />,
+        main: () => <h2>Initial Offerings for unauthorized</h2>,
+      },
+      {
         name: 'Report',
         path: LinksEnum.REPORT,
         exact: true,
@@ -61,13 +69,7 @@ export default function App() {
         icon: () => <Pools />,
         main: () => <h2>Pools for unauthorized</h2>,
       },
-      {
-        name: 'Initial Offerings',
-        path: LinksEnum.ILO,
-        link: true,
-        icon: () => <Chain />,
-        main: () => <h2>Initial Offerings for unauthorized</h2>,
-      },
+
       {
         name: 'Overview',
         path: LinksEnum.OVERVIEW,
@@ -110,6 +112,18 @@ export default function App() {
         // main: () => <HomePage />,
       },
       {
+        name: 'NFT Offers',
+        path: LinksEnum.ILO,
+        link: true,
+        icon: () => <Chain />,
+        main: () => (
+          <StyledContainer>
+            <Ilo />
+            <HowToTakePart />
+          </StyledContainer>
+        ),
+      },
+      {
         name: 'Report',
         path: LinksEnum.REPORT,
         exact: true,
@@ -129,18 +143,7 @@ export default function App() {
         icon: () => <Pools />,
         main: () => <h2>Pools</h2>,
       },
-      {
-        name: 'Initial Offerings',
-        path: LinksEnum.ILO,
-        link: true,
-        icon: () => <Chain />,
-        main: () => (
-          <>
-            <Ilo />
-            <HowToTakePart />
-          </>
-        ),
-      },
+
       {
         name: 'Overview',
         path: LinksEnum.OVERVIEW,
