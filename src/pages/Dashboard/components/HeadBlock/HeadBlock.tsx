@@ -4,9 +4,12 @@ import Tabs, { INavItemList } from '@components/Tabs';
 
 export const HeadBlock = () => {
   const navList: INavItemList[] = [
-    { text: 'Overview', key: 1 },
-    { text: 'License', key: 2 },
-    { text: 'Transactions', key: 3 },
+    { text: 'Overview', href: '#Overview' },
+    { text: 'License', href: '#License' },
+    { text: 'Transactions', href: '#Transactions' },
+    // { text: 'Overview', key: '#Overview' },
+    // { text: 'License', key: '#License' },
+    // { text: 'Transactions', key: '#Transactions' },
   ];
   return (
     <StyledDashboardBlock className={'head-block'}>

@@ -1,4 +1,4 @@
-import React, { SyntheticEvent } from 'react';
+import React, { useState, SyntheticEvent } from 'react';
 import { StyledNav, StyledNavItem, StyledNavLink } from './styled';
 
 export interface INavItemList {
@@ -15,6 +15,9 @@ export interface ITabsProps {
 }
 
 export default function Tabs({ navList = [], ...props }: ITabsProps) {
+  const [selected, setSelected] = useState(
+    navList[0].key ?? navList[0].href ?? ''
+  );
   if (navList.length === 0) {
     return null;
   }
@@ -23,21 +26,36 @@ export default function Tabs({ navList = [], ...props }: ITabsProps) {
       fill
       justify
       variant="pills"
-      defaultActiveKey={navList[0].key ?? ''}
+      activeKey={selected}
+      defaultActiveKey={navList[0].key ?? navList[0].href ?? ''}
       unmountOnExit={false}
       mountOnEnter={false}
-      onSelect={props.onSelect}
+      onSelect={(
+        eventKey: string,
+        event: React.SyntheticEvent<HTMLSelectElement>
+      ) => {
+        setSelected(eventKey);
+        props?.onSelect?.call(eventKey, eventKey, event);
+      }}
     >
-      {navList.map(({ children, key, href, text, disabled }) => {
+      {navList.map(({ children, key, href, text, disabled }, index) => {
         return (
-          <StyledNavItem>
+          <StyledNavItem key={index}>
             {key && (
-              <StyledNavLink eventKey={key} disabled={disabled ?? false}>
+              <StyledNavLink
+                active={selected === key}
+                eventKey={key}
+                disabled={disabled ?? false}
+              >
                 {text ?? children ?? ''}
               </StyledNavLink>
             )}
             {href && (
-              <StyledNavLink href={href} disabled={disabled ?? false}>
+              <StyledNavLink
+                active={selected === href}
+                href={href}
+                disabled={disabled ?? false}
+              >
                 {text ?? children ?? ''}
               </StyledNavLink>
             )}
