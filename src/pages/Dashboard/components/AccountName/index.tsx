@@ -9,7 +9,6 @@ import {
 import {
   AccountNameContainer,
   AssetsContainer,
-  StyledContainer,
   StyledImage,
   StyledForm,
   StyledFormLabel,
@@ -24,6 +23,7 @@ import {
 import { AccountNameDto } from './AccountNameDto';
 import { useValidation } from 'react-class-validator';
 import Form from 'react-bootstrap/Form';
+import { StyledDashboardBlock } from '@pages/Dashboard/styled';
 
 export interface IAssetData {
   logo: string;
@@ -60,7 +60,7 @@ export default function AccountName({ avaliableAsset }: IAccountNameProps) {
   };
 
   return (
-    <StyledContainer>
+    <StyledDashboardBlock className={'account-block'}>
       <AccountNameContainer>
         <StyledForm noValidate onSubmit={handleSubmit}>
           <StyledImage
@@ -121,6 +121,6 @@ export default function AccountName({ avaliableAsset }: IAccountNameProps) {
           <AccountAssetElemet key={index} {...elm} />
         ))}
       </AssetsContainer>
-    </StyledContainer>
+    </StyledDashboardBlock>
   );
 }

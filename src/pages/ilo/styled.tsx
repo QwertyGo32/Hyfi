@@ -28,6 +28,74 @@ export const StyledIloWrapper = styled.section`
   flex-direction: column;
 `;
 
+export const IloWrapperHead = () => {
+  return (
+    <StyledIloWrapperHead>
+      <StyledIloWrapperHeadContainer>
+        <StyledIloWrapperHeadTitle>ILO</StyledIloWrapperHeadTitle>
+        <StyledIloWrapperHeadText>
+          Owners that seek to raise money for their development of New
+          technologies; IP, Patents Licenses, Brands and Projects (“Assets”) can
+          sell up to a 49% interest in their Assets on the HYFI Platform with a
+          right to buy back interests sold. We will introduce your Assets to our
+          Global network of Brokers who will introduce Investors (Institutional,
+          Corporations, Family Offices, Private Wealth and Individuals) who may
+          buy fractional interests in your Assets.
+        </StyledIloWrapperHeadText>
+      </StyledIloWrapperHeadContainer>
+    </StyledIloWrapperHead>
+  );
+};
+
+const StyledIloWrapperHead = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0;
+  background: url(${bgrImg}) no-repeat bottom/cover;
+  position: relative;
+  z-index: 1;
+
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+`;
+
+const StyledIloWrapperHeadContainer = styled.div`
+  width: 90%;
+  max-width: 1266px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 3;
+`;
+
+const StyledIloWrapperHeadTitle = styled.h1`
+  font-family: Montserrat, serif;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 50px;
+  color: #001218;
+`;
+
+const StyledIloWrapperHeadText = styled.p`
+  font-family: Montserrat, serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  color: #001218;
+`;
+
 export const StyledIloBlock = styled.div`
   width: 90%;
   max-width: 1266px;
