@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import bgrImg from '@img/ilo-header-bgr.jpg';
+import bgrImg from '@img/infographic9.jpg';
 import breakpoints from '@styles/constants.styled';
 import DataContainer from '@components/DataContainer';
 
@@ -55,6 +55,19 @@ const StyledIloWrapperHead = styled.div`
   background: url(${bgrImg}) no-repeat bottom/cover;
   position: relative;
   z-index: 1;
+
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
 `;
 
 const StyledIloWrapperHeadContainer = styled.div`

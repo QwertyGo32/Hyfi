@@ -28,6 +28,7 @@ const Ilo = React.lazy(() => import('@pages/ilo'));
 const Report = React.lazy(() => import('@pages/Report'));
 const HomePage = React.lazy(() => import('@pages/HomePage/HomePage'));
 const Dashboard = React.lazy(() => import('@pages/Dashboard'));
+const HowToTakePart = React.lazy(() => import('@pages/HowToTakePart'));
 
 export default function App() {
   const type = useAppSelector(userLoggedStatus);
@@ -133,13 +134,19 @@ export default function App() {
         path: LinksEnum.ILO,
         link: true,
         icon: () => <Chain />,
-        main: () => <Ilo />,
+        main: () => (
+          <>
+            <Ilo />
+            <HowToTakePart />
+          </>
+        ),
       },
       {
         name: 'Overview',
         path: LinksEnum.OVERVIEW,
         link: true,
         icon: () => <Overview />,
+        // main: () => <HowToTakePart />,
         main: () => <h2>Overview</h2>,
       },
       {
