@@ -17,7 +17,7 @@ import {
 
 export const DashboardLicenseBlock = () => {
   return (
-    <StyledDashboardBlock>
+    <StyledDashboardBlock className={'license-block'}>
       <StyledListHeader className="header dashboard-blocks__head_title">
         <StyledDashboardBlockTitle>License</StyledDashboardBlockTitle>
         <Link className="dashboard-blocks__head_link" to={'#'}>

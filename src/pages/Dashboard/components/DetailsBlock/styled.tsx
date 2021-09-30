@@ -1,16 +1,17 @@
 import styled from 'styled-components';
-import { StyledListHeader } from '@components/DataContainer/styled';
+import Btn from '@components/Btn';
 
-export const StyledDetailsHead = styled(StyledListHeader)`
+export const StyledDetailsHead = styled.div`
+  display: flex;
+  justify-content: space-between;
   border-bottom: none;
-  font-family: Montserrat, serif;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 18px;
-  color: var(--main-text-default);
 
   & img {
     max-width: 50px;
     border-radius: 50% !important;
   }
+`;
+
+export const StyledBtn = styled(Btn)`
+  width: 40%;
 `;

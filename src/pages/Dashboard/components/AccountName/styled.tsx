@@ -8,7 +8,7 @@ export const StyledImage = styled(Image)`
   height: 62px;
   width: 62px;
   border-radius: 50% !important;
-  box-shadow: 0px 3px 6px var(--main-text-colored-opacity);
+  box-shadow: 0 3px 6px var(--main-text-colored-opacity);
   border: 2px solid var(--main-text-colored);
   &.small {
     height: 32px;
@@ -32,7 +32,7 @@ export const StyledCopyTextBtn = styled.button`
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   color: var(--main-text-colored);
 `;
 
@@ -65,19 +65,19 @@ export const StyledGradientContainer = styled.div`
         var(--main-default-bg-opacity) 0%,
         var(--main-default-tab-color) 100%
       )
-      0% 0% no-repeat padding-box;
+      0 0 no-repeat padding-box;
   }
 `;
 
 export const StyledFormControl = styled(Form.Control)`
   position: relative;
-  background: var(--main-default-bg) 0% 0% no-repeat padding-box;
+  background: var(--main-default-bg) 0 0 no-repeat padding-box;
   box-shadow: inset 4px 5px 6px var(--main-defaukt-bg1);
   border-radius: 5px;
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
   font-weight: 500;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   color: var(--main-text-default) !important;
   opacity: 1;
   padding: 6px 18px;
@@ -111,7 +111,7 @@ export const StyledFormLabel = styled(Form.Label)`
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   font-weight: bold;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   color: var(--main-text-default);
   opacity: 1;
 `;
@@ -119,8 +119,9 @@ export const StyledFormLabel = styled(Form.Label)`
 export const StyledContainer = styled.section`
   display: flex;
   flex-direction: column;
-  background: var(--main-default-bg) 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 5px var(--main-default-block-shadow);
+  justify-content: space-between;
+  background: var(--main-default-bg) 0 0 no-repeat padding-box;
+  box-shadow: 0 3px 5px var(--main-default-block-shadow);
   border-radius: 10px;
 `;
 
@@ -131,8 +132,8 @@ export const AssetsContainer = styled.div`
   padding: 30px 25px 30px 30px;
   max-height: 243px;
   overflow: auto;
-  background: var(--main-default-tab-color) 0% 0% no-repeat padding-box;
-  box-shadow: inset 0px 3px 5px var(--main-default-block-shadow);
+  background: var(--main-default-tab-color) 0 0 no-repeat padding-box;
+  box-shadow: inset 0 3px 5px var(--main-default-block-shadow);
   &::-webkit-scrollbar {
     width: 5px; /* width of the entire scrollbar */
   }
@@ -161,7 +162,7 @@ const StyledAccoutElemContainer = styled.div`
   padding: 5px 0;
   margin-top: 10px;
   &.header {
-    gap: 0px;
+    gap: 0;
     margin: 0;
     justify-content: space-between;
     grid-template-columns: 1fr 1fr;
@@ -172,7 +173,7 @@ const StyledNameText = styled.span`
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   font-weight: bold;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   color: var(--main-text-default);
   opacity: 1;
 `;
@@ -185,7 +186,7 @@ const StyledAmmount = styled.span`
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   font-weight: bold;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   color: var(--main-text-colored);
   opacity: 1;
 `;
@@ -194,7 +195,7 @@ const StyledPrice = styled.span`
   font-family: 'Montserrat', sans-serif;
   font-size: 10px;
   font-weight: 500;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   color: var(--main-text-default);
 `;
 
