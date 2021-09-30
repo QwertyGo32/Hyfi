@@ -27,7 +27,7 @@ const Login = React.lazy(() => import('@pages/login'));
 const Main = React.lazy(() => import('@pages/main'));
 const Ilo = React.lazy(() => import('@pages/ilo'));
 const Report = React.lazy(() => import('@pages/Report'));
-const HomePage = React.lazy(() => import('@pages/HomePage/HomePage'));
+const HomePage = React.lazy(() => import('@pages/HomePage'));
 const Dashboard = React.lazy(() => import('@pages/Dashboard'));
 const HowToTakePart = React.lazy(() => import('@pages/HowToTakePart'));
 

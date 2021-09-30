@@ -154,8 +154,7 @@ interface StyledContainerProps {
 
 const StyledMain = styled.main`
   width: 100%;
-  display: flex;
-  flex-direction: column;
+  padding-bottom: var(--main-footer-height);
   //max-width: 1300px;
   &[data-page='${LinksEnum.ILO}'] {
     padding-left: var(--sidebar-initial-width);
@@ -167,7 +166,8 @@ const StyledMain = styled.main`
 
   @media screen and ${breakpoints.Device.tablet} {
     &:not([data-page='${LinksEnum.ILO}']) {
-      padding: 0 20px;
+      padding-left: 20px;
+      padding-right: 20px;
     }
 
     &[data-page='${LinksEnum.ILO}'] {
