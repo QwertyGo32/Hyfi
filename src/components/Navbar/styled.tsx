@@ -5,6 +5,7 @@ import { ReactComponent as Sidebar } from '@icons/sidebar.svg';
 import { LinksEnum } from '@interfaces/LinksEnum';
 import { UserStatusType } from '@/interfaces/IUser';
 import { ReactComponent as WalletIcon } from '@icons/wallet.svg';
+
 export const StyledWalletIcon = styled(WalletIcon)`
   /* position: absolute;
   left: 0;
@@ -17,14 +18,14 @@ const sidebarAnim = keyframes`
     width: 0;
     min-width: 0;
     opacity: 0;
-    transform: translateX(--var( --sidebar-initial-width));
+    transform: translateX(--var(--sidebar-initial-width));
     visibility: hidden;
     overflow: hidden;
   }
   50% {
     min-width: var(--sidebar-initial-width);
     width: var(--sidebar-initial-width);
-    
+
   }
   100% {
     min-width: var(--sidebar-initial-width);
@@ -56,16 +57,19 @@ export const StyledHeader = styled.header`
 
   &[data-status='${UserStatusType.AUTHED}'] {
   }
+
   &[data-status='${UserStatusType.VISITOR}'] {
     grid-template-columns: 245px 24px 1fr;
     @media screen and ${breakpoints.Device.tablet} {
       grid-template-columns: max-content 50px 24px;
     }
   }
+
   .dropdown {
     justify-self: flex-end;
     grid-area: dropdown;
   }
+
   & > {
     @media screen and ${breakpoints.Device.tablet} {
       margin-bottom: 5px;
@@ -75,6 +79,7 @@ export const StyledHeader = styled.header`
   @media screen and ${breakpoints.Device.tablet} {
     padding: 15px 20px;
   }
+
   .check-box {
     cursor: pointer;
     display: inline-block;
@@ -88,6 +93,7 @@ export const StyledSidebarBtn = styled(Sidebar)`
 
 export const StyledCheckbox = styled.input`
   display: none;
+
   &:checked ~ #sidebar {
     //width: 0;
     //min-width: 0;
@@ -112,6 +118,7 @@ export const StyledCheckbox = styled.input`
     -webkit-transform: translateX(-200px);
     transform: translateX(-200px);
   }
+
   &:checked ~ #header #sidebar-logo {
     transform: scale(-1);
   }
@@ -141,6 +148,17 @@ export const StyledCheckbox = styled.input`
     }
   }
 
+  @media screen and ${breakpoints.Device.desktop_sm} {
+    &:checked ~ #main-content .dashboard-wrapper {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas:
+        'head head'
+        'license transactions'
+        'account details'
+        'graph graph';
+    }
+  }
+
   @media screen and ${breakpoints.Device.tablet} {
     &:checked ~ #sidebar .nav-item {
       -webkit-transform: translateX(0);
@@ -156,14 +174,27 @@ export const StyledCheckbox = styled.input`
       transform: translateX(0);
       visibility: visible;
     }
+
+    &:checked ~ #main-content .dashboard-wrapper {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        'head'
+        'license'
+        'transactions'
+        'account'
+        'details'
+        'graph';
+    }
   }
 `;
 export const StyledOrverlay = styled.div`
   display: none;
+
   &.active {
     display: block;
     background: var(--main-default-link-color);
   }
+
   @media screen and ${breakpoints.Device.tablet} {
     width: 100vw;
     height: 100vh;
@@ -179,6 +210,7 @@ export const StyledBtnContainer = styled.div`
   justify-self: flex-end;
   grid-area: dropdown;
   overflow: hidden;
+
   .wallet-container {
     display: none;
     @media screen and ${breakpoints.Device.tablet} {
@@ -187,11 +219,13 @@ export const StyledBtnContainer = styled.div`
       padding: 14px;
     }
   }
+
   .home-page_btn {
     @media screen and ${breakpoints.Device.tablet} {
       padding: 2px;
     }
   }
+
   span {
     @media screen and ${breakpoints.Device.tablet} {
       display: none;

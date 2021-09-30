@@ -1,4 +1,4 @@
-import { SyntheticEvent } from 'react';
+import React, { SyntheticEvent } from 'react';
 import { StyledNav, StyledNavItem, StyledNavLink } from './styled';
 
 export interface INavItemList {

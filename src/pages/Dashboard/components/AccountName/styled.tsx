@@ -108,7 +108,7 @@ export const StyledFormGroup = styled(Form.Group)`
   }
 `;
 export const StyledFormLabel = styled(Form.Label)`
-  font-style: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   font-weight: bold;
   letter-spacing: 0px;
@@ -119,8 +119,9 @@ export const StyledFormLabel = styled(Form.Label)`
 export const StyledContainer = styled.section`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   background: var(--main-default-bg) 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 5px var(--main-default-block-shadow);
+  box-shadow: 0 3px 5px var(--main-default-block-shadow);
   border-radius: 10px;
 `;
 
@@ -132,7 +133,7 @@ export const AssetsContainer = styled.div`
   max-height: 243px;
   overflow: auto;
   background: var(--main-default-tab-color) 0% 0% no-repeat padding-box;
-  box-shadow: inset 0px 3px 5px var(--main-default-block-shadow);
+  box-shadow: inset 0 3px 5px var(--main-default-block-shadow);
   &::-webkit-scrollbar {
     width: 5px; /* width of the entire scrollbar */
   }
@@ -169,10 +170,10 @@ const StyledAccoutElemContainer = styled.div`
 `;
 
 const StyledNameText = styled.span`
-  font-style: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   font-weight: bold;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   color: var(--main-text-default);
   opacity: 1;
 `;
@@ -182,7 +183,7 @@ const StyledPriceContainer = styled.div`
   justify-items: flex-end;
 `;
 const StyledAmmount = styled.span`
-  font-style: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   font-weight: bold;
   letter-spacing: 0px;
@@ -191,7 +192,7 @@ const StyledAmmount = styled.span`
 `;
 const StyledPrice = styled.span`
   display: flex;
-  font-style: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0px;

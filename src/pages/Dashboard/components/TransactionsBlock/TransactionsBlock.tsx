@@ -10,7 +10,7 @@ import { StyledDashboardBlockTransactions } from '@pages/Dashboard/components/Tr
 
 export const TransactionsBlock = () => {
   return (
-    <StyledDashboardBlock>
+    <StyledDashboardBlock className={'transactions-block'}>
       <StyledListHeader className="header dashboard-blocks__head_title">
         <StyledDashboardBlockTitle>
           Recent Transactions
