@@ -6,7 +6,7 @@ import {
   HomeWrappperContainer,
   StyledBtn,
 } from './styled';
-import Btn, { gradientBtnTypes } from '@components/Btn';
+import { gradientBtnTypes } from '@components/Btn';
 import { useAppDispatch } from '@utils/hooks';
 import { openConnectWallet } from '@redux/modal';
 import ImageBadge from './components/ImageBadge';
