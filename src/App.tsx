@@ -1,4 +1,4 @@
-import { Switch, Route, useLocation } from 'react-router-dom';
+import { Switch, Route, useLocation, Redirect } from 'react-router-dom';
 import LoggedRouter from '@layouts/Auth/LoggedRouter';
 
 import React, { Suspense } from 'react';
@@ -106,10 +106,8 @@ export default function App() {
         path: LinksEnum.MAIN,
         exact: true,
         link: true,
-        // bgrImg: homeBgrImg,
         icon: () => <Home />,
         main: () => <Dashboard />,
-        // main: () => <HomePage />,
       },
       {
         name: 'NFT Offers',

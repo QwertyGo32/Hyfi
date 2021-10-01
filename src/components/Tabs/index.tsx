@@ -10,11 +10,16 @@ export interface INavItemList {
 }
 
 export interface ITabsProps {
+  activeKey?: string | number;
   onSelect?: (eventKey: string, event: SyntheticEvent) => void;
   navList: INavItemList[];
 }
 
-export default function Tabs({ navList = [], ...props }: ITabsProps) {
+export default function Tabs({
+  activeKey = 1,
+  navList = [],
+  ...props
+}: ITabsProps) {
   if (navList.length === 0) {
     return null;
   }
@@ -22,15 +27,16 @@ export default function Tabs({ navList = [], ...props }: ITabsProps) {
     <StyledNav
       fill
       justify
+      activeKey={activeKey}
       variant="pills"
-      defaultActiveKey={navList[0].key ?? ''}
+      defaultActiveKey={navList[0].key ?? navList[0].href ?? ''}
       unmountOnExit={false}
       mountOnEnter={false}
       onSelect={props.onSelect}
     >
-      {navList.map(({ children, key, href, text, disabled }) => {
+      {navList.map(({ children, key, href, text, disabled }, index) => {
         return (
-          <StyledNavItem>
+          <StyledNavItem key={index}>
             {key && (
               <StyledNavLink eventKey={key} disabled={disabled ?? false}>
                 {text ?? children ?? ''}
