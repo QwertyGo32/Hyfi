@@ -4,6 +4,7 @@ import {
   HomeWrapper,
   InfoContainer,
   HomeWrappperContainer,
+  StyledBtn,
 } from './styled';
 import Btn, { gradientBtnTypes } from '@components/Btn';
 import { useAppDispatch } from '@utils/hooks';
@@ -26,8 +27,7 @@ const HomePage = () => {
           other important markets and causes. Help us create a better world by
           joining the HyFi Platform!
         </Text>
-        <Btn
-          className="home-page_btn"
+        <StyledBtn
           theme={gradientBtnTypes.gradient}
           title="Connect Wallet"
           onClick={() => {

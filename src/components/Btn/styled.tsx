@@ -10,10 +10,6 @@ export const BtnStyled = styled(Button)`
   font-weight: 500;
   font-size: 15px;
 
-  &.home-page_btn {
-    margin-right: 30px;
-  }
-
   &.ilo-page_btn {
     padding: 9px 50px;
     font-size: 12px;

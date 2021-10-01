@@ -1,4 +1,4 @@
-import { gradientBtnTypes, BtnStyled } from "./styled";
+import { gradientBtnTypes, BtnStyled } from './styled';
 
 interface IBtnProps {
   theme: `${gradientBtnTypes}`;
@@ -6,7 +6,7 @@ interface IBtnProps {
   className?: string;
   [key: string]: unknown;
 }
-const Btn = ({ theme, title = "", className = "", ...props }: IBtnProps) => {
+const Btn = ({ theme, title = '', className = '', ...props }: IBtnProps) => {
   return (
     <BtnStyled className={`${theme} ${className}`} {...props}>
       {props.children ?? title}
@@ -14,4 +14,4 @@ const Btn = ({ theme, title = "", className = "", ...props }: IBtnProps) => {
   );
 };
 export default Btn;
-export { gradientBtnTypes, BtnStyled } from "./styled";
+export { gradientBtnTypes, BtnStyled } from './styled';
