@@ -1,6 +1,8 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch, RootState } from '@redux/index';
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router';
+
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
@@ -56,3 +58,6 @@ export const useCopyText = function (
   };
   return [isCopied, handleCopyClick];
 };
+export function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}

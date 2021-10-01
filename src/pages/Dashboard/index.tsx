@@ -1,61 +1,43 @@
-import React from 'react';
-import { DashboardLicenseBlock } from '@pages/Dashboard/components/LicenseBlock/LicenseBlock';
-import { TransactionsBlock } from '@pages/Dashboard/components/TransactionsBlock/TransactionsBlock';
-import { DetailsBlock } from '@pages/Dashboard/components/DetailsBlock/DetailsBlock';
-import { CompanyLogoData } from '@components/CompanyLogo/mocked';
-import AccountName from './components/AccountName';
-import { accountNameData } from './components/AccountName/mockedData';
-import { DataContainerData } from '@components/DataContainer/mocked';
 import { StyledDashboardWrapper } from '@pages/Dashboard/styled';
 import { HeadBlock } from '@pages/Dashboard/components/HeadBlock/HeadBlock';
-import { GraphBlock } from '@pages/Dashboard/components/GraphBlock/GraphBlock';
-import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
+import {
+  HashRouter,
+  Redirect,
+  Route,
+  Switch,
+  useLocation,
+} from 'react-router-dom';
+import { Suspense, lazy, useEffect } from 'react';
+import { useQuery } from '@/utils/hooks';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
+const Overview = lazy(() => import('./subpage/Overview'));
 
 const Dashboard = () => {
-  // const location = useLocation();
-  // React.useEffect(() => {
-  //   console.log('Location: ', location, location.hash);
-  // }, [location.hash]);
+  const query = useQuery();
+  const key = query?.get('tab') ?? '';
+  console.log('KEY: ', key);
   return (
     <StyledDashboardWrapper className={'dashboard-wrapper'}>
       <HeadBlock />
-      <HashRouter hashType={'noslash'}>
+      <CSSTransition key={key} timeout={300} classNames="my-node">
         <Switch>
-          <Route
-            path="/overview"
-            component={() => (
-              <>
-                <DashboardLicenseBlock />
-                <TransactionsBlock />
-                <AccountName avaliableAsset={accountNameData} />
-                <DetailsBlock
-                  img={CompanyLogoData[0].img}
-                  title={'HyFi'}
-                  listData={[
-                    ...DataContainerData,
-                    DataContainerData[0],
-                    DataContainerData[0],
-                  ]}
-                />
-                <GraphBlock />
-              </>
-            )}
-          />
-          <Route path="/license" component={() => <h1>License</h1>} />
-          <Route path="/transactions" component={() => <h1>Transactions</h1>} />
-          <Route path="*" render={() => <Redirect to="/overview" />} />
+          <CSSTransition key={key} classNames="my-node" timeout={300}>
+            {{
+              overview: <Overview />,
+              license: <h1>License</h1>,
+              transactions: <h1>Transactions</h1>,
+            }[key] ?? <Redirect to="/?tab=overview" />}
+          </CSSTransition>
         </Switch>
-      </HashRouter>
-      {/* <Switch location={location}>
-        {routes[type].map((route, index) => (
-          <Route
-            key={index}
-            path={route.path}
-            exact={route.exact}
-            children={<route.main />}
-          />
-        ))}
-      </Switch> */}
+      </CSSTransition>
+      {/* <CSSTransition key={key} classNames="my-node" timeout={300}>
+          {{
+            overview: <Overview />,
+            license: <h1>License</h1>,
+            transactions: <h1>Transactions</h1>,
+          }[key] ?? <Redirect to="/?tab=overview" />}
+        </CSSTransition> */}
     </StyledDashboardWrapper>
   );
 };
