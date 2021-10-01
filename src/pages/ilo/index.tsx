@@ -77,12 +77,12 @@ export default function Ilo() {
                 className={'ilo-page_btn'}
                 placeholder="Test 1"
                 value={priceState ?? 0}
-                badge="USDT"
+                badge="BUSD"
                 type="number"
                 onChange={changeValue}
               />
               <p className="info">
-                Your Contribution <span>0 USDT</span>
+                Your Contribution <span>0 BUSD</span>
               </p>
             </StyledIloContainerInfo>
             <Btn

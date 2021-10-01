@@ -194,8 +194,7 @@ export default function DisclaimerModal({ ...props }) {
                           isInvalid={!!errors.priceValue}
                         />
                         <div className="text-container">
-                          <StyledLogo />
-                          <span>ETH</span>
+                          <span>BUSD</span>
                         </div>
                         <Form.Control.Feedback type="invalid">
                           {errors.priceValue?.map((message, index) => (

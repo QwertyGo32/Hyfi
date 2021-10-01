@@ -93,7 +93,7 @@ export const StyledFormControl = styled(Form.Control)`
   letter-spacing: 0px;
   color: var(--main-text-default);
   opacity: 1;
-  padding: 12px 90px 12px 20px;
+  padding: 12px 60px 12px 20px;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
