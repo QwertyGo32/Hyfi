@@ -6,5 +6,6 @@ export enum LinksEnum {
   SWAP = '/swap',
   FARMS = '/farms',
   REPORT = '/report',
+  DASHBOARD = '/dashboard',
   NOTFOUND = '*',
 }

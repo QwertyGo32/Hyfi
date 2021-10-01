@@ -48,7 +48,6 @@ export default function Tabs({
               {/* {href && <Nav.Link href={href}>{text ?? children ?? ''}</Nav.Link>} */}
               {href && (
                 <StyledLink
-                  isActive={isLinkActive}
                   activeClassName="active"
                   className={`nav-link `}
                   data-disabled={disabled ?? false}

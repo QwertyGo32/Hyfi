@@ -1,7 +1,7 @@
 import { Switch, Route, useLocation, Redirect } from 'react-router-dom';
 import LoggedRouter from '@layouts/Auth/LoggedRouter';
 
-import React, { Suspense, useMemo } from 'react';
+import React, { Suspense, useEffect, useMemo } from 'react';
 
 import Sidebar from '@components/Sidebar';
 import { IRoute } from '@interfaces/IRoutes';
@@ -34,7 +34,6 @@ const HowToTakePart = React.lazy(() => import('@pages/HowToTakePart'));
 export default function App() {
   const type = useAppSelector(userLoggedStatus);
   const location = useLocation();
-
   const routes: {
     [UserStatusType.VISITOR]: IRoute[];
     [UserStatusType.AUTHED]: IRoute[];
@@ -104,11 +103,17 @@ export default function App() {
     [UserStatusType.AUTHED]: [
       {
         name: 'Home',
-        path: LinksEnum.MAIN,
-        exact: true,
+        path: LinksEnum.DASHBOARD,
         link: true,
         icon: () => <Home />,
         main: () => <Dashboard />,
+      },
+      {
+        name: 'Home',
+        path: LinksEnum.MAIN,
+        exact: true,
+        link: false,
+        main: () => <Redirect to={LinksEnum.DASHBOARD} />,
       },
       {
         name: 'NFT Offers',
@@ -148,7 +153,6 @@ export default function App() {
         path: LinksEnum.OVERVIEW,
         link: true,
         icon: () => <Overview />,
-        // main: () => <HowToTakePart />,
         main: () => <h2>Overview</h2>,
       },
       {
@@ -166,48 +170,40 @@ export default function App() {
         icon: () => <Tractor />,
         main: () => <h2>Farms</h2>,
       },
-      // {
-      //   name: 'Login',
-      //   path: '/login',
-      //   link: true,
-      //   icon: () => <Overview />,
-      //   main: () => <Login />,
-      // },
       {
         name: 'Not Match',
         path: LinksEnum.NOTFOUND,
         link: false,
         icon: () => <Overview />,
-        main: () => <h2>Not Match</h2>,
+        main: () => <h2>Not Match </h2>,
       },
     ],
   };
-  console.log('LOCATION: ', location);
   return (
     <>
       <Sidebar routes={routes[type]}>
-        {/* <SwitchTransition mode="out-in">
+        <SwitchTransition mode="out-in">
           <CSSTransition
             key={location.pathname}
             classNames="my-node"
             timeout={300}
-          > */}
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <Suspense fallback={<div>Loading...</div>}>
-            <Switch location={location}>
-              {routes[type].map((route, index) => (
-                <Route
-                  key={index}
-                  path={route.path}
-                  exact={route.exact}
-                  children={<route.main />}
-                />
-              ))}
-            </Switch>
-          </Suspense>
-        </ErrorBoundary>
-        {/* </CSSTransition>
-        </SwitchTransition> */}
+          >
+            <ErrorBoundary FallbackComponent={ErrorFallback}>
+              <Suspense fallback={<div>Loading...</div>}>
+                <Switch location={location}>
+                  {routes[type].map((route, index) => (
+                    <Route
+                      key={index}
+                      path={route.path}
+                      exact={route.exact}
+                      children={<route.main />}
+                    />
+                  ))}
+                </Switch>
+              </Suspense>
+            </ErrorBoundary>
+          </CSSTransition>
+        </SwitchTransition>
       </Sidebar>
     </>
   );

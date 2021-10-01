@@ -1,35 +1,28 @@
 import { StyledDashboardBlock } from '@pages/Dashboard/styled';
 import { StyledHeadBlockTitle } from '@pages/Dashboard/components/HeadBlock/styled';
 import Tabs, { INavItemList } from '@components/Tabs';
-import { useQuery } from '@/utils/hooks';
+import { useRouteMatch } from 'react-router-dom';
 export const HeadBlock = () => {
-  const query = useQuery();
+  const { url } = useRouteMatch();
+
   const navList: INavItemList[] = [
     {
       text: 'Overview',
-      href: '/?tab=overview',
-      isLinkActive: () => 'overview' === query.get('tab'),
+      href: `${url}/overview`,
     },
     {
       text: 'License',
-      href: '/?tab=license',
-      isLinkActive: () => 'license' === query.get('tab'),
+      href: `${url}/license`,
     },
     {
       text: 'Transactions',
-      href: '/?tab=transactions',
-      isLinkActive: () => 'transactions' === query.get('tab'),
+      href: `${url}/transactions`,
     },
   ];
   return (
     <StyledDashboardBlock className={'head-block'}>
       <StyledHeadBlockTitle>Dashboard</StyledHeadBlockTitle>
-      <Tabs
-        navList={navList}
-        onSelect={(eventKey) => {
-          console.log('Test: ', eventKey);
-        }}
-      />
+      <Tabs navList={navList} />
     </StyledDashboardBlock>
   );
 };
