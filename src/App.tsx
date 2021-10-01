@@ -53,7 +53,12 @@ export default function App() {
         path: LinksEnum.ILO,
         link: true,
         icon: () => <Chain />,
-        main: () => <h2>Initial Offerings for unauthorized</h2>,
+        main: () => (
+          <StyledContainer>
+            <Ilo />
+            <HowToTakePart />
+          </StyledContainer>
+        ),
       },
       {
         name: 'Report',
