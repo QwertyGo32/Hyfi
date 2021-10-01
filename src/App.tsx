@@ -1,7 +1,7 @@
 import { Switch, Route, useLocation, Redirect } from 'react-router-dom';
 import LoggedRouter from '@layouts/Auth/LoggedRouter';
 
-import React, { Suspense } from 'react';
+import React, { Suspense, useMemo } from 'react';
 
 import Sidebar from '@components/Sidebar';
 import { IRoute } from '@interfaces/IRoutes';
@@ -34,6 +34,7 @@ const HowToTakePart = React.lazy(() => import('@pages/HowToTakePart'));
 export default function App() {
   const type = useAppSelector(userLoggedStatus);
   const location = useLocation();
+
   const routes: {
     [UserStatusType.VISITOR]: IRoute[];
     [UserStatusType.AUTHED]: IRoute[];
@@ -181,31 +182,32 @@ export default function App() {
       },
     ],
   };
+  console.log('LOCATION: ', location);
   return (
     <>
       <Sidebar routes={routes[type]}>
-        <SwitchTransition mode="out-in">
+        {/* <SwitchTransition mode="out-in">
           <CSSTransition
             key={location.pathname}
             classNames="my-node"
             timeout={300}
-          >
-            <ErrorBoundary FallbackComponent={ErrorFallback}>
-              <Suspense fallback={<div>Loading...</div>}>
-                <Switch location={location}>
-                  {routes[type].map((route, index) => (
-                    <Route
-                      key={index}
-                      path={route.path}
-                      exact={route.exact}
-                      children={<route.main />}
-                    />
-                  ))}
-                </Switch>
-              </Suspense>
-            </ErrorBoundary>
-          </CSSTransition>
-        </SwitchTransition>
+          > */}
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Switch location={location}>
+              {routes[type].map((route, index) => (
+                <Route
+                  key={index}
+                  path={route.path}
+                  exact={route.exact}
+                  children={<route.main />}
+                />
+              ))}
+            </Switch>
+          </Suspense>
+        </ErrorBoundary>
+        {/* </CSSTransition>
+        </SwitchTransition> */}
       </Sidebar>
     </>
   );

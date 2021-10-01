@@ -1,8 +1,6 @@
 import React, { SyntheticEvent } from 'react';
 import { StyledNav, StyledNavItem, StyledLink, StyledNavLink } from './styled';
-import { Link } from 'react-router-dom';
-import Nav from 'react-bootstrap/Nav';
-import { useLocation } from 'react-router-dom';
+
 export interface INavItemList {
   children?: React.ReactNode;
   key?: string | number;
