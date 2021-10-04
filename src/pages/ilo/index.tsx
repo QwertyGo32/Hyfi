@@ -38,7 +38,7 @@ export default function Ilo() {
   const contribution = useAppSelector(selectIloContributionState);
   const changeValue = function (event: React.ChangeEvent<HTMLInputElement>) {
     const value: number = +event.target.value as number;
-    dispatch(changeIloBuyPrice(+value ?? 0));
+    dispatch(changeIloBuyPrice(+value));
   };
   return (
     <StyledIloWrapper>
@@ -87,10 +87,10 @@ export default function Ilo() {
             <StyledIloContainerInfo>
               <InputBlock
                 className={'ilo-page_btn'}
-                placeholder="Test 1"
+                placeholder={String(priceState) ?? ''}
                 value={priceState ?? ''}
                 badge="BUSD"
-                type="number"
+                type="text"
                 onChange={changeValue}
               />
               <p className="info">
