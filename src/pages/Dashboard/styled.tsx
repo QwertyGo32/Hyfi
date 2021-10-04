@@ -43,6 +43,9 @@ export const StyledDashboardBlock = styled.div`
 
   &.graph-block {
     grid-area: graph;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 `;
 

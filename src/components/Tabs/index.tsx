@@ -1,5 +1,12 @@
-import React, { SyntheticEvent } from 'react';
-import { StyledNav, StyledNavItem, StyledLink, StyledNavLink } from './styled';
+import React, { SyntheticEvent, useState } from 'react';
+import {
+  StyledNav,
+  StyledNavItem,
+  StyledLink,
+  StyledNavLink,
+  TabsTypes,
+} from './styled';
+import { gradientBtnTypes } from '@components/Btn';
 
 export interface INavItemList {
   children?: React.ReactNode;
@@ -14,13 +21,18 @@ export interface ITabsProps {
   activeKey?: string | number;
   onSelect?: (eventKey: string, event: SyntheticEvent) => void;
   navList: INavItemList[];
+  theme?: `${TabsTypes}`;
 }
 
 export default function Tabs({
   activeKey = 1,
+  theme,
   navList = [],
   ...props
 }: ITabsProps) {
+  const [selected, setSelected] = useState(
+    navList[0].key ?? navList[0].href ?? ''
+  );
   if (navList.length === 0) {
     return null;
   }
@@ -29,27 +41,37 @@ export default function Tabs({
     <StyledNav
       fill
       justify
-      activeKey={activeKey}
       variant="pills"
+      activeKey={selected}
       defaultActiveKey={navList[0].key ?? navList[0].href ?? ''}
       unmountOnExit={false}
       mountOnEnter={false}
-      onSelect={props.onSelect}
+      onSelect={(
+        eventKey: string,
+        event: React.SyntheticEvent<HTMLSelectElement>
+      ) => {
+        setSelected(eventKey);
+        props?.onSelect?.call(eventKey, eventKey, event);
+      }}
     >
       {navList.map(
         ({ children, key, href, text, disabled, isLinkActive }, index) => {
           return (
             <StyledNavItem key={index}>
               {key && (
-                <StyledNavLink eventKey={key} disabled={disabled ?? false}>
+                <StyledNavLink
+                  className={`${theme}`}
+                  active={selected === key}
+                  eventKey={key}
+                  disabled={disabled ?? false}
+                >
                   {text ?? children ?? ''}
                 </StyledNavLink>
               )}
-              {/* {href && <Nav.Link href={href}>{text ?? children ?? ''}</Nav.Link>} */}
               {href && (
                 <StyledLink
                   activeClassName="active"
-                  className={`nav-link `}
+                  className={`nav-link ${theme}`}
                   data-disabled={disabled ?? false}
                   to={disabled ? '#' : href}
                 >

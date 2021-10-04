@@ -36,7 +36,11 @@ const HomePage = () => {
         />
       </HomeWrapper>
       <InfoContainer>
-        <ImageBadge text="ILO NFTs Available Now!" img={bgr} />
+        <ImageBadge
+          text="ILO NFTs Available Now!"
+          img={bgr}
+          pathname={'initialofferings'}
+        />
         <ImageBadge text="Staking (Coming Soon)" img={bgr} />
         <ImageBadge text="Trading (Coming Soon)" img={bgr} />
         <ImageBadge text="Farming (Coming Soon)" img={bgr} />

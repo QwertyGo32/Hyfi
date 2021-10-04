@@ -2,6 +2,7 @@ import React from 'react';
 import CompanyLogo from '@components/CompanyLogo';
 import { CompanyLogoData } from '@components/CompanyLogo/mocked';
 import { DataContainerData } from '@components/DataContainer/mocked';
+import { TitleContainerData } from '@components/DataContainer/mocked';
 import bgrImg from '@img/background.jpg';
 
 import InputBlock from '@/components/Input';
@@ -29,6 +30,7 @@ import {
 } from '@redux/ilo';
 import AuthedUserBtn from './protection/buyBtn';
 import AuthedConnectWallet from './protection/connectWallet';
+import { StyledTitleContainer } from '@pages/Dashboard/components/TitleContainer/styled';
 
 export default function Ilo() {
   const dispatch = useAppDispatch();
@@ -62,19 +64,23 @@ export default function Ilo() {
                   status={CompanyLogoData[0].status}
                 />
               }
-              listData={DataContainerData}
-            />
-            <StyledDataContainer
-              inTitle={<StyledIloBlockTitle>View Contract</StyledIloBlockTitle>}
               listData={[
-                ...DataContainerData,
                 DataContainerData[0],
-                DataContainerData[0],
+                DataContainerData[1],
+                DataContainerData[2],
               ]}
             />
             <StyledDataContainer
+              inTitle={<StyledIloBlockTitle>View Contract</StyledIloBlockTitle>}
+              listData={[DataContainerData[3], DataContainerData[4]]}
+            />
+            <StyledTitleContainer
               inTitle={<StyledIloBlockTitle>One Page Info</StyledIloBlockTitle>}
-              listData={[...DataContainerData, DataContainerData[0]]}
+              listTitles={[
+                TitleContainerData[0],
+                TitleContainerData[1],
+                TitleContainerData[2],
+              ]}
             />
           </StyledIloContainerBlocks>
           <StyledIloContainerInptBtn>
