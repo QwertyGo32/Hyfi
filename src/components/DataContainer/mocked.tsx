@@ -6,11 +6,10 @@ export const DataContainerData = [
   {
     title: 'ROI',
     value: '',
-    tooltip:
+    badge:
       'Nisl tincidunt eget nullam non nisi est sit amet facilisis\n' +
       '                        magna etiam tempor orci eu lobortis elementum nibh tellus\n' +
       '                        molestie',
-    badge: 'Hello',
   },
 ];
 

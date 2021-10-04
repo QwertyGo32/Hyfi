@@ -55,7 +55,7 @@ export const DetailsBlock = ({ title, img, listData }: IDetailsBlockProps) => {
                   <span className="title badge">{title ?? ''}</span>
                   <OverlayTrigger
                     placement="top"
-                    overlay={<Tooltip id="button-tooltip-2">{tooltip}</Tooltip>}
+                    overlay={<Tooltip id="button-tooltip-2">{badge}</Tooltip>}
                   >
                     <Badge />
                   </OverlayTrigger>
