@@ -26,7 +26,7 @@ export const StyledList = styled.ul`
 export const StyledListElement = styled.li`
   padding: 13.5px 0;
   display: grid;
-  grid-template-areas: '. . .';
+  grid-template-areas: '. .';
   border-bottom: 1px solid var(--main-default-link-color);
   p {
     margin: 0;

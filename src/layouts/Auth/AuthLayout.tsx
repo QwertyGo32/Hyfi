@@ -28,10 +28,8 @@ export default function AuthLayoutBlock({ children }: IAuthLayoutProps) {
   //   };
 
   useEffect(() => {
-    console.log('AUTH LAYOUT', data, pending);
     if (pending) {
       const id = setTimeout(() => {
-        console.log('TIMEOUT: ', pending);
         if (pending) {
           dispatch(clearAuthState());
         }
@@ -39,7 +37,6 @@ export default function AuthLayoutBlock({ children }: IAuthLayoutProps) {
       timeoutlRef.current = id;
     }
     return () => {
-      console.log('Unmount: ', timeoutlRef.current);
       clearTimeout(timeoutlRef.current as NodeJS.Timeout);
     };
   }, []);

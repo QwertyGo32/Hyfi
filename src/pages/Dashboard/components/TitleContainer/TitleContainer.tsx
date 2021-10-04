@@ -22,7 +22,10 @@ export const TitleContainer = ({
     <StyledList className="list">
       {listTitles.map(({ title }, index) => {
         return index === 0 ? (
-          <StyledListHeader className="header list-header__first-item">
+          <StyledListHeader
+            key={index}
+            className="header list-header__first-item"
+          >
             {title}
             {typeof customTitleBadge !== 'undefined' ? (
               customTitleBadge
@@ -33,7 +36,7 @@ export const TitleContainer = ({
             )}
           </StyledListHeader>
         ) : (
-          <StyledListHeader className="header">
+          <StyledListHeader key={index} className="header">
             {title}
             {typeof customTitleBadge !== 'undefined' ? (
               customTitleBadge
