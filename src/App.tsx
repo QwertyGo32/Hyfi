@@ -1,7 +1,6 @@
 import { Switch, Route, useLocation, Redirect } from 'react-router-dom';
-import LoggedRouter from '@layouts/Auth/LoggedRouter';
 
-import React, { Suspense, useEffect, useMemo } from 'react';
+import React, { Suspense } from 'react';
 
 import Sidebar from '@components/Sidebar';
 import { IRoute } from '@interfaces/IRoutes';
@@ -23,9 +22,6 @@ import ErrorFallback from '@layouts/Fallback';
 import { StyledContainer } from '@styles/containers.styled';
 import { EDashboardPageTabs } from '@pages/Dashboard';
 
-const Counter = React.lazy(() => import('@pages/counter'));
-const Login = React.lazy(() => import('@pages/login'));
-const Main = React.lazy(() => import('@pages/main'));
 const Ilo = React.lazy(() => import('@pages/ilo'));
 const Report = React.lazy(() => import('@pages/Report'));
 const HomePage = React.lazy(() => import('@pages/HomePage'));
@@ -110,7 +106,7 @@ export default function App() {
       {
         name: 'Home',
         path: LinksEnum.DASHBOARD,
-        link: false,
+        link: LinksEnum.DASHBOARD + `/${EDashboardPageTabs.OVERVIEW}`,
         icon: () => <Home />,
         main: () => <Dashboard />,
       },
@@ -118,7 +114,7 @@ export default function App() {
         name: 'Home',
         path: LinksEnum.MAIN,
         exact: true,
-        link: true,
+        link: false,
         icon: () => <Home />,
         main: () => (
           <Redirect
@@ -145,12 +141,6 @@ export default function App() {
         link: false,
         main: () => <Report />,
       },
-      // {
-      //   name: 'Counter',
-      //   path: '/counter',
-      //   link: true,
-      //   main: () => <LoggedRouter component={Counter} />,
-      // },
       {
         name: 'Pools',
         path: LinksEnum.POOLS,
@@ -158,7 +148,6 @@ export default function App() {
         icon: () => <Pools />,
         main: () => <h2>Pools</h2>,
       },
-
       {
         name: 'Overview',
         path: LinksEnum.OVERVIEW,
@@ -173,7 +162,6 @@ export default function App() {
         icon: () => <Swap />,
         main: () => <h2>Swap</h2>,
       },
-
       {
         name: 'Farms',
         path: LinksEnum.FARMS,

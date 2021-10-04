@@ -136,7 +136,18 @@ export const AsideComponent = function ({ routes }: AsideProps) {
               <li key={index}>
                 <StyledAsideListElement
                   activeClassName="active"
-                  to={path}
+                  isActive={(_, { pathname }) => {
+                    if (typeof link === 'string') {
+                      return (
+                        pathname.split('/')[1] ===
+                        (typeof link === 'string' ? link.split('/')[1] : path)
+                      );
+                    }
+                    return (
+                      pathname === (typeof link === 'string' ? link : path)
+                    );
+                  }}
+                  to={typeof link === 'string' ? link : path}
                   exact={exact}
                   className="nav-item"
                 >
