@@ -1,9 +1,10 @@
-import { PropsWithChildren, useEffect, Component } from 'react';
+import { PropsWithChildren, useEffect, Component, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '@utils/hooks';
 import {
   loginUserToWebSite,
   logoutUserFromWebSite,
   selectAuth,
+  clearAuthState,
 } from '@redux/auth';
 import { persistor } from '@redux/index';
 interface IAuthLayoutProps {
@@ -16,6 +17,7 @@ export default function AuthLayoutBlock({ children }: IAuthLayoutProps) {
     data,
     // data: { isAuth },
   } = useAppSelector(selectAuth);
+  const timeoutlRef: { current: NodeJS.Timeout | null } = useRef(null);
 
   //   const loginFunction = function () {
   //     dispatch(loginUserToWebSite());
@@ -26,8 +28,20 @@ export default function AuthLayoutBlock({ children }: IAuthLayoutProps) {
   //   };
 
   useEffect(() => {
-    console.log('AUTH LAYOUT', data);
-    //   dispatch(loginUserToWebSite());
+    console.log('AUTH LAYOUT', data, pending);
+    if (pending) {
+      const id = setTimeout(() => {
+        console.log('TIMEOUT: ', pending);
+        if (pending) {
+          dispatch(clearAuthState());
+        }
+      }, 5000);
+      timeoutlRef.current = id;
+    }
+    return () => {
+      console.log('Unmount: ', timeoutlRef.current);
+      clearTimeout(timeoutlRef.current as NodeJS.Timeout);
+    };
   }, []);
 
   if (pending) {
