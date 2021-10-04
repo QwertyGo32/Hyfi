@@ -18,7 +18,6 @@ import {
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { ReactComponent as Badge } from '@icons/question-mark.svg';
-import Btn from '@components/Btn';
 
 interface IDetailsBlockProps {
   title: string;
@@ -30,6 +29,7 @@ interface IDataContainerListData {
   title: string | JSX.Element;
   value: number | string | JSX.Element;
   badge?: string | number;
+  tooltip?: string;
 }
 
 export const DetailsBlock = ({ title, img, listData }: IDetailsBlockProps) => {
@@ -47,27 +47,19 @@ export const DetailsBlock = ({ title, img, listData }: IDetailsBlockProps) => {
         </StyledLogoContainer>
       </StyledDetailsHead>
       <StyledList className="list">
-        {listData.map(({ title, value, badge }, index) => {
+        {listData.map(({ title, value, tooltip, badge }, index) => {
           return (
             <StyledListElement key={index} className="list-element">
               {typeof badge !== 'undefined' ? (
-                <OverlayTrigger
-                  placement="top"
-                  overlay={
-                    <Tooltip id="button-tooltip-2">
-                      Nisl tincidunt eget nullam non nisi est sit amet facilisis
-                      magna etiam tempor orci eu lobortis elementum nibh tellus
-                      molestie
-                    </Tooltip>
-                  }
-                >
-                  {({ ref, ...triggerHandler }) => (
-                    <span ref={ref} {...triggerHandler} className="title badge">
-                      {title ?? ''}
-                      <Badge />
-                    </span>
-                  )}
-                </OverlayTrigger>
+                <div className={'styled-list-elem__container'}>
+                  <span className="title badge">{title ?? ''}</span>
+                  <OverlayTrigger
+                    placement="top"
+                    overlay={<Tooltip id="button-tooltip-2">{tooltip}</Tooltip>}
+                  >
+                    <Badge />
+                  </OverlayTrigger>
+                </div>
               ) : (
                 <span className="title">{title ?? ''}</span>
               )}

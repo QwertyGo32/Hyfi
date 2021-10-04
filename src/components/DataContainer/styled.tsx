@@ -43,9 +43,7 @@ export const StyledListElement = styled.li`
     opacity: 1;
     text-align: left;
     width: fit-content;
-    svg {
-      margin-left: 10px;
-    }
+    margin-right: 10px;
   }
 
   .value {

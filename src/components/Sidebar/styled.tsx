@@ -168,6 +168,7 @@ const StyledMain = styled.main`
   &:not([data-page='${LinksEnum.ILO}']) {
     padding-left: calc(var(--sidebar-initial-width) + 8.5%);
     padding-right: 40px;
+    padding-top: 100px;
   }
 
   @media screen and ${breakpoints.Device.tablet} {
@@ -181,7 +182,6 @@ const StyledMain = styled.main`
     }
   }
 
-  padding-bottom: 96px;
   transition-duration: 0.5s;
   display: flex;
   align-items: center;
