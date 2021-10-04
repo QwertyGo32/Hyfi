@@ -7,6 +7,10 @@ export const selectIloBuyPriceState = createSelector(
   selectIlo,
   (state) => state.buyPrice
 );
+export const selectIloContributionState = createSelector(
+  selectIlo,
+  (state) => state.contributionPrice
+);
 // export const selectChangeWalletModalState = createSelector(
 //   selectModal,
 //   (state) => state.changeWallet

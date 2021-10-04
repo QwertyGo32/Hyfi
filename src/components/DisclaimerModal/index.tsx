@@ -22,7 +22,11 @@ import { useAppDispatch, useAppSelector } from '@utils/hooks';
 import { gradientBtnTypes } from '@components/Btn';
 import { useValidation } from 'react-class-validator';
 import { DisclaimerModalDto } from './disclaimerModalDto';
-import { selectIloBuyPriceState, changeIloBuyPrice } from '@redux/ilo';
+import {
+  selectIloBuyPriceState,
+  changeIloBuyPrice,
+  addContributionPrice,
+} from '@redux/ilo';
 
 interface ICheckbox {
   disclaimer: boolean | null;
@@ -49,10 +53,13 @@ export default function DisclaimerModal({ ...props }) {
   const handleSubmit = async function (
     evt: React.SyntheticEvent<HTMLFormElement>
   ) {
+    const readDisclaimer = checkboxes.disclaimer;
+    const understandRegulations = checkboxes.rools;
+
     evt.preventDefault();
-    if (await validate({ priceValue })) {
-      // ... handle valid submission
-      console.log('Validation');
+    if (await validate({ priceValue, readDisclaimer, understandRegulations })) {
+      dispatch(addContributionPrice(priceValue ?? 0));
+      dispatch(openIloDisclaimer(false));
     }
   };
   const handleClose = () => {
@@ -211,6 +218,7 @@ export default function DisclaimerModal({ ...props }) {
                           !checkboxes.disclaimer
                         }
                         theme={gradientBtnTypes.gradient}
+                        onClick={handleSubmit}
                       >
                         Buy
                       </StyledBtn>

@@ -22,13 +22,18 @@ import PageHead from '@/components/PageHead';
 import DisclaimerModal from '@components/DisclaimerModal';
 import { useAppDispatch, useAppSelector } from '@/utils/hooks';
 import { openIloDisclaimer } from '@redux/modal';
-import { selectIloBuyPriceState, changeIloBuyPrice } from '@redux/ilo';
+import {
+  selectIloBuyPriceState,
+  changeIloBuyPrice,
+  selectIloContributionState,
+} from '@redux/ilo';
 import AuthedUserBtn from './protection/buyBtn';
 import AuthedConnectWallet from './protection/connectWallet';
 
 export default function Ilo() {
   const dispatch = useAppDispatch();
   const priceState = useAppSelector(selectIloBuyPriceState);
+  const contribution = useAppSelector(selectIloContributionState);
   const changeValue = function (event: React.ChangeEvent<HTMLInputElement>) {
     const value: number = +event.target.value as number;
     dispatch(changeIloBuyPrice(+value ?? 0));
@@ -77,13 +82,13 @@ export default function Ilo() {
               <InputBlock
                 className={'ilo-page_btn'}
                 placeholder="Test 1"
-                value={priceState ?? 0}
+                value={priceState ?? ''}
                 badge="BUSD"
                 type="number"
                 onChange={changeValue}
               />
               <p className="info">
-                Your Contribution <span>0 BUSD</span>
+                Your Contribution <span>{contribution} BUSD</span>
               </p>
             </StyledIloContainerInfo>
             <AuthedUserBtn />
