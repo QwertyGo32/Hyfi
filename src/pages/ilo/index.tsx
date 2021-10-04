@@ -24,6 +24,7 @@ import { useAppDispatch, useAppSelector } from '@/utils/hooks';
 import { openIloDisclaimer } from '@redux/modal';
 import { selectIloBuyPriceState, changeIloBuyPrice } from '@redux/ilo';
 import AuthedUserBtn from './protection/buyBtn';
+import AuthedConnectWallet from './protection/connectWallet';
 
 export default function Ilo() {
   const dispatch = useAppDispatch();
@@ -31,11 +32,6 @@ export default function Ilo() {
   const changeValue = function (event: React.ChangeEvent<HTMLInputElement>) {
     const value: number = +event.target.value as number;
     dispatch(changeIloBuyPrice(+value ?? 0));
-  };
-  const buyBtn = function () {
-    console.log('CLICk');
-    window.scrollTo({ left: 0, top: 0 });
-    dispatch(openIloDisclaimer(true));
   };
   return (
     <StyledIloWrapper>
@@ -90,7 +86,8 @@ export default function Ilo() {
                 Your Contribution <span>0 BUSD</span>
               </p>
             </StyledIloContainerInfo>
-            <AuthedUserBtn onClick={buyBtn} />
+            <AuthedUserBtn />
+            <AuthedConnectWallet />
           </StyledIloContainerInptBtn>
         </StyledIloContainer>
         <StyledIloBlockImg
