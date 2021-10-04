@@ -27,3 +27,7 @@ yarn-error.log*
 .idea*
 id_rsa_hyfi
 id_rsa_hyfi.pub
+
+
+yarn*
+package-lock.json
