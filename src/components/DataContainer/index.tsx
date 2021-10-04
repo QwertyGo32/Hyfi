@@ -2,7 +2,7 @@ import {
   StyledSection,
   StyledListHeader,
   StyledList,
-  StyledListElemet,
+  StyledListElement,
 } from './styled';
 import Link from '@components/Link';
 import { ReactComponent as ShareLink } from '@icons/link.svg';
@@ -47,30 +47,29 @@ export default function DataContainer({
       <StyledList className="list">
         {listData.map(({ title, value, badge }, index) => {
           return (
-            <StyledListElemet key={index} className="list-element">
+            <StyledListElement key={index} className="list-element">
               {typeof badge !== 'undefined' ? (
-                <OverlayTrigger
-                  placement="top"
-                  overlay={
-                    <Tooltip id="button-tooltip-2">
-                      Nisl tincidunt eget nullam non nisi est sit amet facilisis
-                      magna etiam tempor orci eu lobortis elementum nibh tellus
-                      molestie
-                    </Tooltip>
-                  }
-                >
-                  {({ ref, ...triggerHandler }) => (
-                    <span ref={ref} {...triggerHandler} className="title badge">
-                      {title ?? ''}
-                      <Badge />
-                    </span>
-                  )}
-                </OverlayTrigger>
+                <div className={'styled-list-element__container'}>
+                  <span className="title badge">{title ?? ''}</span>
+                  <OverlayTrigger
+                    key="top"
+                    placement="top"
+                    overlay={
+                      <Tooltip id="tooltip-top">
+                        Nisl tincidunt eget nullam non nisi est sit amet
+                        facilisis magna etiam tempor orci eu lobortis elementum
+                        nibh tellus molestie
+                      </Tooltip>
+                    }
+                  >
+                    <Badge />
+                  </OverlayTrigger>
+                </div>
               ) : (
                 <span className="title">{title ?? ''}</span>
               )}
               <span className="value">{value}</span>
-            </StyledListElemet>
+            </StyledListElement>
           );
         })}
       </StyledList>

@@ -12,17 +12,21 @@ export const StyledListHeader = styled.h3`
   border-bottom: 0.2px solid var(--main-default-underline-opacity-20);
   padding: 13.5px 0;
   align-items: flex-end;
+  font-size: 12px;
 `;
 
 export const StyledList = styled.ul`
   padding: 0;
+
+  & .list-header__first-item {
+    min-height: 78px;
+  }
 `;
 
-export const StyledListElemet = styled.li`
+export const StyledListElement = styled.li`
   padding: 13.5px 0;
   display: grid;
-  grid-template-columns: minmax(100px, max-content) minmax(100px, 1fr);
-  gap: 50px;
+  grid-template-areas: '. . .';
   border-bottom: 1px solid var(--main-default-link-color);
   p {
     margin: 0;
@@ -30,9 +34,6 @@ export const StyledListElemet = styled.li`
 
   .title {
     padding: 0;
-    display: grid;
-    grid-template-columns: repeat(2, max-content);
-    gap: 4.5px;
     font-family: 'Montserrat', sans-serif;
     font-size: 12px;
     line-height: 15px;
@@ -40,10 +41,9 @@ export const StyledListElemet = styled.li`
     letter-spacing: 0;
     color: var(--main-text-default);
     opacity: 1;
-
-    &.badge {
-      cursor: pointer;
-    }
+    text-align: left;
+    width: fit-content;
+    margin-right: 10px;
   }
 
   .value {

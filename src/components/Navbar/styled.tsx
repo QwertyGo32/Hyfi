@@ -133,6 +133,13 @@ export const StyledCheckbox = styled.input`
     visibility: hidden;
   }
 
+  &:checked ~ #main-content .graph-block .graph-block__container {
+    grid-template-areas:
+      'title . tabs tabs tabs'
+      'graph graph graph graph graph'
+      'graph graph graph graph graph';
+  }
+
   @media screen and ${breakpoints.Device.desktop} {
     &:checked ~ #main-content .ilo-block__img {
       display: block;

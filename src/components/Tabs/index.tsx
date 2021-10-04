@@ -1,5 +1,6 @@
 import React, { useState, SyntheticEvent } from 'react';
-import { StyledNav, StyledNavItem, StyledNavLink } from './styled';
+import { StyledNav, StyledNavItem, StyledNavLink, TabsTypes } from './styled';
+import { gradientBtnTypes } from '@components/Btn';
 
 export interface INavItemList {
   children?: React.ReactNode;
@@ -12,9 +13,10 @@ export interface INavItemList {
 export interface ITabsProps {
   onSelect?: (eventKey: string, event: SyntheticEvent) => void;
   navList: INavItemList[];
+  theme?: `${TabsTypes}`;
 }
 
-export default function Tabs({ navList = [], ...props }: ITabsProps) {
+export default function Tabs({ theme, navList = [], ...props }: ITabsProps) {
   const [selected, setSelected] = useState(
     navList[0].key ?? navList[0].href ?? ''
   );
@@ -43,6 +45,7 @@ export default function Tabs({ navList = [], ...props }: ITabsProps) {
           <StyledNavItem key={index}>
             {key && (
               <StyledNavLink
+                className={`${theme}`}
                 active={selected === key}
                 eventKey={key}
                 disabled={disabled ?? false}
@@ -52,6 +55,7 @@ export default function Tabs({ navList = [], ...props }: ITabsProps) {
             )}
             {href && (
               <StyledNavLink
+                className={`${theme}`}
                 active={selected === href}
                 href={href}
                 disabled={disabled ?? false}

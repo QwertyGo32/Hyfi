@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import Button from 'react-bootstrap/Button';
+
 export enum gradientBtnTypes {
   gradient = 'gradient',
   outline = 'outline',
 }
+
 export const BtnStyled = styled(Button)`
   padding: 14px 22px;
   font-family: Montserrat, serif;
@@ -27,15 +29,17 @@ export const BtnStyled = styled(Button)`
         var(--main-default-btn-grd1) 0%,
         var(--main-default-btn-grd2) 100%
       )
-      0% 0% no-repeat padding-box;
-    box-shadow: 0px 5px 6px var(--main-block-shadow);
+      0 0 no-repeat padding-box;
+    box-shadow: 0 5px 6px var(--main-block-shadow);
     border-radius: 5px;
     border: none;
     color: var(--main-default-bg);
   }
+
   &.${gradientBtnTypes.gradient}:focus, &.${gradientBtnTypes.outline}:active {
-    box-shadow: 0px 5px 6px var(--main-block-shadow);
+    box-shadow: 0 5px 6px var(--main-block-shadow);
   }
+
   &.${gradientBtnTypes.outline} {
     border: 2px solid var(--main-default-btn-grd2);
     background: transparent;
@@ -43,6 +47,7 @@ export const BtnStyled = styled(Button)`
     opacity: 0.8;
     color: var(--main-default-btn-grd2);
   }
+
   &.${gradientBtnTypes.outline}:focus, &.${gradientBtnTypes.outline}:active {
     box-shadow: none;
   }

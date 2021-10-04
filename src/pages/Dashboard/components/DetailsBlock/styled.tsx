@@ -5,6 +5,7 @@ export const StyledDetailsHead = styled.div`
   display: flex;
   justify-content: space-between;
   border-bottom: none;
+  margin-bottom: 12px;
 
   & img {
     max-width: 50px;
@@ -13,5 +14,5 @@ export const StyledDetailsHead = styled.div`
 `;
 
 export const StyledBtn = styled(Btn)`
-  width: 40%;
+  width: fit-content;
 `;

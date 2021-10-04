@@ -11,7 +11,10 @@ import {
   StyledLogoContainer,
 } from '@components/CompanyLogo/styled';
 import React from 'react';
-import { StyledList, StyledListElemet } from '@components/DataContainer/styled';
+import {
+  StyledList,
+  StyledListElement,
+} from '@components/DataContainer/styled';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { ReactComponent as Badge } from '@icons/question-mark.svg';
@@ -46,7 +49,7 @@ export const DetailsBlock = ({ title, img, listData }: IDetailsBlockProps) => {
       <StyledList className="list">
         {listData.map(({ title, value, badge }, index) => {
           return (
-            <StyledListElemet key={index} className="list-element">
+            <StyledListElement key={index} className="list-element">
               {typeof badge !== 'undefined' ? (
                 <OverlayTrigger
                   placement="top"
@@ -69,7 +72,7 @@ export const DetailsBlock = ({ title, img, listData }: IDetailsBlockProps) => {
                 <span className="title">{title ?? ''}</span>
               )}
               <span className="value">{value}</span>
-            </StyledListElemet>
+            </StyledListElement>
           );
         })}
       </StyledList>

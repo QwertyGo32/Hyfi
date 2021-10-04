@@ -11,7 +11,7 @@ body {
   --main-default-btn-grd1: #6984ff;
   --main-default-btn-grd2: #224aff;
   --main-default-block-shadow: #acb7c270;
-  --main-default-underline: rgb(112, 112, 112);
+  --main-default-underline: #707070;
   --main-default-underline-opacity-20: rgba(112, 112, 112, 0.2);
   --main-default-link-color: #00000029;
   --main-default-wrapper-border: #c9c9c9;
@@ -51,11 +51,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
 a {
   text-decoration: none;
   color: inherit;
@@ -65,15 +67,18 @@ a {
   opacity: 0;
   z-index: 0;
 }
+
 .my-node-enter-active {
   opacity: 1;
   transition: opacity 300ms;
   z-index: 0;
 }
+
 .my-node-exit {
   opacity: 1;
   z-index: 0;
 }
+
 .my-node-exit-active {
   opacity: 0;
   transition: opacity 300ms;
@@ -90,29 +95,14 @@ a {
   }
 }
 
-.tooltip {
-  inset: auto auto -15px 10px !important;
+.tooltip-inner {
+  background-color: var(--main-default-btn-grd1) !important;
 }
 
 .tooltip.show {
   opacity: 1 !important;
 }
 
-.tooltip-inner {
-  background-color: var(--main-default-btn-grd1) !important;
-  opacity: 1;
-  font-family: Montserrat, serif;
-  font-size: 12px;
-  line-height: 15px;
-  font-weight: 500;
-
-  color: var(--main-default-bg);
-}
-
-.tooltip-arrow {
-  transform: translate3d(120px, 0px, 0px) !important;
-}
-
-.tooltip-arrow::before {
+.tooltip-arrow:before {
   border-top-color: var(--main-default-btn-grd1) !important;
 }

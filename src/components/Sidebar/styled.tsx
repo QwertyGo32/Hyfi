@@ -41,17 +41,23 @@ const StyledAsideMain = styled.main`
   overflow-x: hidden;
   padding-bottom: 100px;
 
-  &::-webkit-scrollbar {
-    /* 1 - скроллбар */
-    width: 4px;
-    height: 4px;
-    background-color: #ffffff;
+  @media screen and ${breakpoints.Device.tablet} {
+    justify-content: flex-start;
   }
 
-  &::-webkit-scrollbar-thumb {
-    /* 5 - ползунок */
-    border-radius: 2px;
-    background-color: var(--main-default-block-shadow);
+  @media screen and (max-height: 550px) {
+    &::-webkit-scrollbar {
+      /* 1 - скроллбар */
+      width: 4px;
+      height: 4px;
+      background-color: #ffffff;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      /* 5 - ползунок */
+      border-radius: 2px;
+      background-color: var(--main-default-block-shadow);
+    }
   }
 `;
 

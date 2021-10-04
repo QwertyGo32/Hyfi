@@ -7,9 +7,6 @@ export const HeadBlock = () => {
     { text: 'Overview', href: '#Overview' },
     { text: 'License', href: '#License' },
     { text: 'Transactions', href: '#Transactions' },
-    // { text: 'Overview', key: '#Overview' },
-    // { text: 'License', key: '#License' },
-    // { text: 'Transactions', key: '#Transactions' },
   ];
   return (
     <StyledDashboardBlock className={'head-block'}>

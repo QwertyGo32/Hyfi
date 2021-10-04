@@ -14,7 +14,7 @@ export const StyledLogoContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 7.5px;
+  padding: 6px;
   grid-area: 1 / 1 / 2 / 2;
   background: var(--main-default-bg) 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px var(--main-block-shadow);
