@@ -7,7 +7,6 @@ import {
 import Link from '@components/Link';
 import { ReactComponent as ShareLink } from '@icons/link.svg';
 import { ReactComponent as Badge } from '@icons/question-mark.svg';
-import { ReactComponent as DropdownArrow } from '@icons/dropdown-arrow.svg';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import styled from 'styled-components';
@@ -54,13 +53,7 @@ export default function DataContainer({
                   <OverlayTrigger
                     key="top"
                     placement="top"
-                    overlay={
-                      <Tooltip id="tooltip-top">
-                        Nisl tincidunt eget nullam non nisi est sit amet
-                        facilisis magna etiam tempor orci eu lobortis elementum
-                        nibh tellus molestie
-                      </Tooltip>
-                    }
+                    overlay={<Tooltip id="tooltip-top">{badge}</Tooltip>}
                   >
                     <Badge />
                   </OverlayTrigger>

@@ -1,7 +1,6 @@
 import { Switch, Route, useLocation, Redirect } from 'react-router-dom';
-import LoggedRouter from '@layouts/Auth/LoggedRouter';
 
-import React, { Suspense, useEffect, useMemo } from 'react';
+import React, { Suspense } from 'react';
 
 import Sidebar from '@components/Sidebar';
 import { IRoute } from '@interfaces/IRoutes';
@@ -21,10 +20,11 @@ import { UserStatusType } from '@interfaces/IUser';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from '@layouts/Fallback';
 import { StyledContainer } from '@styles/containers.styled';
+import { EDashboardPageTabs } from '@pages/Dashboard';
 
-const Counter = React.lazy(() => import('@pages/counter'));
-const Login = React.lazy(() => import('@pages/login'));
-const Main = React.lazy(() => import('@pages/main'));
+// const Counter = React.lazy(() => import('@pages/counter'));
+// const Login = React.lazy(() => import('@pages/login'));
+// const Main = React.lazy(() => import('@pages/main'));
 const Ilo = React.lazy(() => import('@pages/ilo'));
 const Report = React.lazy(() => import('@pages/Report'));
 const HomePage = React.lazy(() => import('@pages/HomePage'));
@@ -109,7 +109,7 @@ export default function App() {
       {
         name: 'Home',
         path: LinksEnum.DASHBOARD,
-        link: true,
+        link: false,
         icon: () => <Home />,
         main: () => <Dashboard />,
       },
@@ -117,8 +117,13 @@ export default function App() {
         name: 'Home',
         path: LinksEnum.MAIN,
         exact: true,
-        link: false,
-        main: () => <Redirect to={LinksEnum.DASHBOARD} />,
+        link: true,
+        icon: () => <Home />,
+        main: () => (
+          <Redirect
+            to={LinksEnum.DASHBOARD + `/${EDashboardPageTabs.OVERVIEW}`}
+          />
+        ),
       },
       {
         name: 'NFT Offers',
