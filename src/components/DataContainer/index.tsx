@@ -54,13 +54,7 @@ export default function DataContainer({
                   <OverlayTrigger
                     key="top"
                     placement="top"
-                    overlay={
-                      <Tooltip id="tooltip-top">
-                        Nisl tincidunt eget nullam non nisi est sit amet
-                        facilisis magna etiam tempor orci eu lobortis elementum
-                        nibh tellus molestie
-                      </Tooltip>
-                    }
+                    overlay={<Tooltip id="tooltip-top">{badge}</Tooltip>}
                   >
                     <Badge />
                   </OverlayTrigger>

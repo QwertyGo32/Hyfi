@@ -4,6 +4,11 @@ import { Redirect, Route, Switch, useRouteMatch } from 'react-router-dom';
 import { lazy } from 'react';
 
 const Overview = lazy(() => import('./subpage/Overview'));
+export enum EDashboardPageTabs {
+  OVERVIEW = 'overview',
+  LICENSE = 'license',
+  TRANSACTIONS = 'transactions',
+}
 
 const Dashboard = () => {
   const { path } = useRouteMatch();
@@ -11,10 +16,23 @@ const Dashboard = () => {
     <StyledDashboardWrapper className={'dashboard-wrapper'}>
       <HeadBlock />
       <Switch>
-        <Route path={`${path}/overview`} children={<Overview />} />
-        <Route path={`${path}/license`} children={<h1>License</h1>} />
-        <Route path={`${path}/transactions`} children={<h1>Transactions</h1>} />
-        <Route exact path="*" children={<Redirect to={`${path}/overview`} />} />
+        <Route
+          path={`${path}/${EDashboardPageTabs.OVERVIEW}`}
+          children={<Overview />}
+        />
+        <Route
+          path={`${path}/${EDashboardPageTabs.LICENSE}`}
+          children={<h1>License</h1>}
+        />
+        <Route
+          path={`${path}/${EDashboardPageTabs.TRANSACTIONS}`}
+          children={<h1>Transactions</h1>}
+        />
+        {/* <Route
+          exact
+          path="*"
+          children={<Redirect to={`${path}/${EDashboardPageTabs.OVERVIEW}`} />}
+        /> */}
       </Switch>
     </StyledDashboardWrapper>
   );
