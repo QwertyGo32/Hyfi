@@ -8,6 +8,7 @@ deploy_dev:
 
   script:
     - cd /app/hyFi.urich.work
+    - git reset --hard
     - git pull origin dev
     - ls -la
     - npm install
