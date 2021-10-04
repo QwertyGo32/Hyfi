@@ -1,0 +1,19 @@
+stages:
+  - deploy-fronend-dev
+
+deploy_dev:
+  stage: deploy-fronend-dev
+  tags:
+    - dev-urich
+
+  script:
+    - cd /app/hyFi.urich.work
+    - git pull origin dev
+    - ls -la
+    - npm install
+    - npm run build
+
+  environment: development
+  only:
+    - dev
+
