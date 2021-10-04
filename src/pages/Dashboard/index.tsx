@@ -1,6 +1,6 @@
 import { StyledDashboardWrapper } from '@pages/Dashboard/styled';
 import { HeadBlock } from '@pages/Dashboard/components/HeadBlock/HeadBlock';
-import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import { lazy } from 'react';
 import { LinksEnum } from '@/interfaces/LinksEnum';
 

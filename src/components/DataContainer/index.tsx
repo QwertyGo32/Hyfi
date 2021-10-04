@@ -7,7 +7,6 @@ import {
 import Link from '@components/Link';
 import { ReactComponent as ShareLink } from '@icons/link.svg';
 import { ReactComponent as Badge } from '@icons/question-mark.svg';
-import { ReactComponent as DropdownArrow } from '@icons/dropdown-arrow.svg';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import styled from 'styled-components';
