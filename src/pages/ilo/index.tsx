@@ -3,12 +3,10 @@ import CompanyLogo from '@components/CompanyLogo';
 import { CompanyLogoData } from '@components/CompanyLogo/mocked';
 import { DataContainerData } from '@components/DataContainer/mocked';
 import { TitleContainerData } from '@components/DataContainer/mocked';
-import bgrImg from '@img/background.jpg';
 
 import InputBlock from '@/components/Input';
 import {
   IloHead,
-  // IloWrapperHead,
   StyledIloBlock,
   StyledIloBlockImg,
   StyledIloBlockTitle,
@@ -22,7 +20,6 @@ import {
 import PageHead from '@/components/PageHead';
 import DisclaimerModal from '@components/DisclaimerModal';
 import { useAppDispatch, useAppSelector } from '@/utils/hooks';
-import { openIloDisclaimer } from '@redux/modal';
 import {
   selectIloBuyPriceState,
   changeIloBuyPrice,
@@ -52,7 +49,7 @@ export default function Ilo() {
           Corporations, Family Offices, Private Wealth and Individuals) who may
           buy fractional interests in your Assets."
       />
-      <StyledIloBlock>
+      <StyledIloBlock className={'ilo-block'}>
         <StyledIloContainer className={'ilo-container'}>
           <IloHead />
           <StyledIloContainerBlocks>
@@ -87,7 +84,7 @@ export default function Ilo() {
             <StyledIloContainerInfo>
               <InputBlock
                 className={'ilo-page_btn'}
-                placeholder="Test 1"
+                placeholder=""
                 value={priceState ?? ''}
                 badge="BUSD"
                 type="number"
@@ -101,11 +98,7 @@ export default function Ilo() {
             <AuthedConnectWallet />
           </StyledIloContainerInptBtn>
         </StyledIloContainer>
-        <StyledIloBlockImg
-          className={'ilo-block__img'}
-          alt={'initial_offers_banner'}
-          src={`${bgrImg}`}
-        />
+        <StyledIloBlockImg className={'ilo-block__img'} />
       </StyledIloBlock>
       <DisclaimerModal />
     </StyledIloWrapper>

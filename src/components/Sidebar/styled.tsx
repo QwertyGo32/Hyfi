@@ -22,7 +22,7 @@ const StyledAside = styled.aside`
   /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
   @media screen and ${breakpoints.Device.tablet} {
     position: fixed;
-    top: var(--main-top-padding);
+    top: 82px;
     height: 100%;
     overflow: auto;
   }
@@ -47,14 +47,12 @@ const StyledAsideMain = styled.main`
 
   @media screen and (max-height: 550px) {
     &::-webkit-scrollbar {
-      /* 1 - скроллбар */
       width: 4px;
       height: 4px;
       background-color: #ffffff;
     }
 
     &::-webkit-scrollbar-thumb {
-      /* 5 - ползунок */
       border-radius: 2px;
       background-color: var(--main-default-block-shadow);
     }
@@ -168,7 +166,6 @@ const StyledMain = styled.main`
   &:not([data-page='${LinksEnum.ILO}']) {
     padding-left: calc(var(--sidebar-initial-width) + 8.5%);
     padding-right: 40px;
-    padding-top: 100px;
   }
 
   @media screen and ${breakpoints.Device.tablet} {

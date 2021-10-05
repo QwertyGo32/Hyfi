@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import bgrImg from '@img/ilo-header-bgr.jpg';
 import breakpoints from '@styles/constants.styled';
 import DataContainer from '@components/DataContainer';
+import logo from '@img/logo.png';
+import bgrImgBlue from '@img/background.jpg';
 
 export const StyledDataContainer = styled(DataContainer)`
   .header {
@@ -9,14 +11,23 @@ export const StyledDataContainer = styled(DataContainer)`
   }
 `;
 
-export const StyledIloBlockImg = styled.img`
+export const StyledIloBlockImg = styled.div`
   border-radius: 0 10px 10px 0;
   width: 100%;
+  position: relative;
+  background: url(${bgrImgBlue}) no-repeat center/cover;
+
+  &:before {
+    content: url(${logo});
+    position: absolute;
+    top: calc(50% - 100px);
+    left: calc(50% - 100px);
+  }
   @media screen and ${breakpoints.Device.desktop} {
     display: none;
   }
 
-  @media screen and ${breakpoints.Device.tablet} {
+  @media screen and ${breakpoints.Device.desktop_sm} {
     display: none !important;
   }
 `;
@@ -190,8 +201,6 @@ export const StyledIloContainerInfo = styled.div`
 `;
 
 export const StyledIloContainerInptBtn = styled.div`
-  /* width: 50%; */
-  /* display: flex; */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 30px;

@@ -82,7 +82,11 @@ export const StyledHeader = styled.header`
 
   .check-box {
     cursor: pointer;
-    display: inline-block;
+    display: none;
+
+    @media screen and ${breakpoints.Device.desktop} {
+      display: block;
+    }
   }
 `;
 
@@ -129,6 +133,12 @@ export const StyledCheckbox = styled.input`
     visibility: hidden;
   }
 
+  @media screen and (min-width: 1050px) {
+    &:checked ~ #main-content[data-page='${LinksEnum.ILO}'] .ilo-block {
+      grid-template-columns: 1fr 25%;
+    }
+  }
+
   &:checked ~ #sidebar .navbar-header {
     visibility: hidden;
   }
@@ -143,10 +153,6 @@ export const StyledCheckbox = styled.input`
   @media screen and ${breakpoints.Device.desktop} {
     &:checked ~ #main-content .ilo-block__img {
       display: block;
-    }
-
-    &:checked ~ #main-content .ilo-container {
-      width: 75%;
     }
 
     &:checked ~ #main-content {

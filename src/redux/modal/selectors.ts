@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { RootState } from '@redux/index';
+import { RootState } from '@/redux';
 
 export const selectModal = (state: RootState) => state.modal;
 

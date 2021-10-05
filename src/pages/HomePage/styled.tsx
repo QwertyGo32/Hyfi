@@ -31,6 +31,7 @@ export const HomeWrapper = styled.section`
 
 export const HomeWrappperContainer = styled.section`
   display: grid;
+  padding-top: 100px;
   grid-auto-columns: 1fr;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto 134px auto;

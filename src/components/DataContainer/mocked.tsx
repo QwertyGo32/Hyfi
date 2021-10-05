@@ -1,16 +1,22 @@
 export const DataContainerData = [
   { title: 'Soft Cap', value: <span>Test</span> },
   { title: 'Total Commited', value: `$${(2000000).toLocaleString('EN-gb')}` },
-  { title: 'Participants', value: 200000, badge: 'Hello' },
+  {
+    title: 'Participants',
+    value: 200000,
+    badge:
+      'Nisl tincidunt eget nullam non nisi est sit amet facilisis\n' +
+      '                        magna etiam tempor orci eu lobortis elementum nibh tellus\n' +
+      '                        molestie',
+  },
   { title: 'Hard Cap', value: `$${(2000000000).toLocaleString('EN-gb')}` },
   {
     title: 'ROI',
     value: '',
-    tooltip:
+    badge:
       'Nisl tincidunt eget nullam non nisi est sit amet facilisis\n' +
       '                        magna etiam tempor orci eu lobortis elementum nibh tellus\n' +
       '                        molestie',
-    badge: 'Hello',
   },
 ];
 

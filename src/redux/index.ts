@@ -19,6 +19,7 @@ import { counterReducer } from './counter';
 import { authReducer } from './auth';
 import { modalSlice } from './modal';
 import { iloSlicer } from './ilo';
+import { sidebarSlice } from '@redux/sidebar';
 const persistConfig = {
   key: 'root',
   storage,
@@ -29,6 +30,7 @@ const reducers = combineReducers({
   auth: authReducer,
   modal: modalSlice,
   ilo: iloSlicer,
+  sidebar: sidebarSlice,
   // This is where we add reducers.
   // Since we don't have any yet, leave this empty
 });

@@ -29,7 +29,6 @@ interface IDataContainerListData {
   title: string | JSX.Element;
   value: number | string | JSX.Element;
   badge?: string | number;
-  tooltip?: string;
 }
 
 export const DetailsBlock = ({ title, img, listData }: IDetailsBlockProps) => {
@@ -47,7 +46,7 @@ export const DetailsBlock = ({ title, img, listData }: IDetailsBlockProps) => {
         </StyledLogoContainer>
       </StyledDetailsHead>
       <StyledList className="list">
-        {listData.map(({ title, value, tooltip, badge }, index) => {
+        {listData.map(({ title, value, badge }, index) => {
           return (
             <StyledListElement key={index} className="list-element">
               {typeof badge !== 'undefined' ? (
@@ -55,7 +54,7 @@ export const DetailsBlock = ({ title, img, listData }: IDetailsBlockProps) => {
                   <span className="title badge">{title ?? ''}</span>
                   <OverlayTrigger
                     placement="top"
-                    overlay={<Tooltip id="button-tooltip-2">{tooltip}</Tooltip>}
+                    overlay={<Tooltip id="button-tooltip-2">{badge}</Tooltip>}
                   >
                     <Badge />
                   </OverlayTrigger>
