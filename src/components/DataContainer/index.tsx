@@ -12,7 +12,7 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import styled from 'styled-components';
 
 export interface IDataContainerProps {
-  inTitle?: JSX.Element;
+  inTitle?: JSX.Element | string;
   listData?: IDataContainerListData[];
   customTitleBadge?: JSX.Element;
   linksTo?: string;
