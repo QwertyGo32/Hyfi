@@ -6,7 +6,7 @@ interface IloState {
 }
 
 const initialState: IloState = {
-  buyPrice: null,
+  buyPrice: 0,
   contributionPrice: 0,
 };
 

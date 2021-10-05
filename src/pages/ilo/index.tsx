@@ -37,8 +37,8 @@ export default function Ilo() {
   const priceState = useAppSelector(selectIloBuyPriceState);
   const contribution = useAppSelector(selectIloContributionState);
   const changeValue = function (event: React.ChangeEvent<HTMLInputElement>) {
-    const value: number = +event.target.value as number;
-    dispatch(changeIloBuyPrice(+value));
+    const value: number = +event.target.value;
+    dispatch(changeIloBuyPrice(value));
   };
   return (
     <StyledIloWrapper>
