@@ -16,7 +16,12 @@ export default function HowToTakePart() {
       />
       <StyledPageContainer>
         {takePartData.map((elm, index) => (
-          <Part key={index} index={index} title={elm.title} text={elm.text} />
+          <Part
+            key={index}
+            index={index + 1}
+            title={elm.title}
+            text={elm.text}
+          />
         ))}
       </StyledPageContainer>
     </StyledContainer>

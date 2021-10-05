@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import breakpoints from '@styles/constants.styled';
 import { ReactComponent as Logo } from '@icons/logo.svg';
 import { ReactComponent as Sidebar } from '@icons/sidebar.svg';
