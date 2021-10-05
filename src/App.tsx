@@ -1,26 +1,30 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Switch, Route, useLocation, Redirect } from 'react-router-dom';
-
+import { ErrorBoundary } from 'react-error-boundary';
 import React, { Suspense } from 'react';
 
 import Sidebar from '@components/Sidebar';
+
 import { IRoute } from '@interfaces/IRoutes';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { LinksEnum } from '@interfaces/LinksEnum';
+import { UserStatusType } from '@interfaces/IUser';
+import { EDashboardPageTabs } from '@pages/Dashboard';
+
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
+
 import { ReactComponent as Home } from '@icons/home.svg';
 import { ReactComponent as Pools } from '@icons/pools.svg';
 import { ReactComponent as Chain } from '@icons/chain.svg';
 import { ReactComponent as Overview } from '@icons/overview.svg';
 import { ReactComponent as Swap } from '@icons/vice-verse_arrows.svg';
 import { ReactComponent as Tractor } from '@icons/tractor.svg';
+
 import homeBgrImg from '@img/infographic9.jpg';
-import { LinksEnum } from '@interfaces/LinksEnum';
 import { userLoggedStatus } from '@redux/auth';
 import { useAppSelector } from '@utils/hooks';
-import { UserStatusType } from '@interfaces/IUser';
-import { ErrorBoundary } from 'react-error-boundary';
+
 import ErrorFallback from '@layouts/Fallback';
 import { StyledContainer } from '@styles/containers.styled';
-import { EDashboardPageTabs } from '@pages/Dashboard';
 
 const Ilo = React.lazy(() => import('@pages/ilo'));
 const Report = React.lazy(() => import('@pages/Report'));

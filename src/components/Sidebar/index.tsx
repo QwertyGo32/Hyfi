@@ -5,8 +5,8 @@ import { IRoute } from '@interfaces/IRoutes';
 import { StyledFooter } from '@components/Footer/styled';
 import { useLocation } from 'react-router-dom';
 type SidebarProps = {
-  routes: IRoute[],
-  children?: JSX.Element,
+  routes: IRoute[];
+  children?: JSX.Element;
 };
 
 export default function Sidebar({ routes, children }: SidebarProps) {

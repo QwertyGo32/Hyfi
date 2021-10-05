@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components';
 import breakpoints from '@styles/constants.styled';
 import { IRoute } from '@interfaces/IRoutes';
 import Link from '@components/Link';
-import { SidebarContainer } from '@components/Sidebar/components/SidebarContainer/SidebarContainer';
 import { LinksEnum } from '@interfaces/LinksEnum';
+import SidebarContainer from './components/SidebarContainer';
 
 const StyledAside = styled.aside`
   position: fixed;
