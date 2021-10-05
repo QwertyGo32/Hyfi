@@ -28,7 +28,6 @@ import {
 } from '@redux/ilo';
 import AuthedUserBtn from './protection/buyBtn';
 import AuthedConnectWallet from './protection/connectWallet';
-import { StyledTitleContainer } from '@pages/Dashboard/components/TitleContainer/styled';
 
 export default function Ilo() {
   const dispatch = useAppDispatch();
@@ -72,16 +71,26 @@ export default function Ilo() {
               ]}
             />
             <StyledDataContainer
+              inTitle={
+                <CompanyLogo
+                  title={CompanyLogoData[0].title}
+                  img={CompanyLogoData[0].img}
+                  status={CompanyLogoData[0].status}
+                />
+              }
+              listData={[
+                DataContainerData[0],
+                DataContainerData[1],
+                DataContainerData[2],
+              ]}
+            />
+            <StyledDataContainer
               inTitle={<StyledIloBlockTitle>View Contract</StyledIloBlockTitle>}
               listData={[DataContainerData[3], DataContainerData[4]]}
             />
-            <StyledTitleContainer
+            <StyledDataContainer
               inTitle={<StyledIloBlockTitle>One Page Info</StyledIloBlockTitle>}
-              listTitles={[
-                TitleContainerData[0],
-                TitleContainerData[1],
-                TitleContainerData[2],
-              ]}
+              listData={TitleContainerData}
             />
           </StyledIloContainerBlocks>
           <StyledIloContainerInptBtn>
