@@ -11,4 +11,5 @@ const Device = {
   desktop_sm: `(max-width: ${Responsive.desktop_sm})`,
 };
 
-export default { Responsive, Device };
+const constants = { Responsive, Device };
+export default constants;

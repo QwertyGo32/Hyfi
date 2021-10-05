@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Modal from 'react-bootstrap/Modal';
 import Button from '@components/Btn';
 import BootstrapButton from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';

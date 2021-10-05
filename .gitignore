@@ -31,3 +31,5 @@ id_rsa_hyfi.pub
 
 yarn*
 package-lock.json
+.gitlab-ci.yml
+build

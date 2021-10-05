@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -11,7 +11,6 @@ import {
   StyledFormLabel,
   StyledFormControl,
   StyledFromControlContainer,
-  StyledLogo,
   StyledDataRow,
   StyledBtn,
   StyledFormGroup,

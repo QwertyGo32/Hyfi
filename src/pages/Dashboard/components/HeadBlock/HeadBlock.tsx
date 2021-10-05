@@ -1,11 +1,8 @@
 import { StyledDashboardBlock } from '@pages/Dashboard/styled';
 import { StyledHeadBlockTitle } from '@pages/Dashboard/components/HeadBlock/styled';
 import Tabs, { INavItemList } from '@components/Tabs';
-import { useRouteMatch } from 'react-router-dom';
 import { LinksEnum } from '@/interfaces/LinksEnum';
 export const HeadBlock = () => {
-  const { url } = useRouteMatch();
-
   const navList: INavItemList[] = [
     {
       text: 'Overview',

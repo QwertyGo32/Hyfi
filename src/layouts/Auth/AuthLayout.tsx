@@ -1,12 +1,6 @@
-import { PropsWithChildren, useEffect, Component, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '@utils/hooks';
-import {
-  loginUserToWebSite,
-  logoutUserFromWebSite,
-  selectAuth,
-  clearAuthState,
-} from '@redux/auth';
-import { persistor } from '@redux/index';
+import { selectAuth, clearAuthState } from '@redux/auth';
 interface IAuthLayoutProps {
   children: JSX.Element;
 }
@@ -14,7 +8,6 @@ export default function AuthLayoutBlock({ children }: IAuthLayoutProps) {
   const dispatch = useAppDispatch();
   const {
     pending,
-    data,
     // data: { isAuth },
   } = useAppSelector(selectAuth);
   const timeoutlRef: { current: NodeJS.Timeout | null } = useRef(null);

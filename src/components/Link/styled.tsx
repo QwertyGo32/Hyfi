@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { NavLink as RouterLink, NavLinkProps } from 'react-router-dom';
+import { NavLink as RouterLink } from 'react-router-dom';
 
 export const StyledLink = styled(RouterLink)`
   font-family: 'Montserrat', sans-serif;

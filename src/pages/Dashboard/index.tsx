@@ -10,9 +10,6 @@ export enum EDashboardPageTabs {
   LICENSE = 'license',
   TRANSACTIONS = 'transactions',
 }
-interface IParams {
-  pathname: `${EDashboardPageTabs}`;
-}
 
 const Dashboard = () => {
   return (
