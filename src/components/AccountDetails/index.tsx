@@ -74,11 +74,7 @@ export default function AccountDetails({ ...props }) {
     evt: React.SyntheticEvent<HTMLFormElement>
   ) {
     evt.preventDefault();
-
-    // `validate` will return true if the submission is valid
     if (await validate({ walletValue })) {
-      // ... handle valid submission
-      console.log('Validation');
       dispatch(changeStateField({ accountName: walletValue }));
     }
   };

@@ -8,7 +8,6 @@ import bgrImg from '@img/background.jpg';
 import InputBlock from '@/components/Input';
 import {
   IloHead,
-  // IloWrapperHead,
   StyledIloBlock,
   StyledIloBlockImg,
   StyledIloBlockTitle,

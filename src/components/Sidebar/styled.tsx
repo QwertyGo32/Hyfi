@@ -172,7 +172,6 @@ interface StyledContainerProps {
 const StyledMain = styled.main`
   width: 100%;
   padding-bottom: var(--main-footer-height);
-  //max-width: 1300px;
   &[data-page='${LinksEnum.ILO}'] {
     padding-left: var(--sidebar-initial-width);
   }
