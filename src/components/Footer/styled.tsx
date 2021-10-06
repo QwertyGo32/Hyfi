@@ -30,7 +30,7 @@ const StyledFooterWrapper = styled.footer`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  height: 96px;
+  height: var(--main-footer-height);
   background: var(--main-default-bg) 0 0 no-repeat padding-box;
   border: 1px solid var(--main-default-wrapper-border);
 `;

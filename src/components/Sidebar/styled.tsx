@@ -168,6 +168,12 @@ const StyledMain = styled.main`
     padding-right: 40px;
   }
 
+  &[data-page='${LinksEnum.REPORT}'] {
+    padding-left: var(--sidebar-initial-width);
+    padding-right: 0;
+    padding-bottom: var(--main-footer-height);
+  }
+
   @media screen and ${breakpoints.Device.tablet} {
     &:not([data-page='${LinksEnum.ILO}']) {
       padding-left: 20px;

@@ -68,7 +68,7 @@ export default function App() {
         main: () => <Report />,
       },
       {
-        name: 'Pools',
+        name: 'Pools (coming soon)',
         path: LinksEnum.POOLS,
         link: true,
         icon: () => <Pools />,
@@ -83,7 +83,7 @@ export default function App() {
         main: () => <h2>Overview for unauthorized</h2>,
       },
       {
-        name: 'Swap',
+        name: 'Swap (coming soon)',
         path: LinksEnum.SWAP,
         link: true,
         icon: () => <Swap />,
@@ -91,7 +91,7 @@ export default function App() {
       },
 
       {
-        name: 'Farms',
+        name: 'Farms (coming soon)',
         path: LinksEnum.FARMS,
         link: true,
         icon: () => <Tractor />,
@@ -151,7 +151,7 @@ export default function App() {
       //   main: () => <LoggedRouter component={Counter} />,
       // },
       {
-        name: 'Pools',
+        name: 'Pools (coming soon)',
         path: LinksEnum.POOLS,
         link: true,
         icon: () => <Pools />,
@@ -166,7 +166,7 @@ export default function App() {
         main: () => <h2>Overview</h2>,
       },
       {
-        name: 'Swap',
+        name: 'Swap (coming soon)',
         path: LinksEnum.SWAP,
         link: true,
         icon: () => <Swap />,
@@ -174,7 +174,7 @@ export default function App() {
       },
 
       {
-        name: 'Farms',
+        name: 'Farms (coming soon)',
         path: LinksEnum.FARMS,
         link: true,
         icon: () => <Tractor />,
