@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface SidebarState {
+interface CssState {
   closed: boolean;
 }
 
-const initialState: SidebarState = {
+const initialState: CssState = {
   closed: false,
 };
 
-export const SidebarSlice = createSlice({
-  name: 'sidebar',
+export const CssSlice = createSlice({
+  name: 'css',
   initialState,
   reducers: {
     changeClosed: (state, action: PayloadAction<boolean>) => {
@@ -18,6 +18,6 @@ export const SidebarSlice = createSlice({
   },
 });
 
-export const { changeClosed } = SidebarSlice.actions;
+export const { changeClosed } = CssSlice.actions;
 
-export default SidebarSlice.reducer;
+export default CssSlice.reducer;

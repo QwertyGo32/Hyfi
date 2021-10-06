@@ -1,9 +1,9 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '@/redux';
 
-export const selectSidebar = (state: RootState) => state.sidebar;
+export const selectCss = (state: RootState) => state.css;
 
 export const selectClosedSidebarState = createSelector(
-  selectSidebar,
+  selectCss,
   (state) => state.closed
 );
