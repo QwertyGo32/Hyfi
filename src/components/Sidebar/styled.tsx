@@ -39,7 +39,7 @@ const StyledAsideMain = styled.main`
   border: none;
   overflow-y: scroll;
   overflow-x: hidden;
-  padding-bottom: 100px;
+  padding-bottom: 60%;
 
   @media screen and ${breakpoints.Device.tablet} {
     justify-content: flex-start;
@@ -174,7 +174,7 @@ const StyledMain = styled.main`
     padding-left: var(--sidebar-initial-width);
   }
   &:not([data-page='${LinksEnum.ILO}']) {
-    padding-left: calc(var(--sidebar-initial-width) + 8.5%);
+    padding-left: calc(var(--sidebar-initial-width) + 4.1%);
     padding-right: 40px;
   }
 
@@ -200,7 +200,8 @@ const StyledMain = styled.main`
   align-items: center;
   ${(props: StyledContainerProps) => {
     return css`
-      background: #fafafc url(${props.bgrImg ?? ''}) no-repeat center/cover;
+      background: var(--main-default-tab-color) url(${props.bgrImg ?? ''})
+        no-repeat center/cover;
     `;
   }}
 `;

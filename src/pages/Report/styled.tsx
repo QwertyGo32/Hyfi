@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import ReportBgr from '@img/report_bgr.jpg';
 import breakpoints from '@styles/constants.styled';
 import Form from 'react-bootstrap/Form';
+import Btn from '@components/Btn';
 
 export const StyledForm = styled(Form)`
   width: 100%;
@@ -15,6 +16,13 @@ export const StyledForm = styled(Form)`
   @media screen and ${breakpoints.Device.desktop} {
     padding: 65px 75px;
   }
+`;
+
+export const StyledFormControl = styled(Form.Control)`
+  box-shadow: inset 4px 5px 6px #c9c9c9;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid var(--main-default-wrapper-border);
 `;
 
 export const StyledTitle = styled.h1`
@@ -31,7 +39,7 @@ export const StyledInputText = styled.p`
   font-weight: 500;
   font-size: 15px;
   line-height: 70px;
-  color: var(--main-default-btn-grd2);
+  color: var(--main-default-wrapper-border);
   margin: 0;
 `;
 
@@ -76,4 +84,8 @@ export const StyledReport = styled.div`
     display: flex;
     justify-content: center;
   }
+`;
+
+export const StyledBtn = styled(Btn)`
+  padding: 15px 60px;
 `;

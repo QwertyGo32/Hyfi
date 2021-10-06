@@ -69,7 +69,7 @@ export default function AccountName({ avaliableAsset }: IAccountNameProps) {
             fluid
           />
           <StyledFormGroup controlId="exampleForm.ControlInput1">
-            <StyledFormLabel>Account Name</StyledFormLabel>
+            <StyledFormLabel>Wallet address</StyledFormLabel>
             <StyledGradientContainer
               data-clicked={clicked}
               onClick={() => {

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import InputGroup from 'react-bootstrap/InputGroup';
+import Form from 'react-bootstrap/Form';
 
 export const StyledInputGroupText = styled(InputGroup.Text)`
   display: flex;
@@ -43,7 +44,7 @@ export const StyledInputGroup = styled(InputGroup)`
           var(--main-default-bg-opacity) 0%,
           var(--main-default-tab-color) 100%
         )
-        0% 0% no-repeat padding-box;
+        0 0 no-repeat padding-box;
       border-radius: 5px;
     }
   }
@@ -87,7 +88,7 @@ export const StyledInputGroup = styled(InputGroup)`
   }
 
   input {
-    background: var(--main-default-bg) 0% 0% no-repeat padding-box;
+    background: var(--main-default-bg) 0 0% no-repeat padding-box;
     box-shadow: inset 4px 5px 6px var(--main-block-shadow);
     border-radius: 5px;
     padding: 9.5px 14px;
@@ -99,4 +100,8 @@ export const StyledInputGroup = styled(InputGroup)`
       }
     }
   }
+`;
+
+export const StyledFormControl = styled(Form.Control)`
+  max-height: 39px;
 `;

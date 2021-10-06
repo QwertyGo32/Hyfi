@@ -204,6 +204,7 @@ export const StyledIloContainerInptBtn = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 30px;
+  margin-top: 10px;
   .ilo-page_btn {
     &-gradient {
       width: max-content;
@@ -224,8 +225,17 @@ export const StyledIloContainerInptBtn = styled.div`
 
 export const StyledIloBlockTitle = styled.p`
   font-family: Montserrat, serif;
+  font-weight: 500;
   font-size: 12px;
   line-height: 15px;
   color: #001218;
   margin-bottom: 0;
+`;
+
+export const StyledIloBlockBlueText = styled.p`
+  font-family: Montserrat, serif;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 13px;
+  color: var(--main-text-colored);
 `;

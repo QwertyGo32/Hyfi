@@ -41,14 +41,18 @@ export const HomeWrappperContainer = styled.section`
     '. .'
     'cards cards';
   width: 100%;
-  @media screen and ${breakpoints.Device.tablet} {
-    grid-template-rows: auto 50px auto;
-  }
+  padding-bottom: 30px;
   @media screen and ${breakpoints.Device.desktop} {
     grid-template-areas:
       'title title'
       '. .'
       'cards cards';
+  }
+  @media screen and ${breakpoints.Device.tablet} {
+    grid-template-rows: auto 50px auto;
+  }
+  @media screen and ${breakpoints.Device.tablet} {
+    padding-top: 30px;
   }
 `;
 
@@ -87,6 +91,6 @@ export const InfoContainer = styled.section`
   grid-template-columns: repeat(auto-fill, minmax(352px, 1fr));
   /* grid-area: 4/1 / auto/span 4; */
   @media screen and ${breakpoints.Device.mobile} {
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: 1fr;
   }
 `;

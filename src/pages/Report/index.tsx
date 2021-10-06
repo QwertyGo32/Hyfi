@@ -1,5 +1,4 @@
 import { Form } from 'react-bootstrap';
-import Btn from '@components/Btn';
 import { ReactComponent as Clip } from '@icons/clip.svg';
 import {
   StyledForm,
@@ -8,6 +7,8 @@ import {
   StyledInputLabel,
   StyledInputText,
   StyledReport,
+  StyledFormControl,
+  StyledBtn,
 } from './styled';
 
 export default function Report() {
@@ -17,12 +18,12 @@ export default function Report() {
         <StyledTitle>Report an issue</StyledTitle>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <StyledFormLabel>Summary</StyledFormLabel>
-          <Form.Control aria-required={'true'} size="lg" type="text" />
+          <StyledFormControl aria-required={'true'} size="lg" type="text" />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <StyledFormLabel>Description</StyledFormLabel>
-          <Form.Control
+          <StyledFormControl
             aria-required={'true'}
             as="textarea"
             style={{ height: '140px', resize: 'none' }}
@@ -30,22 +31,22 @@ export default function Report() {
         </Form.Group>
 
         <StyledInputLabel>
-          <Form.Control type="file" style={{ display: 'none' }} />
+          <StyledFormControl type="file" style={{ display: 'none' }} />
           <Clip />
           <StyledInputText>Choose a file</StyledInputText>
         </StyledInputLabel>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <StyledFormLabel>Wallet Address</StyledFormLabel>
-          <Form.Control size="lg" type="text" />
+          <StyledFormControl size="lg" type="text" />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <StyledFormLabel>Email</StyledFormLabel>
-          <Form.Control aria-required={'true'} size="lg" type="email" />
+          <StyledFormControl aria-required={'true'} size="lg" type="email" />
         </Form.Group>
 
-        <Btn
+        <StyledBtn
           type={'submit'}
           form={'styled_form'}
           theme={'gradient'}

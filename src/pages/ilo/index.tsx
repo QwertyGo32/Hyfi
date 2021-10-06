@@ -16,6 +16,7 @@ import {
   StyledIloWrapper,
   StyledDataContainer,
   StyledIloContainerInfo,
+  StyledIloBlockBlueText,
 } from '@pages/ilo/styled';
 import PageHead from '@/components/PageHead';
 import DisclaimerModal from '@components/DisclaimerModal';
@@ -41,16 +42,7 @@ export default function Ilo() {
   };
   return (
     <StyledIloWrapper>
-      <PageHead
-        title="ILO"
-        children="Owners that seek to raise money for their development of New
-          technologies; IP, Patents Licenses, Brands and Projects (“Assets”) can
-          sell up to a 49% interest in their Assets on the HYFI Platform with a
-          right to buy back interests sold. We will introduce your Assets to our
-          Global network of Brokers who will introduce Investors (Institutional,
-          Corporations, Family Offices, Private Wealth and Individuals) who may
-          buy fractional interests in your Assets."
-      />
+      <PageHead title="ILO" />
       <StyledIloBlock className={'ilo-block'}>
         <StyledIloContainer className={'ilo-container'}>
           <IloHead />
@@ -96,18 +88,23 @@ export default function Ilo() {
               listData={[TitleContainerData[1], TitleContainerData[2]]}
             />
           </StyledIloContainerBlocks>
+          <StyledIloBlockTitle>
+            Number of Licenses Fragments:
+          </StyledIloBlockTitle>
           <StyledIloContainerInptBtn>
             <StyledIloContainerInfo>
               <InputBlock
                 className={'ilo-page_btn'}
                 placeholder={String(priceState) ?? ''}
                 value={priceState || 0}
-                badge="BUSD"
                 type="text"
                 onChange={changeValue}
               />
+              <StyledIloBlockBlueText>
+                300 licenses fragments for 300 USDT
+              </StyledIloBlockBlueText>
               <p className="info">
-                Your Contribution <span>{contribution} BUSD</span>
+                Your Contribution <span>{contribution} USDT</span>
               </p>
             </StyledIloContainerInfo>
             <AuthedUserBtn />

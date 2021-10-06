@@ -19,6 +19,7 @@ const StyledReportLink = styled(RouterLink)`
   margin: 0;
   text-decoration: none;
   cursor: pointer;
+  display: none;
 `;
 
 const StyledFooterWrapper = styled.footer`

@@ -9,7 +9,9 @@ export const StyledContainer = styled.section`
 `;
 
 export const StyledPageHeader = styled(PageHead)`
-  min-height: 280px;
+  background: var(--main-default-tab-color);
+  justify-content: flex-end;
+  padding-bottom: 0;
 `;
 
 export const StyledPageContainer = styled.div`

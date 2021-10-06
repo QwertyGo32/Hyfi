@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
-import Form from 'react-bootstrap/Form';
 import { FormControlProps } from 'react-bootstrap/FormControl';
-import { StyledInputGroup, StyledInputGroupText } from './styled';
+import { StyledFormControl, StyledInputGroup } from './styled';
 
 export interface IInputBlockProps extends FormControlProps {
   gradient?: boolean;
@@ -35,16 +34,11 @@ export default function InputBlock({
       className="mb-0 mb-md-3"
       {...props}
     >
-      <Form.Control ref={inputRef} aria-describedby="basic-addon1" {...props} />
-      {badge && badge.length > 0 && (
-        <StyledInputGroupText
-          data-close={isEditing}
-          className="badge"
-          id="basic-addon2"
-        >
-          {badge}
-        </StyledInputGroupText>
-      )}
+      <StyledFormControl
+        ref={inputRef}
+        aria-describedby="basic-addon1"
+        {...props}
+      />
     </StyledInputGroup>
   );
 }

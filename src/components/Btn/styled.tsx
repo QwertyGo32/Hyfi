@@ -13,7 +13,7 @@ export const BtnStyled = styled(Button)`
   font-size: 15px;
 
   &.ilo-page_btn {
-    padding: 9px 50px;
+    padding: 11px 50px;
     font-size: 12px;
     line-height: 15px;
   }
