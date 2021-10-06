@@ -31,7 +31,7 @@ import AuthedConnectWallet from './protection/connectWallet';
 
 export default function Ilo() {
   const dispatch = useAppDispatch();
-  const priceState = useAppSelector(selectIloBuyPriceState);
+  const priceState = useAppSelector(selectIloBuyPriceState) || 0;
   const contribution = useAppSelector(selectIloContributionState);
   const changeValue = function (event: React.ChangeEvent<HTMLInputElement>) {
     const value: number = +event.target.value;
@@ -96,12 +96,12 @@ export default function Ilo() {
               <InputBlock
                 className={'ilo-page_btn'}
                 placeholder={String(priceState) ?? ''}
-                value={priceState || 0}
+                value={priceState}
                 type="text"
                 onChange={changeValue}
               />
               <StyledIloBlockBlueText>
-                300 licenses fragments for 300 USDT
+                {priceState} licenses fragments for {priceState} USDT
               </StyledIloBlockBlueText>
               <p className="info">
                 Your Contribution <span>{contribution} USDT</span>
