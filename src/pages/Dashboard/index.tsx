@@ -1,7 +1,8 @@
 import { StyledDashboardWrapper } from '@pages/Dashboard/styled';
 import { HeadBlock } from '@pages/Dashboard/components/HeadBlock/HeadBlock';
-import { Route, Switch, useRouteMatch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import { lazy } from 'react';
+import { LinksEnum } from '@/interfaces/LinksEnum';
 
 const Overview = lazy(() => import('./subpage/Overview'));
 export enum EDashboardPageTabs {
@@ -11,28 +12,31 @@ export enum EDashboardPageTabs {
 }
 
 const Dashboard = () => {
-  const { path } = useRouteMatch();
   return (
     <StyledDashboardWrapper className={'dashboard-wrapper'}>
       <HeadBlock />
       <Switch>
         <Route
-          path={`${path}/${EDashboardPageTabs.OVERVIEW}`}
+          path={`${LinksEnum.DASHBOARD}/${EDashboardPageTabs.OVERVIEW}`}
           children={<Overview />}
         />
         <Route
-          path={`${path}/${EDashboardPageTabs.LICENSE}`}
+          path={`${LinksEnum.DASHBOARD}/${EDashboardPageTabs.LICENSE}`}
           children={<h1>License</h1>}
         />
         <Route
-          path={`${path}/${EDashboardPageTabs.TRANSACTIONS}`}
+          path={`${LinksEnum.DASHBOARD}/${EDashboardPageTabs.TRANSACTIONS}`}
           children={<h1>Transactions</h1>}
         />
-        {/* <Route
+        <Route
           exact
           path="*"
-          children={<Redirect to={`${path}/${EDashboardPageTabs.OVERVIEW}`} />}
-        /> */}
+          children={
+            <Redirect
+              to={`${LinksEnum.DASHBOARD}/${EDashboardPageTabs.OVERVIEW}`}
+            />
+          }
+        />
       </Switch>
     </StyledDashboardWrapper>
   );

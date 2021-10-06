@@ -13,6 +13,11 @@ export const StyledListHeader = styled.h3`
   padding: 13.5px 0;
   align-items: flex-end;
   font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 500;
+  letter-spacing: 0;
 `;
 
 export const StyledList = styled.ul`

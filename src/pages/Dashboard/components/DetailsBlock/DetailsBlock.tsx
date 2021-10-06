@@ -2,71 +2,41 @@ import {
   StyledDashboardBlock,
   StyledDashboardBlockTitle,
 } from '@pages/Dashboard/styled';
-import {
-  StyledBtn,
-  StyledDetailsHead,
-} from '@pages/Dashboard/components/DetailsBlock/styled';
+import { StyledBtn, StyledDetailsHead } from './styled';
 import {
   StyledImage,
   StyledLogoContainer,
 } from '@components/CompanyLogo/styled';
-import React from 'react';
-import {
-  StyledList,
-  StyledListElement,
-} from '@components/DataContainer/styled';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
-import { ReactComponent as Badge } from '@icons/question-mark.svg';
+import DataContainer, { IDataContainerProps } from '@/components/DataContainer';
 
-interface IDetailsBlockProps {
-  title: string;
+interface IDetailsBlockProps extends IDataContainerProps {
   img?: string;
-  listData: IDataContainerListData[];
 }
 
-interface IDataContainerListData {
-  title: string | JSX.Element;
-  value: number | string | JSX.Element;
-  badge?: string | number;
-}
-
-export const DetailsBlock = ({ title, img, listData }: IDetailsBlockProps) => {
+export const DetailsBlock = ({
+  inTitle,
+  img,
+  listData,
+}: IDetailsBlockProps) => {
   return (
-    <StyledDashboardBlock className={'details-block'}>
-      <StyledDetailsHead>
-        <StyledDashboardBlockTitle>{title}</StyledDashboardBlockTitle>
-        <StyledLogoContainer>
-          <StyledImage
-            src={img}
-            data-hasimage={!!img?.length ?? false}
-            rounded
-            fluid
-          />
-        </StyledLogoContainer>
-      </StyledDetailsHead>
-      <StyledList className="list">
-        {listData.map(({ title, value, badge }, index) => {
-          return (
-            <StyledListElement key={index} className="list-element">
-              {typeof badge !== 'undefined' ? (
-                <div className={'styled-list-elem__container'}>
-                  <span className="title badge">{title ?? ''}</span>
-                  <OverlayTrigger
-                    placement="top"
-                    overlay={<Tooltip id="button-tooltip-2">{badge}</Tooltip>}
-                  >
-                    <Badge />
-                  </OverlayTrigger>
-                </div>
-              ) : (
-                <span className="title">{title ?? ''}</span>
-              )}
-              <span className="value">{value}</span>
-            </StyledListElement>
-          );
-        })}
-      </StyledList>
+    <StyledDashboardBlock className="details-block">
+      <DataContainer
+        inTitle={
+          <StyledDetailsHead>
+            <StyledDashboardBlockTitle>{inTitle}</StyledDashboardBlockTitle>
+            <StyledLogoContainer>
+              <StyledImage
+                src={img}
+                data-hasimage={!!img?.length ?? false}
+                rounded
+                fluid
+              />
+            </StyledLogoContainer>
+          </StyledDetailsHead>
+        }
+        customTitleBadge={<span></span>}
+        listData={listData}
+      />
       <StyledBtn theme={'gradient'}>Participate</StyledBtn>
     </StyledDashboardBlock>
   );

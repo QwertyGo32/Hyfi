@@ -5,7 +5,7 @@ import {
   changeStateField,
 } from './action';
 import { PURGE } from 'redux-persist';
-import { IUser, UserStatusType, WalletType } from '@interfaces/IUser';
+import { IUser, WalletType } from '@interfaces/IUser';
 
 export interface AuthStateData extends IUser {}
 

@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import breakpoints from '@styles/constants.styled';
 import { ReactComponent as Logo } from '@icons/logo.svg';
 import { ReactComponent as Sidebar } from '@icons/sidebar.svg';
@@ -6,35 +6,8 @@ import { LinksEnum } from '@interfaces/LinksEnum';
 import { UserStatusType } from '@/interfaces/IUser';
 import { ReactComponent as WalletIcon } from '@icons/wallet.svg';
 
-export const StyledWalletIcon = styled(WalletIcon)`
-  /* position: absolute;
-  left: 0;
-  top: 0; */
-`;
+export const StyledWalletIcon = styled(WalletIcon)``;
 
-// Create the keyframes
-const sidebarAnim = keyframes`
-  0% {
-    width: 0;
-    min-width: 0;
-    opacity: 0;
-    transform: translateX(--var(--sidebar-initial-width));
-    visibility: hidden;
-    overflow: hidden;
-  }
-  50% {
-    min-width: var(--sidebar-initial-width);
-    width: var(--sidebar-initial-width);
-
-  }
-  100% {
-    min-width: var(--sidebar-initial-width);
-    width: var(--sidebar-initial-width);
-    opacity: 1;
-    transform: translateX(0);
-    visibility: visible;
-  }
-`;
 export const StyledHeader = styled.header`
   display: grid;
   grid-template-columns: 245px 24px 1fr;
@@ -99,14 +72,7 @@ export const StyledCheckbox = styled.input`
   display: none;
 
   &:checked ~ #sidebar {
-    //width: 0;
-    //min-width: 0;
-    //animation: ${sidebarAnim} 3s;
     transform: translateX(calc(var(--sidebar-initial-width) * -1));
-    //& .sidebar__container {
-    //  transform: translateX(-300px);
-    //  padding: 0 33px;
-    //}
   }
 
   &:checked ~ #main-content:not([data-page='${LinksEnum.ILO}']) {

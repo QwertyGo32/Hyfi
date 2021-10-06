@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components';
 import breakpoints from '@styles/constants.styled';
 import { IRoute } from '@interfaces/IRoutes';
 import Link from '@components/Link';
-import { SidebarContainer } from '@components/Sidebar/components/SidebarContainer/SidebarContainer';
 import { LinksEnum } from '@interfaces/LinksEnum';
+import SidebarContainer from './components/SidebarContainer';
 
 const StyledAside = styled.aside`
   position: fixed;
@@ -134,7 +134,18 @@ export const AsideComponent = function ({ routes }: AsideProps) {
               <li key={index}>
                 <StyledAsideListElement
                   activeClassName="active"
-                  to={path}
+                  isActive={(_, { pathname }) => {
+                    if (typeof link === 'string') {
+                      return (
+                        pathname.split('/')[1] ===
+                        (typeof link === 'string' ? link.split('/')[1] : path)
+                      );
+                    }
+                    return (
+                      pathname === (typeof link === 'string' ? link : path)
+                    );
+                  }}
+                  to={typeof link === 'string' ? link : path}
                   exact={exact}
                   className="nav-item"
                 >
@@ -159,7 +170,6 @@ interface StyledContainerProps {
 const StyledMain = styled.main`
   width: 100%;
   padding-bottom: var(--main-footer-height);
-  //max-width: 1300px;
   &[data-page='${LinksEnum.ILO}'] {
     padding-left: var(--sidebar-initial-width);
   }

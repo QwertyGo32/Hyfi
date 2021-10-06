@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { ReactComponent as WalletIcon } from '@icons/wallet.svg';
 import { ReactComponent as DropdownArrow } from '@icons/dropdown_arrow.svg';
+
 import breakpoints from '@styles/constants.styled';
 
 export const StyledWalletContainer = styled.div`

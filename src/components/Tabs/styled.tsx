@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Nav from 'react-bootstrap/Nav';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export enum TabsTypes {
   white = 'white',

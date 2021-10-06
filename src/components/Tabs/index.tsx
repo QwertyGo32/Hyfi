@@ -6,7 +6,6 @@ import {
   StyledNavLink,
   TabsTypes,
 } from './styled';
-import { gradientBtnTypes } from '@components/Btn';
 
 export interface INavItemList {
   children?: React.ReactNode;

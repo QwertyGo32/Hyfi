@@ -41,7 +41,6 @@ interface IGraphContainerProps {
 }
 
 const GraphContainer = ({ tab }: IGraphContainerProps) => {
-  console.log(tab === 'Volume');
   return (
     <StyledGraphContainer>
       {tab === 'Volume' && <div>Volume</div>}

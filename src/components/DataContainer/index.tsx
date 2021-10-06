@@ -12,16 +12,22 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import styled from 'styled-components';
 
 export interface IDataContainerProps {
-  inTitle: JSX.Element;
-  listData: IDataContainerListData[];
+  inTitle?: JSX.Element | string;
+  listData?: IDataContainerListData[];
   customTitleBadge?: JSX.Element;
   linksTo?: string;
 }
-
+export enum DataContainerListType {
+  BADGE = 'badge',
+  GENERAL = 'general',
+  SHARE = 'share',
+}
 interface IDataContainerListData {
   title: string | JSX.Element;
-  value: number | string | JSX.Element;
+  value?: number | string | JSX.Element;
+  type: `${DataContainerListType}`;
   badge?: string | number;
+  linksTo?: string;
 }
 
 export default function DataContainer({
@@ -31,10 +37,57 @@ export default function DataContainer({
   linksTo,
   ...props
 }: IDataContainerProps) {
+  const renderListData = function () {
+    return (
+      listData?.map(({ title, value, badge, type, linksTo }, index) => {
+        return (
+          <StyledListElement key={index} className="list-element">
+            {
+              {
+                [DataContainerListType.BADGE]:
+                  typeof badge !== 'undefined' ? (
+                    <>
+                      <div className={'styled-list-element__container'}>
+                        <span className="title badge">{title ?? ''}</span>
+                        <OverlayTrigger
+                          key="top"
+                          placement="top"
+                          overlay={<Tooltip id="tooltip-top">{badge}</Tooltip>}
+                        >
+                          <Badge />
+                        </OverlayTrigger>
+                      </div>
+                      <span className="value">{value ?? ''}</span>
+                    </>
+                  ) : null,
+                [DataContainerListType.GENERAL]: (
+                  <>
+                    <span className="title">{title ?? ''}</span>
+                    <span className="value">{value ?? ''}</span>
+                  </>
+                ),
+                [DataContainerListType.SHARE]: (
+                  <>
+                    <span className="title">{title ?? ''}</span>
+                    <span className="value">
+                      <Link to={linksTo ?? '#'}>
+                        <ShareLink />
+                      </Link>
+                    </span>
+                  </>
+                ),
+              }[type]
+            }
+          </StyledListElement>
+        );
+      }) ?? []
+    );
+  };
+
   return (
     <StyledSection {...props}>
       <StyledListHeader className="header">
-        {inTitle}
+        {inTitle ?? ''}
         {typeof customTitleBadge !== 'undefined' ? (
           customTitleBadge
         ) : (
@@ -43,29 +96,7 @@ export default function DataContainer({
           </Link>
         )}
       </StyledListHeader>
-      <StyledList className="list">
-        {listData.map(({ title, value, badge }, index) => {
-          return (
-            <StyledListElement key={index} className="list-element">
-              {typeof badge !== 'undefined' ? (
-                <div className={'styled-list-element__container'}>
-                  <span className="title badge">{title ?? ''}</span>
-                  <OverlayTrigger
-                    key="top"
-                    placement="top"
-                    overlay={<Tooltip id="tooltip-top">{badge}</Tooltip>}
-                  >
-                    <Badge />
-                  </OverlayTrigger>
-                </div>
-              ) : (
-                <span className="title">{title ?? ''}</span>
-              )}
-              <span className="value">{value}</span>
-            </StyledListElement>
-          );
-        })}
-      </StyledList>
+      <StyledList className="list">{renderListData()}</StyledList>
     </StyledSection>
   );
 }

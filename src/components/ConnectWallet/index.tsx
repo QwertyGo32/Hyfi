@@ -10,8 +10,8 @@ import {
   StyledHeader,
   StyledModal,
 } from '@styles/modal.styled';
-import { ReactComponent as Metamask } from '@icons/fox.svg';
-import { ReactComponent as WalletConnect } from '@icons/wallet_connect.svg';
+import { ReactComponent as Metamask } from './icons/fox.svg';
+import { ReactComponent as WalletConnect } from './icons/wallet_connect.svg';
 import { useAppDispatch, useAppSelector } from '@utils/hooks';
 import { setWalletType, loginUserToWebSite, authWalletType } from '@redux/auth';
 import {
@@ -33,8 +33,8 @@ export default function ConnectWallet({ ...props }) {
     target,
   }: React.MouseEvent<HTMLButtonElement> & {
     target: {
-      value: WalletType,
-    },
+      value: WalletType;
+    };
   }) {
     const value = target.value;
     if (Object.values(WalletType).includes(value)) {

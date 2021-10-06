@@ -24,7 +24,7 @@ import AccountDetails from '@components/AccountDetails';
 import ConnectWallet from '@components/ConnectWallet';
 
 type NavbarProps = {
-  route: IRoute,
+  route: IRoute;
 };
 
 export default function Navbar({ route }: NavbarProps) {
@@ -75,7 +75,6 @@ export default function Navbar({ route }: NavbarProps) {
                 <Btn
                   className="home-page_btn"
                   theme={gradientBtnTypes.gradient}
-                  // title="Connect Wallet"
                   onClick={() => {
                     dispatch(openConnectWallet(true));
                   }}

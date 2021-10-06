@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-// import Button from "react-bootstrap/Button";
 import Modal from 'react-bootstrap/Modal';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -12,7 +11,7 @@ import {
   StyledInputGroup,
 } from './styled';
 import { StyledTitle, StyledHeader, StyledModal } from '@styles/modal.styled';
-import Button, { gradientBtnTypes } from '@components/Btn';
+import { gradientBtnTypes } from '@components/Btn';
 import Form from 'react-bootstrap/Form';
 import { ReactComponent as Copy } from '@icons/copy.svg';
 import { ReactComponent as Link } from '@icons/link.svg';
@@ -28,7 +27,6 @@ import {
   changeStateData,
   changeStateField,
 } from '@redux/auth';
-import { WalletType } from '@/interfaces/IUser';
 import { useAppDispatch, useAppSelector } from '@utils/hooks';
 import { useValidation } from 'react-class-validator';
 import { HashValidationDto } from './accountdetails.dto';
@@ -76,11 +74,7 @@ export default function AccountDetails({ ...props }) {
     evt: React.SyntheticEvent<HTMLFormElement>
   ) {
     evt.preventDefault();
-
-    // `validate` will return true if the submission is valid
     if (await validate({ walletValue })) {
-      // ... handle valid submission
-      console.log('Validation');
       dispatch(changeStateField({ accountName: walletValue }));
     }
   };

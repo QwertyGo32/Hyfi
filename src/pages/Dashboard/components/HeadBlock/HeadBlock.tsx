@@ -1,22 +1,20 @@
 import { StyledDashboardBlock } from '@pages/Dashboard/styled';
 import { StyledHeadBlockTitle } from '@pages/Dashboard/components/HeadBlock/styled';
 import Tabs, { INavItemList } from '@components/Tabs';
-import { useRouteMatch } from 'react-router-dom';
+import { LinksEnum } from '@/interfaces/LinksEnum';
 export const HeadBlock = () => {
-  const { url } = useRouteMatch();
-
   const navList: INavItemList[] = [
     {
       text: 'Overview',
-      href: `${url}/overview`,
+      href: `${LinksEnum.DASHBOARD}/overview`,
     },
     {
       text: 'License',
-      href: `${url}/license`,
+      href: `${LinksEnum.DASHBOARD}/license`,
     },
     {
       text: 'Transactions',
-      href: `${url}/transactions`,
+      href: `${LinksEnum.DASHBOARD}/transactions`,
     },
   ];
   return (

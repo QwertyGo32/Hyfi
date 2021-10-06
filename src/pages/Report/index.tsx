@@ -7,7 +7,6 @@ import {
   StyledFormLabel,
   StyledInputLabel,
   StyledInputText,
-  StyledReport,
 } from './styled';
 
 export default function Report() {
