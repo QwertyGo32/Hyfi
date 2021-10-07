@@ -3,7 +3,11 @@ import styled from 'styled-components';
 
 export const StyledButton = styled(Button)``;
 
-export const StyledSection = styled.section``;
+export const StyledSection = styled.section`
+  &:not(:first-child) {
+    padding-top: 26px;
+  }
+`;
 
 export const StyledListHeader = styled.h3`
   display: grid;
@@ -14,10 +18,10 @@ export const StyledListHeader = styled.h3`
   align-items: flex-end;
   font-size: 12px;
   font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
   line-height: 15px;
   font-weight: 500;
   letter-spacing: 0;
+  margin-bottom: 0;
 `;
 
 export const StyledList = styled.ul`
@@ -29,8 +33,10 @@ export const StyledList = styled.ul`
 `;
 
 export const StyledListElement = styled.li`
+  min-height: 52px;
   padding: 13.5px 0;
   display: grid;
+  align-items: flex-end;
   grid-template-areas: '. .';
   border-bottom: 1px solid var(--main-default-link-color);
   p {

@@ -4,6 +4,10 @@ import { IRoute } from '@interfaces/IRoutes';
 import Link from '@components/Link';
 import { LinksEnum } from '@interfaces/LinksEnum';
 import SidebarContainer from './components/SidebarContainer';
+import React from 'react';
+import { openIloDisclaimer } from '@redux/modal';
+import { changeClosed } from '@redux/css';
+import { useAppDispatch } from '@utils/hooks';
 
 const StyledAside = styled.aside`
   position: fixed;
@@ -124,14 +128,29 @@ type AsideProps = {
   routes: IRoute[];
 };
 
-export const AsideComponent = function ({ routes }: AsideProps) {
+interface ISidebarClosing {
+  onClick?: (event: React.SyntheticEvent<HTMLLIElement>) => void;
+}
+
+export const AsideComponent = function (
+  { routes }: AsideProps,
+  { onClick }: ISidebarClosing
+) {
+  const dispatch = useAppDispatch();
+  const sidebarClosing = (event: React.SyntheticEvent<HTMLLIElement>) => {
+    if (onClick) {
+      onClick(event);
+    }
+    window.scrollTo({ left: 0, top: 0 });
+    dispatch(changeClosed(true));
+  };
   return (
     <StyledAside id="sidebar">
       <StyledAsideMain>
         <StyledList>
           {routes.map(({ link, name, path, exact, ...props }, index) =>
             link ? (
-              <li key={index}>
+              <li key={index} onClick={sidebarClosing}>
                 <StyledAsideListElement
                   activeClassName="active"
                   isActive={(_, { pathname }) => {

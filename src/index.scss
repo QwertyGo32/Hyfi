@@ -96,7 +96,7 @@ a {
 }
 
 .tooltip-inner {
-  background-color: var(--main-default-btn-grd1) !important;
+  background-color: var(--main-text-colored) !important;
 }
 
 .tooltip.show {
@@ -104,5 +104,5 @@ a {
 }
 
 .tooltip-arrow:before {
-  border-top-color: var(--main-default-btn-grd1) !important;
+  border-top-color: var(--main-text-colored) !important;
 }

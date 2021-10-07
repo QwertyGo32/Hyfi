@@ -1,8 +1,10 @@
+import hyfiLogo from '@icons/logo.svg';
+
 export const CompanyLogoData = [
   {
     title: 'Hyfi Corporation',
     status: 'Participating',
-    img: 'https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-social-logo.png',
+    img: `${hyfiLogo}`,
   },
   {
     status: 'Participating',
