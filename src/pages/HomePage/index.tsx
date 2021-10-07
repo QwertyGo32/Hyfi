@@ -10,7 +10,7 @@ import { gradientBtnTypes } from '@components/Btn';
 import { useAppDispatch } from '@utils/hooks';
 import { openConnectWallet } from '@redux/modal';
 import ImageBadge from './components/ImageBadge';
-import bgr from '@img/Rectangle.png';
+import bgr from '@img/homepage-block_light_bgr.jpg';
 
 const HomePage = () => {
   const dispatch = useAppDispatch();

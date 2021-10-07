@@ -16,6 +16,7 @@ export const StyledBadge = styled(Link)<IStyledBadgeProps>`
   background-size: cover;
   border-radius: 25px;
   text-decoration: none;
+  box-shadow: 0 3px 5px var(--main-block-shadow);
 `;
 
 export const StyledSpan = styled.span`
@@ -23,7 +24,7 @@ export const StyledSpan = styled.span`
   font-weight: bold;
   font-size: 24px;
   letter-spacing: 0;
-  color: #ffffff;
+  color: var(--main-text-default);
   opacity: 1;
   @media screen and ${breakpoints.Device.tablet} {
     font-size: 20px;
