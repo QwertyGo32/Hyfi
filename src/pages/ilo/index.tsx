@@ -62,30 +62,14 @@ export default function Ilo() {
               ]}
             />
             <StyledDataContainer
-              inTitle={
-                <CompanyLogo
-                  title={CompanyLogoData[0].title}
-                  img={CompanyLogoData[0].img}
-                  status={CompanyLogoData[0].status}
-                />
-              }
-              listData={[
-                DataContainerData[0],
-                DataContainerData[1],
-                DataContainerData[2],
-              ]}
-            />
-            <StyledDataContainer
-              inTitle={<StyledIloBlockTitle>View Contract</StyledIloBlockTitle>}
               listData={[DataContainerData[3], DataContainerData[4]]}
             />
             <StyledDataContainer
-              inTitle={
-                <StyledIloBlockTitle>
-                  {TitleContainerData[0].title}
-                </StyledIloBlockTitle>
-              }
-              listData={[TitleContainerData[1], TitleContainerData[2]]}
+              listData={[
+                TitleContainerData[0],
+                TitleContainerData[1],
+                TitleContainerData[2],
+              ]}
             />
           </StyledIloContainerBlocks>
           <StyledIloBlockTitle>
@@ -101,10 +85,10 @@ export default function Ilo() {
                 onChange={changeValue}
               />
               <StyledIloBlockBlueText>
-                300 licenses fragments for 300 USDT
+                300 licenses fragments for 300 BUSD
               </StyledIloBlockBlueText>
               <p className="info">
-                Your Contribution <span>{contribution} USDT</span>
+                Your Contribution <span>{contribution} BUSD</span>
               </p>
             </StyledIloContainerInfo>
             <AuthedUserBtn />

@@ -17,11 +17,13 @@ export interface IDataContainerProps {
   customTitleBadge?: JSX.Element;
   linksTo?: string;
 }
+
 export enum DataContainerListType {
   BADGE = 'badge',
   GENERAL = 'general',
   SHARE = 'share',
 }
+
 interface IDataContainerListData {
   title: string | JSX.Element;
   value?: number | string | JSX.Element;
@@ -86,16 +88,20 @@ export default function DataContainer({
 
   return (
     <StyledSection {...props}>
-      <StyledListHeader className="header">
-        {inTitle ?? ''}
-        {typeof customTitleBadge !== 'undefined' ? (
-          customTitleBadge
-        ) : (
-          <Link to={linksTo ?? '#'}>
-            <ShareLink />
-          </Link>
-        )}
-      </StyledListHeader>
+      {inTitle ? (
+        <StyledListHeader className="header">
+          {inTitle ?? ''}
+          {typeof customTitleBadge !== 'undefined' ? (
+            customTitleBadge
+          ) : (
+            <span>
+              <Link to={linksTo ?? '#'}>
+                <ShareLink />
+              </Link>
+            </span>
+          )}
+        </StyledListHeader>
+      ) : null}
       <StyledList className="list">{renderListData()}</StyledList>
     </StyledSection>
   );

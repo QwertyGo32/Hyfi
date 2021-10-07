@@ -22,6 +22,7 @@ import { openChangeWallet, openConnectWallet } from '@redux/modal';
 import { logoutUserFromWebSite } from '@redux/auth';
 import AccountDetails from '@components/AccountDetails';
 import ConnectWallet from '@components/ConnectWallet';
+import { changeClosed } from '@redux/css';
 
 type NavbarProps = {
   route: IRoute;

@@ -3,6 +3,7 @@ import withAuthType from '@/layouts/Auth/AuthBasedLayout';
 import { openIloDisclaimer } from '@/redux/modal';
 import { useAppDispatch } from '@/utils/hooks';
 import Btn from '@components/Btn';
+import React from 'react';
 
 interface IAuthedBtn {
   onClick?: (event: React.SyntheticEvent<HTMLButtonElement>) => void;

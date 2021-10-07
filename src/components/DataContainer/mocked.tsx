@@ -4,7 +4,9 @@ export const DataContainerData = [
   {
     title: 'Soft Cap',
     value: <span>Test</span>,
-    type: DataContainerListType.GENERAL,
+    badge:
+      'Nisl tincidunt eget nullam non nisi est sit amet facilisis magna etiam tempor orci eu lobortis elementum nibh tellus molestie',
+    type: DataContainerListType.BADGE,
   },
   {
     title: 'Total Commited',
@@ -14,21 +16,20 @@ export const DataContainerData = [
   {
     title: 'Participants',
     value: 200000,
-    badge: 'Hello',
-    type: DataContainerListType.BADGE,
+    type: DataContainerListType.GENERAL,
   },
   {
     title: 'Hard Cap',
     value: `$${(2000000000).toLocaleString('EN-gb')}`,
-    type: DataContainerListType.GENERAL,
+    badge:
+      'Nisl tincidunt eget nullam non nisi est sit amet facilisis magna etiam tempor orci eu lobortis elementum nibh tellus molestie',
+    type: DataContainerListType.BADGE,
   },
   {
     title: 'ROI',
     value: '',
     badge:
-      'Nisl tincidunt eget nullam non nisi est sit amet facilisis\n' +
-      '                        magna etiam tempor orci eu lobortis elementum nibh tellus\n' +
-      '                        molestie',
+      'Nisl tincidunt eget nullam non nisi est sit amet facilisis magna etiam tempor orci eu lobortis elementum nibh tellus molestie',
     type: DataContainerListType.BADGE,
   },
 ];
