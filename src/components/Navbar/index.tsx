@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { IRoute } from '@/interfaces/IRoutes';
 import {
   StyledCheckbox,
@@ -22,15 +23,23 @@ import { openChangeWallet, openConnectWallet } from '@redux/modal';
 import { logoutUserFromWebSite } from '@redux/auth';
 import AccountDetails from '@components/AccountDetails';
 import ConnectWallet from '@components/ConnectWallet';
-import { changeClosed } from '@redux/css';
+import { changeClosed, selectClosedCssState } from '@redux/css';
 
 type NavbarProps = {
   route: IRoute;
 };
 
-export default function Navbar({ route }: NavbarProps) {
+interface ISidebarClosing {
+  onClick?: (event: React.SyntheticEvent<HTMLDivElement>) => void;
+}
+
+export default function Navbar(
+  { route }: NavbarProps,
+  { onClick }: ISidebarClosing
+) {
   const dispatch = useAppDispatch();
   const status = useAppSelector(userLoggedStatus);
+  const sidebarStatus = useSelector(selectClosedCssState);
   const [isShown, setIsShown] = useState(false);
   const dataArray: IWalletDropdownBtn[] = [
     {
@@ -50,18 +59,29 @@ export default function Navbar({ route }: NavbarProps) {
       },
     },
   ];
+  const sidebarClosing = (event: React.SyntheticEvent<HTMLDivElement>) => {
+    if (onClick) {
+      onClick(event);
+    }
+    window.scrollTo({ left: 0, top: 0 });
+    dispatch(changeClosed(false));
+  };
   return (
     <>
-      <StyledCheckbox type="checkbox" name="checkbox" id="checkbox" />
+      {sidebarStatus ? (
+        <StyledCheckbox checked type="checkbox" name="checkbox" id="checkbox" />
+      ) : (
+        <StyledCheckbox type="checkbox" name="checkbox" id="checkbox" />
+      )}
       <StyledHeader id="header" data-status={status}>
         <div>
           <Link to={route.path}>
             <StyledLogo />
           </Link>
         </div>
-        <label htmlFor="checkbox" className="check-box">
+        <div onClick={sidebarClosing} className="check-box">
           <StyledSidebarBtn id="sidebar-logo" />
-        </label>
+        </div>
         {
           {
             [UserStatusType.AUTHED]: (

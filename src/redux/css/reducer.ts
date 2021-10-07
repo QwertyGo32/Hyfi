@@ -13,7 +13,9 @@ export const CssSlice = createSlice({
   initialState,
   reducers: {
     changeClosed: (state, action: PayloadAction<boolean>) => {
-      state.closed = action.payload;
+      state.closed === action.payload
+        ? (state.closed = !action.payload)
+        : (state.closed = action.payload);
     },
   },
 });
