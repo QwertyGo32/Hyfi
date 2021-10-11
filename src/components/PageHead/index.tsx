@@ -1,36 +1,43 @@
+import { EColorScheme, selectCurrentColorMode } from '@/redux/css';
+import { useAppSelector } from '@/utils/hooks';
 import React from 'react';
 import {
   StyledWrapperHead,
   StyledWrapperHeadContainer,
-  StyledWrapperHeadText,
   StyledWrapperHeadTitle,
+  StyledWrapperHeadText,
 } from './styled';
+import bgrImg from '@img/ilo-header-bgr.jpg';
+import bgrImg_dark from '@img/ilo-header-bgr_dark.png';
 
 interface IPageHead {
   title: string;
   textReduced?: boolean;
+  text?: string;
 }
 
 export default function PageHead({
   title,
   textReduced = false,
+  text,
   ...props
 }: IPageHead) {
+  const theme = useAppSelector(selectCurrentColorMode);
+
   return (
-    <StyledWrapperHead {...props}>
+    <StyledWrapperHead
+      image={
+        { [EColorScheme.DAY]: bgrImg, [EColorScheme.NIGHT]: bgrImg_dark }[theme]
+      }
+      {...props}
+    >
       <StyledWrapperHeadContainer>
         <StyledWrapperHeadTitle>{title}</StyledWrapperHeadTitle>
-        {title === 'ILO' ? (
-          <StyledWrapperHeadText>
-            Owners that seek to raise money for their development of New
-            technologies; IP, Patents Licenses, Brands and Projects (“Assets”)
-            can sell up to a 49% interest in their Assets on the HYFI Platform
-            with a right to buy back interests sold. We will introduce your
-            Assets to our Global network of Brokers who will introduce Investors
-            (Institutional, Corporations, Family Offices, Private Wealth and
-            Individuals) who may buy fractional interests in your Assets.
+        {text && (
+          <StyledWrapperHeadText className={textReduced ? 'reduced' : ''}>
+            {text}
           </StyledWrapperHeadText>
-        ) : null}
+        )}
       </StyledWrapperHeadContainer>
     </StyledWrapperHead>
   );

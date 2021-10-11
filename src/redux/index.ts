@@ -23,7 +23,6 @@ import { cssSlice } from '@redux/css';
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['css'],
 };
 
 const reducers = combineReducers({

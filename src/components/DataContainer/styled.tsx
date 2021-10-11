@@ -1,27 +1,23 @@
 import Button from 'react-bootstrap/Button';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { EColorScheme } from '@redux/css';
 
 export const StyledButton = styled(Button)``;
 
-export const StyledSection = styled.section`
-  &:not(:first-child) {
-    padding-top: 26px;
-  }
-`;
+export const StyledSection = styled.section``;
 
 export const StyledListHeader = styled.h3`
   display: grid;
   grid-template-columns: 1fr max-content;
   gap: 10px;
-  border-bottom: 0.2px solid var(--main-default-underline-opacity-20);
+  border-bottom: 1px solid var(--theme-StyledListElement);
   padding: 13.5px 0;
   align-items: flex-end;
-  font-size: 12px;
   font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
   line-height: 15px;
   font-weight: 500;
   letter-spacing: 0;
-  margin-bottom: 0;
 `;
 
 export const StyledList = styled.ul`
@@ -33,12 +29,11 @@ export const StyledList = styled.ul`
 `;
 
 export const StyledListElement = styled.li`
-  min-height: 52px;
   padding: 13.5px 0;
   display: grid;
-  align-items: flex-end;
   grid-template-areas: '. .';
-  border-bottom: 1px solid var(--main-default-link-color);
+  border-bottom: 1px solid var(--theme-StyledListElement);
+
   p {
     margin: 0;
   }
@@ -50,7 +45,7 @@ export const StyledListElement = styled.li`
     line-height: 15px;
     font-weight: 500;
     letter-spacing: 0;
-    color: var(--main-text-default);
+    color: var(--theme-StyledListElement_title);
     opacity: 1;
     text-align: left;
     width: fit-content;
@@ -65,7 +60,27 @@ export const StyledListElement = styled.li`
     line-height: 15px;
     font-weight: bold;
     letter-spacing: 0;
-    color: var(--main-text-colored);
+    color: var(--theme-dark-blue);
     opacity: 1;
+  }
+`;
+
+export const DataContainerComponentTheme = css`
+  &[data-theme='${EColorScheme.DAY}'] {
+    ${StyledSection} {
+      ${StyledListElement}, ${StyledListHeader} {
+        --theme-StyledListElement: var(--theme-light-grey-2);
+        --theme-StyledListElement_title: var(--theme-light-black-2);
+      }
+    }
+  }
+
+  &[data-theme='${EColorScheme.NIGHT}'] {
+    ${StyledSection} {
+      ${StyledListElement}, ${StyledListHeader} {
+        --theme-StyledListElement: var(--theme-black);
+        --theme-StyledListElement_title: var(--theme-light-grey-4);
+      }
+    }
   }
 `;

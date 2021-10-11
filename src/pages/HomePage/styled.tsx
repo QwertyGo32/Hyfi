@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import breakpoints from '@styles/constants.styled';
 import Btn from '@components/Btn';
+import { EColorScheme } from '@redux/css';
 
 export const StyledBtn = styled(Btn)`
   grid-area: btn;
@@ -62,7 +63,7 @@ export const Title = styled.h1`
   font-size: 40px;
   grid-area: title;
   line-height: 50px;
-  color: var(--main-text-default);
+  color: var(--theme-Title);
   /* grid-area: 1/1 / auto/span 4; */
   @media screen and ${breakpoints.Device.tablet} {
     font-size: 30px;
@@ -75,7 +76,7 @@ export const Text = styled.p`
   font-size: 24px;
   line-height: 34px;
   font-weight: 500;
-  color: var(--main-text-default);
+  color: var(--theme-Title);
   /* grid-area: 2/1 / auto/span 4; */
   @media screen and ${breakpoints.Device.tablet} {
     font-size: 20px;
@@ -92,5 +93,29 @@ export const InfoContainer = styled.section`
   /* grid-area: 4/1 / auto/span 4; */
   @media screen and ${breakpoints.Device.mobile} {
     grid-template-columns: 1fr;
+  }
+`;
+
+export const HomePageComponentTheme = css`
+  &[data-theme='${EColorScheme.DAY}'] {
+    ${HomeWrapper} {
+      ${Title} {
+        --theme-Title: var(--theme-light-black-2);
+      }
+      ${Text} {
+        --theme-Title: var(--theme-light-black-2);
+      }
+    }
+  }
+
+  &[data-theme='${EColorScheme.NIGHT}'] {
+    ${HomeWrapper} {
+      ${Title} {
+        --theme-Title: var(--theme-light-grey-4);
+      }
+      ${Text} {
+        --theme-Title: var(--theme-light-grey-4);
+      }
+    }
   }
 `;

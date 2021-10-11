@@ -1,26 +1,36 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import breakpoints from '@styles/constants.styled';
 import { ReactComponent as Logo } from '@icons/logo.svg';
 import { ReactComponent as Sidebar } from '@icons/sidebar.svg';
 import { LinksEnum } from '@interfaces/LinksEnum';
 import { UserStatusType } from '@/interfaces/IUser';
 import { ReactComponent as WalletIcon } from '@icons/wallet.svg';
+import { EColorScheme } from '@/redux/css';
 
-export const StyledWalletIcon = styled(WalletIcon)``;
+export const StyledWalletIcon = styled(WalletIcon)`
+  * {
+    @media screen and ${breakpoints.Device.tablet} {
+      fill: #ffff;
+    }
+  }
+`;
 
 export const StyledHeader = styled.header`
   display: grid;
   grid-template-columns: 245px 24px 1fr;
   grid-template-areas: 'logo side dropdown';
+  transition: 300ms all ease-in-out;
+
   align-items: center;
   padding: 33px 36px;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 20;
-  background: var(--main-default-bg) 0 0 no-repeat padding-box;
-  border: 1px solid var(--main-default-wrapper-border);
+  background: var(--theme-light-white) 0 0 no-repeat padding-box;
+  border: 1px solid var(--theme-light-grey-2);
   max-height: var(--main-top-padding);
+  height: var(--main-top-padding);
   @media screen and ${breakpoints.Device.tablet} {
     margin-bottom: 5px;
     grid-template-columns: 50px 50px 24px;
@@ -55,17 +65,21 @@ export const StyledHeader = styled.header`
 
   .check-box {
     cursor: pointer;
-    display: none;
-
-    @media screen and ${breakpoints.Device.desktop} {
-      display: block;
-    }
   }
 `;
 
-export const StyledLogo = styled(Logo)``;
+export const StyledLogo = styled(Logo)`
+  width: 50px;
+  height: 50px;
+  * {
+    fill: #4364f7;
+  }
+`;
 export const StyledSidebarBtn = styled(Sidebar)`
   transition: all 500ms ease-out;
+  * {
+    fill: var(--theme-StyledSidebarBtn-backround);
+  }
 `;
 
 export const StyledCheckbox = styled.input`
@@ -167,13 +181,8 @@ export const StyledCheckbox = styled.input`
   }
 `;
 export const StyledOrverlay = styled.div`
-  display: none;
-
-  &.active {
-    display: block;
-    background: var(--main-default-link-color);
-  }
-
+  display: block;
+  background: var(--theme-StyledOrverlay-backround);
   @media screen and ${breakpoints.Device.tablet} {
     width: 100vw;
     height: 100vh;
@@ -194,7 +203,6 @@ export const StyledBtnContainer = styled.div`
     display: none;
     @media screen and ${breakpoints.Device.tablet} {
       display: flex;
-      background: var(--main-default-bg);
       padding: 14px;
     }
   }
@@ -208,6 +216,28 @@ export const StyledBtnContainer = styled.div`
   span {
     @media screen and ${breakpoints.Device.tablet} {
       display: none;
+    }
+  }
+`;
+export const NavbarComponentTheme = css`
+  &[data-theme='${EColorScheme.DAY}'] {
+    ${StyledOrverlay} {
+      --theme-StyledOrverlay-backround: #f1f3f5e6;
+    }
+    ${StyledHeader} {
+      ${StyledSidebarBtn} {
+        --theme-StyledSidebarBtn-backround: var(--theme-light-black-2);
+      }
+    }
+  }
+  &[data-theme='${EColorScheme.NIGHT}'] {
+    ${StyledOrverlay} {
+      --theme-StyledOrverlay-backround: #191d24e6;
+    }
+    ${StyledHeader} {
+      ${StyledSidebarBtn} {
+        --theme-StyledSidebarBtn-backround: var(--theme-light-grey-1);
+      }
     }
   }
 `;

@@ -5,6 +5,6 @@ export const StyledDashboardBlockTransactions = styled.p`
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
-  color: var(--main-text-colored);
+  color: var(--theme-dark-blue);
   margin-bottom: 0;
 `;

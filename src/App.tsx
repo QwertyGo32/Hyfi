@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Switch, Route, useLocation, Redirect } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 import React, { Suspense } from 'react';
+import GloblaStyle from '@utils/theme.style';
 
 import Sidebar from '@components/Sidebar';
 
@@ -20,19 +21,22 @@ import { ReactComponent as Swap } from '@icons/vice-verse_arrows.svg';
 import { ReactComponent as Tractor } from '@icons/tractor.svg';
 
 import homeBgrImg from '@img/infographic9.jpg';
+import homeBgrImgDark from '@img/infographic9_dark.png';
+
 import { userLoggedStatus } from '@redux/auth';
 import { useAppSelector } from '@utils/hooks';
 
 import ErrorFallback from '@layouts/Fallback';
 import { StyledContainer } from '@styles/containers.styled';
+import { EColorScheme, selectCurrentColorMode } from './redux/css';
 
 const Ilo = React.lazy(() => import('@pages/ilo'));
 const Report = React.lazy(() => import('@pages/Report'));
 const HomePage = React.lazy(() => import('@pages/HomePage'));
 const Dashboard = React.lazy(() => import('@pages/Dashboard'));
 const HowToTakePart = React.lazy(() => import('@pages/HowToTakePart'));
-
 export default function App() {
+  const theme = useAppSelector(selectCurrentColorMode);
   const type = useAppSelector(userLoggedStatus);
   const location = useLocation();
   const routes: {
@@ -45,7 +49,10 @@ export default function App() {
         path: LinksEnum.MAIN,
         exact: true,
         link: true,
-        bgrImg: homeBgrImg,
+        bgrImg: {
+          [EColorScheme.DAY]: homeBgrImg,
+          [EColorScheme.NIGHT]: homeBgrImgDark,
+        },
         icon: () => <Home />,
         main: () => <HomePage />,
       },
@@ -182,6 +189,7 @@ export default function App() {
       },
     ],
   };
+
   return (
     <>
       <Sidebar routes={routes[type]}>
@@ -199,7 +207,7 @@ export default function App() {
                       key={index}
                       path={route.path}
                       exact={route.exact}
-                      children={<route.main />}
+                      children={route.main}
                     />
                   ))}
                 </Switch>
@@ -208,6 +216,7 @@ export default function App() {
           </CSSTransition>
         </SwitchTransition>
       </Sidebar>
+      <GloblaStyle theme={theme} />
     </>
   );
 }

@@ -8,7 +8,7 @@ import Link from '@components/Link';
 import { ReactComponent as ShareLink } from '@icons/link.svg';
 import { ReactComponent as Badge } from '@icons/question-mark.svg';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
+import Tooltip from '@components/Tooltip';
 import styled from 'styled-components';
 
 export interface IDataContainerProps {
@@ -17,13 +17,11 @@ export interface IDataContainerProps {
   customTitleBadge?: JSX.Element;
   linksTo?: string;
 }
-
 export enum DataContainerListType {
   BADGE = 'badge',
   GENERAL = 'general',
   SHARE = 'share',
 }
-
 interface IDataContainerListData {
   title: string | JSX.Element;
   value?: number | string | JSX.Element;
@@ -54,7 +52,13 @@ export default function DataContainer({
                         <OverlayTrigger
                           key="top"
                           placement="top"
-                          overlay={<Tooltip id="tooltip-top">{badge}</Tooltip>}
+                          overlay={(props) => (
+                            <Tooltip
+                              text={badge}
+                              id="button-tooltip"
+                              {...props}
+                            />
+                          )}
                         >
                           <Badge />
                         </OverlayTrigger>
@@ -88,20 +92,16 @@ export default function DataContainer({
 
   return (
     <StyledSection {...props}>
-      {inTitle ? (
-        <StyledListHeader className="header">
-          {inTitle ?? ''}
-          {typeof customTitleBadge !== 'undefined' ? (
-            customTitleBadge
-          ) : (
-            <span>
-              <Link to={linksTo ?? '#'}>
-                <ShareLink />
-              </Link>
-            </span>
-          )}
-        </StyledListHeader>
-      ) : null}
+      <StyledListHeader className="header">
+        {inTitle ?? ''}
+        {typeof customTitleBadge !== 'undefined' ? (
+          customTitleBadge
+        ) : (
+          <Link to={linksTo ?? '#'}>
+            <ShareLink />
+          </Link>
+        )}
+      </StyledListHeader>
       <StyledList className="list">{renderListData()}</StyledList>
     </StyledSection>
   );
@@ -118,7 +118,7 @@ export const StyledDropdownBtnText = styled.p`
   font-weight: 500;
   font-size: 10px;
   line-height: 13px;
-  color: var(--main-text-colored);
+  color: var(--theme-dark-blue);
   margin-right: 5px;
   margin-bottom: 0;
 `;

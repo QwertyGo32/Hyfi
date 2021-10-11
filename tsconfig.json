@@ -2,11 +2,7 @@
   "extends": "./tsconfig.paths.json",
   "compilerOptions": {
     "target": "es2017",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext", "es2017"],
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -25,7 +21,5 @@
     "jsx": "react-jsx",
     "allowJs": true
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

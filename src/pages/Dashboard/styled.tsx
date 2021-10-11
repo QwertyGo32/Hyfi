@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import breakpoints from '@styles/constants.styled';
+import { EColorScheme } from '@redux/css';
 
 export const StyledDashboardBlock = styled.div`
-  background: var(--main-default-bg);
-  box-shadow: 0 3px 5px #acb7c270;
+  background: var(--theme-StyledDashboardBlock);
   border-radius: 10px;
   padding: 30px;
   display: flex;
@@ -53,7 +53,7 @@ export const StyledDashboardBlockTitle = styled.div`
   font-size: 14px;
   line-height: 18px;
   font-weight: bold;
-  color: var(--main-text-default);
+  color: var(--theme-StyledDashboardBlockTitle);
 `;
 
 export const StyledDashboardWrapper = styled.div`
@@ -92,5 +92,27 @@ export const StyledDashboardWrapper = styled.div`
 
   @media screen and ${breakpoints.Device.mobile} {
     padding: 30px 0 120px 0;
+  }
+`;
+
+export const DashboardComponentTheme = css`
+  &[data-theme='${EColorScheme.DAY}'] {
+    ${StyledDashboardBlock} {
+      --theme-StyledDashboardBlock: var(--theme-light-white);
+    }
+
+    ${StyledDashboardBlockTitle} {
+      --theme-StyledDashboardBlockTitle: var(--theme-light-black-2);
+    }
+  }
+
+  &[data-theme='${EColorScheme.NIGHT}'] {
+    ${StyledDashboardBlock} {
+      --theme-StyledDashboardBlock: var(--theme-light-white);
+    }
+
+    ${StyledDashboardBlockTitle} {
+      --theme-StyledDashboardBlockTitle: var(--theme-light-grey-4);
+    }
   }
 `;

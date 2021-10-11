@@ -1,10 +1,11 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { StyledBody as SBody } from '@styles/modal.styled';
 import Form from 'react-bootstrap/Form';
 import { ReactComponent as Chain } from '@icons/chain.svg';
 import Row from 'react-bootstrap/Row';
 import Btn from '@components/Btn';
 import breakpoints from '@styles/constants.styled';
+import { EColorScheme } from '@redux/css';
 
 export const StyledBtn = styled(Btn)`
   width: 100%;
@@ -15,12 +16,12 @@ export const StyledLogo = styled(Chain)`
 `;
 
 export const StyledFormLabel = styled(Form.Label)`
-  font-style: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 15px;
   line-height: 19px;
-  letter-spacing: 0px;
-  color: var(--main-text-default);
+  letter-spacing: 0;
+  color: var(--theme-StyledFormLabel);
   opacity: 1;
   margin-bottom: 12.5px;
 `;
@@ -35,6 +36,7 @@ export const StyledFormGroup = styled(Form.Group)`
 
 export const StyledFromControlContainer = styled.div`
   position: relative;
+
   .text-container {
     position: absolute;
     display: grid;
@@ -43,7 +45,6 @@ export const StyledFromControlContainer = styled.div`
     grid-template-columns: 32px 1fr;
     top: 10px;
     right: 10px;
-    /* transform: translateY(-50%); */
   }
 `;
 
@@ -69,32 +70,33 @@ export const StyledDataRow = styled(Row)`
       'checkbox'
       'input' 'button';
   }
+
   .button {
     grid-area: button;
   }
+
   .checkbox {
     grid-area: checkbox;
   }
+
   .input {
     grid-area: input;
   }
 `;
 
 export const StyledFormControl = styled(Form.Control)`
-  background: var(--main-default-tab-color) 0% 0% no-repeat padding-box;
-  box-shadow: inset 0px 3px 6px var(--main-block-shadow);
-  border: 1px solid var(--main-sidebar-transition-bg);
+  background: var(--theme-StyledFormControl-bgr) 0 0 no-repeat padding-box;
+  box-shadow: inset 0 3px 6px var(--theme-StyledFormControl-boxshadow);
+  border: 1px solid var(--theme-StyledFormControl-border);
   border-radius: 5px;
-  opacity: 0.6;
-  font-style: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 20px;
   line-height: 24px;
-  letter-spacing: 0px;
-  color: var(--main-text-default);
+  letter-spacing: 0;
+  color: var(--theme-StyledFormControl-color);
   opacity: 1;
   padding: 12px 60px 12px 20px;
-  -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
   -moz-appearance: textfield !important;
@@ -102,50 +104,112 @@ export const StyledFormControl = styled(Form.Control)`
 
   &:focus {
     padding: 12px 20px;
+
     & ~ .text-container {
       display: none;
     }
   }
+
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
+
   /* Firefox */
+
   &[type='number'] {
     -moz-appearance: textfield;
   }
 `;
 export const StyledFormCheck = styled(Form.Check)`
   .form-check-input {
-    background: transparent;
-    border: 1px solid var(--main-default-btn-grd1);
+    background: var(--theme-StyledFormCheck-bgr);
+    border: 1px solid var(--theme-light-blue);
+
     &:checked {
-      background-color: #0d6efd;
-      border-color: #0d6efd;
+      background-color: var(--theme-light-blue);
+      border-color: var(--theme-light-blue);
     }
   }
+
   .form-check-label {
     font: normal normal medium 12px/24px Montserrat;
-    letter-spacing: 0px;
-    color: var(--main-text-colored);
+    letter-spacing: 0;
+    color: var(--theme-light-blue);
     opacity: 1;
   }
 `;
 
 export const StyledText = styled.p`
-  font-style: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
-  color: var(--main-text-default);
+  color: var(--theme-StyledText);
 `;
 
 export const StyledBody = styled(SBody)`
   font: normal normal medium 14px/24px Montserrat;
-  letter-spacing: 0px;
-  color: var(--main-text-default);
-  background: var(--main-default-tab-color) 0% 0% no-repeat padding-box;
-  border-radius: 0px 0px 10px 10px;
-  box-shadow: inset 0px 3px 5px var(--main-default-block-shadow);
+  letter-spacing: 0;
+  color: var(--theme-StyledBody-color);
+  background: var(--theme-StyledBody-bgr) 0 0 no-repeat padding-box;
+  border-radius: 0 0 10px 10px;
+  box-shadow: inset 0 3px 5px var(--theme-StyledBody-boxshadow);
+`;
+
+export const DisclaimerModalComponentTheme = css`
+  &[data-theme='${EColorScheme.DAY}'] {
+    ${StyledFormLabel} {
+      --theme-StyledFormLabel: var(--theme-light-black-2);
+    }
+
+    ${StyledFormControl} {
+      --theme-StyledFormControl-bgr: var(--theme-light-white);
+      --theme-StyledFormControl-boxshadow: var(--theme-light-grey-2);
+      --theme-StyledFormControl-border: var(--theme-light-grey-2);
+      --theme-StyledFormControl-color: var(--theme-light-black-2);
+    }
+
+    ${StyledFormCheck} {
+      --theme-StyledFormCheck-bgr: var(--theme-light-white);
+    }
+
+    ${StyledText} {
+      --theme-StyledText: var(--theme-light-black-2);
+    }
+
+    ${StyledBody} {
+      --theme-StyledBody-bgr: var(--theme-light-white);
+      --theme-StyledBody-color: var(--theme-light-black-2);
+      --theme-StyledBody-boxshadow: var(--theme-grey);
+    }
+  }
+
+  &[data-theme='${EColorScheme.NIGHT}'] {
+    ${StyledFormLabel} {
+      --theme-StyledFormLabel: var(--theme-light-grey-4);
+    }
+
+    ${StyledFormControl} {
+      --theme-StyledFormControl-bgr: var(--theme-light-white);
+      --theme-StyledFormControl-boxshadow: var(--theme-light-black-1);
+      --theme-StyledFormControl-border: var(--theme-light-black-1);
+      --theme-StyledFormControl-color: var(--theme-light-grey-4);
+    }
+
+    ${StyledFormCheck} {
+      --theme-StyledFormCheck-bgr: var(--theme-light-white);
+    }
+
+    ${StyledText} {
+      --theme-StyledText: var(--theme-light-grey-4);
+    }
+
+    ${StyledBody} {
+      --theme-StyledBody-bgr: var(--theme-light-white);
+      --theme-StyledBody-color: var(--theme-light-grey-4);
+      --theme-StyledBody-boxshadow: var(--theme-black);
+    }
+  }
 `;

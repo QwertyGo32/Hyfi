@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { RootState } from '@/redux';
+import { RootState } from '@redux/index';
 
 export const selectIlo = (state: RootState) => state.ilo;
 

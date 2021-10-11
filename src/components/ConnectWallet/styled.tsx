@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import Modal from 'react-bootstrap/Modal';
 
 export const StyledModal = styled(Modal)`
-  background: var(--main-default-tab-color-opacity) 0% 0% no-repeat padding-box;
+  background: red 0 0 no-repeat padding-box;
   .modal-content {
     border-radius: 10px;
-    box-shadow: 0px 3px 5px var(--main-default-block-shadow);
+    box-shadow: 0 3px 5px var(--main-default-block-shadow);
     border: none;
   }
 `;
@@ -19,14 +19,8 @@ export const StyledHeader = styled(Modal.Header)`
     width: 47px;
     height: 47px;
     opacity: 1;
-    background: transparent
-      linear-gradient(
-        180deg,
-        var(--main-default-btn-grd1) 0%,
-        var(--main-default-btn-grd2) 100%
-      )
-      0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 5px var(--main-text-colored-opacity);
+    background: red;
+    box-shadow: 0 3px 5px red;
     &::before,
     &::after {
       position: absolute;
@@ -35,7 +29,7 @@ export const StyledHeader = styled(Modal.Header)`
       content: '';
       width: 14px;
       height: 1px;
-      background: var(--main-default-bg);
+      background: red;
       transform: scale(2);
       border-radius: 15%;
     }
@@ -52,20 +46,20 @@ export const StyledBody = styled(Modal.Body)`
   .btn {
     &-custom {
       border-radius: 10px;
-      color: black;
-      background-color: var(--main-default-tab-color);
-      border-color: var(--main-default-tab-color);
+      color: red;
+      background-color: red;
+      border-color: red;
       &:hover {
-        color: var(--main-text-default);
-        background-color: var(--main-defaukt-bg1);
-        border-color: var(--main-defaukt-bg1);
+        color: red;
+        background-color: red;
+        border-color: red;
       }
       &:focus {
-        color: var(--main-text-default);
-        background-color: var(--main-defaukt-bg1);
-        border-color: var(--main-defaukt-bg1);
-        box-shadow: 0 0 0 0.25rem var(--main-block-shadow);
-        &:not(::focus-visible) {
+        color: red;
+        background-color: red;
+        border-color: red;
+        box-shadow: 0 0 0 0.25rem red;
+        &:not(:focus-visible) {
           outline: 0;
         }
       }
@@ -77,8 +71,8 @@ export const StyledTitle = styled.div`
   font-family: 'Montserrat', sans-serif;
   font-size: 20px;
   font-weight: 900;
-  letter-spacing: 0px;
-  color: var(--main-text-default);
+  letter-spacing: 0;
+  color: red;
   opacity: 1;
   user-select: none;
 `;

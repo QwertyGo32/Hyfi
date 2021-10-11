@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { IRoute } from '@/interfaces/IRoutes';
 import {
   StyledCheckbox,
@@ -11,6 +10,7 @@ import {
   StyledWalletIcon,
 } from './styled';
 import { Link } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 import Wallet, { IWalletDropdownBtn } from '@components/Wallet';
 import { ReactComponent as WalletIcon } from '@icons/wallet.svg';
 import { ReactComponent as LogOut } from '@icons/log-out.svg';
@@ -23,7 +23,8 @@ import { openChangeWallet, openConnectWallet } from '@redux/modal';
 import { logoutUserFromWebSite } from '@redux/auth';
 import AccountDetails from '@components/AccountDetails';
 import ConnectWallet from '@components/ConnectWallet';
-import { changeClosed, selectClosedCssState } from '@redux/css';
+import { changeClosed, selectClosedSidebarState } from '@redux/css';
+import { useSelector } from 'react-redux';
 
 type NavbarProps = {
   route: IRoute;
@@ -39,7 +40,7 @@ export default function Navbar(
 ) {
   const dispatch = useAppDispatch();
   const status = useAppSelector(userLoggedStatus);
-  const sidebarStatus = useSelector(selectClosedCssState);
+  const sidebarStatus = useSelector(selectClosedSidebarState);
   const [isShown, setIsShown] = useState(false);
   const dataArray: IWalletDropdownBtn[] = [
     {
@@ -59,6 +60,7 @@ export default function Navbar(
       },
     },
   ];
+
   const sidebarClosing = (event: React.SyntheticEvent<HTMLDivElement>) => {
     if (onClick) {
       onClick(event);
@@ -66,13 +68,16 @@ export default function Navbar(
     window.scrollTo({ left: 0, top: 0 });
     dispatch(changeClosed(false));
   };
+
   return (
     <>
-      {sidebarStatus ? (
-        <StyledCheckbox checked type="checkbox" name="checkbox" id="checkbox" />
-      ) : (
-        <StyledCheckbox type="checkbox" name="checkbox" id="checkbox" />
-      )}
+      <StyledCheckbox
+        readOnly
+        checked={sidebarStatus}
+        type="checkbox"
+        name="checkbox"
+        id="checkbox"
+      />
       <StyledHeader id="header" data-status={status}>
         <div>
           <Link to={route.path}>
@@ -85,11 +90,7 @@ export default function Navbar(
         {
           {
             [UserStatusType.AUTHED]: (
-              <Wallet
-                open={isShown}
-                changeOpenState={setIsShown}
-                walletTabs={dataArray}
-              />
+              <Wallet changeOpenState={setIsShown} walletTabs={dataArray} />
             ),
             [UserStatusType.VISITOR]: (
               <StyledBtnContainer>
@@ -110,12 +111,14 @@ export default function Navbar(
           }[status]
         }
       </StyledHeader>
-      <StyledOrverlay
-        onClick={() => {
-          setIsShown(false);
-        }}
-        className={isShown ? 'active' : ''}
-      />
+      <CSSTransition
+        in={isShown}
+        unmountOnExit
+        timeout={300}
+        classNames="my-node"
+      >
+        <StyledOrverlay />
+      </CSSTransition>
       <AccountDetails />
       <ConnectWallet />
     </>

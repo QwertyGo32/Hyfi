@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { NavLink as RouterLink } from 'react-router-dom';
 import { LinksEnum } from '@/interfaces/LinksEnum';
+import { EColorScheme } from '@/redux/css';
 
 export const StyledFooter = () => {
   return (
@@ -15,7 +16,7 @@ const StyledReportLink = styled(RouterLink)`
   font-weight: 500;
   font-size: 15px;
   line-height: 70px;
-  color: var(--main-text-default);
+  color: var(--theme-StyledReportLink-color);
   margin: 0;
   text-decoration: none;
   cursor: pointer;
@@ -32,6 +33,25 @@ const StyledFooterWrapper = styled.footer`
   justify-content: flex-end;
   align-items: center;
   height: var(--main-footer-height);
-  background: var(--main-default-bg) 0 0 no-repeat padding-box;
-  border: 1px solid var(--main-default-wrapper-border);
+  background: var(--theme-light-white) 0 0 no-repeat padding-box;
+  border: 1px solid var(--theme-light-grey-2);
+  transition: 300ms all ease-in-out;
+`;
+export const StyledFooterTheme = css`
+  &[data-theme='${EColorScheme.DAY}'] {
+    ${StyledReportLink} {
+      --theme-StyledReportLink-color: var(--theme-light-black-1);
+    }
+    ${StyledFooterWrapper} {
+      --theme-StyledOrverlay-backround: #f1f3f5e6;
+    }
+  }
+  &[data-theme='${EColorScheme.NIGHT}'] {
+    ${StyledReportLink} {
+      --theme-StyledReportLink-color: var(--theme-light-grey-1);
+    }
+    ${StyledFooterWrapper} {
+      --theme-StyledOrverlay-backround: #191d24e6;
+    }
+  }
 `;

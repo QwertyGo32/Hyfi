@@ -1,5 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Button from 'react-bootstrap/Button';
+import { EColorScheme } from '@/redux/css';
 
 export enum gradientBtnTypes {
   gradient = 'gradient',
@@ -22,26 +23,26 @@ export const BtnStyled = styled(Button)`
     background: transparent
       linear-gradient(
         180deg,
-        var(--main-default-btn-grd1) 0%,
-        var(--main-default-btn-grd2) 100%
+        var(--theme-light-StyledBtn-grd1) 0%,
+        var(--theme-light-StyledBtn-grd2) 100%
       )
       0 0 no-repeat padding-box;
-    box-shadow: 0 5px 6px var(--main-block-shadow);
+    box-shadow: 0 5px 6px var(--theme-light-StyledBtn-shadow);
     border-radius: 5px;
     border: none;
-    color: var(--main-default-bg);
+    color: #ffff;
   }
 
   &.${gradientBtnTypes.gradient}:focus, &.${gradientBtnTypes.outline}:active {
-    box-shadow: 0 5px 6px var(--main-block-shadow);
+    box-shadow: 0 5px 6px var(--theme-light-StyledBtn-shadow);
   }
 
   &.${gradientBtnTypes.outline} {
-    border: 2px solid var(--main-default-btn-grd2);
+    border: 2px solid var(--theme-dark-blue);
     background: transparent;
     border-radius: 5px;
     opacity: 0.8;
-    color: var(--main-default-btn-grd2);
+    color: var(--theme-dark-blue);
   }
 
   &.${gradientBtnTypes.outline}:focus, &.${gradientBtnTypes.outline}:active {
@@ -49,4 +50,20 @@ export const BtnStyled = styled(Button)`
   }
 `;
 
+export const BtnComponentTheme = css`
+  ${BtnStyled} {
+    --theme-light-StyledBtn-grd1: var(--theme-light-blue);
+    --theme-light-StyledBtn-grd2: var(--theme-dark-blue2);
+  }
+  &[data-theme='${EColorScheme.DAY}'] {
+    ${BtnStyled} {
+      --theme-light-StyledBtn-shadow: #0e101429;
+    }
+  }
+  &[data-theme='${EColorScheme.NIGHT}'] {
+    ${BtnStyled} {
+      --theme-light-StyledBtn-shadow: #00000029;
+    }
+  }
+`;
 export default BtnStyled;

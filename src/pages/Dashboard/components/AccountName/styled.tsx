@@ -1,19 +1,21 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Form from 'react-bootstrap/Form';
 import Image from 'react-bootstrap/Image';
 import { ReactComponent as Copy } from '@icons/copy.svg';
 import { IAssetData } from '.';
+import { EColorScheme } from '@redux/css';
 
 export const StyledImage = styled(Image)`
   height: 62px;
   width: 62px;
   border-radius: 50% !important;
-  box-shadow: 0 3px 6px var(--main-text-colored-opacity);
-  border: 2px solid var(--main-text-colored);
+  box-shadow: 0 3px 6px var(--theme-light-grey-5);
+  border: 2px solid var(--theme-dark-blue);
+
   &.small {
     height: 32px;
     width: 32px;
-    border: 2px solid var(--main-text-colored);
+    border: 2px solid var(--theme-dark-blue);
   }
 `;
 
@@ -23,7 +25,7 @@ export const StyledCopyTextBtn = styled.button`
   display: grid;
   grid-template-columns: auto auto;
   gap: 7px;
-  background: transparent;
+  background: var(--theme-StyledCopyTextBtn);
   outline: none;
   border: none;
   grid-area: btn;
@@ -33,7 +35,7 @@ export const StyledCopyTextBtn = styled.button`
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0;
-  color: var(--main-text-colored);
+  color: var(--theme-dark-blue);
 `;
 
 export const StyledForm = styled(Form)`
@@ -47,11 +49,13 @@ export const StyledForm = styled(Form)`
 
 export const StyledGradientContainer = styled.div`
   position: relative;
+
   &[data-clicked='true'] {
     &::before {
       display: none;
     }
   }
+
   &::before {
     content: '';
     position: absolute;
@@ -61,9 +65,9 @@ export const StyledGradientContainer = styled.div`
     border-radius: 5px;
     background: transparent
       linear-gradient(
-        90deg,
-        var(--main-default-bg-opacity) 0%,
-        var(--main-default-tab-color) 100%
+        85deg,
+        var(--theme-StyledGradientContainer_before-1) 0%,
+        var(--theme-StyledGradientContainer_before-2) 100%
       )
       0 0 no-repeat padding-box;
   }
@@ -71,33 +75,24 @@ export const StyledGradientContainer = styled.div`
 
 export const StyledFormControl = styled(Form.Control)`
   position: relative;
-  background: var(--main-default-bg) 0 0 no-repeat padding-box;
-  box-shadow: inset 4px 5px 6px var(--main-defaukt-bg1);
+  background: var(--theme-StyledFormControl-bgr) 0 0 no-repeat padding-box;
+  box-shadow: inset 4px 5px 6px var(--theme-StyledFormControl-boxshadow);
   border-radius: 5px;
+  border: 1px solid var(--theme-StyledFormControl-border);
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
   font-weight: 500;
   letter-spacing: 0;
-  color: var(--main-text-default) !important;
+  color: var(--theme-StyledFormControl-color) !important;
   opacity: 1;
   padding: 6px 18px;
+
   &::before {
     content: '';
     position: absolute;
     width: 100%;
     background: red;
     height: 100%;
-    /* background: transparent
-      linear-gradient(
-        90deg,
-        var(--main-bg-wallet-grd1) 0%,
-        var(--main-text-colored) 100%
-      )
-      0% 0% no-repeat padding-box;
-    z-index: 1;
-    width: calc(100% - var(--logo-width));
-    height: 100%;
-    right: 0; */
   }
 `;
 
@@ -112,7 +107,7 @@ export const StyledFormLabel = styled(Form.Label)`
   font-size: 14px;
   font-weight: bold;
   letter-spacing: 0;
-  color: var(--main-text-default);
+  color: var(--theme-StyledFormLabel);
   opacity: 1;
 `;
 
@@ -120,8 +115,8 @@ export const StyledContainer = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: var(--main-default-bg) 0 0 no-repeat padding-box;
-  box-shadow: 0 3px 5px var(--main-default-block-shadow);
+  background: red 0 0 no-repeat padding-box;
+  box-shadow: 0 3px 5px red;
   border-radius: 10px;
 `;
 
@@ -132,35 +127,39 @@ export const AssetsContainer = styled.div`
   padding: 30px 25px 30px 30px;
   max-height: 243px;
   overflow: auto;
-  background: var(--main-default-tab-color) 0 0 no-repeat padding-box;
-  box-shadow: inset 0 3px 5px var(--main-default-block-shadow);
+  background: var(--theme-AssetsContainer-bgr) 0 0 no-repeat padding-box;
+  box-shadow: inset 0 3px 5px var(--theme-AssetsContainer-boxshadow);
+
   &::-webkit-scrollbar {
     width: 5px; /* width of the entire scrollbar */
   }
 
   &::-webkit-scrollbar-track {
-    background: var(--main-default-tab-color); /* color of the tracking area */
+    background: var(
+      --theme-AssetsContainer-scrollbar-track
+    ); /* color of the tracking area */
   }
 
   &::-webkit-scrollbar-thumb {
     background-color: var(
-      --main-default-block-shadow
+      --theme-AssetsContainer-scrollbar-thumb-bgr
     ); /* color of the scroll thumb */
     border-radius: 20px; /* roundness of the scroll thumb */
-    border: 1px solid var(--main-default-block-shadow); /* creates padding around scroll thumb */
+    border: 1px solid var(--theme-AssetsContainer-scrollbar-thumb-border); /* creates padding around scroll thumb */
   }
 `;
 
-const StyledAccoutElemContainer = styled.div`
+const StyledAccountElemContainer = styled.div`
   display: grid;
   grid-template-columns: 32px 1fr max-content;
   grid-template-rows: 1fr;
   align-items: center;
   gap: 7px;
   grid-template-areas: '. . .';
-  border-bottom: 1px solid var(--main-default-wrapper-border);
+  border-bottom: 1px solid var(--theme-StyledAccountElemContainer);
   padding: 5px 0;
   margin-top: 10px;
+
   &.header {
     gap: 0;
     margin: 0;
@@ -174,7 +173,7 @@ const StyledNameText = styled.span`
   font-size: 12px;
   font-weight: bold;
   letter-spacing: 0;
-  color: var(--main-text-default);
+  color: var(--theme-StyledNameText);
   opacity: 1;
 `;
 
@@ -187,7 +186,7 @@ const StyledAmmount = styled.span`
   font-size: 12px;
   font-weight: bold;
   letter-spacing: 0;
-  color: var(--main-text-colored);
+  color: var(--theme-dark-blue);
   opacity: 1;
 `;
 const StyledPrice = styled.span`
@@ -196,12 +195,12 @@ const StyledPrice = styled.span`
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0;
-  color: var(--main-text-default);
+  color: var(--theme-StyledPrice);
 `;
 
 export const AccountAssetElemet = (data: IAssetData) => {
   return (
-    <StyledAccoutElemContainer>
+    <StyledAccountElemContainer>
       <StyledImage src={data?.logo ?? ''} className="small" />
       <StyledNameText>{data?.name ?? ''}</StyledNameText>
       <StyledPriceContainer>
@@ -212,22 +211,110 @@ export const AccountAssetElemet = (data: IAssetData) => {
           data?.currency
         }`}</StyledPrice>
       </StyledPriceContainer>
-    </StyledAccoutElemContainer>
+    </StyledAccountElemContainer>
   );
 };
 
 interface IAccountAssetElemet {
   ammount: number;
 }
+
 export const AccountAssetHeader = (data: IAccountAssetElemet) => {
   return (
-    <StyledAccoutElemContainer className="header">
+    <StyledAccountElemContainer className="header">
       <StyledNameText>Assets</StyledNameText>
       <StyledPriceContainer>
         <StyledAmmount>
           Balance: ${Number(data?.ammount ?? 0).toLocaleString('en-GB')}
         </StyledAmmount>
       </StyledPriceContainer>
-    </StyledAccoutElemContainer>
+    </StyledAccountElemContainer>
   );
 };
+
+export const AccountNameDtoComponentTheme = css`
+  &[data-theme='${EColorScheme.DAY}'] {
+    ${StyledCopyTextBtn} {
+      --theme-StyledCopyTextBtn: var(--theme-light-white);
+      --theme-StyledCopyTextBtn-color: var(--theme-light-white);
+    }
+
+    ${StyledGradientContainer} {
+      --theme-StyledGradientContainer_before-1: #ffffff00;
+      --theme-StyledGradientContainer_before-2: var(--theme-light-white);
+    }
+
+    ${StyledFormControl} {
+      --theme-StyledFormControl-bgr: var(--theme-light-white);
+      --theme-StyledFormControl-boxshadow: var(--theme-light-grey-2);
+      --theme-StyledFormControl-border: var(--theme-light-grey-2);
+      --theme-StyledFormControl-color: var(--theme-light-black-2);
+    }
+
+    ${StyledFormLabel} {
+      --theme-StyledFormLabel: var(--theme-light-black-2);
+    }
+
+    ${AssetsContainer} {
+      --theme-AssetsContainer-bgr: var(--theme-light-white);
+      --theme-AssetsContainer-boxshadow: var(--theme-light-grey-2);
+      --theme-AssetsContainer-scrollbar-track: var(--theme-light-white);
+      --theme-AssetsContainer-scrollbar-thumb-bgr: var(--theme-light-grey-2);
+      --theme-AssetsContainer-scrollbar-thumb-border: var(--theme-light-grey-2);
+    }
+
+    ${StyledAccountElemContainer} {
+      --theme-StyledAccountElemContainer: var(--theme-light-grey-2);
+    }
+
+    ${StyledNameText} {
+      --theme-StyledNameText: var(--theme-light-black-2);
+    }
+
+    ${StyledPrice} {
+      --theme-StyledPrice: var(--theme-light-grey-2);
+    }
+  }
+
+  &[data-theme='${EColorScheme.NIGHT}'] {
+    ${StyledCopyTextBtn} {
+      --theme-StyledCopyTextBtn: var(--theme-light-white);
+    }
+
+    ${StyledGradientContainer} {
+      --theme-StyledGradientContainer_before-1: #0e101400;
+      --theme-StyledGradientContainer_before-2: var(--theme-light-black-1);
+    }
+
+    ${StyledFormControl} {
+      --theme-StyledFormControl-bgr: var(--theme-light-white);
+      --theme-StyledFormControl-boxshadow: var(--theme-light-grey-2);
+      --theme-StyledFormControl-border: var(--theme-light-grey-2);
+      --theme-StyledFormControl-color: var(--theme-light-grey-4);
+    }
+
+    ${StyledFormLabel} {
+      --theme-StyledFormLabel: var(--theme-light-grey-4);
+    }
+
+    ${AssetsContainer} {
+      --theme-AssetsContainer-bgr: var(--theme-light-white);
+      --theme-AssetsContainer-boxshadow: var(--theme-light-grey-2);
+      --theme-AssetsContainer-scrollbar-track: var(--theme-light-white);
+      --theme-AssetsContainer-scrollbar-thumb-bgr: var(--theme-light-grey-4);
+      --theme-AssetsContainer-scrollbar-thumb-border: var(--theme-light-grey-2);
+    }
+
+    ${StyledAccountElemContainer} {
+      --theme-StyledAccountElemContainer: var(--theme-light-grey-2);
+    }
+
+    ${StyledNameText} {
+      --theme-StyledNameText: var(--theme-light-grey-4);
+    }
+
+    ${StyledPrice} {
+      --theme-StyledPrice: var(--theme-light-grey-4);
+    }
+  }
+`;

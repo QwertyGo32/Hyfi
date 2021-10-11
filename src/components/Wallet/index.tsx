@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import {
   StyledWalletContainer,
   StyledWalletIcon,
@@ -45,75 +45,76 @@ export interface IWalletDropdownBtn {
   text?: string;
   disabled?: boolean;
   icon?: JSX.Element;
-  toDo?:()=>void;
+  toDo?: () => void;
 }
 
 export interface IWalletProps {
-  open: boolean;
   walletTabs: IWalletDropdownBtn[];
-  [key:string]:any;
+  [key: string]: any;
 }
 
 export default function Wallet({
-  open=false,
   walletTabs,
-  changeOpenState=()=>{},
+  changeOpenState = () => {},
 }: IWalletProps) {
   const [active, setActive] = useState('');
   const walletAddress = useAppSelector(authWalletAddress);
 
   const onSelectFunction = function (eventKey: unknown) {
-    const newKey=eventKey as string;
+    const newKey = eventKey as string;
     setActive(newKey);
   };
 
-  const changeShowValue = function () {
-    console.log('CHANGE VISIBILITY: ', open);
-    changeOpenState(!open);
+  //This code part give functionality to control show state
+  const changeShowValue = function (state: boolean) {
+    changeOpenState(state);
   };
 
   return (
-    <Dropdown show={open} autoClose="outside" onSelect={onSelectFunction}>
+    <Dropdown
+      onToggle={changeShowValue}
+      autoClose="outside"
+      onSelect={onSelectFunction}
+    >
       <Dropdown.Toggle
-        onClick={changeShowValue}
         as={CustomToggle}
-        id="dropdown-custom-components"
+        id="dropdown-custom-components dropdown-autoclose-outside"
       >
         {walletAddress}
       </Dropdown.Toggle>
       <Dropdown.Menu renderOnMount align="end" as={StyledMenu}>
-        {walletTabs.map(({ children, key, href, text, disabled, icon,toDo }) => {
-          return (
-            <div                   key={key}            >
-              {href && (
-                <Dropdown.Item
-
-                  as={StyledMenuBtn}
-                  active={active === href}
-                  href={href}
-                  disabled={disabled ?? false}
-                  onClick={toDo}
-                >
-                  <span>{text ?? children ?? ''}</span>
-                  {icon && React.cloneElement(icon)}
-                </Dropdown.Item>
-              )}
-              {key && (
-                <Dropdown.Item
-
-                  as={StyledMenuBtn}
-                  active={active === key}
-                  eventKey={key}
-                  disabled={disabled ?? false}
-                  onClick={toDo}
-                >
-                  <span>{text ?? children ?? ''}</span>
-                  {icon && React.cloneElement(icon)}
-                </Dropdown.Item>
-              )}
-            </div>
-          );
-        })}
+        {walletTabs.map(
+          ({ children, key, href, text, disabled, icon, toDo }) => {
+            return (
+              <div key={key}>
+                {href && (
+                  <Dropdown.Item
+                    as={StyledMenuBtn}
+                    active={active === href}
+                    href={href}
+                    disabled={disabled ?? false}
+                    onClick={toDo}
+                  >
+                    <span>{text ?? children ?? ''}</span>
+                    {icon && React.cloneElement(icon)}
+                  </Dropdown.Item>
+                )}
+                {key && (
+                  <Dropdown.Item
+                    as={StyledMenuBtn}
+                    active={active === key}
+                    eventKey={key}
+                    disabled={disabled ?? false}
+                    onClick={toDo}
+                  >
+                    <span>{text ?? children ?? ''}</span>
+                    {icon && React.cloneElement(icon)}
+                  </Dropdown.Item>
+                )}
+              </div>
+            );
+          }
+        )}
       </Dropdown.Menu>
     </Dropdown>
   );

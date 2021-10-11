@@ -1,9 +1,9 @@
-import styled from 'styled-components';
-import bgrImg from '@img/ilo-header-bgr.jpg';
+import styled, { css } from 'styled-components';
 import breakpoints from '@styles/constants.styled';
 import DataContainer from '@components/DataContainer';
 import logo from '@img/logo.png';
 import bgrImgBlue from '@img/background.jpg';
+import { EColorScheme } from '@redux/css';
 
 export const StyledDataContainer = styled(DataContainer)`
   .header {
@@ -39,70 +39,14 @@ export const StyledIloWrapper = styled.section`
   flex-direction: column;
 `;
 
-export const IloWrapperHead = () => {
-  return (
-    <StyledIloWrapperHead>
-      <StyledIloWrapperHeadContainer>
-        <StyledIloWrapperHeadTitle>ILO</StyledIloWrapperHeadTitle>
-        <StyledIloWrapperHeadText>
-          Owners that seek to raise money for their development of New
-          technologies; IP, Patents Licenses, Brands and Projects (“Assets”) can
-          sell up to a 49% interest in their Assets on the HYFI Platform with a
-          right to buy back interests sold. We will introduce your Assets to our
-          Global network of Brokers who will introduce Investors (Institutional,
-          Corporations, Family Offices, Private Wealth and Individuals) who may
-          buy fractional interests in your Assets.
-        </StyledIloWrapperHeadText>
-      </StyledIloWrapperHeadContainer>
-    </StyledIloWrapperHead>
-  );
-};
-
-const StyledIloWrapperHead = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 50px 0;
-  background: url(${bgrImg}) no-repeat bottom/cover;
-  position: relative;
-  z-index: 1;
-`;
-
-const StyledIloWrapperHeadContainer = styled.div`
-  width: 90%;
-  max-width: 1266px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  z-index: 3;
-`;
-
-const StyledIloWrapperHeadTitle = styled.h1`
-  font-family: Montserrat, serif;
-  font-weight: bold;
-  font-size: 40px;
-  line-height: 50px;
-  color: #001218;
-`;
-
-const StyledIloWrapperHeadText = styled.p`
-  font-family: Montserrat, serif;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 27px;
-  color: #001218;
-`;
-
 export const StyledIloBlock = styled.div`
   width: 90%;
   max-width: 1266px;
   display: grid;
   grid-template-columns: 1fr 25%;
   align-items: stretch;
-  box-shadow: 0 3px 5px #acb7c270;
   border-radius: 10px;
-  background: white;
+  background: var(--theme-light-StyledIloBlock);
   margin: 30px auto;
   @media screen and ${breakpoints.Device.desktop} {
     grid-template-columns: 1fr;
@@ -148,7 +92,7 @@ const StyledIloHead = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid #d1d9e1;
+  border-bottom: 1px solid var(--theme-light-StyledIloHead);
 `;
 
 const StyledIloHeadTitle = styled.h2`
@@ -156,7 +100,7 @@ const StyledIloHeadTitle = styled.h2`
   font-weight: 900;
   font-size: 20px;
   line-height: 24px;
-  color: #001218;
+  color: var(--theme-light-StyledIloHeadTitle);
 `;
 
 const StyledIloHeadText = styled.p`
@@ -164,7 +108,7 @@ const StyledIloHeadText = styled.p`
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
-  color: #001218;
+  color: var(--theme-light-StyledIloHeadText);
 `;
 
 export const StyledIloContainerBlocks = styled.div`
@@ -179,7 +123,7 @@ export const StyledIloContainerInfo = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
-  border-bottom: 1px solid var(--main-default-link-color);
+  border-bottom: 1px solid var(--theme-light-StyledIloContainerInfo);
 
   .info {
     display: flex;
@@ -189,13 +133,13 @@ export const StyledIloContainerInfo = styled.div`
     line-height: 15px;
     font-weight: 500;
     letter-spacing: 0;
-    color: var(--main-text-default);
+    color: var(--theme-light-StyledIloContainerInfo_info);
     opacity: 1;
     margin: 0;
     padding-bottom: 9.5px;
     span {
       font-weight: bold;
-      color: var(--main-text-colored);
+      color: var(--theme-dark-blue);
     }
   }
 `;
@@ -228,7 +172,7 @@ export const StyledIloBlockTitle = styled.p`
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
-  color: #001218;
+  color: var(--theme-light-StyledIloBlockTitle);
   margin-bottom: 0;
 `;
 
@@ -237,5 +181,64 @@ export const StyledIloBlockBlueText = styled.p`
   font-weight: 500;
   font-size: 10px;
   line-height: 13px;
-  color: var(--main-text-colored);
+  color: var(--theme-dark-blue);
+`;
+
+export const StyledIloWrapperComponentTheme = css`
+  &[data-theme='${EColorScheme.DAY}'] {
+    ${StyledIloWrapper} {
+      ${StyledIloBlock} {
+        --theme-light-StyledIloBlock: var(--theme-light-white);
+      }
+
+      ${StyledIloContainerInfo} {
+        --theme-light-StyledIloContainerInfo: var(--theme-light-grey-2);
+        --theme-light-StyledIloContainerInfo_info: var(--theme-light-black-2);
+      }
+
+      ${StyledIloHeadText} {
+        --theme-light-StyledIloHeadText: var(--theme-light-black-2);
+      }
+
+      ${StyledIloHeadTitle} {
+        --theme-light-StyledIloHeadTitle: var(--theme-light-black-2);
+      }
+
+      ${StyledIloHead} {
+        --theme-light-StyledIloHead: var(--theme-light-grey-2);
+      }
+
+      ${StyledIloBlockTitle} {
+        --theme-light-StyledIloBlockTitle: var(--theme-light-black-2);
+      }
+    }
+  }
+  &[data-theme='${EColorScheme.NIGHT}'] {
+    ${StyledIloWrapper} {
+      ${StyledIloBlock} {
+        --theme-light-StyledIloBlock: var(--theme-light-black-2);
+      }
+
+      ${StyledIloContainerInfo} {
+        --theme-light-StyledIloContainerInfo: var(--theme-light-grey-2);
+        --theme-light-StyledIloContainerInfo_info: var(--theme-light-grey-4);
+      }
+
+      ${StyledIloHeadText} {
+        --theme-light-StyledIloHeadText: var(--theme-light-grey-4);
+      }
+
+      ${StyledIloHeadTitle} {
+        --theme-light-StyledIloHeadTitle: var(--theme-light-grey-4);
+      }
+
+      ${StyledIloHead} {
+        --theme-light-StyledIloHead: var(--theme-light-grey-2);
+      }
+
+      ${StyledIloBlockTitle} {
+        --theme-light-StyledIloBlockTitle: var(--theme-light-grey-4);
+      }
+    }
+  }
 `;

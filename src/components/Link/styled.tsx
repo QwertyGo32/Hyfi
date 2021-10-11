@@ -6,11 +6,11 @@ export const StyledLink = styled(RouterLink)`
   font-size: 15px;
   font-weight: 500;
   letter-spacing: 0;
-  color: var(--main-text-default);
+  color: var(--theme-dark-blue);
   text-decoration: none;
 
   &.dashboard-blocks__head_link {
-    color: var(--main-text-colored);
+    color: var(--theme-dark-blue);
     font-size: 12px;
     line-height: 15px;
   }

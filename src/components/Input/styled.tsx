@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
+import { EColorScheme } from '@redux/css';
 
 export const StyledInputGroupText = styled(InputGroup.Text)`
   display: flex;
@@ -11,15 +12,11 @@ export const StyledInputGroupText = styled(InputGroup.Text)`
   line-height: 15px;
   font-weight: bold;
   letter-spacing: 0;
-  color: var(--main-text-default);
+  color: red;
   opacity: 1;
 
   border-left: none;
-  background: rgb(241 243 245 / 60%) 0 0 no-repeat padding-box;
-
-  /* &[data-close='true'] {
-    display: none;
-  } */
+  background: red 0 0 no-repeat padding-box;
 `;
 
 export const StyledInputGroup = styled(InputGroup)`
@@ -38,19 +35,13 @@ export const StyledInputGroup = styled(InputGroup)`
       left: 0;
       width: 100%;
       height: 100%;
-      background: transparent
-        linear-gradient(
-          90deg,
-          var(--main-default-bg-opacity) 0%,
-          var(--main-default-tab-color) 100%
-        )
-        0 0 no-repeat padding-box;
+      background: var();
       border-radius: 5px;
     }
   }
   &[data-gradient='true'] {
     input {
-      box-shadow: inset 0 3px 6px var(--main-block-shadow);
+      box-shadow: inset 0 3px 6px var(--theme-light-grey-2);
     }
   }
   &[data-badge='true'] {
@@ -61,26 +52,26 @@ export const StyledInputGroup = styled(InputGroup)`
       position: absolute;
       width: 100%;
       height: 100%;
-      box-shadow: inset 0 3px 6px var(--main-block-shadow);
+      box-shadow: inset 0 3px 6px var(--theme-light-grey-2);
       border-radius: 5px;
       z-index: 1;
     }
     input {
       box-shadow: none;
-      background: rgb(241 243 245 / 60%) 0 0 no-repeat padding-box;
+      background: var(--theme-light-white) 0 0 no-repeat padding-box;
       font-family: 'Montserrat', sans-serif;
       font-size: 12px;
       line-height: 15px;
       font-weight: bold;
       letter-spacing: 0;
-      color: var(--main-text-default);
+      color: red;
       &::placeholder {
         font-family: 'Montserrat', sans-serif;
         font-size: 12px;
         line-height: 15px;
         font-weight: bold;
         letter-spacing: 0;
-        color: var(--main-text-default);
+        color: red;
       }
       opacity: 1;
       border-right: none;
@@ -88,10 +79,11 @@ export const StyledInputGroup = styled(InputGroup)`
   }
 
   input {
-    background: var(--main-default-bg) 0 0% no-repeat padding-box;
-    box-shadow: inset 4px 5px 6px var(--main-block-shadow);
+    background: #ffff 0 0% no-repeat padding-box;
+    box-shadow: inset 4px 5px 6px #c9c9c9;
     border-radius: 5px;
     padding: 9.5px 14px;
+    color: var(--theme-light-black-2);
     &[type='number'] {
       -moz-appearance: textfield;
       &::-webkit-outer-spin-button,
@@ -104,4 +96,15 @@ export const StyledInputGroup = styled(InputGroup)`
 
 export const StyledFormControl = styled(Form.Control)`
   max-height: 39px;
+`;
+
+export const ImportComponentTheme = css`
+  ${StyledInputGroup} {
+  }
+  &[data-theme='${EColorScheme.DAY}'] {
+  }
+  &[data-theme='${EColorScheme.NIGHT}'] {
+    ${StyledInputGroup} {
+    }
+  }
 `;

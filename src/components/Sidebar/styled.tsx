@@ -4,10 +4,10 @@ import { IRoute } from '@interfaces/IRoutes';
 import Link from '@components/Link';
 import { LinksEnum } from '@interfaces/LinksEnum';
 import SidebarContainer from './components/SidebarContainer';
+import { changeClosed, EColorScheme } from '@/redux/css';
+import { StyledNetworksContainerTheme } from './components/SidebarContainer/styled';
 import React from 'react';
-import { openIloDisclaimer } from '@redux/modal';
-import { changeClosed } from '@redux/css';
-import { useAppDispatch } from '@utils/hooks';
+import useWindowDimensions, { useAppDispatch } from '@utils/hooks';
 
 const StyledAside = styled.aside`
   position: fixed;
@@ -15,15 +15,14 @@ const StyledAside = styled.aside`
   padding: 0 0 20px;
   min-width: var(--sidebar-initial-width);
   width: var(--sidebar-initial-width);
-  background: var(--main-default-bg) 0 0 no-repeat padding-box;
+  background: var(--theme-light-white) 0 0 no-repeat padding-box;
   height: calc(100vh - var(--main-top-padding));
   visibility: visible;
   opacity: 1;
   transform: translateX(0);
   transition: 250ms ease-in;
-  border: 1px solid var(--main-default-wrapper-border);
+  border: 1px solid var(--theme-light-grey-2);
   border-top: none;
-  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
   @media screen and ${breakpoints.Device.tablet} {
     position: fixed;
     top: 82px;
@@ -48,18 +47,15 @@ const StyledAsideMain = styled.main`
   @media screen and ${breakpoints.Device.tablet} {
     justify-content: flex-start;
   }
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 4px;
+    background-color: var(--theme-light-white);
+  }
 
-  @media screen and (max-height: 550px) {
-    &::-webkit-scrollbar {
-      width: 4px;
-      height: 4px;
-      background-color: #ffffff;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border-radius: 2px;
-      background-color: var(--main-default-block-shadow);
-    }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: var(--theme-StyledAsideListElement-bg2);
   }
 `;
 
@@ -72,10 +68,9 @@ const StyledAsideListElement = styled(Link)`
   transition: 200ms all ease-in-out;
   transform: translateX(0);
   user-select: none;
-  background: white;
-
+  color: var(--theme-StyledAsideListElement-text);
   span {
-    transition: 200ms all ease-in-out;
+    transition: 300ms all ease-in-out;
     text-decoration: none;
     margin: 0;
   }
@@ -85,8 +80,8 @@ const StyledAsideListElement = styled(Link)`
 
   svg {
     * {
-      transition: 200ms all ease-in-out;
-      fill: var(--main-text-default);
+      transition: 300ms all ease-in-out;
+      fill: var(--theme-StyledAsideListElement-text);
     }
   }
 
@@ -96,24 +91,21 @@ const StyledAsideListElement = styled(Link)`
 
   &:hover,
   &.active {
-    color: var(--main-text-colored);
+    color: var(--theme-StyledAsideListElement-active);
+
     background: transparent
       linear-gradient(
         62deg,
-        var(--main-default-bg) 0%,
-        var(--main-sidebar-transition-bg) 100%
+        var(--theme-StyledAsideListElement-bg1) 0%,
+        var(--theme-StyledAsideListElement-bg2) 100%
       )
-      0 0 no-repeat padding-box;
-    &:hover,
-    &.active {
-      color: var(--main-text-colored);
-      svg {
-        * {
-          fill: var(--main-text-colored);
-        }
-      }
-      span {
-        color: var(--main-text-colored);
+      119px 0 no-repeat padding-box;
+
+    /* background: transparent linear-gradient(62deg, #0e101400 0%, #c9c9c938 100%)
+      0% 0% no-repeat padding-box; */
+    svg {
+      * {
+        fill: var(--theme-StyledAsideListElement-active);
       }
     }
   }
@@ -137,13 +129,17 @@ export const AsideComponent = function (
   { onClick }: ISidebarClosing
 ) {
   const dispatch = useAppDispatch();
+  const { width } = useWindowDimensions();
   const sidebarClosing = (event: React.SyntheticEvent<HTMLLIElement>) => {
-    if (onClick) {
-      onClick(event);
+    if (width <= 768) {
+      if (onClick) {
+        onClick(event);
+      }
+      window.scrollTo({ left: 0, top: 0 });
+      dispatch(changeClosed(true));
     }
-    window.scrollTo({ left: 0, top: 0 });
-    dispatch(changeClosed(true));
   };
+
   return (
     <StyledAside id="sidebar">
       <StyledAsideMain>
@@ -181,6 +177,21 @@ export const AsideComponent = function (
   );
 };
 
+export const AsideComponentTheme = css`
+  &[data-theme='${EColorScheme.DAY}'] {
+    --theme-StyledAsideListElement-bg1: #0e101400;
+    --theme-StyledAsideListElement-bg2: #c9c9c98c;
+    --theme-StyledAsideListElement-text: var(--theme-light-black-2);
+    --theme-StyledAsideListElement-active: var(--theme-dark-blue);
+  }
+  &[data-theme='${EColorScheme.NIGHT}'] {
+    --theme-StyledAsideListElement-bg1: #0e101400;
+    --theme-StyledAsideListElement-bg2: #0e1014;
+    --theme-StyledAsideListElement-text: #c9c9c9;
+    --theme-StyledAsideListElement-active: var(--theme-dark-blue);
+  }
+`;
+
 interface StyledContainerProps {
   bgrImg?: string;
   children?: JSX.Element;
@@ -189,6 +200,7 @@ interface StyledContainerProps {
 const StyledMain = styled.main`
   width: 100%;
   padding-bottom: var(--main-footer-height);
+  color: var(--theme-StyledMain-color);
   &[data-page='${LinksEnum.ILO}'] {
     padding-left: var(--sidebar-initial-width);
   }
@@ -219,7 +231,7 @@ const StyledMain = styled.main`
   align-items: center;
   ${(props: StyledContainerProps) => {
     return css`
-      background: var(--main-default-tab-color) url(${props.bgrImg ?? ''})
+      background: var(--theme-StyledMain-bg) url(${props.bgrImg ?? ''})
         no-repeat center/cover;
     `;
   }}
@@ -235,3 +247,19 @@ export const StyledContainer = function ({
     </StyledMain>
   );
 };
+export const StyledContainerTheme = css`
+  &[data-theme='${EColorScheme.DAY}'] {
+    --theme-StyledMain-bg: #f1f3f5;
+    --theme-StyledMain-color: var(--theme-light-black-2);
+  }
+  &[data-theme='${EColorScheme.NIGHT}'] {
+    --theme-StyledMain-bg: var(--theme-light-black-1);
+    --theme-StyledMain-color: var(--theme-light-grey-4);
+  }
+`;
+
+export const SidebarComponentTheme = css`
+  ${AsideComponentTheme}
+  ${StyledContainerTheme}
+  ${StyledNetworksContainerTheme}
+`;

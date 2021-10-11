@@ -42,7 +42,10 @@ export default function Ilo() {
   };
   return (
     <StyledIloWrapper>
-      <PageHead title="ILO" />
+      <PageHead
+        title="ILO"
+        text="Owners that seek to raise money for their development of New technologies; IP, Patents Licenses, Brands and Projects (“Assets”) can sell up to a 49% interest in their Assets on the HYFI Platform with a right to buy back interests sold. We will introduce your Assets to our Global network of Brokers who will introduce Investors (Institutional, Corporations, Family Offices, Private Wealth and Individuals) who may buy fractional interests in your Assets."
+      />
       <StyledIloBlock className={'ilo-block'}>
         <StyledIloContainer className={'ilo-container'}>
           <IloHead />
@@ -62,14 +65,30 @@ export default function Ilo() {
               ]}
             />
             <StyledDataContainer
+              inTitle={
+                <CompanyLogo
+                  title={CompanyLogoData[0].title}
+                  img={CompanyLogoData[0].img}
+                  status={CompanyLogoData[0].status}
+                />
+              }
+              listData={[
+                DataContainerData[0],
+                DataContainerData[1],
+                DataContainerData[2],
+              ]}
+            />
+            <StyledDataContainer
+              inTitle={<StyledIloBlockTitle>View Contract</StyledIloBlockTitle>}
               listData={[DataContainerData[3], DataContainerData[4]]}
             />
             <StyledDataContainer
-              listData={[
-                TitleContainerData[0],
-                TitleContainerData[1],
-                TitleContainerData[2],
-              ]}
+              inTitle={
+                <StyledIloBlockTitle>
+                  {TitleContainerData[0].title}
+                </StyledIloBlockTitle>
+              }
+              listData={[TitleContainerData[1], TitleContainerData[2]]}
             />
           </StyledIloContainerBlocks>
           <StyledIloBlockTitle>
@@ -88,7 +107,7 @@ export default function Ilo() {
                 {priceState} licenses fragments for {priceState} USDT
               </StyledIloBlockBlueText>
               <p className="info">
-                Your Contribution <span>{contribution} BUSD</span>
+                Your Contribution <span>{contribution} USDT</span>
               </p>
             </StyledIloContainerInfo>
             <AuthedUserBtn />

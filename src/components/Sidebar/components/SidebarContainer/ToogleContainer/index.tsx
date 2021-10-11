@@ -5,25 +5,17 @@ import {
   StyledThemeToggle,
   StyledMoon,
 } from './styled';
-import { useState } from 'react';
-
-enum siteThemes {
-  DAY = 'day',
-  NIGHT = 'night',
-}
-type IThemeType = `${siteThemes}`;
+import { useTheme } from '@/utils/theme.style';
 
 const ToggleContainer = () => {
-  const [theme, setTheme] = useState<IThemeType>(siteThemes.DAY);
-  const themeToggle = () => {
-    setTheme(theme === siteThemes.DAY ? siteThemes.NIGHT : siteThemes.DAY);
-  };
+  const [theme, themeToggle] = useTheme();
+
   return (
     <StyledToggleContainer onClick={themeToggle}>
       <StyledMoon className={theme} />
       <StyledSun className={theme} />
-      <StyledThemeToggle className={theme}>
-        <StyledThemeToggleCircle />
+      <StyledThemeToggle>
+        <StyledThemeToggleCircle className={theme} />
       </StyledThemeToggle>
     </StyledToggleContainer>
   );

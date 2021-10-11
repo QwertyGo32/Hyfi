@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
+import { EColorScheme } from '@redux/css';
 
 export const StyledSection = styled.section`
   display: grid;
@@ -16,9 +17,9 @@ export const StyledLogoContainer = styled.div`
   justify-content: center;
   padding: 6px;
   grid-area: 1 / 1 / 2 / 2;
-  background: var(--main-default-bg) 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 6px var(--main-block-shadow);
-  border: 2px solid var(--main-text-colored);
+  background: var(--theme-StyledLogoContainer) 0 0 no-repeat padding-box;
+  box-shadow: 0 3px 6px var(--theme-light-grey-5);
+  border: 2px solid var(--theme-dark-blue);
   border-radius: 50%;
 `;
 
@@ -33,8 +34,8 @@ export const StyledTitle = styled.h3`
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   font-weight: bold;
-  letter-spacing: 0px;
-  color: var(--main-text-default);
+  letter-spacing: 0;
+  color: var(--theme-StyledTitle);
   opacity: 1;
   margin: 0;
 `;
@@ -43,8 +44,8 @@ export const StyledStatus = styled.span`
   font-size: 10px;
   line-height: 13px;
   font-weight: 500;
-  letter-spacing: 0px;
-  color: var(--main-default-underline);
+  letter-spacing: 0;
+  color: var(--theme-StyledStatus);
   opacity: 1;
 `;
 export const StyledButton = styled(Button)`
@@ -54,47 +55,85 @@ export const StyledButton = styled(Button)`
   font-size: 8px;
   line-height: 10px;
   font-weight: 500;
-  color: var(--main-greend-bg);
+  //color: red;
+  background: var(--theme-StyledButton-bgr) !important;
   &[data-hasstatus='false'] {
     display: none;
   }
   &[data-style='Participating'] {
-    background: var(--main-greend-bg-opacity) 0% 0% no-repeat padding-box;
-    border: 1.5px solid var(--main-greend-bg);
+    border: 1.5px solid var(--theme-green);
     border-radius: 3px;
     opacity: 1;
-    color: var(--main-greend-bg);
+    color: var(--theme-green);
     &:hover {
-      color: var(--main-greend-bg);
-      background-color: var(--main-greend-bg-opacity);
-      border-color: var(--main-greend-bg);
+      //color: red;
+      //background-color: red;
+      //border-color: red;
     }
     &:focus {
-      background-color: var(--main-greend-bg-opacity);
-      border-color: var(--main-greend-bg);
-      box-shadow: 0 0 0 0.1rem var(--main-greend-bg-opacity1);
+      //background-color: red;
+      //border-color: red;
+      //box-shadow: 0 0 0 0.1rem red;
       &:not(:focus-visible) {
         outline: 0;
       }
     }
   }
   &[data-style='Owned'] {
-    background: var(--main-default-tab-color) 0% 0% no-repeat padding-box;
-    border: 1.5px solid var(--main-text-colored);
+    border: 1.5px solid var(--theme-dark-blue);
     border-radius: 3px;
     opacity: 1;
-    color: var(--main-text-colored);
+    color: var(--theme-dark-blue);
     &:hover {
-      color: var(--main-text-colored);
-      background-color: var(--main-sidebar-transition-bg);
-      border-color: var(--main-default-btn-grd1);
+      //color: red;
+      //background-color: red;
+      //border-color: red;
     }
     &:focus {
-      background-color: var(--main-sidebar-transition-bg);
-      border-color: var(--main-default-btn-grd2);
-      box-shadow: 0 0 0 0.1rem var(--main-default-btn-grd1);
+      //background-color: red;
+      //border-color: red;
+      //box-shadow: 0 0 0 0.1rem red;
       &:not(:focus-visible) {
         outline: 0;
+      }
+    }
+  }
+`;
+
+export const CompanyLogoComponentTheme = css`
+  &[data-theme='${EColorScheme.DAY}'] {
+    ${StyledSection} {
+      ${StyledTitle} {
+        --theme-StyledTitle: var(--theme-light-black-2);
+      }
+
+      ${StyledStatus} {
+        --theme-StyledStatus: var(--theme-light-black-2);
+      }
+
+      ${StyledButton} {
+        --theme-StyledButton-bgr: var(--theme-light-white);
+      }
+
+      ${StyledLogoContainer} {
+        --theme-StyledLogoContainer: var(--theme-light-white);
+      }
+    }
+  }
+
+  &[data-theme='${EColorScheme.NIGHT}'] {
+    ${StyledSection} {
+      ${StyledTitle} {
+        --theme-StyledTitle: var(--theme-light-grey-4);
+      }
+      ${StyledStatus} {
+        --theme-StyledStatus: var(--theme-light-grey-4);
+      }
+      ${StyledButton} {
+        --theme-StyledButton-bgr: var(--theme-light-white);
+      }
+      ${StyledLogoContainer} {
+        --theme-StyledLogoContainer: #ffffff;
       }
     }
   }
